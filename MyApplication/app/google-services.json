@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "478713937614",
+    "project_id": "summer-caca",
+    "storage_bucket": "summer-caca.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:478713937614:android:f7afc201d92954d0e49a9f",
+        "android_client_info": {
+          "package_name": "com.example.firebaseca"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "478713937614-q59a6d9dhmm9qbp4hllgnqpdflkp2jek.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBu5s18egf3TtCG_9S24BsYkLkfjdvou0g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "478713937614-q59a6d9dhmm9qbp4hllgnqpdflkp2jek.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:478713937614:android:3386b4e52927e60ee49a9f",
+        "android_client_info": {
+          "package_name": "com.example.firebasetest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "478713937614-q59a6d9dhmm9qbp4hllgnqpdflkp2jek.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBu5s18egf3TtCG_9S24BsYkLkfjdvou0g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "478713937614-q59a6d9dhmm9qbp4hllgnqpdflkp2jek.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
