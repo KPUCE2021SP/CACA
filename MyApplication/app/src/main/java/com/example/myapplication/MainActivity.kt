@@ -44,21 +44,21 @@ class MainActivity : AppCompatActivity() {
 //            startActivity(Intent(this, LoginActivity::class.java))
 //        }
 
-        val storage = Firebase.storage
-        ImageBtn.setOnClickListener {
-            val root_ref = storage.reference
-            val img_ref =
-                    storage.getReferenceFromUrl("gs://kpufirebasetest.appspot.com/images/kr_lotto.png")
-            img_ref?.getBytes(Long.MAX_VALUE)?.addOnSuccessListener {
-                val bmp = BitmapFactory.decodeByteArray(it, 0, it.size)
-                iv1.setImageBitmap(bmp)
-            }?.addOnFailureListener {
-                Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT).show()
-            }
-        }
-
-        val db: FirebaseFirestore = Firebase.firestore
-        val itemsCollectionRef = db.collection("items")
+//        val storage = Firebase.storage
+//        ImageBtn.setOnClickListener {
+//            val root_ref = storage.reference
+//            val img_ref =
+//                    storage.getReferenceFromUrl("gs://kpufirebasetest.appspot.com/images/kr_lotto.png")
+//            img_ref?.getBytes(Long.MAX_VALUE)?.addOnSuccessListener {
+//                val bmp = BitmapFactory.decodeByteArray(it, 0, it.size)
+//                iv1.setImageBitmap(bmp)
+//            }?.addOnFailureListener {
+//                Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT).show()
+//            }
+//        }
+//
+//        val db: FirebaseFirestore = Firebase.firestore
+//        val itemsCollectionRef = db.collection("items")
 
 //    }
 //    private fun accessFirebase(){

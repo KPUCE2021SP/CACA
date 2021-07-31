@@ -11,7 +11,10 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.loginactivity.*
 import java.util.regex.Pattern
 
 
@@ -26,7 +29,7 @@ class LoginActivity : AppCompatActivity() {
     private var password = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.loginactivity)
 
         // 파이어베이스 인증 객체 선언
         firebaseAuth = FirebaseAuth.getInstance()
@@ -34,12 +37,23 @@ class LoginActivity : AppCompatActivity() {
         editTextPassword = findViewById(R.id.et_password)
 
 
-        /*btn_signIn.setOnClickListener(){
+        btn_signUp.setOnClickListener {
+            signUp()
+        }
+        btn_signIn.setOnClickListener(){
             signIn()
-        }*/
+        }
     }
 
-    fun singUp(view: View?) {
+
+    //    fun signUp(view: View?) {
+//        email = editTextEmail!!.text.toString()
+//        password = editTextPassword!!.text.toString()
+//        if (isValidEmail && isValidPasswd) {
+//            createUser(email, password)
+//        }
+//    }
+    private fun signUp() {
         email = editTextEmail!!.text.toString()
         password = editTextPassword!!.text.toString()
         if (isValidEmail && isValidPasswd) {
@@ -47,7 +61,7 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    fun signIn(view: View?) {
+    private fun signIn() {
         //fun signIn() {
         email = editTextEmail!!.text.toString()
         password = editTextPassword!!.text.toString()
@@ -61,12 +75,13 @@ class LoginActivity : AppCompatActivity() {
         private get() = if (email.isEmpty()) {
             // 이메일 공백
             false
-        } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            // 이메일 형식 불일치
-            false
-        } else {
-            true
-        }// 비밀번호 형식 불일치// 비밀번호 공백
+        } else Patterns.EMAIL_ADDRESS.matcher(email).matches()// 비밀번호 형식 불일치// 비밀번호 공백
+//    else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+//        // 이메일 형식 불일치
+//        false
+//    } else {
+//        true
+//    }// 비밀번호 형식 불일치// 비밀번호 공백
 
     // 비밀번호 유효성 검사
     private val isValidPasswd: Boolean
@@ -74,21 +89,22 @@ class LoginActivity : AppCompatActivity() {
             return if (password.isEmpty()) {
                 // 비밀번호 공백
                 false
-            } else if (!PASSWORD_PATTERN.matcher(password).matches()) {
-                // 비밀번호 형식 불일치
-                false
-            } else {
-                true
-            }
+            } else PASSWORD_PATTERN.matcher(password).matches()
+
+//        } else if (!PASSWORD_PATTERN.matcher(password).matches()) {
+//        // 비밀번호 형식 불일치
+//        false
+//    } else {
+//        true
+//    }
+
         }
 
     // 회원가입
     private fun createUser(email: String, password: String) {
         firebaseAuth!!.createUserWithEmailAndPassword(email, password)
-            .addOnCompleteListener(
-                this
-            ) { task ->
-                if (task.isSuccessful) {
+            .addOnCompleteListener(this){
+                if (it.isSuccessful) {
                     // 회원가입 성공
                     Toast.makeText(
                         this@LoginActivity,
@@ -193,3 +209,4 @@ class LoginActivity : AppCompatActivity() {
 //
 //    }
 //}
+
