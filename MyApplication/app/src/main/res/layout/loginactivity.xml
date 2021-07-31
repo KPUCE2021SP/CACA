@@ -31,7 +31,8 @@
             android:layout_marginLeft="50dp"
             android:layout_weight="1"
             android:onClick="singUp"
-            android:text="signup" />
+            android:text="signup"
+            tools:ignore="OnClick" />
 
         <Button
             android:id="@+id/btn_signIn"
@@ -40,7 +41,8 @@
             android:layout_marginRight="50dp"
             android:layout_weight="1"
             android:onClick="signIn"
-            android:text="signin" />
+            android:text="signin"
+            tools:ignore="OnClick" />
 
     </LinearLayout>
 
