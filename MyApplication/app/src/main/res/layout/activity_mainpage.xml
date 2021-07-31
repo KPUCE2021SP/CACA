@@ -1,0 +1,460 @@
+<TabHost xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@android:id/tabhost"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="#fcbf48">
+
+            <ImageButton
+                android:id="@+id/btnMyPage"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_vertical"
+                android:background="@android:color/transparent"
+                android:layout_margin="3dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/mypage1" />
+
+            <TextView
+                android:text="Familyship"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"/>
+
+            <ImageButton
+                android:id="@+id/btnGroup"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_vertical"
+                android:background="@android:color/transparent"
+                android:layout_margin="3dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/groups" />
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_weight="1"
+            android:id="@android:id/tabcontent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <LinearLayout
+                android:id="@+id/tabHome"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btnMain1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textColor="@color/white"
+                        android:text="용돈"
+                        android:textSize="18dp"
+                        android:textStyle="bold"
+                        android:background="#fcbf48"/>
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="0dp"/>
+                    <Button
+                        android:id="@+id/btnMain2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textColor="@color/white"
+                        android:text="안부"
+                        android:textSize="18dp"
+                        android:textStyle="bold"
+                        android:background="#fcbf48"/>
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="0dp"/>
+                    <Button
+                        android:id="@+id/btnMain3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textColor="@color/white"
+                        android:text="미니게임"
+                        android:textSize="18dp"
+                        android:textStyle="bold"
+                        android:background="#fcbf48"/>
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="0dp"/>
+                    <Button
+                        android:id="@+id/btnMain4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textColor="@color/white"
+                        android:text="공동할일"
+                        android:textSize="18dp"
+                        android:textStyle="bold"
+                        android:background="#fcbf48"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/LinearMainpage"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="메인 페이지"
+                        android:textSize="30dp"
+                        android:textStyle="bold"/>
+                </LinearLayout>
+                <!--                -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:id="@+id/LinearMain1"
+                    android:visibility="gone">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="용돈 관리"
+                        android:layout_margin="10dp"
+                        android:textSize="27dp"
+                        android:textStyle="bold"></TextView>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/solid_button_gray"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_margin="5dp"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="10">
+
+                            <ImageView
+                                android:src="@drawable/youngster"
+                                android:id="@+id/img"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true" />
+                        </LinearLayout>
+                        <TextView
+                            android:layout_width="10dp"
+                            android:layout_height="match_parent"
+                            android:text=" ">
+                        </TextView>
+
+                        <LinearLayout
+                            android:layout_margin="10dp"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:layout_weight="40">
+
+                            <TextView
+                                android:id="@+id/textArtist"
+                                android:text="성춘향"
+                                android:textSize="20dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/textTitle"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="5dp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/textTitle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentLeft="true"
+                                android:layout_alignParentTop="true"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="10dp"
+                                android:text="국민은행 000000-000000"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:text="마지막 입금 일시: 2021-07-20"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/textTitle"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginBottom="5dp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/solid_button_gray"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_margin="5dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="10">
+
+                            <ImageView
+                                android:src="@drawable/boy"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true" />
+                        </LinearLayout>
+                        <TextView
+                            android:layout_width="10dp"
+                            android:layout_height="match_parent"
+                            android:text=" ">
+                        </TextView>
+
+                        <LinearLayout
+                            android:layout_margin="10dp"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:layout_weight="40">
+
+                            <TextView
+                                android:text="홍길동"
+                                android:textSize="20dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/textTitle"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="5dp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentLeft="true"
+                                android:layout_alignParentTop="true"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="10dp"
+                                android:text="국민은행 000000-000000"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:text="마지막 입금 일시: 2021-06-10"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/textTitle"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginBottom="5dp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+                <!--                -->
+                <LinearLayout
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/LinearMain2"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="안부 페이지"
+                        android:textSize="30dp"
+                        android:textStyle="bold"/>
+                </LinearLayout>
+                <!--                -->
+                <LinearLayout
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/LinearMain3"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="미니게임 페이지"
+                        android:textSize="30dp"
+                        android:textStyle="bold"/>
+                </LinearLayout>
+                <!--                -->
+                <LinearLayout
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/LinearMain4"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="공동할일 페이지"
+                        android:textSize="30dp"
+                        android:textStyle="bold"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/tabBoard"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="게시판 페이지"
+                    android:textSize="30dp"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/tabCalendar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="달력 페이지"
+                    android:textSize="30dp"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/tabAlbum"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="추억 돌아보기"
+                    android:layout_margin="20dp"
+                    android:textSize="27dp"
+                    android:textStyle="bold"></TextView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_margin="5dp"
+                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/card_view"
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    card_view:cardCornerRadius="4dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="130dp"
+                        android:src="@drawable/sky"
+                        android:id="@+id/imageView"
+                        android:background="@drawable/roundback"
+                        android:scaleType="centerCrop"/>
+
+                    <TextView
+                        android:layout_margin="10dp"
+                        android:id="@+id/info_text"
+                        android:text="2018년"
+                        android:textColor="#d3d3d3"
+                        android:textStyle="bold|italic"
+                        android:textSize="30dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_margin="5dp"
+                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    card_view:cardCornerRadius="4dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="130dp"
+                        android:src="@drawable/catmeow"
+                        android:id="@+id/imageView1"
+                        android:scaleType="centerCrop"/>
+
+                    <TextView
+                        android:layout_margin="10dp"
+                        android:text="2019년"
+                        android:textColor="#d3d3d3"
+                        android:textStyle="bold|italic"
+                        android:textSize="30dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_margin="5dp"
+                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    card_view:cardCornerRadius="4dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="130dp"
+                        android:src="@drawable/nightsky"
+                        android:id="@+id/imageView2"
+                        android:background="@drawable/roundback"
+                        android:scaleType="centerCrop"/>
+
+                    <TextView
+                        android:layout_margin="10dp"
+                        android:text="2020년"
+                        android:textColor="#d3d3d3"
+                        android:textStyle="bold|italic"
+                        android:textSize="30dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+        </FrameLayout>
+        <TabWidget
+            android:id="@android:id/tabs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+        </TabWidget>
+
+    </LinearLayout>
+
+</TabHost>
