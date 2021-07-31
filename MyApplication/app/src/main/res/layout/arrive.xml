@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="&lt;"
+            android:textColor="#fcbf48"
+            android:background="@color/white"
+            android:layout_weight="1"
+            android:textSize="30dp"
+            android:id="@+id/arriveRtn"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="28dp"
+            android:layout_gravity="center"
+            android:layout_weight="7"
+            android:scaleType="fitCenter"
+            android:src="@drawable/pin"/>
+
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_marginRight="10dp"
+            android:text="완료"
+            android:id="@+id/arrivebtn"
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:textColor="#ffffff"
+            android:background="@drawable/solid_button_white"
+            android:layout_weight="1"/>
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/map"
+        android:layout_margin="20dp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginLeft="15dp"
+                android:layout_gravity="center"
+                android:src="@drawable/location_pin" />
+            <TextView
+                android:id="@+id/arrivePin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:text="서울특별시 역삼동"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginLeft="15dp"
+                android:layout_gravity="center"
+                android:src="@drawable/home" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:text="집"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginLeft="15dp"
+                android:layout_gravity="center"
+                android:src="@drawable/time" />
+            <TextView
+                android:id="@+id/arriveTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:text="1시간 43분"/>
+        </LinearLayout>
+    </LinearLayout>
+
+<!--    <TextView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_margin="10dp"-->
+<!--        android:layout_marginTop="15dp"-->
+<!--        android:layout_weight="9"-->
+<!--        android:background="@null"-->
+<!--        android:hint="\@을 통해 알람을 보낼 수 있습니다."-->
+<!--        android:padding="15dp"-->
+<!--        android:text="\@엄마 저 집으로 출발합니다!!"-->
+<!--        android:textAppearance="@style/TextAppearance.AppCompat.Body2"-->
+<!--        android:textSize="18sp" />-->
+
+    // board의 지도 버튼 누르면 이 페이지로 들어오고(이때 현재위치 띄움 or 위치정보 가져오기 버튼)
+    // 완료 누르면 board로 되돌아가고 글 작성해서 올리는 생각
+
+
+</LinearLayout>
