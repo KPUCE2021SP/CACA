@@ -1,7 +1,5 @@
 # CACA
-앱 이름 : FAMILY SHIP
+##앱 이름 : FAMILYSHIP
 
+##https://trello.com/b/erXhAWw7/familyship
 
-
-
-https://trello.com/b/erXhAWw7/familyship
