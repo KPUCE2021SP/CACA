@@ -43,9 +43,7 @@
 #### 4. Trello
 #### 5. Google Meet
 
-<br>
 
-## 간트 차트
 
 
 <br>
