@@ -1,11 +1,13 @@
-package com.example.mainpage
+package com.example.myapplication
 
 import android.app.TabActivity
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import com.example.myapplication.R
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_mainpage.*
 
 class mainpage : TabActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,6 +27,7 @@ class mainpage : TabActivity() {
 
         val tabSpecCalendar = tabHost.newTabSpec("CALENDAR").setIndicator("달력")
         tabSpecCalendar.setContent(R.id.tabCalendar)
+
         tabHost.addTab(tabSpecCalendar)
 
         val tabSpecAlbum = tabHost.newTabSpec("ALBUM").setIndicator("앨범")
