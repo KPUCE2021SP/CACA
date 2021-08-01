@@ -1,7 +1,5 @@
 package com.example.myapplication
 
-
-
 import android.content.Intent
 import android.os.Bundle
 //import android.support.v7.app.AppCompatActivity
@@ -46,13 +44,6 @@ class LoginActivity : AppCompatActivity() {
     }
 
 
-    //    fun signUp(view: View?) {
-//        email = editTextEmail!!.text.toString()
-//        password = editTextPassword!!.text.toString()
-//        if (isValidEmail && isValidPasswd) {
-//            createUser(email, password)
-//        }
-//    }
     private fun signUp() {
         email = editTextEmail!!.text.toString()
         password = editTextPassword!!.text.toString()
@@ -76,12 +67,7 @@ class LoginActivity : AppCompatActivity() {
             // 이메일 공백
             false
         } else Patterns.EMAIL_ADDRESS.matcher(email).matches()// 비밀번호 형식 불일치// 비밀번호 공백
-//    else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-//        // 이메일 형식 불일치
-//        false
-//    } else {
-//        true
-//    }// 비밀번호 형식 불일치// 비밀번호 공백
+
 
     // 비밀번호 유효성 검사
     private val isValidPasswd: Boolean
@@ -90,13 +76,6 @@ class LoginActivity : AppCompatActivity() {
                 // 비밀번호 공백
                 false
             } else PASSWORD_PATTERN.matcher(password).matches()
-
-//        } else if (!PASSWORD_PATTERN.matcher(password).matches()) {
-//        // 비밀번호 형식 불일치
-//        false
-//    } else {
-//        true
-//    }
 
         }
 
@@ -137,8 +116,8 @@ class LoginActivity : AppCompatActivity() {
                         Toast.LENGTH_SHORT
                     ).show()
 
-//                    val intent = Intent(application, AfterActivity::class.java)
-//                    startActivity(intent)
+                    val intent = Intent(application, MypageActivity::class.java)
+                    startActivity(intent)
 
 
                 } else {
