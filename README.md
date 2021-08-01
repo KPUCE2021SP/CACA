@@ -1,5 +1,12 @@
 # CACA
-##앱 이름 : FAMILYSHIP
+앱 이름 : FAMILYSHIP
 
-##https://trello.com/b/erXhAWw7/familyship
+https://trello.com/b/erXhAWw7/familyship
 
+# 앱 소개
+가족 간의 소통을 중심으로 한 어플
+더 간결하고 편리하게  가족과 소통하고  소중한 추억을 저장할 수 있는 어플
+
+# 주제 선정 이유
+바쁜 일상에 치여 가족과 소통이 뒷전이 될 때가 있다.
+좀 더 가족에게 관심을 가지고 가족과 멀리 떨어져 지내도 안부를 손쉽게 전할 수 있게 하자
