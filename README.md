@@ -43,6 +43,9 @@
 #### 4. Trello
 #### 5. Google Meet
 
+![image](https://user-images.githubusercontent.com/79956705/127766685-17f5797c-d07f-41ea-ad22-eeccda61d98a.png)
+
+
 <br>
 
 ## 구성원
