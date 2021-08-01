@@ -34,7 +34,7 @@ class MypageActivity : AppCompatActivity() {
         )
 
         db.collection("Member").document("ID_MEMBER")
-            .update("city", true)
+            .set(city)
 //            .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully written!") }
 //            .addOnFailureListener { e -> Log.w(TAG, "Error writing document", e) }
 
