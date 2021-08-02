@@ -1,16 +1,17 @@
 package com.example.myapplication
 
-import android.content.Intent
-import android.os.Bundle
 //import android.support.v7.app.AppCompatActivity
+import android.content.Context
+import android.content.Intent
+import android.content.SharedPreferences
+import android.os.Bundle
+import android.preference.PreferenceManager
+import android.util.Log
 import android.util.Patterns
-import android.view.View
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.loginactivity.*
 import java.util.regex.Pattern
@@ -25,9 +26,13 @@ class LoginActivity : AppCompatActivity() {
     private var editTextPassword: EditText? = null
     private var email = ""
     private var password = ""
+
+    private lateinit var sharedPreferences: SharedPreferences
+    private lateinit var editor : SharedPreferences.Editor
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.loginactivity)
+
 
         // 파이어베이스 인증 객체 선언
         firebaseAuth = FirebaseAuth.getInstance()
@@ -35,13 +40,77 @@ class LoginActivity : AppCompatActivity() {
         editTextPassword = findViewById(R.id.et_password)
 
 
+        if(MySharedPreferences.getUserId(this).isNullOrBlank() // 자동 로그인
+            || MySharedPreferences.getUserPass(this).isNullOrBlank()) {
+            //btn_signIn.setOnClickListener(){
+            if(editTextEmail!!.text.toString().isNullOrBlank() || editTextPassword!!.text.toString().isNullOrBlank()) {
+                Toast.makeText(this, "아이디와 비밀번호를 확인하세요", Toast.LENGTH_SHORT).show()
+            }
+            else {
+                MySharedPreferences.setUserId(this, editTextEmail!!.text.toString().toString())
+                MySharedPreferences.setUserPass(this, editTextPassword!!.text.toString().toString())
+                signUp()
+            }
+            //}
+        }
+        else { // SharedPreferences 안에 값이 저장되어 있을 때 -> MainActivity로 이동
+            Toast.makeText(this, "${MySharedPreferences.getUserId(this)}님 자동 로그인 되었습니다.", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, MypageActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+
+
         btn_signUp.setOnClickListener {
             signUp()
         }
         btn_signIn.setOnClickListener(){
+            MySharedPreferences.setUserId(this, editTextEmail!!.text.toString().toString())
+            MySharedPreferences.setUserPass(this, editTextPassword!!.text.toString().toString())
             signIn()
         }
+
+
     }
+
+
+    object MySharedPreferences {
+        private val MY_ACCOUNT : String = "account"
+
+        fun setUserId(context: Context, input: String) {
+            val prefs : SharedPreferences = context.getSharedPreferences(MY_ACCOUNT, Context.MODE_PRIVATE)
+            val editor : SharedPreferences.Editor = prefs.edit()
+            editor.putString("MY_ID", input)
+            editor.commit()
+        }
+
+        fun getUserId(context: Context): String {
+            val prefs : SharedPreferences = context.getSharedPreferences(MY_ACCOUNT, Context.MODE_PRIVATE)
+            return prefs.getString("MY_ID", "").toString()
+        }
+
+        fun setUserPass(context: Context, input: String) {
+            val prefs : SharedPreferences = context.getSharedPreferences(MY_ACCOUNT, Context.MODE_PRIVATE)
+            val editor : SharedPreferences.Editor = prefs.edit()
+            editor.putString("MY_PASS", input)
+            editor.commit()
+        }
+
+        fun getUserPass(context: Context): String {
+            val prefs : SharedPreferences = context.getSharedPreferences(MY_ACCOUNT, Context.MODE_PRIVATE)
+            return prefs.getString("MY_PASS", "").toString()
+        }
+
+        fun clearUser(context: Context) {
+            val prefs : SharedPreferences = context.getSharedPreferences(MY_ACCOUNT, Context.MODE_PRIVATE)
+            val editor : SharedPreferences.Editor = prefs.edit()
+            editor.clear()
+            editor.commit()
+        }
+
+    }
+
 
 
     private fun signUp() {
