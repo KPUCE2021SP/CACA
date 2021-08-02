@@ -30,7 +30,11 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var editor : SharedPreferences.Editor
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+        val intent= Intent(this, StartActivity::class.java) // 3초 뜨는 화면
+        startActivity(intent)
+        
+        
+        super.onCreate(savedInstanceState) // 위에 3초 화면 종료되면 시작
         setContentView(R.layout.loginactivity)
 
 

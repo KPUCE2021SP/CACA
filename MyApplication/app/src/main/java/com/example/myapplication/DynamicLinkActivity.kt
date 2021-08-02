@@ -1,8 +1,12 @@
 package com.example.myapplication
 
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_dynamic.*
@@ -18,7 +22,22 @@ class DynamicLinkActivity : AppCompatActivity() {
             dynamicTextView.setText(value1) // 확인용
         }
 
+        dynamicTextView.setText("asdfasdfasdfasdfasdfasdf")
+//
+//        dynamicTextView.setOnClickListener(){
+//            copyStr(Context, dynamicTextView.text.toString())
+//
+//        }
+
 
     }
+
+//    fun copyStr(context: Context, str : String){
+//        val clipboardManager : ClipboardManager = context.getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
+//        val clipData = ClipData.newPlainText("STRNAME", str)
+//        clipboardManager.primaryClip = clipData
+//
+//        Toast.makeText(context, "복사되었습니다.", Toast.LENGTH_LONG).show()
+//    }
 
 }
