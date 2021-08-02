@@ -12,11 +12,10 @@ class DynamicLinkActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dynamic)
 
-        var key = "a"
 
-        if (intent.action == Intent.ACTION_VIEW) { // 앱 링크는 해당 인텐트 필터로만 가능하기 때문에
-            val value1 = intent.data?.getQueryParameter("key")
-            dynamicTextView.setText(value1)
+        if (intent.action == Intent.ACTION_VIEW) { // 링크 타고 들어왔을 때 수행하는 코드
+            val value1 = intent.data?.getQueryParameter("key") // link의 key 값을 value로 받는다.
+            dynamicTextView.setText(value1) // 확인용
         }
 
 

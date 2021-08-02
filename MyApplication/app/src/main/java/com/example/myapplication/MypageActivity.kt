@@ -22,10 +22,10 @@ import java.util.regex.Pattern
 
 class MypageActivity : AppCompatActivity() {
 
-    var fbAuth = FirebaseAuth.getInstance()
+    var fbAuth = FirebaseAuth.getInstance() // 로그인
     var fbFire = FirebaseFirestore.getInstance()
 
-    var uid = fbAuth?.uid.toString()
+    var uid = fbAuth?.uid.toString() // uid
     var uemail = fbAuth?.currentUser?.email.toString()
 
 
@@ -35,7 +35,7 @@ class MypageActivity : AppCompatActivity() {
 
         setContent(ll_contain,DummyData.sDummyData);
 
-        textViewName.setText(uid)
+        textViewName.setText(uid) // uid 확인용
 
         val db : FirebaseFirestore = Firebase.firestore
 
@@ -47,7 +47,7 @@ class MypageActivity : AppCompatActivity() {
             "address" to "school"
         )
 
-        db.collection("Member").document(uid).set(human)
+        db.collection("Member").document(uid).set(human) // db에 넣기
 
     }
 
