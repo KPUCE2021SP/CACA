@@ -19,7 +19,7 @@ class DynamicLinkActivity : AppCompatActivity() {
         setContentView(R.layout.activity_dynamic)
 
 
-
+        // intent 넘겨서 들어왔을 경우 랜덤 코드 생성
         var characterTable = arrayOf("A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z",
             "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",
             "1", "2", "3", "4", "5", "6", "7", "8", "9") // 랜덤 코드 배열
@@ -35,10 +35,10 @@ class DynamicLinkActivity : AppCompatActivity() {
 
 
 
-
+        // 링크 타고 들어왔을 경우
         if (intent.action == Intent.ACTION_VIEW) { // 링크 타고 들어왔을 때 수행하는 코드
             val value1 = intent.data?.getQueryParameter("key") // link의 key 값을 value로 받는다.
-            inviteCodeView.setText(value1) // 확인용
+            inviteCodeView.setText(value1)
         }
 
 

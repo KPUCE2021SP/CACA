@@ -1,10 +1,12 @@
 package com.example.myapplication
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
@@ -31,5 +33,11 @@ class MainActivity : AppCompatActivity() {
             adapter = viewAdapter
 
         }
+
+        groupAddBtn.setOnClickListener(){
+            val intent= Intent(this, DynamicLinkActivity::class.java) // 3초 뜨는 화면
+            startActivity(intent)
+        }
+
     }
 }
