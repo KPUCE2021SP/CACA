@@ -1,4 +1,4 @@
-package com.example.caca_xml;
+package com.example.myapplication
 
 public class DummyData {
     public static String sDummyData =

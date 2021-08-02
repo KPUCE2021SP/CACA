@@ -1,6 +1,5 @@
-package com.example.caca_xml
+package com.example.myapplication
 
-import android.content.ContentValues.TAG
 import android.content.Context
 import android.os.Bundle
 import android.text.TextUtils
@@ -10,6 +9,10 @@ import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 //import com.google.firebase.auth.FirebaseAuth
 //import com.google.firebase.firestore.FirebaseFirestore
 //import com.google.firebase.firestore.ktx.firestore
@@ -30,7 +33,7 @@ class MypageActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.mypage_activity)
 
-        setContent(ll_contain, DummyData.sDummyData);
+        setContent(ll_contain,DummyData.sDummyData);
 
         textViewName.setText(uid)
 
