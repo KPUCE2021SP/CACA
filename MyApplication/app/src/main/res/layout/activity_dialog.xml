@@ -24,7 +24,7 @@
         android:layout_height="1000dp"
         android:layout_weight="1"
         android:autofillHints="여기에 표시됩니다"
-        android:hint="@string/edtCall"
+        android:hint="asdf"
         android:textColorHint="@color/black" />
 </LinearLayout>
 

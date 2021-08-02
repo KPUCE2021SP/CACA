@@ -2,10 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.myapplication">
 
-<!--    <action android:name="android.intent.action.VIEW"/>-->
-<!--    <category android:name="android.intent.category.DEFAULT"/>-->
-<!--    <category android:name="android.intent.category.BROWSABLE"/>-->
-
     <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT"/>
 
 <uses-permission android:name="android.permission.READ_CALL_LOG"/>
@@ -31,7 +27,6 @@
         <activity android:name=".DynamicLinkActivity">
             <intent-filter android:autoVerify="true">
                 <action android:name="android.intent.action.VIEW" />
-
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
 
