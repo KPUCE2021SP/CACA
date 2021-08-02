@@ -25,13 +25,13 @@ class DynamicLinkActivity : AppCompatActivity() {
             "1", "2", "3", "4", "5", "6", "7", "8", "9", "0") // 랜덤 코드 배열
 
         var code : String = ""
-        for (i in 0..4) { // 랜덤 코드 5자리 생성
+        for (i in 0..7) { // 랜덤 코드 8자리 생성
             val random = Random()
             val num = random.nextInt(characterTable.size)
             code += characterTable[num]
         }
 
-        inviteCodeView.setText(code) // 5자리 코드 랜덤 생성해서 set
+        inviteCodeView.setText(code) // 8자리 코드 랜덤 생성해서 set
 
 
 
