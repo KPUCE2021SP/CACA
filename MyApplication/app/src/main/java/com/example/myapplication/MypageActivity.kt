@@ -27,16 +27,15 @@ class MypageActivity : AppCompatActivity() {
 
         val db : FirebaseFirestore = Firebase.firestore
 
-        val city = hashMapOf(
-            "name" to "Los Angeles",
-            "state" to "CA",
-            "country" to "USA"
+        val human = hashMapOf(
+            "name" to "최혜민",
+            "doctor" to "medicine",
+            "birthday" to "20000323",
+            "phone" to "01095038645",
+            "address" to "school"
         )
 
-        db.collection("Member").document("ID_MEMBER")
-            .set(city)
-//            .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully written!") }
-//            .addOnFailureListener { e -> Log.w(TAG, "Error writing document", e) }
+        db.collection("Member").document(uid).set(human)
 
     }
 
