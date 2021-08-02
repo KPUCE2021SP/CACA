@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context=".MainActivity"
+    tools:ignore="LabelFor">
+
+        <Button
+            android:id="@+id/btnCall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:text="전화기록 가져오기"
+            android:textColor="@color/black"
+            app:backgroundTint="#FCBF48">
+        </Button>
+
+    <EditText
+        android:id="@+id/edtCall"
+        android:layout_width="match_parent"
+        android:layout_height="1000dp"
+        android:layout_weight="1"
+        android:autofillHints="여기에 표시됩니다"
+        android:hint="@string/edtCall"
+        android:textColorHint="@color/black" />
+</LinearLayout>
+
