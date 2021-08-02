@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.myapplication">
 
+    <action android:name="android.intent.action.VIEW"/>
+    <category android:name="android.intent.category.DEFAULT"/>
+    <category android:name="android.intent.category.BROWSABLE"/>
+
     <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT"/>
 
     <application
@@ -20,6 +24,45 @@
         </activity>
         <activity android:name=".MainActivity"/>
         <activity android:name=".MypageActivity"/>
+
+
+        <activity android:name=".DynamicLinkActivity">
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="familyship.page.link"
+                    android:scheme="https"
+                    android:path="/DynamicLinkActivity" />
+<!--                https://familyship.page.link/DynamicLinkActivity-->
+
+            </intent-filter>
+        </activity>
+
+
     </application>
 
 </manifest>
+
+
+
+
+
+
+
+<!--<activity android:name=".ViewActivity">-->
+<!--<intent-filter android:autoVerify="true">-->
+<!--    <action android:name="android.intent.action.VIEW" />-->
+
+<!--    <category android:name="android.intent.category.DEFAULT" />-->
+<!--    <category android:name="android.intent.category.BROWSABLE" />-->
+
+<!--    <data-->
+<!--        android:host="deeplink.puroong.me"-->
+<!--        android:scheme="https"-->
+<!--        android:path="/link" />-->
+<!--</intent-filter>-->
+<!--</activity>-->
