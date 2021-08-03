@@ -55,7 +55,12 @@ class DynamicLinkActivity : AppCompatActivity() {
 
 
         shareBtn.setOnClickListener(){ // sharebutton 누르면 링크 자체 복사
-            onClick_clipboard(link)
+            val intent = Intent(Intent.ACTION_SEND)
+            intent.type = "text/plain"
+            intent.putExtra(Intent.EXTRA_TEXT, link) // text는 공유하고 싶은 글자
+
+            val chooser = Intent.createChooser(intent, "공유하기")
+            startActivity(chooser)
         }
 
 
