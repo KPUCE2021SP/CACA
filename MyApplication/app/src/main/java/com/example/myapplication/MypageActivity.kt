@@ -28,6 +28,7 @@ import java.util.*
 import java.util.regex.Pattern
 import androidx.core.content.ContextCompat.getSystemServiceName
 import androidx.core.content.ContextCompat.getSystemService
+import com.google.api.Distribution
 
 class MypageActivity : AppCompatActivity() {
 
@@ -80,7 +81,12 @@ class MypageActivity : AppCompatActivity() {
         // DummyData로 inflate하기
         setContent(ll_contain, DummyData.sDummyData) // inflate
 
-        mypageAddBtn.setOnClickListener {
+
+
+
+
+
+        mypageAddBtn.setOnClickListener { // 수정 & 추가 dialog
             val builder = AlertDialog.Builder(this)
             val dialogView = layoutInflater.inflate(R.layout.mypage_edit, null)
             val dialogText_title = dialogView.findViewById<EditText>(R.id.list_which)
@@ -115,7 +121,6 @@ class MypageActivity : AppCompatActivity() {
     private fun setContent(layout: LinearLayout, content: String) {
 
         if (!TextUtils.isEmpty(content)) {
-//            val splitContent = content.split("\n".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
             var c: String = content
             c = c.replace("{", "")
             c = c.replace("}", "")
@@ -131,6 +136,8 @@ class MypageActivity : AppCompatActivity() {
             val mTvContentText = arrayOfNulls<TextView>(splitContent.size)
 
             val mMedicineImageView = arrayOfNulls<ImageView>(splitContent.size)
+
+
 
             for (splitIdx in splitContent.indices) {
                 if (TextUtils.isEmpty(splitContent[splitIdx])) {
@@ -188,8 +195,71 @@ class MypageActivity : AppCompatActivity() {
                 } else if (mTvContentNumber[layoutIdx]!!.text.contains("name")) {
                     mMedicineImageView[layoutIdx]!!.setImageResource(R.drawable.boy)
                 }
+            }
 
 
+
+            val mlayout = arrayOfNulls<LinearLayout>(splitContent.size) // 클릭하면 수정할 수 있도록 할 것
+            for (layoutIdx in splitContent.indices) {
+                mlayout[layoutIdx] = mVContentView[layoutIdx]!!.findViewById(R.id.allLayout) as LinearLayout  // default image 지정
+                mlayout[layoutIdx]?.setOnClickListener(){
+
+                    val builder = AlertDialog.Builder(this)
+                    val dialogView = layoutInflater.inflate(R.layout.mypage_edit, null)
+                    val dialogText_title = dialogView.findViewById<EditText>(R.id.list_which)
+                    val dialogText_context = dialogView.findViewById<EditText>(R.id.mypage_edittext)
+
+
+
+//                    var str1: String = splitText[layoutIdx] // 수정하는 부분은 다른 코드
+//                    str1 = str1.substring(0, str1.indexOf(" :"))
+//                    list_which.setText(str1)
+//
+//                    var str2: String = splitText[layoutIdx]
+//                    str2 = str2.substring(str2.indexOf(": "), str2.length)
+//                    mypage_edittext.setText(str2) // 아래 textView
+
+                    var list_imageView_f = findViewById<ImageView>(R.id.list_imageView)
+                    if (mTvContentNumber[layoutIdx]!!.text.contains("doctor")) { // text에 따라서 imageView 바꾸기
+                        list_imageView_f.setImageResource(R.drawable.ic_input_doctor)
+                    } else if (mTvContentNumber[layoutIdx]!!.text.contains("birth")) {
+                        list_imageView_f.setImageResource(R.drawable.cake)
+                    } else if (mTvContentNumber[layoutIdx]!!.text.contains("address")) {
+                        list_imageView_f.setImageResource(R.drawable.home)
+                    } else if (mTvContentNumber[layoutIdx]!!.text.contains("phone")) {
+                        list_imageView_f.setImageResource(R.drawable.calling)
+                    } else if (mTvContentNumber[layoutIdx]!!.text.contains("name")) {
+                        list_imageView_f.setImageResource(R.drawable.boy)
+                    }
+
+
+
+
+
+                    builder.setView(dialogView)
+                            .setPositiveButton("확인") { dialogInterface, i ->
+                                var fbAuth = FirebaseAuth.getInstance()
+                                //firestore에 넣기
+                                val db: FirebaseFirestore = Firebase.firestore
+                                var uid = fbAuth?.uid.toString()
+                                var map = mutableMapOf<String, Any>()
+                                map[dialogText_title.text.toString()] = dialogText_context.text.toString()
+                                db.collection("Member").document(uid).update(map)
+                                        .addOnCompleteListener {
+                                            if (it.isSuccessful) {
+                                                Toast.makeText(applicationContext, "업데이트 되었습니다", Toast.LENGTH_SHORT)
+                                                        .show()
+        //                                val intent = Intent(this, MypageActivity::class.java)
+        //                                startActivity(intent)
+                                            }
+                                        }
+                            }
+                            .setNegativeButton("취소") { dialogInterface, i ->
+                                /* 취소일 때 아무 액션이 없으므로 빈칸 */
+                            }
+                            .show()
+
+                }
             }
 
         } else {
