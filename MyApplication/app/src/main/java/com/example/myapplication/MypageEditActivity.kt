@@ -40,10 +40,10 @@ class MypageEditActivity : AppCompatActivity() {
         }
 
         //저장하기
-        mypageSaveBtn.setOnClickListener {
-            makeDataName(list_which.text.toString())
-            updateData()
-        }
+//        mypageSaveBtn.setOnClickListener {
+//            makeDataName(list_which.text.toString())
+//            updateData()
+//        }
 
     }
 
@@ -59,8 +59,8 @@ class MypageEditActivity : AppCompatActivity() {
             .addOnCompleteListener {
                 if(it.isSuccessful){
                     Toast.makeText(applicationContext, "업데이트 되었습니다", Toast.LENGTH_SHORT).show()
-//                    val intent = Intent(this, MypageActivity::class.java)
-//                    startActivity(intent)
+                    val intent = Intent(this, MypageActivity::class.java)
+                    startActivity(intent)
                 }
             }
     }

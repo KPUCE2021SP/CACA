@@ -1,6 +1,7 @@
 package com.example.myapplication
 
 import android.app.Activity
+import android.app.AlertDialog
 import android.content.ContentValues.TAG
 import android.content.Context
 import android.content.Intent
@@ -9,10 +10,9 @@ import android.text.TextUtils
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.TextView
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat.getSystemService
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
@@ -23,8 +23,11 @@ import com.google.firebase.ktx.Firebase
 //import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.mypage_activity.*
 import kotlinx.android.synthetic.main.mypage_content.*
+import kotlinx.android.synthetic.main.mypage_edit.*
 import java.util.*
 import java.util.regex.Pattern
+import androidx.core.content.ContextCompat.getSystemServiceName
+import androidx.core.content.ContextCompat.getSystemService
 
 class MypageActivity : AppCompatActivity() {
 
@@ -41,57 +44,79 @@ class MypageActivity : AppCompatActivity() {
 
         textViewName.setText(uid) // uid 확인용
 
-        val db : FirebaseFirestore = Firebase.firestore
-
-        val human = hashMapOf(
-            "name" to "최혜민",
-            "doctor" to "medicine",
-            "birthday" to "20000323",
-            "phone" to "01095038645",
-            "address" to "school"
-        )
-
-        db.collection("Member").document(uid).set(human) // db에 넣기
+        val db: FirebaseFirestore = Firebase.firestore
+//
+//        val human = hashMapOf(
+//            "name" to "최혜민",
+//            "doctor" to "medicine",
+//            "birthday" to "20000323",
+//            "phone" to "01095038645",
+//            "address" to "school"
+//        )
+//
+//        db.collection("Member").document(uid).set(human) // db에 넣기
 
 
         // firestore에서 정보 받아와서 DummyData 덮어쓰기
 
         val docRef = db.collection("Member").document(uid)
         docRef.get()
-                .addOnSuccessListener { document ->
-                    if (document != null) { // DATA 받아왔을 때
-                        Log.d(TAG, "DocumentSnapshot data: ${document.data}")
-                        //updateDateView.setText(document.data.toString()) // 받아오기 확인용
-                        DummyData.sDummyData = document.data.toString()
-                        //textViewName.setText(DummyData.sDummyData) // Dummydata 덮어쓰기 확인용
+            .addOnSuccessListener { document ->
+                if (document != null) { // DATA 받아왔을 때
+                    Log.d(TAG, "DocumentSnapshot data: ${document.data}")
+                    //updateDateView.setText(document.data.toString()) // 받아오기 확인용
+                    DummyData.sDummyData = document.data.toString()
+                    //textViewName.setText(DummyData.sDummyData) // Dummydata 덮어쓰기 확인용
 
-                    } else {
-                        Log.d(TAG, "No such document")
-                    }
+                } else {
+                    Log.d(TAG, "No such document")
                 }
-                .addOnFailureListener { exception ->
-                    Log.d(TAG, "get failed with ", exception)
-                }
-
-
-
+            }
+            .addOnFailureListener { exception ->
+                Log.d(TAG, "get failed with ", exception)
+            }
 
 
         // DummyData로 inflate하기
-        setContent(ll_contain,DummyData.sDummyData) // inflate
+        setContent(ll_contain, DummyData.sDummyData) // inflate
 
         mypageAddBtn.setOnClickListener {
-            val intent = Intent(this, MypageEditActivity::class.java)
-            startActivity(intent)
-        }
+            val builder = AlertDialog.Builder(this)
+            val dialogView = layoutInflater.inflate(R.layout.mypage_edit, null)
+            val dialogText_title = dialogView.findViewById<EditText>(R.id.list_which)
+            val dialogText_context = dialogView.findViewById<EditText>(R.id.mypage_edittext)
 
+            builder.setView(dialogView)
+                .setPositiveButton("확인") { dialogInterface, i ->
+                    var fbAuth = FirebaseAuth.getInstance()
+                    //firestore에 넣기
+                    val db: FirebaseFirestore = Firebase.firestore
+                    var uid = fbAuth?.uid.toString()
+                    var map = mutableMapOf<String, Any>()
+                    map[dialogText_title.text.toString()] = dialogText_context.text.toString()
+                    db.collection("Member").document(uid).update(map)
+                        .addOnCompleteListener {
+                            if (it.isSuccessful) {
+                                Toast.makeText(applicationContext, "업데이트 되었습니다", Toast.LENGTH_SHORT)
+                                    .show()
+//                                val intent = Intent(this, MypageActivity::class.java)
+//                                startActivity(intent)
+                            }
+                        }
+                }
+                .setNegativeButton("취소") { dialogInterface, i ->
+                    /* 취소일 때 아무 액션이 없으므로 빈칸 */
+                }
+                .show()
+        }
     }
+
 
     private fun setContent(layout: LinearLayout, content: String) {
 
         if (!TextUtils.isEmpty(content)) {
 //            val splitContent = content.split("\n".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
-            var c : String = content
+            var c: String = content
             c = c.replace("{", "")
             c = c.replace("}", "")
             c = c.replace("=", " : ")
@@ -125,39 +150,42 @@ class MypageActivity : AppCompatActivity() {
             layout.removeAllViews()
 
             for (layoutIdx in splitContent.indices) {
-                val layoutInflater = this.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-                val containView = layoutInflater.inflate(R.layout.mypage_content, null) // mypage_content를 inflate
+                val layoutInflater =
+                    this.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+                val containView =
+                    layoutInflater.inflate(R.layout.mypage_content, null) // mypage_content를 inflate
                 layout.addView(containView)
 
                 mVContentView[layoutIdx] = containView as View
 
-                mTvContentNumber[layoutIdx] = mVContentView[layoutIdx]!!.findViewById(R.id.tv_number) as TextView
-                mTvContentText[layoutIdx] = mVContentView[layoutIdx]!!.findViewById(R.id.tv_text) as TextView
+                mTvContentNumber[layoutIdx] =
+                    mVContentView[layoutIdx]!!.findViewById(R.id.tv_number) as TextView
+                mTvContentText[layoutIdx] =
+                    mVContentView[layoutIdx]!!.findViewById(R.id.tv_text) as TextView
 
 
-                var str1 : String = splitText[layoutIdx]
+                var str1: String = splitText[layoutIdx]
                 str1 = str1.substring(0, str1.indexOf(" :"))
                 mTvContentNumber[layoutIdx]!!.text = str1 // 위 textView
 
-                var str2 : String = splitText[layoutIdx]
+                var str2: String = splitText[layoutIdx]
                 str2 = str2.substring(str2.indexOf(": "), str2.length)
                 mTvContentText[layoutIdx]!!.text = str2 // 아래 textView
 
 
-
-
-                mMedicineImageView[layoutIdx] = mVContentView[layoutIdx]!!.findViewById(R.id.medicineImageView) as ImageView  // default image 지정
+                mMedicineImageView[layoutIdx] =
+                    mVContentView[layoutIdx]!!.findViewById(R.id.medicineImageView) as ImageView  // default image 지정
                 mMedicineImageView[layoutIdx]!!.setImageResource(R.drawable.heart)
 
-                if(mTvContentNumber[layoutIdx]!!.text.contains("doctor")){ // text에 따라서 imageView 바꾸기
+                if (mTvContentNumber[layoutIdx]!!.text.contains("doctor")) { // text에 따라서 imageView 바꾸기
                     mMedicineImageView[layoutIdx]!!.setImageResource(R.drawable.ic_input_doctor)
-                }else if(mTvContentNumber[layoutIdx]!!.text.contains("birth")){
+                } else if (mTvContentNumber[layoutIdx]!!.text.contains("birth")) {
                     mMedicineImageView[layoutIdx]!!.setImageResource(R.drawable.cake)
-                }else if(mTvContentNumber[layoutIdx]!!.text.contains("address")){
+                } else if (mTvContentNumber[layoutIdx]!!.text.contains("address")) {
                     mMedicineImageView[layoutIdx]!!.setImageResource(R.drawable.home)
-                }else if(mTvContentNumber[layoutIdx]!!.text.contains("phone")){
+                } else if (mTvContentNumber[layoutIdx]!!.text.contains("phone")) {
                     mMedicineImageView[layoutIdx]!!.setImageResource(R.drawable.calling)
-                }else if(mTvContentNumber[layoutIdx]!!.text.contains("name")){
+                } else if (mTvContentNumber[layoutIdx]!!.text.contains("name")) {
                     mMedicineImageView[layoutIdx]!!.setImageResource(R.drawable.boy)
                 }
 
