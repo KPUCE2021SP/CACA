@@ -19,13 +19,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
+        <activity android:name=".MypageActivity">
+        </activity>
+        <activity android:name=".MypageEditActivity"></activity>
+        <!--        <activity android:name=".FamilySettingActivity">-->
+        <!--            <intent-filter>-->
+        <!--                <action android:name="android.intent.action.MAIN" />-->
+        <!--                <category android:name="android.intent.category.LAUNCHER" />-->
+        <!--            </intent-filter>-->
+        <!--        </activity>-->
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MypageEditActivity"></activity>
         <activity android:name=".StartActivity" />
         <activity android:name=".DynamicLinkActivity">
             <intent-filter android:autoVerify="true">
@@ -38,7 +46,6 @@
                     android:host="familyship.page.link"
                     android:path="/DynamicLinkActivity"
                     android:scheme="https" />
-                <!-- https://familyship.page.link/DynamicLinkActivity -->
 
             </intent-filter>
         </activity>
