@@ -2,6 +2,7 @@ package com.example.myapplication
 
 import android.app.Activity
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
@@ -29,25 +30,25 @@ class FamilySettingActivity : AppCompatActivity() {
 
     }
 
-}
 
+    @Override
+    override fun onActivityResult(requestCode : Int, resultCode : Int, data : Intent?){ // Gallery
+        super.onActivityResult(requestCode, resultCode, data)
 
-@Override
-override fun onActivityResult(requestCode : Int, resultCode : Int, data : Intent?){
-    super.onActivityResult(requestCode, resultCode, data)
+        if(resultCode == Activity.RESULT_OK){
+            if(requestCode == OPEN_GALLERY){
+                var currentImageUrl : Uri? = data?.data
 
-    if(resultCode == Activity.RESULT_OK){
-        if(requestCode == OPEN_GALLERY){
-            var currentImageUrl : Url? = data?.data
-
-            try{
-                val bitmap = MediaStore.Images.Media.getBitmap(contentResolver, currentImageUrl)
-                FamilyImageView.setImageBitmap(bitmap)
-            }catch(e:Exception){
-                e.printStackTrace()
+                try{
+                    val bitmap = MediaStore.Images.Media.getBitmap(contentResolver, currentImageUrl)
+                    FamilyImageView.setImageBitmap(bitmap)
+                }catch(e:Exception){
+                    e.printStackTrace()
+                }
+            }else{
+                Log.d("FamilyImageView", "something wrong")
             }
-        }else{
-            Log.d("FamilyImageView", "something wrong")
         }
     }
+
 }
