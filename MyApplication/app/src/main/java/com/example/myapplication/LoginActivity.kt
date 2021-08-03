@@ -189,7 +189,7 @@ class LoginActivity : AppCompatActivity() {
                         Toast.LENGTH_SHORT
                     ).show()
 
-                    val intent = Intent(application, DynamicLinkActivity::class.java)
+                    val intent = Intent(application, MypageActivity::class.java)
                     startActivity(intent)
 
 

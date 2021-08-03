@@ -31,6 +31,7 @@ import androidx.core.content.ContextCompat.getSystemServiceName
 import androidx.core.content.ContextCompat.getSystemService
 import com.google.api.Distribution
 import com.google.firebase.firestore.FieldValue
+import org.json.JSONObject
 
 class MypageActivity : AppCompatActivity() {
 
@@ -45,9 +46,22 @@ class MypageActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.mypage_activity)
 
-        textViewName.setText(uid) // uid 확인용
 
         val db: FirebaseFirestore = Firebase.firestore
+        val docRef1 = db.collection("Member").document(uid)
+        docRef1.get()
+            .addOnSuccessListener { document ->
+                if (document != null) {
+                    Log.d(TAG, "DocumentSnapshot data: ${document.data}")
+                    textViewName.setText(document.data?.get("name").toString()) // name 확인용
+
+                } else {
+                    Log.d(TAG, "No such document")
+                }
+            }
+            .addOnFailureListener { exception ->
+                Log.d(TAG, "get failed with ", exception)
+            }
 //
 //        val human = hashMapOf(
 //            "name" to "최혜민",
