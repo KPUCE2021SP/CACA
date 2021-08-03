@@ -12,15 +12,23 @@
         android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         app:srcCompat="@drawable/ic_launcher_foreground" />
+
+    <TextView
+        android:id="@+id/textVew_FamilyShip"
+        android:gravity="center"
+        android:textColor="#C4C4C4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="회원정보를 기입해주세요" />
 
     <EditText
         android:id="@+id/et_eamil"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="50dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="40dp"
         android:layout_marginRight="50dp"
         android:hint="id"
         android:minHeight="48dp" />
@@ -43,6 +51,16 @@
         android:layout_marginRight="50dp"
         android:layout_marginTop="20dp"
         android:hint="password 확인"
+        android:minHeight="48dp" />
+
+    <EditText
+        android:id="@+id/et_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginTop="20dp"
+        android:hint="이름"
         android:minHeight="48dp" />
 
     <EditText
@@ -75,6 +93,7 @@
         android:hint="전화번호"
         android:minHeight="48dp" />
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -86,7 +105,7 @@
             android:layout_height="wrap_content"
             android:backgroundTint="#FCBF48"
             android:layout_weight="1"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="30dp"
             android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
             android:onClick="singUp"

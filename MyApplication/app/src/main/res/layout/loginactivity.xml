@@ -4,26 +4,36 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".MainActivity"
+    android:background="@drawable/gradation">
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:src="@mipmap/familyship" />
+        android:layout_marginTop="50dp"
+        app:srcCompat="@drawable/ic_launcher_foreground" />
+
+    <TextView
+        android:id="@+id/textVew_FamilyShip"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="FamilyShip"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
     <EditText
         android:id="@+id/et_eamil"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="50dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="90dp"
         android:layout_marginRight="50dp"
         android:background="#FFFFFF"
-        android:hint="id"
-        android:padding="10dp"
+        android:hint="   id"
         android:minHeight="48dp" />
 
     <EditText
@@ -33,9 +43,8 @@
         android:layout_marginTop="2dp"
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
-        android:hint="password"
+        android:hint="  password"
         android:background="#FFFFFF"
-        android:padding="10dp"
         android:minHeight="48dp" />
 
     <LinearLayout
@@ -47,7 +56,7 @@
             android:id="@+id/btn_signIn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
             android:layout_weight="1"
@@ -60,7 +69,7 @@
             android:id="@+id/btn_signUp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="20dp"
             android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
             android:layout_weight="1"
@@ -85,10 +94,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="6dp"
-        android:background="#00FF0000"
+        android:backgroundTint="#00FF0000"
         android:textColor="@color/black"
         android:text="id/비밀번호 찾기" />
 
     </LinearLayout>
+
 
 </LinearLayout>
