@@ -46,6 +46,9 @@ class MypageActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.mypage_activity)
 
+        btnLogout.setOnClickListener {
+            FirebaseAuth.getInstance().signOut()
+        }
 
         val db: FirebaseFirestore = Firebase.firestore
         val docRef1 = db.collection("Member").document(uid)

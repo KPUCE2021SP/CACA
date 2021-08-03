@@ -32,8 +32,8 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         val intent= Intent(this, StartActivity::class.java) // 3초 뜨는 화면
         startActivity(intent)
-        
-        
+
+
         super.onCreate(savedInstanceState) // 위에 3초 화면 종료되면 시작
         setContentView(R.layout.loginactivity)
 
@@ -48,7 +48,7 @@ class LoginActivity : AppCompatActivity() {
             || MySharedPreferences.getUserPass(this).isNullOrBlank()) {
             //btn_signIn.setOnClickListener(){
             if(editTextEmail!!.text.toString().isNullOrBlank() || editTextPassword!!.text.toString().isNullOrBlank()) {
-                Toast.makeText(this, "아이디와 비밀번호를 확인하세요", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(this, "아이디와 비밀번호를 확인하세요", Toast.LENGTH_SHORT).show()
             }
             else {
                 MySharedPreferences.setUserId(this, editTextEmail!!.text.toString().toString())
@@ -67,12 +67,19 @@ class LoginActivity : AppCompatActivity() {
 
 
         btn_signUp.setOnClickListener {
+
             signUp()
         }
         btn_signIn.setOnClickListener(){
-            MySharedPreferences.setUserId(this, editTextEmail!!.text.toString().toString())
-            MySharedPreferences.setUserPass(this, editTextPassword!!.text.toString().toString())
-            signIn()
+            if (editTextEmail!!.text.toString()
+                    .isNullOrBlank() || editTextPassword!!.text.toString().isNullOrBlank()
+            ) {
+                Toast.makeText(this, "아이디와 비밀번호를 확인하세요", Toast.LENGTH_SHORT).show()
+            } else {
+                MySharedPreferences.setUserId(this, editTextEmail!!.text.toString().toString())
+                MySharedPreferences.setUserPass(this, editTextPassword!!.text.toString().toString())
+                signIn()
+            }
         }
 
 
@@ -179,8 +186,8 @@ class LoginActivity : AppCompatActivity() {
         firebaseAuth!!.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(
                 this
-            ) { task ->
-                if (task.isSuccessful) {
+            ) {
+                if (it.isSuccessful) {
 
                     // 로그인 성공
                     Toast.makeText(
@@ -195,7 +202,7 @@ class LoginActivity : AppCompatActivity() {
 
                 } else {
                     // 로그인 실패
-                    Toast.makeText(this@LoginActivity, "로그인 실패", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(applicationContext, "로그인 실패", Toast.LENGTH_SHORT).show()
                 }
             }
     }
@@ -261,4 +268,3 @@ class LoginActivity : AppCompatActivity() {
 //
 //    }
 //}
-

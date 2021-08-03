@@ -26,17 +26,18 @@
         android:padding="10dp"
         android:minHeight="48dp" />
 
-    <EditText
+    <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/et_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
-        android:hint="password"
+        android:hint="Password"
         android:background="#FFFFFF"
         android:padding="10dp"
-        android:minHeight="48dp" />
+        android:minHeight="48dp"
+        android:inputType="textPassword"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -80,14 +81,14 @@
         android:orientation="horizontal"
         android:gravity="center">
 
-    <Button
-        android:id="@+id/find"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
-        android:background="#00FF0000"
-        android:textColor="@color/black"
-        android:text="id/비밀번호 찾기" />
+        <Button
+            android:id="@+id/find"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:background="#00FF0000"
+            android:textColor="@color/black"
+            android:text="id/비밀번호 찾기" />
 
     </LinearLayout>
 
