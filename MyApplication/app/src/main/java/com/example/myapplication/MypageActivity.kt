@@ -259,28 +259,6 @@ class MypageActivity : AppCompatActivity() {
                 }
 
 
-//                var str1: String = splitText[layoutIdx] // 수정하는 부분은 다른 코드
-//                str1 = str1.substring(0, str1.indexOf(" :"))
-//                list_which.setText(str1)
-//
-//                var str2: String = splitText[layoutIdx]
-//                str2 = str2.substring(str2.indexOf(": "), str2.length)
-//                mypage_edittext.setText(str2) // 아래 textView
-//
-//                var list_imageView_f = findViewById<ImageView>(R.id.list_imageView)
-//                if (mTvContentNumber[layoutIdx]!!.text.contains("doctor")) { // text에 따라서 imageView 바꾸기
-//                    list_imageView_f.setImageResource(R.drawable.ic_input_doctor)
-//                } else if (mTvContentNumber[layoutIdx]!!.text.contains("birth")) {
-//                    list_imageView_f.setImageResource(R.drawable.cake)
-//                } else if (mTvContentNumber[layoutIdx]!!.text.contains("address")) {
-//                    list_imageView_f.setImageResource(R.drawable.home)
-//                } else if (mTvContentNumber[layoutIdx]!!.text.contains("phone")) {
-//                    list_imageView_f.setImageResource(R.drawable.calling)
-//                } else if (mTvContentNumber[layoutIdx]!!.text.contains("name")) {
-//                    list_imageView_f.setImageResource(R.drawable.boy)
-//                }
-
-
             }
 
         } else {
