@@ -20,10 +20,6 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
         <activity android:name=".MypageActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".MypageEditActivity"></activity>
 <!--        <activity android:name=".FamilySettingActivity">-->
@@ -32,7 +28,12 @@
 <!--                <category android:name="android.intent.category.LAUNCHER" />-->
 <!--            </intent-filter>-->
 <!--        </activity>-->
-        <activity android:name=".LoginActivity" /> <!-- <activity android:name=".LoginActivity"/> -->
+        <activity android:name=".LoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".StartActivity" />
         <activity android:name=".DynamicLinkActivity">
             <intent-filter android:autoVerify="true">
