@@ -115,11 +115,11 @@ class MypageActivity : AppCompatActivity() {
                 }
                 .show()
         }
-        srl_main.setOnRefreshListener {
+        srl_main.setOnRefreshListener { // 새로고침
             // 사용자가 아래로 드래그 했다가 놓았을 때 호출 됩니다.
             // 이때 새로고침 화살표가 계속 돌아갑니다.
             setContent(ll_contain, DummyData.sDummyData) // inflate
-            srl_main.isRefreshing = false
+            srl_main.isRefreshing = false // 인터넷 끊기
         }
     }
 
@@ -225,18 +225,18 @@ class MypageActivity : AppCompatActivity() {
 //                    str2 = str2.substring(str2.indexOf(": "), str2.length)
 //                    mypage_edittext.setText(str2) // 아래 textView
 
-                    var list_imageView_f = findViewById<ImageView>(R.id.list_imageView)
-                    if (mTvContentNumber[layoutIdx]!!.text.contains("doctor")) { // text에 따라서 imageView 바꾸기
-                        list_imageView_f.setImageResource(R.drawable.ic_input_doctor)
-                    } else if (mTvContentNumber[layoutIdx]!!.text.contains("birth")) {
-                        list_imageView_f.setImageResource(R.drawable.cake)
-                    } else if (mTvContentNumber[layoutIdx]!!.text.contains("address")) {
-                        list_imageView_f.setImageResource(R.drawable.home)
-                    } else if (mTvContentNumber[layoutIdx]!!.text.contains("phone")) {
-                        list_imageView_f.setImageResource(R.drawable.calling)
-                    } else if (mTvContentNumber[layoutIdx]!!.text.contains("name")) {
-                        list_imageView_f.setImageResource(R.drawable.boy)
-                    }
+//                    var list_imageView_f = findViewById<ImageView>(R.id.list_imageView)
+//                    if (mTvContentNumber[layoutIdx]!!.text.contains("doctor")) { // text에 따라서 imageView 바꾸기
+//                        list_imageView_f.setImageResource(R.drawable.ic_input_doctor)
+//                    } else if (mTvContentNumber[layoutIdx]!!.text.contains("birth")) {
+//                        list_imageView_f.setImageResource(R.drawable.cake)
+//                    } else if (mTvContentNumber[layoutIdx]!!.text.contains("address")) {
+//                        list_imageView_f.setImageResource(R.drawable.home)
+//                    } else if (mTvContentNumber[layoutIdx]!!.text.contains("phone")) {
+//                        list_imageView_f.setImageResource(R.drawable.calling)
+//                    } else if (mTvContentNumber[layoutIdx]!!.text.contains("name")) {
+//                        list_imageView_f.setImageResource(R.drawable.boy)
+//                    }
 
 
 

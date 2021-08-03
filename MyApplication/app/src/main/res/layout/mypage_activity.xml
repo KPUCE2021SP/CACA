@@ -52,7 +52,7 @@
 
     </LinearLayout>
 
-    // 동적생성 레이아웃
+<!--    // 동적생성 레이아웃-->
     <ScrollView
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
@@ -77,6 +77,8 @@
         </LinearLayout>
     </ScrollView>
 
+
+<!--    새로고침-->
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/srl_main"
         android:layout_width="match_parent"
