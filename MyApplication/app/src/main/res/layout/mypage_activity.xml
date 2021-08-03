@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,63 +9,83 @@
 
 
     <!--맨 위 주황 레이어-->
-    <LinearLayout
-        android:id="@+id/LinerLayoutOrange"
-        android:layout_width="match_parent"
-        android:layout_height="230dp"
-        android:layout_weight="0"
-        android:background="#FCBF48"
-        android:gravity="center"
-        android:orientation="vertical">
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/mypageAddBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
 
-        <ImageView
-            android:id="@+id/peopleFace"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_gravity="center"
-            app:srcCompat="@drawable/grandfa"
-            tools:srcCompat="@tools:sample/avatars" />
-
-        <TextView
-            android:id="@+id/textViewName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Name"
-            android:textColor="#FFFFFF"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            app:drawableTint="#FFFFFF" />
-
-        <TextView
-            android:id="@+id/updateDateView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="8dp"
-            android:text="최근 업데이트: 2021년 7월 30일" />
-
-    </LinearLayout>
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="15dp"
+        android:backgroundTint="#FCBF48"
+        android:clickable="true"
+        android:src="@drawable/plus"
+        app:fabSize="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <!--    // 동적생성 레이아웃-->
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="0"
-        android:orientation="vertical">
+        android:id="@+id/linearLayout2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        tools:ignore="MissingConstraints">
+
+        <LinearLayout
+            android:id="@+id/LinerLayoutOrange"
+            android:layout_width="match_parent"
+            android:layout_height="230dp"
+            android:layout_weight="0"
+            android:background="#FCBF48"
+            android:gravity="center"
+            android:orientation="vertical"
+            tools:ignore="MissingConstraints">
+
+
+            <ImageView
+                android:id="@+id/peopleFace"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/grandfa"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/textViewName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Name"
+                android:textColor="#FFFFFF"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                app:drawableTint="#FFFFFF" />
+
+            <TextView
+                android:id="@+id/updateDateView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                android:text="최근 업데이트: 2021년 7월 30일" />
+
+        </LinearLayout>
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/srl_main"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
 
             <ScrollView
                 android:id="@+id/scrollView"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:scrollbarAlwaysDrawVerticalTrack="true"
                 android:scrollbarFadeDuration="0"
                 android:scrollbarSize="2dp">
@@ -87,18 +107,8 @@
                 android:layout_height="match_parent">
 
             </androidx.recyclerview.widget.RecyclerView>
-        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/mypageAddBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
-            android:backgroundTint="#FCBF48"
-            android:clickable="true"
-            android:src="@drawable/plus"
-            app:fabSize="normal" />
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     </LinearLayout>
 
@@ -368,6 +378,7 @@
     <!--    </LinearLayout>-->
 
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
+
 
 
