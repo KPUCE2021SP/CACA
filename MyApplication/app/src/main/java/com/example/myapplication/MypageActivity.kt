@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.content.ContentValues.TAG
 import android.content.Context
 import android.os.Bundle
 import android.text.TextUtils
@@ -18,6 +19,7 @@ import com.google.firebase.ktx.Firebase
 //import com.google.firebase.firestore.ktx.firestore
 //import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.mypage_activity.*
+import java.util.*
 import java.util.regex.Pattern
 
 class MypageActivity : AppCompatActivity() {
@@ -33,8 +35,6 @@ class MypageActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.mypage_activity)
 
-        setContent(ll_contain,DummyData.sDummyData);
-
         textViewName.setText(uid) // uid 확인용
 
         val db : FirebaseFirestore = Firebase.firestore
@@ -49,12 +49,43 @@ class MypageActivity : AppCompatActivity() {
 
         db.collection("Member").document(uid).set(human) // db에 넣기
 
+
+        // firestore에서 정보 받아와서 DummyData 덮어쓰기
+
+        val docRef = db.collection("Member").document(uid)
+        docRef.get()
+                .addOnSuccessListener { document ->
+                    if (document != null) { // DATA 받아왔을 때
+                        Log.d(TAG, "DocumentSnapshot data: ${document.data}")
+                        updateDateView.setText(document.data.toString()) // 받아오기 확인용
+                        DummyData.sDummyData = document.data.toString()
+                        textViewName.setText(DummyData.sDummyData) // Dummydata 덮어쓰기 확인용
+
+                    } else {
+                        Log.d(TAG, "No such document")
+                    }
+                }
+                .addOnFailureListener { exception ->
+                    Log.d(TAG, "get failed with ", exception)
+                }
+
+
+
+
+
+        // DummyData로 inflate하기
+        setContent(ll_contain,DummyData.sDummyData) // inflate
+
     }
 
     private fun setContent(layout: LinearLayout, content: String) {
 
         if (!TextUtils.isEmpty(content)) {
-            val splitContent = content.split("\n".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
+//            val splitContent = content.split("\n".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
+            var c : String = content
+            c = c.replace("{", "")
+            c = c.replace("}", "")
+            val splitContent = c.split(",".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
             val splitNumber = ArrayList<String>()
             val splitText = ArrayList<String>()
 
@@ -82,7 +113,7 @@ class MypageActivity : AppCompatActivity() {
 
             for (layoutIdx in splitContent.indices) {
                 val layoutInflater = this.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-                val containView = layoutInflater.inflate(R.layout.mypage_content, null)
+                val containView = layoutInflater.inflate(R.layout.mypage_content, null) // mypage_content를 inflate
                 layout.addView(containView)
 
                 mVContentView[layoutIdx] = containView as View
