@@ -1,48 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@drawable/gradation">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        app:srcCompat="@drawable/ic_launcher_foreground" />
 
     <EditText
         android:id="@+id/et_eamil"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp" />
+        android:layout_marginTop="100dp"
+        android:layout_marginRight="50dp"
+        android:background="#FFFFFF"
+        android:hint="   id"
+        android:minHeight="48dp" />
 
     <EditText
         android:id="@+id/et_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
         android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp" />
+        android:layout_marginRight="50dp"
+        android:hint="  password"
+        android:background="#FFFFFF"
+        android:minHeight="48dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <Button
-            android:id="@+id/btn_signUp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
-            android:layout_weight="1"
-            android:onClick="singUp"
-            android:text="signup"
-            tools:ignore="OnClick" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
         <Button
             android:id="@+id/btn_signIn"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
             android:layout_weight="1"
+            android:backgroundTint="#FCBF48"
             android:onClick="signIn"
             android:text="signin"
             tools:ignore="OnClick" />
+
+        <Button
+            android:id="@+id/btn_signUp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_weight="1"
+            android:backgroundTint="#E3E3E3"
+            android:onClick="singUp"
+            android:text="signup"
+            android:textColor="#616161"
+            tools:ignore="OnClick" />
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+    <Button
+        android:id="@+id/find"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:backgroundTint="#00FF0000"
+        android:textColor="@color/black"
+        android:text="id/비밀번호 찾기" />
 
     </LinearLayout>
 
