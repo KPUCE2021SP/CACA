@@ -242,30 +242,32 @@ class MypageActivity : AppCompatActivity() {
 
 
 
-                    builder.setView(dialogView)
-                            .setPositiveButton("확인") { dialogInterface, i ->
-                                var fbAuth = FirebaseAuth.getInstance()
-                                //firestore에 넣기
-                                val db: FirebaseFirestore = Firebase.firestore
-                                var uid = fbAuth?.uid.toString()
-                                var map = mutableMapOf<String, Any>()
-                                map[dialogText_title.text.toString()] = dialogText_context.text.toString()
-                                db.collection("Member").document(uid).update(map)
-                                        .addOnCompleteListener {
-                                            if (it.isSuccessful) {
-                                                Toast.makeText(applicationContext, "업데이트 되었습니다", Toast.LENGTH_SHORT)
-                                                        .show()
-        //                                val intent = Intent(this, MypageActivity::class.java)
-        //                                startActivity(intent)
-                                            }
-                                        }
-                            }
-                            .setNegativeButton("취소") { dialogInterface, i ->
-                                /* 취소일 때 아무 액션이 없으므로 빈칸 */
-                            }
-                            .show()
-
+//                    builder.setView(dialogView)
+//                            .setPositiveButton("확인") { dialogInterface, i ->
+//                                var fbAuth = FirebaseAuth.getInstance()
+//                                //firestore에 넣기
+//                                val db: FirebaseFirestore = Firebase.firestore
+//                                var uid = fbAuth?.uid.toString()
+//                                var map = mutableMapOf<String, Any>()
+//                                map[dialogText_title.text.toString()] = dialogText_context.text.toString()
+//                                db.collection("Member").document(uid).update(map)
+//                                        .addOnCompleteListener {
+//                                            if (it.isSuccessful) {
+//                                                Toast.makeText(applicationContext, "업데이트 되었습니다", Toast.LENGTH_SHORT)
+//                                                        .show()
+//        //                                val intent = Intent(this, MypageActivity::class.java)
+//        //                                startActivity(intent)
+//                                            }
+//                                        }
+//                            }
+//                            .setNegativeButton("취소") { dialogInterface, i ->
+//                                /* 취소일 때 아무 액션이 없으므로 빈칸 */
+//                            }
+//                            .show()
+//
                 }
+
+
             }
 
         } else {
