@@ -53,7 +53,7 @@
         android:layout_marginTop="80dp"
         android:layout_marginBottom="5dp"
         android:gravity="center"
-        android:text="그룹 생성하기"
+        android:text="가족 생성하기"
         android:textSize="25dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
