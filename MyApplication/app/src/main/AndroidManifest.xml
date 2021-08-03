@@ -2,9 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.myapplication">
 
-    <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT"/>
-
-<uses-permission android:name="android.permission.READ_CALL_LOG"/>
+    <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
+    <uses-permission android:name="android.permission.READ_CALL_LOG" />
 
     <application
         android:allowBackup="true"
@@ -13,6 +12,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity android:name=".MypageEditActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".MypageActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,28 +26,23 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity"/>
-<!--        <activity android:name=".LoginActivity"/>-->
-
-        <activity android:name=".StartActivity"></activity>
-
-
+        <activity android:name=".LoginActivity" /> <!-- <activity android:name=".LoginActivity"/> -->
+        <activity android:name=".StartActivity" />
         <activity android:name=".DynamicLinkActivity">
             <intent-filter android:autoVerify="true">
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
 
                 <data
                     android:host="familyship.page.link"
-                    android:scheme="https"
-                    android:path="/DynamicLinkActivity" />
-<!--                https://familyship.page.link/DynamicLinkActivity-->
+                    android:path="/DynamicLinkActivity"
+                    android:scheme="https" />
+                <!-- https://familyship.page.link/DynamicLinkActivity -->
 
             </intent-filter>
         </activity>
-
-
     </application>
 
 </manifest>
