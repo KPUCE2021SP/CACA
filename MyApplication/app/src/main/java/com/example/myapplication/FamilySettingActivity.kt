@@ -16,12 +16,13 @@ class FamilySettingActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_familysetting)
 
-        FamilyImageUpload.setOnClickListener(){ // 버튼 누르면 갤러리 접근
+        FamilyImageView.setOnClickListener(){ // 버튼 누르면 갤러리 접근
             openGallery()
         }
-
-
     }
+
+
+
 
     private fun openGallery(){ // intent로 갤러리 앱 접근
         val intent : Intent = Intent(Intent.ACTION_GET_CONTENT)
