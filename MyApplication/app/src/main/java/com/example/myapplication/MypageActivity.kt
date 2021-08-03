@@ -109,6 +109,12 @@ class MypageActivity : AppCompatActivity() {
                 }
                 .show()
         }
+        srl_main.setOnRefreshListener {
+            // 사용자가 아래로 드래그 했다가 놓았을 때 호출 됩니다.
+            // 이때 새로고침 화살표가 계속 돌아갑니다.
+            setContent(ll_contain, DummyData.sDummyData) // inflate
+            srl_main.isRefreshing = false
+        }
     }
 
 
