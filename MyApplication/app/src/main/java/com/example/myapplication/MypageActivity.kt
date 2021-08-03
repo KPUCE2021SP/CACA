@@ -59,9 +59,9 @@ class MypageActivity : AppCompatActivity() {
                 .addOnSuccessListener { document ->
                     if (document != null) { // DATA 받아왔을 때
                         Log.d(TAG, "DocumentSnapshot data: ${document.data}")
-                        updateDateView.setText(document.data.toString()) // 받아오기 확인용
+                        //updateDateView.setText(document.data.toString()) // 받아오기 확인용
                         DummyData.sDummyData = document.data.toString()
-                        textViewName.setText(DummyData.sDummyData) // Dummydata 덮어쓰기 확인용
+                        //textViewName.setText(DummyData.sDummyData) // Dummydata 덮어쓰기 확인용
 
                     } else {
                         Log.d(TAG, "No such document")
@@ -142,9 +142,18 @@ class MypageActivity : AppCompatActivity() {
                 mMedicineImageView[layoutIdx] = mVContentView[layoutIdx]!!.findViewById(R.id.medicineImageView) as ImageView  // default image 지정
                 mMedicineImageView[layoutIdx]!!.setImageResource(R.drawable.heart)
 
-                if(mTvContentNumber[layoutIdx]!!.text.contains("birth")){ // text에 따라서 imageView 바꾸기
-                    mMedicineImageView[layoutIdx]!!.setImageResource(R.drawable.birth)
+                if(mTvContentNumber[layoutIdx]!!.text.contains("doctor")){ // text에 따라서 imageView 바꾸기
+                    mMedicineImageView[layoutIdx]!!.setImageResource(R.drawable.ic_input_doctor)
+                }else if(mTvContentNumber[layoutIdx]!!.text.contains("birth")){
+                    mMedicineImageView[layoutIdx]!!.setImageResource(R.drawable.cake)
+                }else if(mTvContentNumber[layoutIdx]!!.text.contains("address")){
+                    mMedicineImageView[layoutIdx]!!.setImageResource(R.drawable.home)
+                }else if(mTvContentNumber[layoutIdx]!!.text.contains("phone")){
+                    mMedicineImageView[layoutIdx]!!.setImageResource(R.drawable.calling)
+                }else if(mTvContentNumber[layoutIdx]!!.text.contains("name")){
+                    mMedicineImageView[layoutIdx]!!.setImageResource(R.drawable.boy)
                 }
+
 
             }
 
