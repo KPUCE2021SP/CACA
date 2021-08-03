@@ -1,7 +1,9 @@
 package com.example.myapplication
 
+import android.app.Activity
 import android.content.ContentValues.TAG
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
@@ -77,6 +79,11 @@ class MypageActivity : AppCompatActivity() {
 
         // DummyData로 inflate하기
         setContent(ll_contain,DummyData.sDummyData) // inflate
+
+        mypageAddBtn.setOnClickListener {
+            val intent = Intent(this, MypageEditActivity::class.java)
+            startActivity(intent)
+        }
 
     }
 
