@@ -7,6 +7,7 @@ import android.text.TextUtils
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -19,6 +20,7 @@ import com.google.firebase.ktx.Firebase
 //import com.google.firebase.firestore.ktx.firestore
 //import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.mypage_activity.*
+import kotlinx.android.synthetic.main.mypage_content.*
 import java.util.*
 import java.util.regex.Pattern
 
@@ -85,6 +87,8 @@ class MypageActivity : AppCompatActivity() {
             var c : String = content
             c = c.replace("{", "")
             c = c.replace("}", "")
+            c = c.replace("=", " : ")
+
             val splitContent = c.split(",".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
             val splitNumber = ArrayList<String>()
             val splitText = ArrayList<String>()
@@ -93,6 +97,8 @@ class MypageActivity : AppCompatActivity() {
             val mVContentView = arrayOfNulls<View>(splitContent.size)
             val mTvContentNumber = arrayOfNulls<TextView>(splitContent.size)
             val mTvContentText = arrayOfNulls<TextView>(splitContent.size)
+
+            val mMedicineImageView = arrayOfNulls<ImageView>(splitContent.size)
 
             for (splitIdx in splitContent.indices) {
                 if (TextUtils.isEmpty(splitContent[splitIdx])) {
@@ -121,12 +127,25 @@ class MypageActivity : AppCompatActivity() {
                 mTvContentNumber[layoutIdx] = mVContentView[layoutIdx]!!.findViewById(R.id.tv_number) as TextView
                 mTvContentText[layoutIdx] = mVContentView[layoutIdx]!!.findViewById(R.id.tv_text) as TextView
 
-                mTvContentNumber[layoutIdx]!!.text = splitNumber[layoutIdx]
-                mTvContentText[layoutIdx]!!.text = splitText[layoutIdx]
 
-                if (TextUtils.isEmpty(splitNumber[layoutIdx])) {
-                    mTvContentNumber[layoutIdx]!!.visibility = View.GONE
+                var str1 : String = splitText[layoutIdx]
+                str1 = str1.substring(0, str1.indexOf(" :"))
+                mTvContentNumber[layoutIdx]!!.text = str1 // 위 textView
+
+                var str2 : String = splitText[layoutIdx]
+                str2 = str2.substring(str2.indexOf(": "), str2.length)
+                mTvContentText[layoutIdx]!!.text = str2 // 아래 textView
+
+
+
+
+                mMedicineImageView[layoutIdx] = mVContentView[layoutIdx]!!.findViewById(R.id.medicineImageView) as ImageView  // default image 지정
+                mMedicineImageView[layoutIdx]!!.setImageResource(R.drawable.heart)
+
+                if(mTvContentNumber[layoutIdx]!!.text.contains("birth")){ // text에 따라서 imageView 바꾸기
+                    mMedicineImageView[layoutIdx]!!.setImageResource(R.drawable.birth)
                 }
+
             }
 
         } else {

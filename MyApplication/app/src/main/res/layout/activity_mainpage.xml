@@ -382,7 +382,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="130dp"
                         android:src="@drawable/sky"
-                        android:id="@+id/imageView"
+                        android:id="@+id/medicineImageView"
                         android:background="@drawable/roundback"
                         android:scaleType="centerCrop"/>
 

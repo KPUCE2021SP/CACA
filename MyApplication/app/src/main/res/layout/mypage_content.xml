@@ -12,7 +12,7 @@
         android:gravity="center"
         android:orientation="horizontal">
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/medicineImageView"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:src="@drawable/ic_input_medicine" />
@@ -24,16 +24,16 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_gravity="center">
+
         <TextView
             android:id="@+id/tv_number"
-            android:layout_width="24dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:textColor="#ff0000"
-            android:textSize="14dp"
-            android:layout_alignParentLeft="true">
-        </TextView>
+            android:textSize="14dp"></TextView>
 
         <TextView
             android:id="@+id/tv_text"
