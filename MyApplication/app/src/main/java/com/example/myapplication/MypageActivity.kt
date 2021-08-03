@@ -200,7 +200,7 @@ class MypageActivity : AppCompatActivity() {
 
 
                 var str1: String = splitText[layoutIdx]
-                str1 = str1.substring(0, str1.indexOf(" :"))
+                str1 = str1.substring(0, str1.indexOf(" :")).trim()
                 mTvContentNumber[layoutIdx]!!.text = str1 // 위 textView
 
                 var str2: String = splitText[layoutIdx]
@@ -242,7 +242,7 @@ class MypageActivity : AppCompatActivity() {
 
                         val docRef = db.collection("Member").document(uid)
 
-                        var a : String = mTvContentNumber[layoutIdx]?.text.toString()
+                        var a : String = mTvContentNumber[layoutIdx]?.text.toString().trim()
                         val updates = hashMapOf<String, Any>(
                                 a to FieldValue.delete()
                         )
