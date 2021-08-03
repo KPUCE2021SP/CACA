@@ -48,18 +48,14 @@
 
     </LinearLayout>
 
-<<<<<<< HEAD
-    <!--    // 동적생성 레이아웃-->
 
     <LinearLayout
-=======
-<!--    // 동적생성 레이아웃-->
-    <ScrollView
-        android:id="@+id/scrollView"
->>>>>>> 7c78d32c68f16ad37694ff5250ad049e536d19d3
+        android:id="@+id/Lineard"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="230dp"
         android:layout_weight="0"
+        android:background="#FCBF48"
+        android:gravity="center"
         android:orientation="vertical">
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -76,39 +72,17 @@
                 android:scrollbarFadeDuration="0"
                 android:scrollbarSize="2dp">
 
-<<<<<<< HEAD
+
                 <LinearLayout
                     android:id="@+id/ll_contain"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
-=======
 
-<!--    새로고침-->
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/srl_main"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        app:layout_constraintTop_toBottomOf="@+id/LinerLayoutOrange"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="0dp">
->>>>>>> 7c78d32c68f16ad37694ff5250ad049e536d19d3
 
-                    <!-- include layout_content.xml -->
+
 
                 </LinearLayout>
-            </ScrollView>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_main"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-            </androidx.recyclerview.widget.RecyclerView>
-        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-
-    </LinearLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/mypageAddBtn"
