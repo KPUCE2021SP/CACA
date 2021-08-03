@@ -48,14 +48,12 @@
 
     </LinearLayout>
 
+    <!--    // 동적생성 레이아웃-->
 
     <LinearLayout
-        android:id="@+id/Lineard"
         android:layout_width="match_parent"
-        android:layout_height="230dp"
+        android:layout_height="match_parent"
         android:layout_weight="0"
-        android:background="#FCBF48"
-        android:gravity="center"
         android:orientation="vertical">
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -72,28 +70,37 @@
                 android:scrollbarFadeDuration="0"
                 android:scrollbarSize="2dp">
 
-
                 <LinearLayout
                     android:id="@+id/ll_contain"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
-
-
+                    <!-- include layout_content.xml -->
 
                 </LinearLayout>
+            </ScrollView>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/mypageAddBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        android:backgroundTint="#FCBF48"
-        android:clickable="true"
-        android:src="@drawable/plus"
-        app:fabSize="normal" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_main"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </androidx.recyclerview.widget.RecyclerView>
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/mypageAddBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="#FCBF48"
+            android:clickable="true"
+            android:src="@drawable/plus"
+            app:fabSize="normal" />
+
+    </LinearLayout>
 
     <!--    <ScrollView-->
     <!--        android:id="@+id/scrollView"-->
@@ -362,6 +369,5 @@
 
 
 </LinearLayout>
-
 
 
