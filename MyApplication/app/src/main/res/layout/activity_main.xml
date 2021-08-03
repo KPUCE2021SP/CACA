@@ -17,7 +17,7 @@
         android:layout_marginTop="3dp"
         android:layout_marginEnd="10dp"
         android:gravity="center"
-        android:text="그룹 관리"
+        android:text="가족 관리"
         android:textColor="@color/white"
         android:textSize="27dp"
         android:textStyle="bold"
