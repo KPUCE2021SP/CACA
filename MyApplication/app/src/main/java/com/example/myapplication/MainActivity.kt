@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.animation.ObjectAnimator
 import android.content.ContentValues.TAG
 import android.content.Context
 import android.os.Bundle
@@ -9,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -25,6 +27,8 @@ class MainActivity : AppCompatActivity() {
 //    private lateinit var viewAdapter: RecyclerView.Adapter<*>
 //    private lateinit var viewManager: RecyclerView.LayoutManager
 
+    private var isFabOpen = false
+
     var fbAuth = FirebaseAuth.getInstance() // 로그인
     var fbFire = FirebaseFirestore.getInstance()
 
@@ -34,6 +38,24 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        // click animation
+        fabMain.setOnClickListener {
+            toggleFab()
+        }
+
+        // click event
+        fabCreate.setOnClickListener {
+            Toast.makeText(this,"가족생성 버튼 클릭", Toast.LENGTH_SHORT).show()
+//            val intent= Intent(this, DynamicLinkActivity::class.java)
+//            startActivity(intent)
+        }
+
+        fabInsert.setOnClickListener {
+            Toast.makeText(this,"초대코드 입력 버튼 클릭", Toast.LENGTH_SHORT).show()
+//            val intent= Intent(this, InsertInviteCode::class.java)
+//            startActivity(intent)
+        }
 
 
         val db: FirebaseFirestore = Firebase.firestore // 여러 document 받아오기
@@ -63,6 +85,26 @@ class MainActivity : AppCompatActivity() {
                 Log.w(TAG, "Error getting documents: ", exception)
             }
 
+
+    }
+
+    private fun toggleFab() {
+//        Toast.makeText(this, "메인 플로팅 버튼 클릭 : $isFabOpen", Toast.LENGTH_SHORT).show()
+
+        // 플로팅 액션 버튼 닫기 - 열려있는 플로팅 버튼 집어넣는 애니메이션 세팅
+        if (isFabOpen) {
+            ObjectAnimator.ofFloat(fabCreate, "translationY", 0f).apply { start() }
+            ObjectAnimator.ofFloat(fabInsert, "translationY", 0f).apply { start() }
+            fabMain.setImageResource(R.drawable.ic_baseline_add_24)
+
+            // 플로팅 액션 버튼 열기 - 닫혀있는 플로팅 버튼 꺼내는 애니메이션 세팅
+        } else {
+            ObjectAnimator.ofFloat(fabCreate, "translationY", -200f).apply { start() }
+            ObjectAnimator.ofFloat(fabInsert, "translationY", -400f).apply { start() }
+            fabMain.setImageResource(R.drawable.ic_baseline_clear_24)
+        }
+
+        isFabOpen = !isFabOpen
 
     }
 
