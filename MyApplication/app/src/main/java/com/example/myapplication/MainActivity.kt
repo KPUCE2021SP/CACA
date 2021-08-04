@@ -1,20 +1,22 @@
 package com.example.myapplication
 
-import android.content.ContentValues
 import android.content.ContentValues.TAG
-import android.content.Intent
+import android.content.Context
 import android.os.Bundle
+import android.text.TextUtils
 import android.util.Log
+import android.view.LayoutInflater
+import android.view.View
+import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL
-import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.mypage_activity.*
+import java.util.*
+
 
 class MainActivity : AppCompatActivity() {
 //    private lateinit var recyclerView: RecyclerView
@@ -40,39 +42,53 @@ class MainActivity : AppCompatActivity() {
             .addOnSuccessListener { documents ->
                 for (document in documents) {
                     Log.d(TAG, "${document.id} => ${document.data}")
-                    a += document.id
+                    a += document.id + ","
+
                 }
-                textView.text = a
+                //textView.text = a // Test용 받아오기
 
             }
             .addOnFailureListener { exception ->
                 Log.w(TAG, "Error getting documents: ", exception)
             }
 
+        val layoutInflater = this.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        val containView = layoutInflater.inflate(R.layout.card_layout, null) // mypage_content를 inflate // card_layout을 inflate
+        l_contain.addView(containView)
+
+        val containView1 = layoutInflater.inflate(R.layout.card_layout, null) // mypage_content를 inflate // card_layout을 inflate
+        l_contain.addView(containView1)
+
+        val containView2 = layoutInflater.inflate(R.layout.card_layout, null) // mypage_content를 inflate // card_layout을 inflate
+        l_contain.addView(containView2)
+
+
+        //setContent(l_contain, a) // inflate
+
+
+    }
 
 
 
-//        viewManager = LinearLayoutManager(this, HORIZONTAL, true)
-//        viewAdapter = MyAdapter()
-//
-//
-//        recyclerView = findViewById<RecyclerView>(R.id.recyclerview_main).apply {
-//            // use this setting to improve performance if you know that changes
-//            // in content do not change the layout size of the RecyclerView
-//            setHasFixedSize(true)
-//
-//            // use a linear layout manager
-//            layoutManager = viewManager
-//
-//            // specify an viewAdapter (see also next example)
-//            adapter = viewAdapter
-//
-//        }
+    private fun setContent(layout: LinearLayout, content: String) {
 
-        groupAddBtn.setOnClickListener(){
-            val intent= Intent(this, DynamicLinkActivity::class.java)
-            startActivity(intent)
+        if (!TextUtils.isEmpty(content)) {
+
+            val splitContent = content.split(",".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
+
+
+            layout.removeAllViews()
+
+            for (layoutIdx in splitContent.indices) {
+                val layoutInflater = this.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+                val containView = layoutInflater.inflate(R.layout.card_layout, null) // mypage_content를 inflate // card_layout을 inflate
+                layout.addView(containView)
+            }
+
+
+        } else {
+            // TODO: get your code!
+            Log.e("ERROR!", "Content is empty!");
         }
-
     }
 }
