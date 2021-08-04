@@ -12,37 +12,71 @@
         android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        app:srcCompat="@drawable/ic_launcher_foreground" />
+        android:layout_marginTop="50dp"
+        android:src="@mipmap/familyship"/>
 
     <EditText
         android:id="@+id/et_eamil"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="50dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="30dp"
         android:layout_marginRight="50dp"
+        android:onClick="checkEmailPattern"
         android:hint="id"
-        android:minHeight="48dp" />
+        android:minHeight="48dp"
+        tools:ignore="OnClick" />
 
-    <EditText
+    <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/et_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
-        android:layout_marginTop="20dp"
+        android:onClick="checkPwPattern"
         android:hint="password"
-        android:minHeight="48dp" />
+        android:inputType="textPassword"
+        android:minHeight="48dp"
+        tools:ignore="OnClick" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/warning_pwd_pattern"
+        android:visibility="visible"
+        android:layout_marginLeft="55dp"
+        android:layout_marginRight="50dp"
+        android:textSize="10dp"
+        android:text="소문자및 대문자와 숫자를 합한 4-16자가 필요합니다"
+        android:textColor="#606060"/>
 
-    <EditText
+    <com.google.android.material.textfield.TextInputEditText
+        android:inputType="textPassword"
         android:id="@+id/et_passwordConfirm"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
-        android:layout_marginTop="20dp"
         android:hint="password 확인"
+        android:onClick="samePwd"
+        android:minHeight="48dp"
+        tools:ignore="OnClick" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/warning_pwd"
+        android:visibility="visible"
+        android:layout_marginLeft="55dp"
+        android:layout_marginRight="50dp"
+        android:text="비밀번호가 일치하지 않습니다"
+        android:textColor="#FF0000"/>
+
+    <EditText
+        android:id="@+id/et_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:hint="이름"
         android:minHeight="48dp" />
 
     <EditText
@@ -51,7 +85,6 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
-        android:layout_marginTop="20dp"
         android:hint="생년월일"
         android:minHeight="48dp" />
 
@@ -61,7 +94,6 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
-        android:layout_marginTop="20dp"
         android:hint="주소"
         android:minHeight="48dp" />
 
@@ -71,7 +103,6 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
-        android:layout_marginTop="20dp"
         android:hint="전화번호"
         android:minHeight="48dp" />
 

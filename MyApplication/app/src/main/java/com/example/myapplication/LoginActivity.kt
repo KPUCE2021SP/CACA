@@ -53,7 +53,7 @@ class LoginActivity : AppCompatActivity() {
             else {
                 MySharedPreferences.setUserId(this, editTextEmail!!.text.toString().toString())
                 MySharedPreferences.setUserPass(this, editTextPassword!!.text.toString().toString())
-                signUp()
+                signIn()
             }
             //}
         }
@@ -67,8 +67,9 @@ class LoginActivity : AppCompatActivity() {
 
 
         btn_signUp.setOnClickListener {
-
-            signUp()
+            val intent = Intent(this, SignUpActivity::class.java)
+            startActivity(intent)
+//            signUp()
         }
         btn_signIn.setOnClickListener(){
             if (editTextEmail!!.text.toString()
@@ -124,13 +125,13 @@ class LoginActivity : AppCompatActivity() {
 
 
 
-    private fun signUp() {
-        email = editTextEmail!!.text.toString()
-        password = editTextPassword!!.text.toString()
-        if (isValidEmail && isValidPasswd) {
-            createUser(email, password)
-        }
-    }
+//    private fun signUp() {
+//        email = editTextEmail!!.text.toString()
+//        password = editTextPassword!!.text.toString()
+//        if (isValidEmail && isValidPasswd) {
+//            createUser(email, password)
+//        }
+//    }
 
     private fun signIn() {
         //fun signIn() {
@@ -159,27 +160,27 @@ class LoginActivity : AppCompatActivity() {
 
         }
 
-    // 회원가입
-    private fun createUser(email: String, password: String) {
-        firebaseAuth!!.createUserWithEmailAndPassword(email, password)
-            .addOnCompleteListener(this){
-                if (it.isSuccessful) {
-                    // 회원가입 성공
-                    Toast.makeText(
-                        this@LoginActivity,
-                        "회원가입 성공!",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                } else {
-                    // 회원가입 실패
-                    Toast.makeText(
-                        this@LoginActivity,
-                        "회원가입 실패",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-            }
-    }
+//    // 회원가입
+//    private fun createUser(email: String, password: String) {
+//        firebaseAuth!!.createUserWithEmailAndPassword(email, password)
+//            .addOnCompleteListener(this){
+//                if (it.isSuccessful) {
+//                    // 회원가입 성공
+//                    Toast.makeText(
+//                        this@LoginActivity,
+//                        "회원가입 성공!",
+//                        Toast.LENGTH_SHORT
+//                    ).show()
+//                } else {
+//                    // 회원가입 실패
+//                    Toast.makeText(
+//                        this@LoginActivity,
+//                        "회원가입 실패",
+//                        Toast.LENGTH_SHORT
+//                    ).show()
+//                }
+//            }
+//    }
 
     // 로그인
     private fun loginUser(email: String, password: String) {
@@ -209,7 +210,7 @@ class LoginActivity : AppCompatActivity() {
 
     companion object {
         // 비밀번호 정규식
-        private val PASSWORD_PATTERN =
+        val PASSWORD_PATTERN =
             Pattern.compile("^[a-zA-Z0-9!@.#$%^&*?_~]{4,16}$")
     }
 }

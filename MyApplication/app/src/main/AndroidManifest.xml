@@ -19,6 +19,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
+        <activity android:name=".SignUpActivity">
+        </activity>
         <activity android:name=".MypageActivity">
         </activity>
         <activity android:name=".MypageEditActivity"></activity>
