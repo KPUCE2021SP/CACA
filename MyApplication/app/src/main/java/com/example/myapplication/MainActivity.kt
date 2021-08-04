@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         groupAddBtn.setOnClickListener(){
-            val intent= Intent(this, DynamicLinkActivity::class.java) // 3초 뜨는 화면
+            val intent= Intent(this, DynamicLinkActivity::class.java)
             startActivity(intent)
         }
 
