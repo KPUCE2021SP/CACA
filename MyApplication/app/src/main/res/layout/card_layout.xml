@@ -9,6 +9,8 @@
     android:background="#fcbf48">
 
     <androidx.cardview.widget.CardView
+        android:layout_marginRight="60dp"
+        android:layout_marginLeft="60dp"
         android:id="@+id/cardView"
         app:cardCornerRadius="15dp"
         app:cardUseCompatPadding="true"

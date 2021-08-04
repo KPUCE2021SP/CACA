@@ -50,7 +50,7 @@ class MypageActivity : AppCompatActivity() {
             FirebaseAuth.getInstance().signOut()
         }
 
-        val db: FirebaseFirestore = Firebase.firestore
+        val db: FirebaseFirestore = Firebase.firestore // 여러 field값 가져오기
         val docRef1 = db.collection("Member").document(uid)
         docRef1.get()
             .addOnSuccessListener { document ->
