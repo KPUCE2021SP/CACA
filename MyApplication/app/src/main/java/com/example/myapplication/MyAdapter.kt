@@ -11,7 +11,7 @@ class MyAdapter() :
     RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         public var itemimage: ImageView = itemView.findViewById(R.id.item_image)
-        public var itemtitle: TextView = itemView.findViewById(R.id.item_title)
+        public var itemtitle: TextView = itemView.findViewById(R.id.item_title_d)
     }
 
 

@@ -1,18 +1,13 @@
 package com.example.myapplication
 
-import android.animation.ObjectAnimator
 import android.content.ContentValues.TAG
 import android.content.Context
 import android.os.Bundle
-import android.text.TextUtils
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
-import android.widget.LinearLayout
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.google.common.collect.ComparisonChain.start
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
@@ -65,14 +60,34 @@ class MainActivity : AppCompatActivity() {
                 for (document in documents) {
                     Log.d(TAG, "${document.id} => ${document.data}")
                     //a += document.id + ","
-                    val layoutInflater = this.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater // 동적으로 생성
+                    if (document.id == "Familys") {
+                        val layoutInflater =
+                            this.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater // 동적으로 생성
 
-                    val containView = layoutInflater.inflate(R.layout.card_layout, null) // mypage_content를 inflate // card_layout을 inflate
-                    val mVContentView = containView as View
-                    val FamilyNameText = mVContentView.findViewById(R.id.item_title) as TextView
-                    FamilyNameText.text = document.id
+                        val containView = layoutInflater.inflate(
+                            R.layout.defaultcard_layout,
+                            null
+                        ) // mypage_content를 inflate // card_layout을 inflate
+                        val mVContentView = containView as View
+                        val FamilyNameText = mVContentView.findViewById(R.id.item_title_d) as TextView
+                        FamilyNameText.text = document.id
 
-                    l_contain.addView(containView)
+                        l_contain.addView(containView)
+
+                    }else {
+                        val layoutInflater =
+                            this.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater // 동적으로 생성
+
+                        val containView = layoutInflater.inflate(
+                            R.layout.card_layout,
+                            null
+                        ) // mypage_content를 inflate // card_layout을 inflate
+                        val mVContentView = containView as View
+                        val FamilyNameText = mVContentView.findViewById(R.id.item_title_d) as TextView
+                        FamilyNameText.text = document.id
+
+                        l_contain.addView(containView)
+                    }
 
 
                 }
