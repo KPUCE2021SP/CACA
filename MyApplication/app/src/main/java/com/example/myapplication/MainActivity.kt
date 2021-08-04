@@ -93,6 +93,19 @@ class MainActivity : AppCompatActivity() {
                 }
                 //textView.text = a // Test용 받아오기
 
+                val layoutInflater =
+                    this.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater // 동적으로 생성
+
+                val containView = layoutInflater.inflate(
+                    R.layout.defaultcard_layout,
+                    null
+                ) // mypage_content를 inflate // card_layout을 inflate
+                val mVContentView = containView as View
+                val FamilyNameText = mVContentView.findViewById(R.id.item_title_d) as TextView
+                FamilyNameText.text = "가족 추가"
+
+                l_contain.addView(containView)
+
             }
             .addOnFailureListener { exception ->
                 Log.w(TAG, "Error getting documents: ", exception)
