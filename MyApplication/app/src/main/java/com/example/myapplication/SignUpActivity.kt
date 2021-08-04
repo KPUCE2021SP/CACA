@@ -202,10 +202,13 @@ class SignUpActivity : AppCompatActivity() {
                 "birthday" to et_birthday.text.toString(),
                 "phone" to et_phone.text.toString(),
                 "address" to et_address.text.toString(),
-                "family" to null
+        )
+        val family = hashMapOf(
+                "null" to "null"
         )
 
         db.collection("Member").document(a).set(human) // db에 넣기
+        db.collection("Member").document(a).collection("Familys").set(family)
     }
 
     companion object {
