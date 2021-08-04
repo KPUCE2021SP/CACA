@@ -26,11 +26,12 @@ class SignUpActivity : AppCompatActivity() {
     private var email = ""
     private var password = ""
     private var same : Int = 0
+    val db: FirebaseFirestore = Firebase.firestore
+    val docRef1 = db.collection("Member").document(uid)
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
-        val db: FirebaseFirestore = Firebase.firestore
-        val docRef1 = db.collection("Member").document(uid)
+
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.signuppage)
@@ -45,15 +46,15 @@ class SignUpActivity : AppCompatActivity() {
             editFull()
 
 
-            val human = hashMapOf(      //db에 넣기
-                "name" to et_name.text.toString(),
-                "birthday" to et_birthday.text.toString(),
-                "phone" to et_phone.text.toString(),
-                "address" to et_address.text.toString(),
+//            val human = hashMapOf(      //db에 넣기
+//                "name" to et_name.text.toString(),
+//                "birthday" to et_birthday.text.toString(),
+//                "phone" to et_phone.text.toString(),
+//                "address" to et_address.text.toString(),
 //                "family" to null
-            )
-
-            db.collection("Member").document(uid).set(human) // db에 넣기
+//            )
+//
+//            db.collection("Member").document(uid).set(human) // db에 넣기
         }
         et_passwordConfirm.setOnFocusChangeListener { v, hasFocus ->
             if (hasFocus) {
@@ -120,6 +121,8 @@ class SignUpActivity : AppCompatActivity() {
                 if (et_phone.length() == 11) {          //전화번호 확인
                     if (same == 1) {        //비밀번호확인 일치
                         signUp()
+
+
                     }
                 } else {
                     Toast.makeText(applicationContext, "전화번호를 다시 확인해주세요", Toast.LENGTH_SHORT).show()
@@ -180,6 +183,9 @@ class SignUpActivity : AppCompatActivity() {
             .addOnCompleteListener(this){
                 if (it.isSuccessful) {
                     // 회원가입 성공
+//                    var fbAuth = FirebaseAuth.getInstance() // 로그인
+//                    var uid = fbAuth?.uid.toString() // uid
+                    saveDB(fbAuth?.uid.toString())
                     Toast.makeText(applicationContext,"회원가입 성공!", Toast.LENGTH_SHORT).show()
                     val intent = Intent(this, LoginActivity::class.java)
                     startActivity(intent)
@@ -188,6 +194,18 @@ class SignUpActivity : AppCompatActivity() {
                     Toast.makeText(applicationContext,"회원가입 실패!", Toast.LENGTH_SHORT).show()
                 }
             }
+    }
+
+    private fun saveDB(a : String){               //DB에 넣는 함수
+        val human = hashMapOf(      //db에 넣기
+                "name" to et_name.text.toString(),
+                "birthday" to et_birthday.text.toString(),
+                "phone" to et_phone.text.toString(),
+                "address" to et_address.text.toString(),
+                "family" to null
+        )
+
+        db.collection("Member").document(a).set(human) // db에 넣기
     }
 
     companion object {
