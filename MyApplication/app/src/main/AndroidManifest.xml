@@ -19,7 +19,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
-        <activity android:name=".MypageActivity">
+        <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -30,6 +30,7 @@
 
         <activity android:name=".MypageEditActivity"></activity>
         <activity android:name=".FamilySettingActivity"></activity>
+        <activity android:name=".MypageActivity"></activity>
 
 
         <activity android:name=".StartActivity" />
