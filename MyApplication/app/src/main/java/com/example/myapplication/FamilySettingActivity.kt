@@ -1,39 +1,39 @@
-//package com.example.myapplication
-//
-//import android.Manifest
-//import android.app.Activity
-//import android.app.AlertDialog
-//import android.content.ContentUris
-//import android.content.Intent
-//import android.content.pm.PackageManager
-//import android.net.Uri
-//import android.os.Bundle
-//import android.provider.MediaStore
-//import android.util.Log
-//import androidx.appcompat.app.AppCompatActivity
-//import com.google.android.material.snackbar.Snackbar
-//import com.google.firebase.auth.ktx.auth
-//import com.google.firebase.ktx.Firebase
-//import com.google.firebase.storage.FirebaseStorage
-//import com.google.firebase.storage.StorageReference
-//import com.google.firebase.storage.ktx.storage
-//import kotlinx.android.synthetic.main.activity_familysetting.*
-//
-//class FamilySettingActivity : AppCompatActivity() {
-//    private val OPEN_GALLERY = 1
-//
+package com.example.myapplication
+
+import android.Manifest
+import android.app.Activity
+import android.app.AlertDialog
+import android.content.ContentUris
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.net.Uri
+import android.os.Bundle
+import android.provider.MediaStore
+import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
+import com.google.firebase.storage.ktx.storage
+import kotlinx.android.synthetic.main.activity_familysetting.*
+
+class FamilySettingActivity : AppCompatActivity() {
+    private val OPEN_GALLERY = 1
+
 //    lateinit var storage: FirebaseStorage
 //    lateinit var binding: ActivityStorageBinding
-//
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//        setContentView(R.layout.activity_familysetting)
-//
-//        FamilyImageView.setOnClickListener(){ // 버튼 누르면 갤러리 접근
-//            openGallery()
-//        }
-//
-//
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_familysetting)
+
+        FamilyImageView.setOnClickListener(){ // 버튼 누르면 갤러리 접근
+            openGallery()
+        }
+
+
 //        binding = ActivityStorageBinding.inflate(layoutInflater)
 //        setContentView(binding.root)
 //        Firebase.auth.currentUser ?: finish() // if not authenticated, finish this activity
@@ -42,9 +42,9 @@
 //        button.setOnClickListener(){
 //            uploadDialog()
 //        }
-//
-//    }
-//
+
+    }
+
 //    private fun uploadDialog() {
 //        if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
 //            == PackageManager.PERMISSION_GRANTED) {
@@ -91,12 +91,12 @@
 //
 //
 //
-//    private fun openGallery(){ // intent로 갤러리 앱 접근
-//        val intent : Intent = Intent(Intent.ACTION_GET_CONTENT)
-//        intent.setType("image/*")
-//        startActivityForResult(intent, OPEN_GALLERY)
-//
-//    }
+    private fun openGallery(){ // intent로 갤러리 앱 접근
+        val intent : Intent = Intent(Intent.ACTION_GET_CONTENT)
+        intent.setType("image/*")
+        startActivityForResult(intent, OPEN_GALLERY)
+
+    }
 //
 //
 //    @Override
@@ -118,5 +118,5 @@
 //            }
 //        }
 //    }
-//
-//}
+
+}

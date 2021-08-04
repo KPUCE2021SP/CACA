@@ -2,12 +2,14 @@ package com.example.myapplication
 
 import android.content.ContentValues.TAG
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.cardview.widget.CardView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
@@ -103,6 +105,12 @@ class MainActivity : AppCompatActivity() {
                 val mVContentView = containView as View
                 val FamilyNameText = mVContentView.findViewById(R.id.item_title_d) as TextView
                 FamilyNameText.text = "가족 추가"
+
+                val cardView_d = mVContentView.findViewById(R.id.cardView) as CardView
+                cardView_d.setOnClickListener(){ // 가족 추가 클릭하면 가족 추가 activity로 이동
+                    val intent = Intent(this, FamilySettingActivity::class.java)
+                    startActivity(intent)
+                }
 
                 l_contain.addView(containView)
 
