@@ -78,7 +78,7 @@ class MainActivity : AppCompatActivity() {
 
 
                 }
-                textView.text = a // Test용 받아오기
+                //textView.text = a // Test용 받아오기
 
             }
             .addOnFailureListener { exception ->
