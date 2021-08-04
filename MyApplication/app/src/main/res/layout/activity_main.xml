@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#fcbf48"
     tools:context=".MypageActivity">
 
     <TextView
@@ -13,37 +12,26 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
-        android:layout_marginStart="11dp"
-        android:layout_marginEnd="11dp"
         android:gravity="center"
         android:text="가족 관리"
         android:textColor="@color/black"
         android:textSize="27dp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/scrollView1"
-        app:layout_constraintStart_toEndOf="@+id/scrollView1"
-        app:layout_constraintTop_toTopOf="parent"></TextView>
+        android:textStyle="bold"></TextView>
 
 
     <HorizontalScrollView
         android:id="@+id/scrollView1"
-        android:layout_width="0dp"
-        android:layout_height="600dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_marginTop="32dp"
         android:scrollbarAlwaysDrawVerticalTrack="true"
         android:scrollbarFadeDuration="0"
-        android:scrollbarSize="2dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.441">
+        android:scrollbarSize="2dp">
 
         <LinearLayout
             android:id="@+id/l_contain"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="horizontal">
 
             <!-- include layout_content.xml -->
@@ -51,40 +39,7 @@
         </LinearLayout>
     </HorizontalScrollView>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fabCreate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        app:fabSize="mini"
-        android:src="@drawable/ic_baseline_create_24"
-        app:layout_constraintTop_toTopOf="@id/fabMain"
-        app:layout_constraintBottom_toBottomOf="@id/fabMain"
-        app:layout_constraintStart_toStartOf="@id/fabMain"
-        app:layout_constraintEnd_toEndOf="@id/fabMain"/>
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fabInsert"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        app:fabSize="mini"
-        android:src="@drawable/ic_baseline_insert_link_24"
-        app:layout_constraintTop_toTopOf="@id/fabMain"
-        app:layout_constraintBottom_toBottomOf="@id/fabMain"
-        app:layout_constraintStart_toStartOf="@id/fabMain"
-        app:layout_constraintEnd_toEndOf="@id/fabMain"/>
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fabMain"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="24dp"
-        android:src="@drawable/ic_baseline_add_24"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
 
 <!--<?xml version="1.0" encoding="utf-8"?>-->
 <!--<androidx.constraintlayout.widget.ConstraintLayout-->
