@@ -8,12 +8,14 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.card_layout.*
 import kotlinx.android.synthetic.main.mypage_activity.*
 import java.util.*
 
@@ -43,52 +45,25 @@ class MainActivity : AppCompatActivity() {
                 for (document in documents) {
                     Log.d(TAG, "${document.id} => ${document.data}")
                     a += document.id + ","
+                    val layoutInflater = this.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater // 동적으로 생성
+
+                    val containView = layoutInflater.inflate(R.layout.card_layout, null) // mypage_content를 inflate // card_layout을 inflate
+                    val mVContentView = containView as View
+                    val FamilyNameText = mVContentView.findViewById(R.id.item_title) as TextView
+                    FamilyNameText.text = document.id
+
+                    l_contain.addView(containView)
+
 
                 }
-                //textView.text = a // Test용 받아오기
+                textView.text = a // Test용 받아오기
 
             }
             .addOnFailureListener { exception ->
                 Log.w(TAG, "Error getting documents: ", exception)
             }
 
-        val layoutInflater = this.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        val containView = layoutInflater.inflate(R.layout.card_layout, null) // mypage_content를 inflate // card_layout을 inflate
-        l_contain.addView(containView)
-
-        val containView1 = layoutInflater.inflate(R.layout.card_layout, null) // mypage_content를 inflate // card_layout을 inflate
-        l_contain.addView(containView1)
-
-        val containView2 = layoutInflater.inflate(R.layout.card_layout, null) // mypage_content를 inflate // card_layout을 inflate
-        l_contain.addView(containView2)
-
-
-        //setContent(l_contain, a) // inflate
-
 
     }
 
-
-
-    private fun setContent(layout: LinearLayout, content: String) {
-
-        if (!TextUtils.isEmpty(content)) {
-
-            val splitContent = content.split(",".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
-
-
-            layout.removeAllViews()
-
-            for (layoutIdx in splitContent.indices) {
-                val layoutInflater = this.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-                val containView = layoutInflater.inflate(R.layout.card_layout, null) // mypage_content를 inflate // card_layout을 inflate
-                layout.addView(containView)
-            }
-
-
-        } else {
-            // TODO: get your code!
-            Log.e("ERROR!", "Content is empty!");
-        }
-    }
 }
