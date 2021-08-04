@@ -42,6 +42,7 @@ class FamilySettingActivity : AppCompatActivity() {
         }
 
 
+
 //        binding = ActivityStorageBinding.inflate(layoutInflater)
 //        setContentView(binding.root)
 //        Firebase.auth.currentUser ?: finish() // if not authenticated, finish this activity
@@ -53,12 +54,41 @@ class FamilySettingActivity : AppCompatActivity() {
 
     }
 
+
+
+
+
     private fun openGallery(){ // intent로 갤러리 앱 접근
         val intent : Intent = Intent(Intent.ACTION_GET_CONTENT)
         intent.setType("image/*")
         startActivityForResult(intent, OPEN_GALLERY)
 
     }
+
+    override fun onActivityResult(requestCode : Int, resultCode : Int, data : Intent?){
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if(resultCode == Activity.RESULT_OK){
+            if(requestCode == OPEN_GALLERY){
+                var currentImageUrl = data?.data
+
+                try{
+                    val bitmap = MediaStore.Images.Media.getBitmap(contentResolver, currentImageUrl)
+                    FamilyImageView.setImageBitmap(bitmap)
+                }catch(e:Exception){
+                    e.printStackTrace()
+                }
+            }else{
+                Log.d("FamilyImageView", "something wrong")
+            }
+        }
+    }
+
+
+
+
+
+
 
     private fun uploadDialog() {
         if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
