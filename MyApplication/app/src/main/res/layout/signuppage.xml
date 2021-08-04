@@ -85,7 +85,8 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
-        android:hint="생년월일"
+        android:hint="생년월일(YYYYMMDD)"
+        android:inputType="date"
         android:minHeight="48dp" />
 
     <EditText
@@ -104,6 +105,7 @@
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
         android:hint="전화번호"
+        android:inputType="number"
         android:minHeight="48dp" />
 
     <LinearLayout
