@@ -75,24 +75,10 @@ class FamilySettingActivity : AppCompatActivity() {
 
 
         FamilyImageView.setOnClickListener { ImagePicker() }
-        button.setOnClickListener { uploadImage(code) }
+        //button.setOnClickListener { uploadImage(code) }
 
         doneFamilyButton.setOnClickListener(){ // 가족 만들기 완료 버튼
-
-            val family = hashMapOf(
-                "name" to editTextFamilyname.text.toString()
-            )
-
-            val db: FirebaseFirestore = Firebase.firestore
-            var fbAuth = FirebaseAuth.getInstance() // 로그인
-            var uid = fbAuth?.uid.toString() // uid
-            db.collection("Chats").document(code).set(family) // db에 넣기
-            db.collection("Member").document(uid).collection("MYPAGE").document(code).set(family)
-
-
-            val intent= Intent(this, DynamicLinkActivity::class.java) // 가족 초대하기 페이지
-            intent.putExtra("Random_Code", code)
-            startActivity(intent)
+            uploadImage(code)
         }
     }
 
@@ -123,12 +109,37 @@ class FamilySettingActivity : AppCompatActivity() {
 
     private fun uploadImage(code : String){
         if(filePath != null){
-            val ref = storageReference?.child("Family_Image/" + code)
-            ref?.putFile(filePath!!)?.addOnSuccessListener(OnSuccessListener<UploadTask.TaskSnapshot> {
-                Toast.makeText(applicationContext, "Image Uploaded", Toast.LENGTH_SHORT).show()
-            })?.addOnFailureListener(OnFailureListener { e ->
-                Toast.makeText(applicationContext, "Image Uploading Failed " + e.message, Toast.LENGTH_SHORT).show()
-            })
+            if (editTextFamilyname.text.toString() != "") {
+
+                val ref = storageReference?.child("Family_Image/" + code) // image upload
+                ref?.putFile(filePath!!)?.addOnSuccessListener(OnSuccessListener<UploadTask.TaskSnapshot> {
+                    Toast.makeText(applicationContext, "Image Uploaded", Toast.LENGTH_SHORT).show()
+
+                })?.addOnFailureListener(OnFailureListener { e ->
+                    Toast.makeText(applicationContext, "Image Uploading Failed " + e.message, Toast.LENGTH_SHORT).show()
+                })
+
+
+                val family = hashMapOf( // Family name
+                    "name" to editTextFamilyname.text.toString()
+                )
+
+                val db: FirebaseFirestore = Firebase.firestore
+                var fbAuth = FirebaseAuth.getInstance() // 로그인
+                var uid = fbAuth?.uid.toString() // uid
+                db.collection("Chats").document(code).set(family) // db에 넣기
+                db.collection("Member").document(uid).collection("MYPAGE").document(code)
+                    .set(family)
+
+
+                val intent = Intent(this, DynamicLinkActivity::class.java) // 가족 초대하기 페이지
+                intent.putExtra("Random_Code", code)
+                startActivity(intent)
+            }else {
+                Toast.makeText(this, "가족 이름을 입력하세요!", Toast.LENGTH_SHORT).show()
+            }
+
+
         }else{
             Toast.makeText(this, "Please Select an Image", Toast.LENGTH_SHORT).show()
         }
