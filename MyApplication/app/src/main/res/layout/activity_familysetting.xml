@@ -33,7 +33,7 @@
             android:textSize="20dp" />
 
         <Button
-            android:id="@+id/doneFamily"
+            android:id="@+id/doneFamilyButton"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:layout_gravity="center"

@@ -21,6 +21,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.tasks.OnFailureListener
 import com.google.android.gms.tasks.OnSuccessListener
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
@@ -42,6 +44,7 @@ class FamilySettingActivity : AppCompatActivity() {
     private var firebaseStorage: FirebaseStorage? = null
     private var storageReference: StorageReference? = null
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_familysetting)
@@ -49,6 +52,46 @@ class FamilySettingActivity : AppCompatActivity() {
         storageReference = FirebaseStorage.getInstance().reference
         FamilyImageView.setOnClickListener { ImagePicker() }
         button.setOnClickListener { uploadImage() }
+
+
+
+
+
+
+
+
+
+        // intent 넘겨서 들어왔을 경우 랜덤 코드 생성
+        var characterTable = arrayOf("A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z",
+            "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",
+            "1", "2", "3", "4", "5", "6", "7", "8", "9", "0") // 랜덤 코드 배열
+
+        var code : String = ""
+        for (i in 0..7) { // 랜덤 코드 8자리 생성
+            val random = Random()
+            val num = random.nextInt(characterTable.size)
+            code += characterTable[num]
+        }
+
+
+        doneFamilyButton.setOnClickListener(){ // 가족 만들기 완료 버튼
+
+
+            val family = hashMapOf(
+                "null" to "null"
+            )
+
+            val db: FirebaseFirestore = Firebase.firestore
+            db.collection("Chats").document(code).set(family) // db에 넣기
+
+
+            val intent= Intent(this, DynamicLinkActivity::class.java) // 가족 초대하기 페이지
+            intent.putExtra("Random_Code", code)
+            startActivity(intent)
+        }
+
+
+
     }
 
     private fun ImagePicker() {
