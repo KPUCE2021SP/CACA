@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.FrameLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
@@ -86,6 +87,12 @@ class MainActivity : AppCompatActivity() {
                         ) // mypage_content를 inflate // card_layout을 inflate
                         val mVContentView = containView as View
                         val FamilyNameText = mVContentView.findViewById(R.id.item_title_d) as TextView
+                        val FamilyCardFrameLayout = mVContentView.findViewById(R.id.card_frameLayout) as FrameLayout
+                        FamilyCardFrameLayout.setOnClickListener(){
+                            val intent = Intent(application, MainPageActivity::class.java)
+                            startActivity(intent)
+                        }
+
                         FamilyNameText.text = document.id
 
                         l_contain.addView(containView)
