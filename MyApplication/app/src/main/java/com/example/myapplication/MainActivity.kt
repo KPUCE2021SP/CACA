@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
-import android.widget.FrameLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
@@ -56,50 +55,105 @@ class MainActivity : AppCompatActivity() {
 
         val db: FirebaseFirestore = Firebase.firestore // 여러 document 받아오기
         var a = ""
+        var mutableList : MutableList<String> = mutableListOf("a")
+        mutableList.clear()
+
         db.collection("Member").document(uid).collection("Familys")
             //.whereEqualTo("Familys", true)
             .get()
             .addOnSuccessListener { documents ->
                 for (document in documents) {
                     Log.d(TAG, "${document.id} => ${document.data}")
-                    //a += document.id + ","
-                    if (document.id == "Familys") {
-                        val layoutInflater =
-                            this.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater // 동적으로 생성
+                    mutableList.add(document.id)
+                }
 
-                        val containView = layoutInflater.inflate(
-                            R.layout.defaultcard_layout,
-                            null
-                        ) // mypage_content를 inflate // card_layout을 inflate
-                        val mVContentView = containView as View
-                        val FamilyNameText = mVContentView.findViewById(R.id.item_title_d) as TextView
-                        FamilyNameText.text = document.id
+                val ContentView = arrayOfNulls<View>(mutableList.size)
+                val cardView = arrayOfNulls<CardView>(mutableList.size)
+                val item_title_d = arrayOfNulls<TextView>(mutableList.size)
 
-                        l_contain.addView(containView)
+                val count = mutableList.size - 1
 
-                    }else {
-                        val layoutInflater =
-                            this.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater // 동적으로 생성
+                for (layoutIdx in 0..count) {
 
-                        val containView = layoutInflater.inflate(
-                            R.layout.card_layout,
-                            null
-                        ) // mypage_content를 inflate // card_layout을 inflate
-                        val mVContentView = containView as View
-                        val FamilyNameText = mVContentView.findViewById(R.id.item_title_d) as TextView
-                        val FamilyCardFrameLayout = mVContentView.findViewById(R.id.card_frameLayout) as FrameLayout
-                        FamilyCardFrameLayout.setOnClickListener(){
+                    if(mutableList[layoutIdx] == "Familys"){ // Familys
+
+                        val layoutInflater = this.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+                        val containView = layoutInflater.inflate(R.layout.defaultcard_layout,null) // mypage_content를 inflate
+                        l_contain.addView(containView) // 추가
+
+                        ContentView[layoutIdx] = containView as View
+
+                        item_title_d[layoutIdx] = ContentView[layoutIdx]!!.findViewById(R.id.item_title_d) as TextView
+                        item_title_d[layoutIdx]?.text = mutableList[layoutIdx]
+
+                        cardView[layoutIdx] = ContentView[layoutIdx]!!.findViewById(R.id.cardView) as CardView
+                        cardView[layoutIdx]?.setOnClickListener() {
                             val intent = Intent(application, MainPageActivity::class.java)
                             startActivity(intent)
                         }
 
-                        FamilyNameText.text = document.id
+                    }else{ // 나머지
 
-                        l_contain.addView(containView)
+                        val layoutInflater = this.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+                        val containView = layoutInflater.inflate(R.layout.card_layout,null) // mypage_content를 inflate
+                        l_contain.addView(containView) // 추가
+
+                        ContentView[layoutIdx] = containView as View
+
+                        item_title_d[layoutIdx] = ContentView[layoutIdx]!!.findViewById(R.id.item_title_d) as TextView
+                        item_title_d[layoutIdx]?.text = mutableList[layoutIdx]
+
+                        cardView[layoutIdx] = ContentView[layoutIdx]!!.findViewById(R.id.cardView) as CardView
+                        cardView[layoutIdx]?.setOnClickListener() {
+                            val intent = Intent(application, MainPageActivity::class.java)
+                            startActivity(intent)
+                        }
+
                     }
 
 
                 }
+
+//                for (document in documents) {
+//                    Log.d(TAG, "${document.id} => ${document.data}")
+//                    //a += document.id + ","
+//                    if (document.id == "Familys") {
+//                        val layoutInflater =
+//                            this.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater // 동적으로 생성
+//
+//                        val containView = layoutInflater.inflate(
+//                            R.layout.defaultcard_layout,
+//                            null
+//                        ) // mypage_content를 inflate // card_layout을 inflate
+//                        val mVContentView = containView as View
+//                        val FamilyNameText = mVContentView.findViewById(R.id.item_title_d) as TextView
+//                        FamilyNameText.text = document.id
+//
+//                        l_contain.addView(containView)
+//
+//                    }else {
+//                        val layoutInflater =
+//                            this.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater // 동적으로 생성
+//
+//                        val containView = layoutInflater.inflate(
+//                            R.layout.card_layout,
+//                            null
+//                        ) // mypage_content를 inflate // card_layout을 inflate
+//                        val mVContentView = containView as View
+//                        val FamilyNameText = mVContentView.findViewById(R.id.item_title_d) as TextView
+//                        val FamilyCardFrameLayout = mVContentView.findViewById(R.id.card_frameLayout) as FrameLayout
+//                        FamilyCardFrameLayout.setOnClickListener(){
+//                            val intent = Intent(application, MainPageActivity::class.java)
+//                            startActivity(intent)
+//                        }
+//
+//                        FamilyNameText.text = document.id
+//
+//                        l_contain.addView(containView)
+//                    }
+//
+//
+//                }
                 //textView.text = a // Test용 받아오기
 
                 val layoutInflater =

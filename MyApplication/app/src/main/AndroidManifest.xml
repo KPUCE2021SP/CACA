@@ -31,6 +31,7 @@
 
         <activity android:name=".MypageEditActivity"></activity>
         <activity android:name=".MypageActivity"></activity>
+        <activity android:name=".MainPageActivity"></activity>
 
 
         <activity android:name=".StartActivity" />
