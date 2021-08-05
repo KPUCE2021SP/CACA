@@ -46,9 +46,7 @@
 <br>
 
 ## 간트차트
-
-![image](https://user-images.githubusercontent.com/79956705/128319331-ce5a877f-be60-45d2-9136-430c3473e22b.png)
-
+![image](https://user-images.githubusercontent.com/79956705/128368296-cee494b3-43e7-46d8-aaf7-716f55a51c1f.png)
 
 
 
