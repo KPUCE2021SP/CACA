@@ -78,9 +78,8 @@ class FamilySettingActivity : AppCompatActivity() {
 
         doneFamilyButton.setOnClickListener(){ // 가족 만들기 완료 버튼
 
-
             val family = hashMapOf(
-                "null" to "null"
+                "name" to editTextFamilyname.text.toString()
             )
 
             val db: FirebaseFirestore = Firebase.firestore

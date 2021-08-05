@@ -84,16 +84,9 @@ class MypageActivity : AppCompatActivity() {
             .addOnFailureListener { exception ->
                 Log.d(TAG, "get failed with ", exception)
             }
-//
-//        val human = hashMapOf(
-//            "name" to "최혜민",
-//            "doctor" to "medicine",
-//            "birthday" to "20000323",
-//            "phone" to "01095038645",
-//            "address" to "school"
-//        )
-//
-//        db.collection("Member").document(uid).set(human) // db에 넣기
+
+
+
 
 
         // firestore에서 정보 받아와서 DummyData 덮어쓰기

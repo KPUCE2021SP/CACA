@@ -114,13 +114,6 @@ class MainActivity : AppCompatActivity() {
                         }
 
 
-
-                        val storageReference = Firebase.storage.reference
-
-                        val imageView = findViewById<ImageView>(R.id.imageView)
-
-                        Glide.with(this /* context */).load(storageReference).into(imageView)
-
                     }
 
 
