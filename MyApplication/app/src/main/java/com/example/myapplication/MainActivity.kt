@@ -87,7 +87,9 @@ class MainActivity : AppCompatActivity() {
                         ContentView[layoutIdx] = containView as View
 
                         item_title_d[layoutIdx] = ContentView[layoutIdx]!!.findViewById(R.id.item_title_d) as TextView
-                        item_title_d[layoutIdx]?.text = mutableList[layoutIdx]
+                        val db: FirebaseFirestore = Firebase.firestore // 여러 field값 가져오기
+                        val docRef1 = db.collection("Member").document(uid)
+                        //item_title_d[layoutIdx]?.text = mutableList[layoutIdx]
 
                         cardView[layoutIdx] = ContentView[layoutIdx]!!.findViewById(R.id.cardView) as CardView
                         cardView[layoutIdx]?.setOnClickListener() {
@@ -104,7 +106,48 @@ class MainActivity : AppCompatActivity() {
                         ContentView[layoutIdx] = containView as View
 
                         item_title_d[layoutIdx] = ContentView[layoutIdx]!!.findViewById(R.id.item_title_d) as TextView
-                        item_title_d[layoutIdx]?.text = mutableList[layoutIdx]
+                        val docRef2 = db.collection("Member").document(uid).collection("MYPAGE").document(mutableList[layoutIdx])
+                        docRef2.get()
+                            .addOnSuccessListener { document ->
+                                if (document != null) {
+                                    Log.d(TAG, "DocumentSnapshot data: ${document.data}")
+                                    item_title_d[layoutIdx]?.text = document.data?.get("name").toString() // family name 넣기
+
+                                } else {
+                                    Log.d(TAG, "No such document")
+                                }
+                            }
+                            .addOnFailureListener { exception ->
+                                Log.d(TAG, "get failed with ", exception)
+                            }
+
+//                        var count1 = 0 // field값 가져오기 // 참여하고 있는 가족
+//                        val db1 : FirebaseFirestore = Firebase.firestore
+//                        db1.collection("Member").document(uid).collection("MYPAGE").document(mutableList[layoutIdx])
+//                            .get()
+//                            .addOnSuccessListener { documents1 ->
+//                                for (document1 in documents1){
+//                                    val docRef2 = db.collection("Member").document(uid).collection("MYPAGE").document(mutableList[layoutIdx])
+//                                    docRef2.get()
+//                                        .addOnSuccessListener { document ->
+//                                            if (document1 != null) {
+//                                                Log.d(TAG, "DocumentSnapshot data: ${document.data}")
+//                                                item_title_d[layoutIdx]?.text = document.data?.get("name").toString() // family name 넣기
+//
+//                                            } else {
+//                                                Log.d(TAG, "No such document")
+//                                            }
+//                                        }
+//                                        .addOnFailureListener { exception ->
+//                                            Log.d(TAG, "get failed with ", exception)
+//                                        }
+//                                }
+//
+//                            }
+                        //item_title_d[layoutIdx]?.text = mutableList[layoutIdx]
+
+
+
 
                         cardView[layoutIdx] = ContentView[layoutIdx]!!.findViewById(R.id.cardView) as CardView
                         cardView[layoutIdx]?.setOnClickListener() {

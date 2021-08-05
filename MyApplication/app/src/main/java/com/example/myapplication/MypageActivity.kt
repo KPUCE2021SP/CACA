@@ -15,6 +15,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat.getSystemService
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -69,8 +70,30 @@ class MypageActivity : AppCompatActivity() {
             FirebaseAuth.getInstance().signOut()
         }
 
-        val db: FirebaseFirestore = Firebase.firestore // 여러 field값 가져오기
-        val docRef1 = db.collection("Member").document(uid)
+
+        // firestore에서 정보 받아와서 DummyData 덮어쓰기
+        val db: FirebaseFirestore = Firebase.firestore
+        val docRef = db.collection("Member").document(uid)
+        docRef.get()
+            .addOnSuccessListener { document ->
+                if (document != null) { // DATA 받아왔을 때
+                    Log.d(TAG, "DocumentSnapshot data: ${document.data}")
+                    DummyData.sDummyData = document.data.toString()
+                } else {
+                    Log.d(TAG, "No such document")
+                }
+            }
+            .addOnFailureListener { exception ->
+                Log.d(TAG, "get failed with ", exception)
+            }
+
+
+        // DummyData로 inflate하기
+        setContent(ll_contain, DummyData.sDummyData) // inflate
+
+
+
+        val docRef1 = db.collection("Member").document(uid) // 여러 field값 가져오기
         docRef1.get()
             .addOnSuccessListener { document ->
                 if (document != null) {
@@ -87,30 +110,6 @@ class MypageActivity : AppCompatActivity() {
 
 
 
-
-
-        // firestore에서 정보 받아와서 DummyData 덮어쓰기
-
-        val docRef = db.collection("Member").document(uid)
-        docRef.get()
-            .addOnSuccessListener { document ->
-                if (document != null) { // DATA 받아왔을 때
-                    Log.d(TAG, "DocumentSnapshot data: ${document.data}")
-                    //updateDateView.setText(document.data.toString()) // 받아오기 확인용
-                    DummyData.sDummyData = document.data.toString()
-                    //textViewName.setText(DummyData.sDummyData) // Dummydata 덮어쓰기 확인용
-
-                } else {
-                    Log.d(TAG, "No such document")
-                }
-            }
-            .addOnFailureListener { exception ->
-                Log.d(TAG, "get failed with ", exception)
-            }
-
-
-        // DummyData로 inflate하기
-        setContent(ll_contain, DummyData.sDummyData) // inflate
 
 
 
