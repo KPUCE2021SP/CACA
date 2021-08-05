@@ -6,6 +6,7 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Bitmap.CompressFormat
 import android.os.Bundle
+import android.os.Environment
 import android.provider.MediaStore
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -58,17 +59,17 @@ class FamilySettingActivity : AppCompatActivity() {
         if(resultCode == Activity.RESULT_OK){
             if(requestCode == OPEN_GALLERY){
                 var currentImageUrl = data?.data
-                var path = dir
-
-
-
 
                 try{
                     val bitmap = MediaStore.Images.Media.getBitmap(contentResolver, currentImageUrl)
                     FamilyImageView.setImageBitmap(bitmap) // imageView에 표시
 
 
-                    saveBitmapAsFile(bitmap, getFilesDir())
+                    var sdPath = Environment.getExternalStorageDirectory().absolutePath		//sd카드 절대 경로
+                    var myDirPath = File("$sdPath/folderName")
+
+
+                    saveBitmapAsFile(bitmap, sdPath)
 
 
                 }catch (e: Exception){
