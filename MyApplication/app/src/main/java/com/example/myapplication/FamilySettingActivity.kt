@@ -21,6 +21,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.tasks.OnFailureListener
 import com.google.android.gms.tasks.OnSuccessListener
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -83,7 +84,10 @@ class FamilySettingActivity : AppCompatActivity() {
             )
 
             val db: FirebaseFirestore = Firebase.firestore
+            var fbAuth = FirebaseAuth.getInstance() // 로그인
+            var uid = fbAuth?.uid.toString() // uid
             db.collection("Chats").document(code).set(family) // db에 넣기
+            db.collection("Member").document(uid).collection("MYPAGE").document(code).set(family)
 
 
             val intent= Intent(this, DynamicLinkActivity::class.java) // 가족 초대하기 페이지

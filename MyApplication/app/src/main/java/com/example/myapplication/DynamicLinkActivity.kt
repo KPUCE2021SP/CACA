@@ -38,7 +38,7 @@ class DynamicLinkActivity : AppCompatActivity() {
 
             if (RandomCode != null) { // db에 넣기
                 db.collection("Chats").document(RandomCode).collection("FamilyMember").document(uid).set(family)
-                db.collection("Member").document(uid).collection("MYPAGE").document(RandomCode).set(family)
+//                db.collection("Member").document(uid).collection("MYPAGE").document(RandomCode).set(family)
             }
 
 
