@@ -58,7 +58,7 @@ class MainActivity : AppCompatActivity() {
         var mutableList : MutableList<String> = mutableListOf("a")
         mutableList.clear()
 
-        db.collection("Member").document(uid).collection("Familys")
+        db.collection("Member").document(uid).collection("MYPAGE")
             //.whereEqualTo("Familys", true)
             .get()
             .addOnSuccessListener { documents ->
@@ -75,7 +75,7 @@ class MainActivity : AppCompatActivity() {
 
                 for (layoutIdx in 0..count) {
 
-                    if(mutableList[layoutIdx] == "Familys"){ // Familys
+                    if(mutableList[layoutIdx] == "MYPAGE"){ // Familys
 
                         val layoutInflater = this.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
                         val containView = layoutInflater.inflate(R.layout.defaultcard_layout,null) // mypage_content를 inflate
@@ -88,7 +88,7 @@ class MainActivity : AppCompatActivity() {
 
                         cardView[layoutIdx] = ContentView[layoutIdx]!!.findViewById(R.id.cardView) as CardView
                         cardView[layoutIdx]?.setOnClickListener() {
-                            val intent = Intent(application, MainPageActivity::class.java)
+                            val intent = Intent(application, MypageActivity::class.java)
                             startActivity(intent)
                         }
 
@@ -106,6 +106,7 @@ class MainActivity : AppCompatActivity() {
                         cardView[layoutIdx] = ContentView[layoutIdx]!!.findViewById(R.id.cardView) as CardView
                         cardView[layoutIdx]?.setOnClickListener() {
                             val intent = Intent(application, MainPageActivity::class.java)
+                            intent.putExtra("FamilyName", mutableList[layoutIdx])
                             startActivity(intent)
                         }
 

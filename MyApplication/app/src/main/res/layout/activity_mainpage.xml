@@ -26,15 +26,16 @@
                 android:src="@drawable/mypage1" />
 
             <TextView
-                android:text="Familyship"
-                android:gravity="center"
-                android:layout_gravity="center"
-                android:textStyle="bold"
-                android:textColor="@color/white"
-                android:textSize="20dp"
+                android:id="@+id/FamilyNameTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="3"/>
+                android:layout_gravity="center"
+                android:layout_weight="3"
+                android:gravity="center"
+                android:text="Familyship"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:textStyle="bold" />
 
             <ImageButton
                 android:id="@+id/btnGroup"

@@ -16,6 +16,9 @@ class MainPageActivity : TabActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mainpage)
 
+        val FamilyName = intent.getStringExtra("FamilyName") // 제목 선정
+        FamilyNameTextView.text = FamilyName
+
 
         val tabHost = this.tabHost
 

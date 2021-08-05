@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#fcbf48"
     android:orientation="vertical"
     tools:context=".MypageActivity">
 
@@ -13,6 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         android:gravity="center"
+        android:paddingTop="30dp"
         android:text="가족 관리"
         android:textColor="@color/black"
         android:textSize="27dp"
