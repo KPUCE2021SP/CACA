@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
@@ -14,6 +15,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.ktx.storage
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.card_layout.*
 import kotlinx.android.synthetic.main.mypage_activity.*
@@ -70,6 +72,7 @@ class MainActivity : AppCompatActivity() {
                 val ContentView = arrayOfNulls<View>(mutableList.size)
                 val cardView = arrayOfNulls<CardView>(mutableList.size)
                 val item_title_d = arrayOfNulls<TextView>(mutableList.size)
+                val card_item_image = arrayOfNulls<ImageView>(mutableList.size)
 
                 val count = mutableList.size - 1
 
@@ -109,6 +112,14 @@ class MainActivity : AppCompatActivity() {
                             intent.putExtra("FamilyName", mutableList[layoutIdx])
                             startActivity(intent)
                         }
+
+
+
+                        val storageReference = Firebase.storage.reference
+
+                        val imageView = findViewById<ImageView>(R.id.imageView)
+
+                        Glide.with(this /* context */).load(storageReference).into(imageView)
 
                     }
 
