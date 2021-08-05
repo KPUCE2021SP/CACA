@@ -37,6 +37,8 @@ import java.util.*
 import java.util.jar.Manifest
 
 
+
+
 class FamilySettingActivity : AppCompatActivity() {
     private var imagePreview: ImageView? = null
     private val PICK_IMAGE_REQUEST = 1
@@ -50,29 +52,29 @@ class FamilySettingActivity : AppCompatActivity() {
         setContentView(R.layout.activity_familysetting)
         firebaseStorage = FirebaseStorage.getInstance()
         storageReference = FirebaseStorage.getInstance().reference
-        FamilyImageView.setOnClickListener { ImagePicker() }
-        button.setOnClickListener { uploadImage() }
 
 
 
 
-
-
-
-
+        var code : String = ""
 
         // intent 넘겨서 들어왔을 경우 랜덤 코드 생성
         var characterTable = arrayOf("A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z",
             "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",
             "1", "2", "3", "4", "5", "6", "7", "8", "9", "0") // 랜덤 코드 배열
 
-        var code : String = ""
+//        var code : String = ""
         for (i in 0..7) { // 랜덤 코드 8자리 생성
             val random = Random()
             val num = random.nextInt(characterTable.size)
             code += characterTable[num]
         }
 
+
+
+
+        FamilyImageView.setOnClickListener { ImagePicker() }
+        button.setOnClickListener { uploadImage(code) }
 
         doneFamilyButton.setOnClickListener(){ // 가족 만들기 완료 버튼
 
@@ -117,9 +119,9 @@ class FamilySettingActivity : AppCompatActivity() {
         }
     }
 
-    private fun uploadImage(){
+    private fun uploadImage(code : String){
         if(filePath != null){
-            val ref = storageReference?.child("uploads/" + "fileName_fileName")
+            val ref = storageReference?.child("Family_Image/" + code)
             ref?.putFile(filePath!!)?.addOnSuccessListener(OnSuccessListener<UploadTask.TaskSnapshot> {
                 Toast.makeText(applicationContext, "Image Uploaded", Toast.LENGTH_SHORT).show()
             })?.addOnFailureListener(OnFailureListener { e ->
