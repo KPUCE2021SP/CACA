@@ -6,7 +6,9 @@ import android.content.ContentValues.TAG
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
 import android.text.TextUtils
 import android.util.Log
 import android.view.LayoutInflater
@@ -29,20 +31,37 @@ import java.util.*
 import java.util.regex.Pattern
 import androidx.core.content.ContextCompat.getSystemServiceName
 import androidx.core.content.ContextCompat.getSystemService
+import com.google.android.gms.tasks.OnFailureListener
+import com.google.android.gms.tasks.OnSuccessListener
 import com.google.api.Distribution
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.auth.ktx.userProfileChangeRequest
 import com.google.firebase.firestore.FieldValue
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
+import com.google.firebase.storage.UploadTask
+import kotlinx.android.synthetic.main.activity_familysetting.*
 import org.json.JSONObject
+import java.io.IOException
 
 class MypageActivity : AppCompatActivity() {
 
     var fbAuth = FirebaseAuth.getInstance() // 로그인
     var fbFire = FirebaseFirestore.getInstance()
-
     var uid = fbAuth?.uid.toString() // uid
     var uemail = fbAuth?.currentUser?.email.toString()
 
+    private val PICK_IMAGE_REQUEST = 1
+    private var filePath: Uri? = null
+    private var firebaseStorage: FirebaseStorage? = null
+    private var storageReference: StorageReference? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        firebaseStorage = FirebaseStorage.getInstance()
+        storageReference = FirebaseStorage.getInstance().reference
+
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.mypage_activity)
 
@@ -160,8 +179,55 @@ class MypageActivity : AppCompatActivity() {
             setContent(ll_contain, DummyData.sDummyData) // inflate
             srl_main.isRefreshing = false // 인터넷 끊기
         }
+
+
+
+        peopleFace.setOnClickListener {         //프로필 사진 변경
+            ImagePicker()
+            saveProfile.visibility = View.VISIBLE
+        }
+        saveProfile.setOnClickListener {
+            uploadProfile()
+            saveProfile.visibility = View.GONE
+        }
     }
 
+    //프로필 사진 업로드
+    private fun ImagePicker() {
+        val intent = Intent()
+        intent.type = "image/*"
+        intent.action = Intent.ACTION_GET_CONTENT
+        startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK) {
+            if(data == null || data.data == null){
+                return
+            }
+            filePath = data.data
+            try {
+                val bitmap = MediaStore.Images.Media.getBitmap(contentResolver, filePath)
+                peopleFace.setImageBitmap(bitmap)
+            } catch (e: IOException) {
+                e.printStackTrace()
+            }
+        }
+    }
+
+    private fun uploadProfile(){
+        if(filePath != null){
+            val ref = storageReference?.child("profiles/" + "profile")
+            ref?.putFile(filePath!!)?.addOnSuccessListener(OnSuccessListener<UploadTask.TaskSnapshot> {
+                Toast.makeText(applicationContext, "Image Uploaded", Toast.LENGTH_SHORT).show()
+            })?.addOnFailureListener(OnFailureListener { e ->
+                Toast.makeText(applicationContext, "Image Uploading Failed " + e.message, Toast.LENGTH_SHORT).show()
+            })
+        }else{
+            Toast.makeText(this, "Please Select an Image", Toast.LENGTH_SHORT).show()
+        }
+    }
 
     private fun setContent(layout: LinearLayout, content: String) {
 
