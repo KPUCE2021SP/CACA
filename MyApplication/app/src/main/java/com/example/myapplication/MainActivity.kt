@@ -3,6 +3,8 @@ package com.example.myapplication
 import android.content.ContentValues.TAG
 import android.content.Context
 import android.content.Intent
+import android.graphics.BitmapFactory
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -11,10 +13,14 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.target.Target
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.ktx.storage
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.card_layout.*
@@ -25,6 +31,7 @@ import java.util.*
 class MainActivity : AppCompatActivity() {
 
     private var isFabOpen = false
+//    lateinit var storage: FirebaseStorage
 
     var fbAuth = FirebaseAuth.getInstance() // 로그인
     var fbFire = FirebaseFirestore.getInstance()
@@ -81,13 +88,15 @@ class MainActivity : AppCompatActivity() {
                     if(mutableList[layoutIdx] == "MYPAGE"){ // Familys
 
                         val layoutInflater = this.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-                        val containView = layoutInflater.inflate(R.layout.defaultcard_layout,null) // mypage_content를 inflate
+                        val containView = layoutInflater.inflate(R.layout.defaultcard_layout, null) // mypage_content를 inflate
                         l_contain.addView(containView) // 추가
 
                         ContentView[layoutIdx] = containView as View
 
                         item_title_d[layoutIdx] = ContentView[layoutIdx]!!.findViewById(R.id.item_title_d) as TextView
-                        item_title_d[layoutIdx]?.text = mutableList[layoutIdx]
+                        val db: FirebaseFirestore = Firebase.firestore // 여러 field값 가져오기
+                        val docRef1 = db.collection("Member").document(uid)
+                        //item_title_d[layoutIdx]?.text = mutableList[layoutIdx]
 
                         cardView[layoutIdx] = ContentView[layoutIdx]!!.findViewById(R.id.cardView) as CardView
                         cardView[layoutIdx]?.setOnClickListener() {
@@ -98,13 +107,44 @@ class MainActivity : AppCompatActivity() {
                     }else{ // 나머지
 
                         val layoutInflater = this.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-                        val containView = layoutInflater.inflate(R.layout.card_layout,null) // mypage_content를 inflate
+                        val containView = layoutInflater.inflate(R.layout.card_layout, null) // mypage_content를 inflate
                         l_contain.addView(containView) // 추가
 
                         ContentView[layoutIdx] = containView as View
 
+
+
                         item_title_d[layoutIdx] = ContentView[layoutIdx]!!.findViewById(R.id.item_title_d) as TextView
-                        item_title_d[layoutIdx]?.text = mutableList[layoutIdx]
+                        val docRef2 = db.collection("Member").document(uid).collection("MYPAGE").document(
+                            mutableList[layoutIdx]
+                        )
+                        docRef2.get()
+                            .addOnSuccessListener { document ->
+                                if (document != null) {
+                                    Log.d(TAG, "DocumentSnapshot data: ${document.data}")
+                                    item_title_d[layoutIdx]?.text = document.data?.get("name").toString() // family name 넣기
+
+                                } else {
+                                    Log.d(TAG, "No such document")
+                                }
+                            }
+                            .addOnFailureListener { exception ->
+                                Log.d(TAG, "get failed with ", exception)
+                            }
+
+
+
+
+                        card_item_image[layoutIdx] = ContentView[layoutIdx]!!.findViewById(R.id.item_image) as ImageView // 가족별 Image 가져오기
+                        //card_item_image[layoutIdx]?.setImageURI(ref.downloadUrl.toString().toUri())
+                        var storage: FirebaseStorage = Firebase.storage
+                        val imageRef1 = storage.getReferenceFromUrl(
+                            "gs://cacafirebase-554ac.appspot.com/Family_Image/" + mutableList[layoutIdx]
+                        )
+                        card_item_image[layoutIdx]?.let { displayImageRef(imageRef1, it) }
+
+
+
 
                         cardView[layoutIdx] = ContentView[layoutIdx]!!.findViewById(R.id.cardView) as CardView
                         cardView[layoutIdx]?.setOnClickListener() {
@@ -112,7 +152,6 @@ class MainActivity : AppCompatActivity() {
                             intent.putExtra("FamilyName", mutableList[layoutIdx])
                             startActivity(intent)
                         }
-
                     }
 
 
@@ -143,6 +182,15 @@ class MainActivity : AppCompatActivity() {
             }
 
 
+    }
+
+    private fun displayImageRef(imageRef: StorageReference?, view: ImageView) {
+        imageRef?.getBytes(Long.MAX_VALUE)?.addOnSuccessListener {
+            val bmp = BitmapFactory.decodeByteArray(it, 0, it.size)
+            view.setImageBitmap(bmp)
+        }?.addOnFailureListener {
+            // Failed to download the image
+        }
     }
 
 //    private fun toggleFab() {

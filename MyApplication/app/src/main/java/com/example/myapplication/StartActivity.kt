@@ -15,6 +15,6 @@ class StartActivity : AppCompatActivity() { // 잠깐 뜨는 화면
     }
     private fun startLoading() {
         val handler= Handler()
-        handler.postDelayed({finish()}, 3000)
+        handler.postDelayed({finish()}, 1000)
     }
 }

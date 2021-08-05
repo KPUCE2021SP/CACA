@@ -20,6 +20,7 @@ import android.view.View
 import android.widget.*
 import androidx.annotation.ContentView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat.getSystemService
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -80,8 +81,30 @@ class MypageActivity : AppCompatActivity() {
             Toast.makeText(applicationContext, "로그아웃 되었습니다", Toast.LENGTH_SHORT).show()
         }
 
-        val db: FirebaseFirestore = Firebase.firestore // 여러 field값 가져오기
-        val docRef1 = db.collection("Member").document(uid)
+
+        // firestore에서 정보 받아와서 DummyData 덮어쓰기
+        val db: FirebaseFirestore = Firebase.firestore
+        val docRef = db.collection("Member").document(uid)
+        docRef.get()
+            .addOnSuccessListener { document ->
+                if (document != null) { // DATA 받아왔을 때
+                    Log.d(TAG, "DocumentSnapshot data: ${document.data}")
+                    DummyData.sDummyData = document.data.toString()
+                } else {
+                    Log.d(TAG, "No such document")
+                }
+            }
+            .addOnFailureListener { exception ->
+                Log.d(TAG, "get failed with ", exception)
+            }
+
+
+        // DummyData로 inflate하기
+        setContent(ll_contain, DummyData.sDummyData) // inflate
+
+
+
+        val docRef1 = db.collection("Member").document(uid) // 여러 field값 가져오기
         docRef1.get()
             .addOnSuccessListener { document ->
                 if (document != null) {
@@ -95,40 +118,9 @@ class MypageActivity : AppCompatActivity() {
             .addOnFailureListener { exception ->
                 Log.d(TAG, "get failed with ", exception)
             }
-//
-//        val human = hashMapOf(
-//            "name" to "최혜민",
-//            "doctor" to "medicine",
-//            "birthday" to "20000323",
-//            "phone" to "01095038645",
-//            "address" to "school"
-//        )
-//
-//        db.collection("Member").document(uid).set(human) // db에 넣기
 
 
-        // firestore에서 정보 받아와서 DummyData 덮어쓰기
 
-        val docRef = db.collection("Member").document(uid)
-        docRef.get()
-            .addOnSuccessListener { document ->
-                if (document != null) { // DATA 받아왔을 때
-                    Log.d(TAG, "DocumentSnapshot data: ${document.data}")
-                    //updateDateView.setText(document.data.toString()) // 받아오기 확인용
-                    DummyData.sDummyData = document.data.toString()
-                    //textViewName.setText(DummyData.sDummyData) // Dummydata 덮어쓰기 확인용
-
-                } else {
-                    Log.d(TAG, "No such document")
-                }
-            }
-            .addOnFailureListener { exception ->
-                Log.d(TAG, "get failed with ", exception)
-            }
-
-
-        // DummyData로 inflate하기
-        setContent(ll_contain, DummyData.sDummyData) // inflate
 
 
 
