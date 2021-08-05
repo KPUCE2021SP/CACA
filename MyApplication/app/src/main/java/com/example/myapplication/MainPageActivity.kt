@@ -2,12 +2,18 @@ package com.example.myapplication
 
 
 import android.app.TabActivity
+import android.content.ContentValues
 import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import com.example.myapplication.R
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_mainpage.*
 
@@ -18,6 +24,38 @@ class MainPageActivity : TabActivity() {
 
         val FamilyName = intent.getStringExtra("FamilyName") // 제목 선정
         FamilyNameTextView.text = FamilyName
+
+
+
+        var fbAuth = FirebaseAuth.getInstance() // 로그인
+        var fbFire = FirebaseFirestore.getInstance()
+        var uid = fbAuth?.uid.toString() // uid
+        val db: FirebaseFirestore = Firebase.firestore
+        val docRef2 = db.collection("Member").document(uid).collection("MYPAGE").document(FamilyName.toString())
+        docRef2.get()
+            .addOnSuccessListener { document ->
+                if (document != null) {
+                    Log.d(ContentValues.TAG, "DocumentSnapshot data: ${document.data}")
+                    FamilyNameTextView.text = document.data?.get("name").toString() // family name 넣기
+
+                } else {
+                    Log.d(ContentValues.TAG, "No such document")
+                }
+            }
+            .addOnFailureListener { exception ->
+                Log.d(ContentValues.TAG, "get failed with ", exception)
+            }
+
+
+
+
+
+
+
+
+
+
+
 
 
         val tabHost = this.tabHost
