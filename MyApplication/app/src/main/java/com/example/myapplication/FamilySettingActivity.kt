@@ -1,48 +1,38 @@
 package com.example.myapplication
 
-import android.app.Activity
-import android.content.Context
-import android.content.Intent
-import android.graphics.Bitmap
-import android.graphics.Bitmap.CompressFormat
+import android.app.AlertDialog
+import android.content.ContentUris
+import android.content.pm.PackageManager
+import android.graphics.BitmapFactory
 import android.os.Bundle
-import android.os.Environment
 import android.provider.MediaStore
-import android.util.Log
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.ktx.storage
 import kotlinx.android.synthetic.main.activity_familysetting.*
-import java.io.File
-import java.io.FileOutputStream
-import java.io.OutputStream
+import android.Manifest
+import android.app.Activity
+import android.content.Intent
+import android.util.Log
+import android.widget.Toast
 
 
 class FamilySettingActivity : AppCompatActivity() {
     private val OPEN_GALLERY = 1
 
-    lateinit var storage: FirebaseStorage
-//    lateinit var binding: ActivityStorageBinding
-
-    companion object {
-        const val REQUEST_CODE = 1
-        const val UPLOAD_FOLDER = "upload_images/"
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_familysetting)
 
-        FamilyImageView.setOnClickListener(){ // 버튼 누르면 갤러리 접근
+        FamilyImageView.setOnClickListener {
             openGallery()
         }
-
-        storage = Firebase.storage
-
     }
-
-
 
 
 
@@ -64,14 +54,6 @@ class FamilySettingActivity : AppCompatActivity() {
                     val bitmap = MediaStore.Images.Media.getBitmap(contentResolver, currentImageUrl)
                     FamilyImageView.setImageBitmap(bitmap) // imageView에 표시
 
-
-                    var sdPath = Environment.getExternalStorageDirectory().absolutePath		//sd카드 절대 경로
-                    var myDirPath = File("$sdPath/folderName")
-
-
-                    saveBitmapAsFile(bitmap, sdPath)
-
-
                 }catch (e: Exception){
                     e.printStackTrace()
                 }
@@ -81,16 +63,4 @@ class FamilySettingActivity : AppCompatActivity() {
         }
     }
 
-    private fun saveBitmapAsFile(bitmap: Bitmap, filepath: String) {
-        val file = File(filepath)
-        var os: OutputStream? = null
-        try {
-            file.createNewFile()
-            os = FileOutputStream(file)
-            bitmap.compress(CompressFormat.PNG, 100, os)
-            os.close()
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
-    }
 }
