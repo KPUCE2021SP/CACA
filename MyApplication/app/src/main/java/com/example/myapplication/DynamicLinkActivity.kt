@@ -8,6 +8,9 @@ import android.net.Uri
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_dynamic.*
 import java.util.*
@@ -21,6 +24,30 @@ class DynamicLinkActivity : AppCompatActivity() {
         val RandomCode = intent.getStringExtra("Random_Code")
 
         inviteCodeView.setText(RandomCode) // 8자리 코드 랜덤 생성해서 set
+
+
+        JoinButton.setOnClickListener(){ // 참여하기 누르면 chat에 member로 추가 && Member Mypage에 가족 이름 추가
+
+            val family = hashMapOf(
+                "null" to "null"
+            )
+
+            val db: FirebaseFirestore = Firebase.firestore
+            var fbAuth = FirebaseAuth.getInstance() // 로그인
+            var uid = fbAuth?.uid.toString() // uid
+
+            if (RandomCode != null) { // db에 넣기
+                db.collection("Chats").document(RandomCode).collection("FamilyMember").document(uid).set(family)
+                db.collection("Member").document(uid).collection("MYPAGE").document(RandomCode).set(family)
+            }
+
+
+            // MypageActivity로 이동
+            val intent= Intent(this, MainPageActivity::class.java) // 가족 초대하기 페이지
+            intent.putExtra("FamilyName", RandomCode)
+            startActivity(intent)
+        }
+
 
 
 
