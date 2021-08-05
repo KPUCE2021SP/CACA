@@ -91,10 +91,9 @@ class FamilySettingActivity : AppCompatActivity() {
             intent.putExtra("Random_Code", code)
             startActivity(intent)
         }
-
-
-
     }
+
+
 
     private fun ImagePicker() {
         val intent = Intent()

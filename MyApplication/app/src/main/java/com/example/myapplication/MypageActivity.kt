@@ -188,7 +188,6 @@ class MypageActivity : AppCompatActivity() {
         }
         saveProfile.setOnClickListener {
             uploadProfile()
-            saveProfile.visibility = View.GONE
         }
     }
 
@@ -216,7 +215,7 @@ class MypageActivity : AppCompatActivity() {
         }
     }
 
-    private fun uploadProfile(){
+    private fun uploadProfile(){ // fireStore upload
         if(filePath != null){
             val ref = storageReference?.child("profiles/" + "profile")
             ref?.putFile(filePath!!)?.addOnSuccessListener(OnSuccessListener<UploadTask.TaskSnapshot> {
@@ -227,7 +226,16 @@ class MypageActivity : AppCompatActivity() {
         }else{
             Toast.makeText(this, "Please Select an Image", Toast.LENGTH_SHORT).show()
         }
+
+
+        saveProfile.visibility = View.GONE
+
     }
+
+
+
+
+
 
     private fun setContent(layout: LinearLayout, content: String) {
 
