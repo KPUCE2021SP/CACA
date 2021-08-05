@@ -1,32 +1,22 @@
 package com.example.myapplication
 
-import android.Manifest
 import android.app.Activity
-import android.app.AlertDialog
-import android.content.ContentUris
+import android.content.Context
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.net.Uri
+import android.graphics.Bitmap.CompressFormat
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
-import android.widget.ImageView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.graphics.drawable.toBitmap
-import androidx.core.graphics.drawable.toDrawable
-import androidx.core.net.toUri
-import androidx.core.view.drawToBitmap
-import com.google.android.material.snackbar.Snackbar
-import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
-import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.ktx.storage
 import kotlinx.android.synthetic.main.activity_familysetting.*
 import java.io.File
+import java.io.FileOutputStream
+import java.io.OutputStream
+
 
 class FamilySettingActivity : AppCompatActivity() {
     private val OPEN_GALLERY = 1
@@ -62,35 +52,26 @@ class FamilySettingActivity : AppCompatActivity() {
 
     }
 
-    override fun onActivityResult(requestCode : Int, resultCode : Int, data : Intent?){
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?){
         super.onActivityResult(requestCode, resultCode, data)
 
         if(resultCode == Activity.RESULT_OK){
             if(requestCode == OPEN_GALLERY){
                 var currentImageUrl = data?.data
+                var path = dir
+
+
+
 
                 try{
                     val bitmap = MediaStore.Images.Media.getBitmap(contentResolver, currentImageUrl)
-                    FamilyImageView.setImageBitmap(bitmap)
-
-                    val path = intent.data?.path
-                    var file = Uri.fromFile(File(path))
-                    val storageRef = storage.reference
-                    val riversRef = storageRef.child("images/${file.lastPathSegment}")
-                    var uploadTask = riversRef.putFile(file)
-
-// Register observers to listen for when the download is done or if it fails
-                    uploadTask.addOnFailureListener {
-                        // Handle unsuccessful uploads
-                    }.addOnSuccessListener { taskSnapshot ->
-                        // taskSnapshot.metadata contains file metadata such as size, content-type, etc.
-                        // ...
-                    }
+                    FamilyImageView.setImageBitmap(bitmap) // imageView에 표시
 
 
+                    saveBitmapAsFile(bitmap, getFilesDir())
 
 
-                }catch(e:Exception){
+                }catch (e: Exception){
                     e.printStackTrace()
                 }
             }else{
@@ -99,6 +80,16 @@ class FamilySettingActivity : AppCompatActivity() {
         }
     }
 
-
-
+    private fun saveBitmapAsFile(bitmap: Bitmap, filepath: String) {
+        val file = File(filepath)
+        var os: OutputStream? = null
+        try {
+            file.createNewFile()
+            os = FileOutputStream(file)
+            bitmap.compress(CompressFormat.PNG, 100, os)
+            os.close()
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
 }
