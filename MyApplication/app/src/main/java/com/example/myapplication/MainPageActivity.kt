@@ -12,6 +12,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.LinearLayout
+import android.widget.TextView
 import com.example.myapplication.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -140,17 +141,24 @@ class MainPageActivity : TabActivity() {
 
         // 게시판 동적 생성성
         // Board_LineaLayout
-        db.collection("Member").document(uid).collection("BOARD")
+        db.collection("Chats").document(FamilyName.toString()).collection("BOARD")
             .get()
             .addOnSuccessListener { documents ->
                 for (document in documents) {
                     Log.d(ContentValues.TAG, "${document.id} => ${document.data}")
-                    val layoutInflater = this.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-                    val containView = layoutInflater.inflate(R.layout.notice_card, null) // mypage_content를 inflate
+                    val layoutInflater =
+                        this.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+                    val containView = layoutInflater.inflate(
+                        R.layout.notice_card,
+                        null
+                    ) // mypage_content를 inflate
                     Board_LinearLayout.addView(containView)
 
+                    val ContentView = containView as View
+                    var notice_board = ContentView.findViewById(R.id.notice_board) as TextView
 
-
+                    notice_board.text = document.id.toString()
                 }
+            }
     }
 }

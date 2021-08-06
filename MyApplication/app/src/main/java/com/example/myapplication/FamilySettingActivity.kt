@@ -129,15 +129,15 @@ class FamilySettingActivity : AppCompatActivity() {
                 var fbAuth = FirebaseAuth.getInstance() // 로그인
                 var uid = fbAuth?.uid.toString() // uid
                 db.collection("Chats").document(code).set(family) // db에 넣기
-                db.collection("Member").document(uid).collection("MYPAGE").document(code)
-                    .set(family)
-                db.collection("Chats").document(code).collection("BOARD").document(et_name.text.toString() + "님이 가족에 참여하셨습니다.").set(family) // 게시판 활성화
+                db.collection("Member").document(uid).collection("MYPAGE").document(code).set(family)
+                db.collection("Chats").document(code).collection("BOARD").document("${et_name.text.toString()}의 게시판이 활성화 되었습니다!").set(family) // 게시판 활성화
 
 
 
                 val intent = Intent(this, DynamicLinkActivity::class.java) // 가족 초대하기 페이지
                 intent.putExtra("Random_Code", code)
                 startActivity(intent)
+
             }else {
                 Toast.makeText(this, "가족 이름을 입력하세요!", Toast.LENGTH_SHORT).show()
             }
