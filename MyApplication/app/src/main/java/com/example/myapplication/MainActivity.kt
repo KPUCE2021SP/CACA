@@ -114,10 +114,8 @@ class MainActivity : AppCompatActivity() {
 
 
 
-                        item_title_d[layoutIdx] = ContentView[layoutIdx]!!.findViewById(R.id.item_title_d) as TextView
-                        val docRef2 = db.collection("Member").document(uid).collection("MYPAGE").document(
-                            mutableList[layoutIdx]
-                        )
+                        item_title_d[layoutIdx] = ContentView[layoutIdx]!!.findViewById(R.id.item_title_d) as TextView // field로 가져오기
+                        val docRef2 = db.collection("Member").document(uid).collection("MYPAGE").document(mutableList[layoutIdx]                        )
                         docRef2.get()
                             .addOnSuccessListener { document ->
                                 if (document != null) {

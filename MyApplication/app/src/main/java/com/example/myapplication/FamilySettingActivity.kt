@@ -30,6 +30,7 @@ import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.UploadTask
 import com.google.firebase.storage.ktx.storage
 import kotlinx.android.synthetic.main.activity_familysetting.*
+import kotlinx.android.synthetic.main.signuppage.*
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
@@ -130,6 +131,8 @@ class FamilySettingActivity : AppCompatActivity() {
                 db.collection("Chats").document(code).set(family) // db에 넣기
                 db.collection("Member").document(uid).collection("MYPAGE").document(code)
                     .set(family)
+                db.collection("Chats").document(code).collection("BOARD").document(et_name.text.toString() + "님이 가족에 참여하셨습니다.").set(family) // 게시판 활성화
+
 
 
                 val intent = Intent(this, DynamicLinkActivity::class.java) // 가족 초대하기 페이지

@@ -3,12 +3,15 @@ package com.example.myapplication
 
 import android.app.TabActivity
 import android.content.ContentValues
+import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
+import android.widget.LinearLayout
 import com.example.myapplication.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -16,6 +19,7 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_mainpage.*
+import kotlinx.android.synthetic.main.signuppage.*
 
 class MainPageActivity : TabActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -131,5 +135,22 @@ class MainPageActivity : TabActivity() {
             val intent = Intent(application, DynamicLinkActivity::class.java)
             startActivity(intent)
         }
+
+
+
+        // 게시판 동적 생성성
+        // Board_LineaLayout
+        db.collection("Member").document(uid).collection("BOARD")
+            .get()
+            .addOnSuccessListener { documents ->
+                for (document in documents) {
+                    Log.d(ContentValues.TAG, "${document.id} => ${document.data}")
+                    val layoutInflater = this.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+                    val containView = layoutInflater.inflate(R.layout.notice_card, null) // mypage_content를 inflate
+                    Board_LinearLayout.addView(containView)
+
+
+
+                }
     }
 }
