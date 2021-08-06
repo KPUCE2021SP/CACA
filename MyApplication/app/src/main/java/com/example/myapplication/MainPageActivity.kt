@@ -45,7 +45,6 @@ class MainPageActivity : TabActivity() {
         FamilyNameTextView.text = FamilyName
 
 
-
         var fbAuth = FirebaseAuth.getInstance() // 로그인
         var fbFire = FirebaseFirestore.getInstance()
         var uid = fbAuth?.uid.toString() // uid
@@ -64,17 +63,6 @@ class MainPageActivity : TabActivity() {
                 .addOnFailureListener { exception ->
                     Log.d(ContentValues.TAG, "get failed with ", exception)
                 }
-
-
-
-
-
-
-
-
-
-
-
 
 
         //val tabHost = this.tabHost
@@ -147,22 +135,35 @@ class MainPageActivity : TabActivity() {
             startActivity(intent)
         }
 
+        Board_Plus_Button.setOnClickListener() { // 게시판 글 작성하기 페이지로 이동
+            val intent = Intent(application, BoardActivity::class.java)
+            intent.putExtra("FamilyName", FamilyName)
+            startActivity(intent)
+
+        }
 
 
         // 게시판 동적 생성
         // Board_LineaLayout
+        var mutableList : MutableList<String> = mutableListOf("a")
+        mutableList.clear()
+
         db.collection("Chats").document(FamilyName.toString()).collection("BOARD")
                 .get()
                 .addOnSuccessListener { documents ->
                     for (document1 in documents) {
                         Log.d(ContentValues.TAG, "${document1.id} => ${document1.data}")
-                        val layoutInflater =
-                                this.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-                        val containView = layoutInflater.inflate(
-                                R.layout.notice_card,
-                                null
-                        ) // mypage_content를 inflate
+                        mutableList.add(document1.id.toString())
+                    }
+
+
+                    MMMAinPage.text = mutableList.toString()
+                    //for (i in 0..(mutableList.size - 1)) { // 거꾸로
+                    for (i in 0..(mutableList.size - 1)) { // 거꾸로
+                        val layoutInflater = this.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+                        val containView = layoutInflater.inflate(R.layout.notice_card, null) // mypage_content를 inflate
                         Board_LinearLayout.addView(containView)
+
 
                         val ContentView = containView as View
                         var notice_board = ContentView.findViewById(R.id.notice_board) as TextView // 내용
@@ -170,7 +171,7 @@ class MainPageActivity : TabActivity() {
                         var notice_name = ContentView.findViewById(R.id.notice_name) as TextView // uid
                         var notice_profile = ContentView.findViewById(R.id.notice_profile) as ImageView // profile Image
 
-                        val docRef1 = db.collection("Chats").document(FamilyName.toString()).collection("BOARD").document(document1.id.toString()) // 여러 field값 가져오기
+                        val docRef1 = db.collection("Chats").document(FamilyName.toString()).collection("BOARD").document(mutableList[(mutableList.size - 1)-i]) // 여러 field값 가져오기
                         docRef1.get()
                                 .addOnSuccessListener { document2 ->
                                     if (document2 != null) {
@@ -178,6 +179,7 @@ class MainPageActivity : TabActivity() {
                                         //textViewName.setText(document.data?.get("name").toString()) // name 확인용
                                         notice_time.setText(document2.data?.get("time").toString())
                                         notice_board.setText(document2.data?.get("contents").toString())
+                                        //notice_board.setText(mutableList.toString()) //////////////////////////////test
 
 
                                         // profile Image
@@ -218,17 +220,13 @@ class MainPageActivity : TabActivity() {
                                     Log.d(ContentValues.TAG, "get failed with ", exception)
                                 }
 
+
+
                     }
                 }
 
 
-
-        Board_Plus_Button.setOnClickListener(){ // 게시판 글 작성하기 페이지로 이동
-            val intent = Intent(application, BoardActivity::class.java)
-            intent.putExtra("FamilyName", FamilyName)
-            startActivity(intent)
-
-        }
     }
-
 }
+
+
