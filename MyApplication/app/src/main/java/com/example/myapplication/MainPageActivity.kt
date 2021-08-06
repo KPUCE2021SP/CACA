@@ -1,28 +1,36 @@
 package com.example.myapplication
 
 
+import android.app.Activity
 import android.app.TabActivity
 import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
+import android.graphics.BitmapFactory
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.MediaStore
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import com.example.myapplication.R
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.StorageReference
+import com.google.firebase.storage.ktx.storage
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_mainpage.*
 import kotlinx.android.synthetic.main.mypage_activity.*
 import kotlinx.android.synthetic.main.signuppage.*
+import java.io.IOException
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
@@ -129,10 +137,6 @@ class MainPageActivity : TabActivity() {
 
 
 
-
-
-
-
         btnMyPage.setOnClickListener {
             val intent = Intent(application, MypageActivity::class.java)
             startActivity(intent)
@@ -164,6 +168,7 @@ class MainPageActivity : TabActivity() {
                     var notice_board = ContentView.findViewById(R.id.notice_board) as TextView // 내용
                     var notice_time = ContentView.findViewById(R.id.notice_time) as TextView // 시간
                     var notice_name = ContentView.findViewById(R.id.notice_name) as TextView // uid
+                    var notice_profile = ContentView.findViewById(R.id.notice_profile) as ImageView // profile Image
 
                     val docRef1 = db.collection("Chats").document(FamilyName.toString()).collection("BOARD").document(document1.id.toString()) // 여러 field값 가져오기
                     docRef1.get()
@@ -173,6 +178,21 @@ class MainPageActivity : TabActivity() {
                                     //textViewName.setText(document.data?.get("name").toString()) // name 확인용
                                     notice_time.setText(document2.data?.get("time").toString())
                                     notice_board.setText(document2.data?.get("contents").toString())
+
+
+                                    // profile Image
+                                    // document2.data?.get("uid").toString()
+                                    val imageName = "gs://cacafirebase-554ac.appspot.com/profiles/" + document2.data?.get("uid").toString()
+                                    Log.d("imageName", imageName)
+                                    val storage = Firebase.storage
+                                    val storageRef = storage.reference
+                                    val profileRef1 = storage.getReferenceFromUrl(imageName)
+                                    profileRef1?.getBytes(Long.MAX_VALUE)?.addOnSuccessListener {
+                                        val profilebmp = BitmapFactory.decodeByteArray(it, 0, it.size)
+                                        notice_profile.setImageBitmap(profilebmp) // 작성한 사람 uid로 profileImage 변경!
+                                    }?.addOnFailureListener {
+                                        Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT).show()
+                                    }
 
                                     // uid to Name
                                     val docRef = db.collection("Member").document(document2.data?.get("uid").toString())
@@ -210,4 +230,5 @@ class MainPageActivity : TabActivity() {
 
         }
     }
+
 }
