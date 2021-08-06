@@ -15,7 +15,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="&lt;"
+            android:text="lt"
             android:textColor="#fcbf48"
             android:background="@color/white"
             android:layout_weight="1"
@@ -58,11 +58,10 @@
         android:layout_weight="10"
         android:orientation="vertical">
 
-        <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="10dp"
-        android:layout_weight="1"
-        android:orientation="horizontal">
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
 
             <ImageView
                 android:layout_width="48dp"
@@ -71,29 +70,23 @@
                 android:layout_weight="1"
                 android:src="@drawable/son" />
 
-            <LinearLayout
-            android:layout_width="wrap_content"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="13dp"
+                android:layout_weight="5" />
+
+        </TableRow>
+
+        <EditText
+            android:id="@+id/edit_board_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-                android:layout_weight="9"
-            android:orientation="vertical">
+            android:background="@android:color/transparent"
+            android:hint="텍스트를 입력하세요."
+            android:inputType="text"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textSize="18dp" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="13dp"
-                    />
-
-                <EditText
-                    android:id="@+id/edit_board_content"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@android:color/transparent"
-                    android:hint="텍스트를 입력하세요."
-                    android:inputType="text"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                    android:textSize="18dp" />
-        </LinearLayout>
-    </LinearLayout>
     </LinearLayout>
     
 

@@ -14,6 +14,7 @@ import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.example.myapplication.R
+import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
@@ -165,8 +166,13 @@ class MainPageActivity : TabActivity() {
 
         Board_Plus_Button.setOnClickListener(){ // 게시판 글 작성하기 페이지로 이동
             val intent = Intent(application, BoardActivity::class.java)
-            intent.putExtra("FamilyName", mutableList[layoutIdx])
+            //intent.putExtra("FamilyName", FamilyName)
             startActivity(intent)
+
+//            val intent = Intent().setClass(application, BoardActivity::class.java)
+//            intent.putExtra("FamilyName", FamilyName)
+//            startActivity(intent)
+//            //tabhost.addTab(tabhost.newTabSpec(R.id.tabhost))
         }
     }
 }
