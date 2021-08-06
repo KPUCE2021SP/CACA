@@ -83,14 +83,15 @@
                     android:layout_height="13dp"
                     />
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="18dp"
-                android:inputType="text"
-                android:hint="텍스트를 입력하세요."
-                android:background="@android:color/transparent"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+                <EditText
+                    android:id="@+id/edit_board_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:hint="텍스트를 입력하세요."
+                    android:inputType="text"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:textSize="18dp" />
         </LinearLayout>
     </LinearLayout>
     </LinearLayout>
