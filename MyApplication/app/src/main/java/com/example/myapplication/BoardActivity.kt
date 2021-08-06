@@ -47,7 +47,7 @@ class BoardActivity : AppCompatActivity() {
 
             val board_content = hashMapOf( // Family name
                     "contents" to message,
-                    "name" to uid,
+                    "uid" to uid,
                     "time" to formatted,
                     "timeStamp" to current
             )
