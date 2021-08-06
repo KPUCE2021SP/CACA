@@ -33,6 +33,8 @@
         <activity android:name=".MypageActivity"></activity>
         <activity android:name=".MainPageActivity"></activity>
 
+        <activity android:name=".BoardActivity"></activity>
+
 
         <activity android:name=".StartActivity" />
         <activity android:name=".DynamicLinkActivity">

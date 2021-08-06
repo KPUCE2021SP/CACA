@@ -139,7 +139,7 @@ class MainPageActivity : TabActivity() {
 
 
 
-        // 게시판 동적 생성성
+        // 게시판 동적 생성
         // Board_LineaLayout
         db.collection("Chats").document(FamilyName.toString()).collection("BOARD")
             .get()
@@ -160,5 +160,13 @@ class MainPageActivity : TabActivity() {
                     notice_board.text = document.id.toString()
                 }
             }
+
+
+
+        Board_Plus_Button.setOnClickListener(){ // 게시판 글 작성하기 페이지로 이동
+            val intent = Intent(application, BoardActivity::class.java)
+            intent.putExtra("FamilyName", mutableList[layoutIdx])
+            startActivity(intent)
+        }
     }
 }
