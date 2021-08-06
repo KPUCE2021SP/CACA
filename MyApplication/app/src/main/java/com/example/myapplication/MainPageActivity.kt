@@ -23,6 +23,10 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_mainpage.*
 import kotlinx.android.synthetic.main.mypage_activity.*
 import kotlinx.android.synthetic.main.signuppage.*
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+
+
 
 class MainPageActivity : TabActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -158,7 +162,6 @@ class MainPageActivity : TabActivity() {
 
                     val ContentView = containView as View
                     var notice_board = ContentView.findViewById(R.id.notice_board) as TextView // 내용
-                    notice_board.text = document.id.toString()
 
 
 
@@ -171,6 +174,7 @@ class MainPageActivity : TabActivity() {
                                     Log.d(ContentValues.TAG, "DocumentSnapshot data: ${document.data}")
                                     //textViewName.setText(document.data?.get("name").toString()) // name 확인용
                                     notice_time.setText(document.data?.get("time").toString())
+                                    notice_board.setText(document.data?.get("contents").toString())
 
                                 } else {
                                     Log.d(ContentValues.TAG, "No such document")
