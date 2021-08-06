@@ -8,6 +8,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
@@ -18,13 +20,13 @@ import kotlinx.android.synthetic.main.board.*
 
 //edit_board_content
 
-class BoardActivity : TabActivity() {
+class BoardActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.board)
 
 
-        //val FamilyName = intent.getStringExtra("FamilyName") // 제목 선정
+        val FamilyName = intent.getStringExtra("FamilyName") // 제목 선정
         //FamilyNameTextView.text = FamilyName
 
 
@@ -41,8 +43,8 @@ class BoardActivity : TabActivity() {
 
         boardUpload.setOnClickListener(){
             var message = edit_board_content.text.toString()
-            //db.collection("Chats").document(FamilyName.toString()).collection("BOARD").document(message).set(board_content) // 게시판 활성화
-
+            db.collection("Chats").document(FamilyName.toString()).collection("BOARD").document(message).set(board_content) // 게시판 활성화
+            Toast.makeText(this, "게시판 업로드 완료!!", Toast.LENGTH_SHORT).show()
         }
 
 

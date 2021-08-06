@@ -64,26 +64,26 @@ class MainPageActivity : TabActivity() {
 
 
 
-        val tabHost = this.tabHost
+        //val tabHost = this.tabHost
 
-        val tabSpecHome = tabHost.newTabSpec("HOME").setIndicator("메인")
+        val tabSpecHome = tabhost.newTabSpec("HOME").setIndicator("메인")
         tabSpecHome.setContent(R.id.tabHome)
-        tabHost.addTab(tabSpecHome)
+        tabhost.addTab(tabSpecHome)
 
-        val tabSpecBoard = tabHost.newTabSpec("BOARD").setIndicator("게시판")
+        val tabSpecBoard = tabhost.newTabSpec("BOARD").setIndicator("게시판")
         tabSpecBoard.setContent(R.id.tabBoard)
-        tabHost.addTab(tabSpecBoard)
+        tabhost.addTab(tabSpecBoard)
 
-        val tabSpecCalendar = tabHost.newTabSpec("CALENDAR").setIndicator("달력")
+        val tabSpecCalendar = tabhost.newTabSpec("CALENDAR").setIndicator("달력")
         tabSpecCalendar.setContent(R.id.tabCalendar)
 
-        tabHost.addTab(tabSpecCalendar)
+        tabhost.addTab(tabSpecCalendar)
 
-        val tabSpecAlbum = tabHost.newTabSpec("ALBUM").setIndicator("앨범")
+        val tabSpecAlbum = tabhost.newTabSpec("ALBUM").setIndicator("앨범")
         tabSpecAlbum.setContent(R.id.tabAlbum)
-        tabHost.addTab(tabSpecAlbum)
+        tabhost.addTab(tabSpecAlbum)
 
-        tabHost.currentTab = 0
+        tabhost.currentTab = 0
 
         btnMain1.setOnClickListener {
             LinearMainpage.visibility = View.GONE
@@ -166,13 +166,9 @@ class MainPageActivity : TabActivity() {
 
         Board_Plus_Button.setOnClickListener(){ // 게시판 글 작성하기 페이지로 이동
             val intent = Intent(application, BoardActivity::class.java)
-            //intent.putExtra("FamilyName", FamilyName)
+            intent.putExtra("FamilyName", FamilyName)
             startActivity(intent)
 
-//            val intent = Intent().setClass(application, BoardActivity::class.java)
-//            intent.putExtra("FamilyName", FamilyName)
-//            startActivity(intent)
-//            //tabhost.addTab(tabhost.newTabSpec(R.id.tabhost))
         }
     }
 }
