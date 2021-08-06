@@ -128,9 +128,10 @@ class FamilySettingActivity : AppCompatActivity() {
                 val db: FirebaseFirestore = Firebase.firestore
                 var fbAuth = FirebaseAuth.getInstance() // 로그인
                 var uid = fbAuth?.uid.toString() // uid
+                var WelcomeMessage = "${editTextFamilyname.text.toString()}의 게시판이 활성화 되었습니다!"
                 db.collection("Chats").document(code).set(family) // db에 넣기
                 db.collection("Member").document(uid).collection("MYPAGE").document(code).set(family)
-                db.collection("Chats").document(code).collection("BOARD").document("${et_name.text.toString()}의 게시판이 활성화 되었습니다!").set(family) // 게시판 활성화
+                db.collection("Chats").document(code).collection("BOARD").document(WelcomeMessage).set(family) // 게시판 활성화
 
 
 
