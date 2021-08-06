@@ -334,13 +334,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
-                <TextView
+
+                <Button
+                    android:id="@+id/Board_Plus_Button"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="게시판 페이지"
-                    android:textSize="30dp"
-                    android:textStyle="bold"/>
+                    android:text="게시판 글 추가" />
 
                 <ScrollView
                     android:layout_width="match_parent"
@@ -350,8 +349,11 @@
                         android:id="@+id/Board_LinearLayout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical" />
+                        android:orientation="vertical" >
+
+                    </LinearLayout>
                 </ScrollView>
+
             </LinearLayout>
 
             <LinearLayout
