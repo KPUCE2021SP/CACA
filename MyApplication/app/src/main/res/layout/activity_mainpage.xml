@@ -341,6 +341,17 @@
                     android:text="게시판 페이지"
                     android:textSize="30dp"
                     android:textStyle="bold"/>
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:id="@+id/Board_LinearLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical" />
+                </ScrollView>
             </LinearLayout>
 
             <LinearLayout
