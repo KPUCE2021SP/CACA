@@ -21,6 +21,7 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_mainpage.*
+import kotlinx.android.synthetic.main.mypage_activity.*
 import kotlinx.android.synthetic.main.signuppage.*
 
 class MainPageActivity : TabActivity() {
@@ -156,9 +157,29 @@ class MainPageActivity : TabActivity() {
                     Board_LinearLayout.addView(containView)
 
                     val ContentView = containView as View
-                    var notice_board = ContentView.findViewById(R.id.notice_board) as TextView
-
+                    var notice_board = ContentView.findViewById(R.id.notice_board) as TextView // 내용
                     notice_board.text = document.id.toString()
+
+
+
+                    var notice_time = ContentView.findViewById(R.id.notice_time) as TextView // 시간
+
+                    val docRef1 = db.collection("Chats").document(FamilyName.toString()).collection("BOARD").document(document.id.toString()) // 여러 field값 가져오기
+                    docRef1.get()
+                            .addOnSuccessListener { document ->
+                                if (document != null) {
+                                    Log.d(ContentValues.TAG, "DocumentSnapshot data: ${document.data}")
+                                    //textViewName.setText(document.data?.get("name").toString()) // name 확인용
+                                    notice_time.setText(document.data?.get("time").toString())
+
+                                } else {
+                                    Log.d(ContentValues.TAG, "No such document")
+                                }
+                            }
+                            .addOnFailureListener { exception ->
+                                Log.d(ContentValues.TAG, "get failed with ", exception)
+                            }
+
                 }
             }
 

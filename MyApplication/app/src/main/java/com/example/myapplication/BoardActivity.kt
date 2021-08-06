@@ -17,6 +17,8 @@ import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_familysetting.*
 import kotlinx.android.synthetic.main.activity_mainpage.*
 import kotlinx.android.synthetic.main.board.*
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 //edit_board_content
 
@@ -36,12 +38,20 @@ class BoardActivity : AppCompatActivity() {
         val db: FirebaseFirestore = Firebase.firestore
 
 
+        val current = LocalDateTime.now() // 글 작성한 시간 가져오기
+        val formatter = DateTimeFormatter.ofPattern("yyyy년 MM월 dd일 HH시 mm분 ss초")
+        val formatted = current.format(formatter)
+
+
+
         val board_content = hashMapOf( // Family name
-            "name" to uid
+            "name" to uid,
+                "time" to formatted,
+                "timeStamp" to current
         )
 
 
-        boardUpload.setOnClickListener(){
+        boardUpload.setOnClickListener(){ // 게시판 글 업로드하기
             var message = edit_board_content.text.toString()
             db.collection("Chats").document(FamilyName.toString()).collection("BOARD").document(message).set(board_content) // 게시판 활성화
             Toast.makeText(this, "게시판 업로드 완료!!", Toast.LENGTH_SHORT).show()
