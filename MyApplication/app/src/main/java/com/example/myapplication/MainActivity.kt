@@ -152,8 +152,6 @@ class MainActivity : AppCompatActivity() {
                             intent.putExtra("FamilyName", mutableList[layoutIdx])
                             startActivity(intent)
                         }
-
-
                     }
 
 
@@ -169,6 +167,7 @@ class MainActivity : AppCompatActivity() {
                 val mVContentView = containView as View
                 val FamilyNameText = mVContentView.findViewById(R.id.item_title_d) as TextView
                 FamilyNameText.text = "가족 추가"
+                
 
                 val cardView_d = mVContentView.findViewById(R.id.cardView) as CardView
                 cardView_d.setOnClickListener(){ // 가족 추가 클릭하면 가족 추가 activity로 이동

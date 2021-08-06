@@ -6,6 +6,10 @@ import android.content.ContentValues.TAG
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.graphics.Matrix
+import android.media.ExifInterface
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
@@ -14,6 +18,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.*
+import androidx.annotation.ContentView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat.getSystemService
@@ -41,6 +46,7 @@ import com.google.firebase.firestore.FieldValue
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.UploadTask
+import com.google.firebase.storage.ktx.storage
 import kotlinx.android.synthetic.main.activity_familysetting.*
 import org.json.JSONObject
 import java.io.IOException
@@ -67,7 +73,12 @@ class MypageActivity : AppCompatActivity() {
         setContentView(R.layout.mypage_activity)
 
         btnLogout.setOnClickListener {
-            FirebaseAuth.getInstance().signOut()
+            Firebase.auth.signOut()
+            LoginActivity.MySharedPreferences.setUserId(this, "")
+            LoginActivity.MySharedPreferences.setUserPass(this, "")
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+            Toast.makeText(applicationContext, "로그아웃 되었습니다", Toast.LENGTH_SHORT).show()
         }
 
 
@@ -169,6 +180,25 @@ class MypageActivity : AppCompatActivity() {
                     Log.d(TAG, "get failed with ", exception)
                 }
             setContent(ll_contain, DummyData.sDummyData) // inflate
+
+            //프로필 가져오기
+            val imageName = "gs://cacafirebase-554ac.appspot.com/profiles/" + uid
+            Log.d("imageName", imageName)
+            val storage = Firebase.storage
+            val storageRef = storage.reference
+            val profileRef1 = storage.getReferenceFromUrl(imageName)
+            profileRef1?.getBytes(Long.MAX_VALUE)?.addOnSuccessListener {
+                val profilebmp = BitmapFactory.decodeByteArray(it, 0, it.size)
+                peopleFace.setImageBitmap(profilebmp)
+            }?.addOnFailureListener {
+                Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT).show()
+            }
+
+
+
+
+
+
             srl_main.isRefreshing = false // 인터넷 끊기
         }
 
@@ -181,7 +211,17 @@ class MypageActivity : AppCompatActivity() {
         saveProfile.setOnClickListener {
             uploadProfile()
         }
+
     }
+    private fun displayImageRef(imageRef: StorageReference?, view: ImageView) {
+        imageRef?.getBytes(Long.MAX_VALUE)?.addOnSuccessListener {
+            val bmp = BitmapFactory.decodeByteArray(it, 0, it.size)
+            view.setImageBitmap(bmp)
+        }?.addOnFailureListener {
+            // Failed to download the image
+        }
+    }
+
 
     //프로필 사진 업로드
     private fun ImagePicker() {
@@ -208,8 +248,9 @@ class MypageActivity : AppCompatActivity() {
     }
 
     private fun uploadProfile(){ // fireStore upload
+        val uidText : String = uid
         if(filePath != null){
-            val ref = storageReference?.child("profiles/" + "profile")
+            val ref = storageReference?.child("profiles/" + uidText)
             ref?.putFile(filePath!!)?.addOnSuccessListener(OnSuccessListener<UploadTask.TaskSnapshot> {
                 Toast.makeText(applicationContext, "Image Uploaded", Toast.LENGTH_SHORT).show()
             })?.addOnFailureListener(OnFailureListener { e ->
@@ -225,8 +266,28 @@ class MypageActivity : AppCompatActivity() {
     }
 
 
+    // 사진이 몇도 회전했는지 알아보기
+    private fun exifOrientationToDegress(exifOrientation: Int): Int {
+        when(exifOrientation){
+            ExifInterface.ORIENTATION_ROTATE_90 -> return 90
+
+            ExifInterface.ORIENTATION_ROTATE_180 -> return 180
+
+            ExifInterface.ORIENTATION_ROTATE_270 -> return 270
+
+            else -> return 0
 
 
+        }
+    }
+
+    //사진 회전해주기
+    private fun rotate(bitmap: Bitmap, degree: Int) : Bitmap {
+        Log.d("rotate","init rotate")
+        val matrix = Matrix()
+        matrix.postRotate(degree.toFloat())
+        return Bitmap.createBitmap(bitmap, 0, 0, bitmap.width, bitmap.height, matrix,true)
+    }
 
 
     private fun setContent(layout: LinearLayout, content: String) {
@@ -348,6 +409,8 @@ class MypageActivity : AppCompatActivity() {
             // TODO: get your code!
             Log.e("ERROR!", "Content is empty!");
         }
+
+
     }
 
 }
