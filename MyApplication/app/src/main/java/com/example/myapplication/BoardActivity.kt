@@ -28,7 +28,6 @@ import java.time.format.DateTimeFormatter
 
 class BoardActivity : AppCompatActivity() {
     var mutableList: MutableList<String> = mutableListOf("a")
-    var
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
