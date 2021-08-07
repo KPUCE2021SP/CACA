@@ -22,7 +22,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
-        <activity android:name=".LoginActivity">
+        <activity android:name=".NotificationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -37,6 +37,8 @@
         <activity android:name=".MainPageActivity"></activity>
 
         <activity android:name=".BoardActivity"></activity>
+
+<!--        <activity android:name=".NotificationActivity"></activity>-->
 
 
         <activity android:name=".StartActivity" />
