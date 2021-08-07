@@ -22,6 +22,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.messaging.FirebaseMessaging
+import com.google.firebase.messaging.RemoteMessage
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.ktx.storage
@@ -75,7 +76,7 @@ class MainActivity : AppCompatActivity() {
             db.collection("Member").document(uid).collection("DEVICE").document("TOKEN").set(deviceInfo)
 
 
-            
+
         })
 
 
@@ -224,4 +225,5 @@ class MainActivity : AppCompatActivity() {
 
 
 }
+
 
