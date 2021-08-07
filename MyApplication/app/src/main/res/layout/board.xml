@@ -23,13 +23,14 @@
             android:id="@+id/boardRtn"/>
 
         <TextView
-            android:text="글쓰기"
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:textSize="20dp"
+            android:id="@+id/aaaaaaa"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="7"/>
+            android:layout_gravity="center"
+            android:layout_weight="7"
+            android:gravity="center"
+            android:text="글쓰기"
+            android:textSize="20dp" />
 
         <Button
             android:layout_width="wrap_content"
@@ -145,6 +146,10 @@
             android:layout_marginRight="20dp"
             android:id="@+id/boardMention"
             android:src="@drawable/mention" />
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinner_member"/>
 
     </LinearLayout>
 </LinearLayout>
