@@ -72,14 +72,7 @@ class MypageActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.mypage_activity)
 
-        btnLogout.setOnClickListener {
-            Firebase.auth.signOut()
-            LoginActivity.MySharedPreferences.setUserId(this, "")
-            LoginActivity.MySharedPreferences.setUserPass(this, "")
-            val intent = Intent(this, LoginActivity::class.java)
-            startActivity(intent)
-            Toast.makeText(applicationContext, "로그아웃 되었습니다", Toast.LENGTH_SHORT).show()
-        }
+
 
 
         // firestore에서 정보 받아와서 DummyData 덮어쓰기
@@ -120,9 +113,29 @@ class MypageActivity : AppCompatActivity() {
             }
 
 
+        //프로필 가져오기
+        val imageName = "gs://cacafirebase-554ac.appspot.com/profiles/" + uid
+        Log.d("imageName", imageName)
+        val storage = Firebase.storage
+        val storageRef = storage.reference
+        val profileRef1 = storage.getReferenceFromUrl(imageName)
+        profileRef1?.getBytes(Long.MAX_VALUE)?.addOnSuccessListener {
+            val profilebmp = BitmapFactory.decodeByteArray(it, 0, it.size)
+            peopleFace.setImageBitmap(profilebmp)
+        }?.addOnFailureListener {
+            Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT).show()
+        }
 
 
 
+        btnLogout.setOnClickListener {
+            Firebase.auth.signOut()
+            LoginActivity.MySharedPreferences.setUserId(this, "")
+            LoginActivity.MySharedPreferences.setUserPass(this, "")
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+            Toast.makeText(applicationContext, "로그아웃 되었습니다", Toast.LENGTH_SHORT).show()
+        }
 
 
 
