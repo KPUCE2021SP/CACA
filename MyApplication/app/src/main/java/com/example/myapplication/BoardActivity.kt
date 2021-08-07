@@ -4,6 +4,7 @@ import android.app.TabActivity
 import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
+import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
@@ -18,9 +19,13 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
+import com.google.firebase.storage.ktx.storage
 import kotlinx.android.synthetic.main.activity_familysetting.*
 import kotlinx.android.synthetic.main.activity_mainpage.*
 import kotlinx.android.synthetic.main.board.*
+import kotlinx.android.synthetic.main.mypage_activity.*
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
@@ -29,12 +34,29 @@ import java.time.format.DateTimeFormatter
 
 
 class BoardActivity : AppCompatActivity() {
+    var fbAuth = FirebaseAuth.getInstance() // 로그인
     var mutableList: MutableList<String> = mutableListOf("a")
-
+    var uid = fbAuth?.uid.toString() // uid
+    private var storageReference: StorageReference? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        storageReference = FirebaseStorage.getInstance().reference
         super.onCreate(savedInstanceState)
         setContentView(R.layout.board)
+
+
+        //프로필사진 불러오기
+        val imageName = "gs://cacafirebase-554ac.appspot.com/profiles/" + uid
+        Log.d("imageName", imageName)
+        val storage = Firebase.storage
+        val storageRef = storage.reference
+        val profileRef1 = storage.getReferenceFromUrl(imageName)
+        profileRef1?.getBytes(Long.MAX_VALUE)?.addOnSuccessListener {
+            val profilebmp = BitmapFactory.decodeByteArray(it, 0, it.size)
+            board_Profile.setImageBitmap(profilebmp)
+        }?.addOnFailureListener {
+            Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT).show()
+        }
 
 
         val FamilyName = intent.getStringExtra("FamilyName") // 제목 선정

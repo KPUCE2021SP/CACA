@@ -64,7 +64,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1">
 
-            <ImageView
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/board_Profile"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_margin="5dp"
