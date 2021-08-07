@@ -118,13 +118,10 @@ dependencies {
     implementation 'com.google.firebase:firebase-messaging-ktx'
     implementation 'com.google.firebase:firebase-analytics-ktx'
 
-<<<<<<< HEAD
 
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'de.hdodenhof:circleimageview:3.1.0'
-=======
     implementation 'androidx.work:work-runtime:2.5.0'
->>>>>>> e436a95e5663a657980e1b922d1bf9cd6e9c02ba
 
 }
