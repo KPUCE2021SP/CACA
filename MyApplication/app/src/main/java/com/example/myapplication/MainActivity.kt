@@ -11,27 +11,30 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.Target
+import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.messaging.FirebaseMessaging
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.ktx.storage
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.card_layout.*
 import kotlinx.android.synthetic.main.mypage_activity.*
+import kotlinx.android.synthetic.main.signuppage.*
 import java.util.*
 
 
 class MainActivity : AppCompatActivity() {
 
     private var isFabOpen = false
-//    lateinit var storage: FirebaseStorage
 
     var fbAuth = FirebaseAuth.getInstance() // 로그인
     var fbFire = FirebaseFirestore.getInstance()
@@ -39,21 +42,41 @@ class MainActivity : AppCompatActivity() {
     var uid = fbAuth?.uid.toString() // uid
     var uemail = fbAuth?.currentUser?.email.toString()
 
+    val db: FirebaseFirestore = Firebase.firestore
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
 
 
+        // 기기 정보 저장
+
+        FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
+            if (!task.isSuccessful) {
+                Log.w(TAG, "Fetching FCM registration token failed", task.exception)
+                return@OnCompleteListener
+            }
+
+            // Get new FCM registration token
+            val token = task.result
+
+            // Log and toast
+            val msg = getString(R.string.msg_token_fmt, token)
+            Log.d(TAG, msg)
+            Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
 
 
+            val deviceInfo = hashMapOf( // device Token DB에 넣기
+                "deviceInfo" to msg.toString()
+            )
+
+            db.collection("Member").document(uid).collection("DEVICE").document("TOKEN").set(deviceInfo)
 
 
-
-
-
-
-
+            
+        })
 
 
 
@@ -198,4 +221,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+
+
 }
+

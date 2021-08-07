@@ -44,17 +44,6 @@ class SignUpActivity : AppCompatActivity() {
 
         btn_signUp.setOnClickListener {
             editFull()
-
-
-//            val human = hashMapOf(      //db에 넣기
-//                "name" to et_name.text.toString(),
-//                "birthday" to et_birthday.text.toString(),
-//                "phone" to et_phone.text.toString(),
-//                "address" to et_address.text.toString(),
-//                "family" to null
-//            )
-//
-//            db.collection("Member").document(uid).set(human) // db에 넣기
         }
         et_passwordConfirm.setOnFocusChangeListener { v, hasFocus ->
             if (hasFocus) {
@@ -68,34 +57,6 @@ class SignUpActivity : AppCompatActivity() {
 
     }
 
-//    fun birtydayLength(){   //생년월일 확인
-//        if (et_birthday.length() == 8){
-//        } else{
-//            Toast.makeText(applicationContext, "생년월일을 다시 확인해주세요", Toast.LENGTH_SHORT).show()
-//        }
-//    }
-//    fun phoneNumberLength(){       //전화번호 확인
-//        if (et_phone.length() == 11){
-//        } else{
-//            Toast.makeText(applicationContext, "전화번호를 다시 확인해주세요", Toast.LENGTH_SHORT).show()
-//        }
-//    }
-
-//    fun checkPwPattern(){
-//        if(isValidPasswd == false){
-////            warning_pwd_pattern.setTextColor(Color.RED)
-//        } else {
-////            warning_pwd_pattern.setTextColor(Color.parseColor("#606060"))
-//        }
-//    }
-//
-//    fun checkEmailPattern(){
-//        if(isValidEmail == false){
-////            warning_id_pattern.setTextColor(Color.RED)
-//        } else {
-////            warning_id_pattern.setTextColor(Color.parseColor("FFFFFF"))
-//        }
-//    }
 
     private fun samePwd(){  //비밀번호 일치하는지 확인
         if (et_password.text.toString() != et_passwordConfirm.text.toString() || et_password.getText().toString().equals("")){
