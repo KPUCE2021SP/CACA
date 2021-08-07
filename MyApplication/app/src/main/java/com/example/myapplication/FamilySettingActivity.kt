@@ -30,6 +30,7 @@ import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.UploadTask
 import com.google.firebase.storage.ktx.storage
 import kotlinx.android.synthetic.main.activity_familysetting.*
+import kotlinx.android.synthetic.main.board.*
 import kotlinx.android.synthetic.main.signuppage.*
 import java.io.File
 import java.io.FileOutputStream
@@ -37,6 +38,8 @@ import java.io.IOException
 import java.io.OutputStream
 import java.util.*
 import java.util.jar.Manifest
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 
 
@@ -131,7 +134,23 @@ class FamilySettingActivity : AppCompatActivity() {
                 var WelcomeMessage = "${editTextFamilyname.text.toString()}의 게시판이 활성화 되었습니다!"
                 db.collection("Chats").document(code).set(family) // db에 넣기
                 db.collection("Member").document(uid).collection("MYPAGE").document(code).set(family)
-                db.collection("Chats").document(code).collection("BOARD").document(WelcomeMessage).set(family) // 게시판 활성화
+
+
+
+                ///////// 가족 게시판 활성화
+                val current = LocalDateTime.now() // 글 작성한 시간 가져오기 ///////// 가족 게시판 활성화
+                val formatter = DateTimeFormatter.ofPattern("yyyy년 MM월 dd일 HH시 mm분 ss초")
+                val formatted = current.format(formatter)
+
+                val board_content = hashMapOf( // Family name
+                    "contents" to WelcomeMessage,
+                    "uid" to uid,
+                    "time" to formatted,
+                    "timeStamp" to current
+                )
+
+                db.collection("Chats").document(code).collection("BOARD").document(formatted).set(board_content) // 게시판 활성화
+                //db.collection("Chats").document(code).collection("BOARD").document(WelcomeMessage).set(family) // 게시판 활성화
 
 
 
