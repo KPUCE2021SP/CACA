@@ -58,6 +58,7 @@ class LoginActivity : AppCompatActivity() {
             //}
         }
         else { // SharedPreferences 안에 값이 저장되어 있을 때 -> MainActivity로 이동
+
             Toast.makeText(this, "${MySharedPreferences.getUserId(this)}님 자동 로그인 되었습니다.", Toast.LENGTH_SHORT).show()
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
@@ -124,16 +125,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
 
-
-//    private fun signUp() {
-//        email = editTextEmail!!.text.toString()
-//        password = editTextPassword!!.text.toString()
-//        if (isValidEmail && isValidPasswd) {
-//            createUser(email, password)
-//        }
-//    }
-
-    private fun signIn() {
+    private fun signIn() { // 로그인
         //fun signIn() {
         email = editTextEmail!!.text.toString()
         password = editTextPassword!!.text.toString()
@@ -160,27 +152,7 @@ class LoginActivity : AppCompatActivity() {
 
         }
 
-//    // 회원가입
-//    private fun createUser(email: String, password: String) {
-//        firebaseAuth!!.createUserWithEmailAndPassword(email, password)
-//            .addOnCompleteListener(this){
-//                if (it.isSuccessful) {
-//                    // 회원가입 성공
-//                    Toast.makeText(
-//                        this@LoginActivity,
-//                        "회원가입 성공!",
-//                        Toast.LENGTH_SHORT
-//                    ).show()
-//                } else {
-//                    // 회원가입 실패
-//                    Toast.makeText(
-//                        this@LoginActivity,
-//                        "회원가입 실패",
-//                        Toast.LENGTH_SHORT
-//                    ).show()
-//                }
-//            }
-//    }
+
 
     // 로그인
     private fun loginUser(email: String, password: String) {
@@ -213,59 +185,8 @@ class LoginActivity : AppCompatActivity() {
         val PASSWORD_PATTERN =
             Pattern.compile("^[a-zA-Z0-9!@.#$%^&*?_~]{4,16}$")
     }
+
+
+
+
 }
-
-
-
-
-
-
-
-//import android.content.Intent
-//import android.graphics.BitmapFactory
-//import android.os.Bundle
-//import android.os.PersistableBundle
-//import android.widget.Toast
-//import androidx.appcompat.app.AppCompatActivity
-//import com.google.firebase.auth.ktx.auth
-//import com.google.firebase.ktx.Firebase
-//import com.google.firebase.storage.ktx.storage
-//import kotlinx.android.synthetic.main.loginactivity.*
-//
-//class LoginActivity :AppCompatActivity() {
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//        //setContentView(null)
-//        setContentView(R.layout.loginactivity)
-//
-//
-//        SignUp.setOnClickListener {
-//            val userEmail = editID.text.toString()
-//            val password = editpw.text.toString()
-//            Firebase.auth.createUserWithEmailAndPassword(userEmail, password)
-//                .addOnCompleteListener(this){
-//                    if(it.isSuccessful){
-//                        startActivity(Intent(this, MainActivity::class.java))
-//                    } else{
-//                        Toast.makeText(this, "Login Failed", Toast.LENGTH_SHORT).show()
-//                    }
-//                }
-//        }
-//        SignIn.setOnClickListener {
-//            val userEmail = editID.text.toString()
-//            val password = editpw.text.toString()
-//            Firebase.auth.signInWithEmailAndPassword(userEmail, password)
-//                .addOnCompleteListener(this){
-//                    if(it.isSuccessful){
-//                        startActivity(Intent(this, MainActivity::class.java))
-//                    } else{
-//                        Toast.makeText(this, "Login Failed", Toast.LENGTH_SHORT).show()
-//                    }
-//                }
-//
-//        }
-//
-//
-//
-//    }
-//}
