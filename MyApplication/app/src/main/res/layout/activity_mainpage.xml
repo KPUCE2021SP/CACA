@@ -343,18 +343,33 @@
                     android:layout_height="wrap_content"
                     android:text="게시판 글 작성하기" />
 
-                <ScrollView
+                <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                    android:id="@+id/srl_Mainpage"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="wrap_content">
 
-                    <LinearLayout
-                        android:id="@+id/Board_LinearLayout"
+                    <ScrollView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical" >
+                        android:layout_height="match_parent">
 
-                    </LinearLayout>
-                </ScrollView>
+                        <LinearLayout
+                            android:id="@+id/Board_LinearLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical" >
+
+                        </LinearLayout>
+                    </ScrollView>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_main"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                    </androidx.recyclerview.widget.RecyclerView>
+
+                </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
 
             </LinearLayout>
 
