@@ -3,6 +3,8 @@ package com.example.myapplication
 import android.app.TabActivity
 import android.content.ContentValues
 import android.content.Context
+import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -63,6 +65,24 @@ class BoardActivity : AppCompatActivity() {
 
             db.collection("Chats").document(FamilyName.toString()).collection("BOARD").document(formatted).set(board_content) // 게시판 활성화
             Toast.makeText(this, "게시판 업로드 완료!!", Toast.LENGTH_SHORT).show()
+
+
+            //게시판으로 돌아가기기
+//            LinearMainage.visibility = View.GONE
+//            LinearMain1.visibility = View.GONE
+//            LinearMain2.visibility = View.VISIBLE
+//            LinearMain3.visibility = View.GONE
+//            LinearMain4.visibility = View.GONE
+//            val intent = Intent(application, MainPageActivity::class.java)
+//            startActivity(intent)
+            finish()
+//            LinearMainpage.visibility = View.GONE
+//            LinearMain1.visibility = View.GONE
+//            LinearMain2.visibility = View.VISIBLE
+//            LinearMain3.visibility = View.GONE
+//            LinearMain4.visibility = View.GONE
+
+
         }
 
 

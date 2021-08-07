@@ -142,88 +142,174 @@ class MainPageActivity : TabActivity() {
 
         }
 
-
-        // 게시판 동적 생성
-        // Board_LineaLayout
+// Board_LineaLayout
         var mutableList : MutableList<String> = mutableListOf("a")
         mutableList.clear()
 
         db.collection("Chats").document(FamilyName.toString()).collection("BOARD")
-                .get()
-                .addOnSuccessListener { documents ->
-                    for (document1 in documents) {
-                        Log.d(ContentValues.TAG, "${document1.id} => ${document1.data}")
-                        mutableList.add(document1.id.toString())
-                    }
-
-
-                    MMMAinPage.text = mutableList.toString()
-                    //for (i in 0..(mutableList.size - 1)) { // 거꾸로
-                    for (i in 0..(mutableList.size - 1)) { // 거꾸로
-                        val layoutInflater = this.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-                        val containView = layoutInflater.inflate(R.layout.notice_card, null) // mypage_content를 inflate
-                        Board_LinearLayout.addView(containView)
-
-
-                        val ContentView = containView as View
-                        var notice_board = ContentView.findViewById(R.id.notice_board) as TextView // 내용
-                        var notice_time = ContentView.findViewById(R.id.notice_time) as TextView // 시간
-                        var notice_name = ContentView.findViewById(R.id.notice_name) as TextView // uid
-                        var notice_profile = ContentView.findViewById(R.id.notice_profile) as ImageView // profile Image
-
-                        val docRef1 = db.collection("Chats").document(FamilyName.toString()).collection("BOARD").document(mutableList[(mutableList.size - 1)-i]) // 여러 field값 가져오기
-                        docRef1.get()
-                                .addOnSuccessListener { document2 ->
-                                    if (document2 != null) {
-                                        Log.d(ContentValues.TAG, "DocumentSnapshot data: ${document2.data}")
-                                        //textViewName.setText(document.data?.get("name").toString()) // name 확인용
-                                        notice_time.setText(document2.data?.get("time").toString())
-                                        notice_board.setText(document2.data?.get("contents").toString())
-                                        //notice_board.setText(mutableList.toString()) //////////////////////////////test
-
-
-                                        // profile Image
-                                        // document2.data?.get("uid").toString()
-                                        val imageName = "gs://cacafirebase-554ac.appspot.com/profiles/" + document2.data?.get("uid").toString()
-                                        Log.d("imageName", imageName)
-                                        val storage = Firebase.storage
-                                        val storageRef = storage.reference
-                                        val profileRef1 = storage.getReferenceFromUrl(imageName)
-                                        profileRef1?.getBytes(Long.MAX_VALUE)?.addOnSuccessListener {
-                                            val profilebmp = BitmapFactory.decodeByteArray(it, 0, it.size)
-                                            notice_profile.setImageBitmap(profilebmp) // 작성한 사람 uid로 profileImage 변경!
-                                        }?.addOnFailureListener {
-                                            Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT).show()
-                                        }
-
-                                        // uid to Name
-                                        val docRef = db.collection("Member").document(document2.data?.get("uid").toString())
-                                        docRef.get()
-                                                .addOnSuccessListener { document3 ->
-                                                    if (document3 != null) {
-                                                        Log.d(ContentValues.TAG, "DocumentSnapshot data: ${document3.data}")
-                                                        notice_name.setText(document3.data?.get("name").toString()) // name 확인용
-
-                                                    } else {
-                                                        Log.d(ContentValues.TAG, "No such document")
-                                                    }
-                                                }
-                                                .addOnFailureListener { exception ->
-                                                    Log.d(ContentValues.TAG, "get failed with ", exception)
-                                                }
-
-                                    } else {
-                                        Log.d(ContentValues.TAG, "No such document")
-                                    }
-                                }
-                                .addOnFailureListener { exception ->
-                                    Log.d(ContentValues.TAG, "get failed with ", exception)
-                                }
-
-
-
-                    }
+            .get()
+            .addOnSuccessListener { documents ->
+                for (document1 in documents) {
+                    Log.d(ContentValues.TAG, "${document1.id} => ${document1.data}")
+                    mutableList.add(document1.id.toString())
                 }
+
+
+                MMMAinPage.text = mutableList.toString()
+                //for (i in 0..(mutableList.size - 1)) { // 거꾸로
+                for (i in 0..(mutableList.size - 1)) { // 거꾸로
+                    val layoutInflater = this.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+                    val containView = layoutInflater.inflate(R.layout.notice_card, null) // mypage_content를 inflate
+                    Board_LinearLayout.addView(containView)
+
+
+                    val ContentView = containView as View
+                    var notice_board = ContentView.findViewById(R.id.notice_board) as TextView // 내용
+                    var notice_time = ContentView.findViewById(R.id.notice_time) as TextView // 시간
+                    var notice_name = ContentView.findViewById(R.id.notice_name) as TextView // uid
+                    var notice_profile = ContentView.findViewById(R.id.notice_profile) as ImageView // profile Image
+
+                    val docRef1 = db.collection("Chats").document(FamilyName.toString()).collection("BOARD").document(mutableList[(mutableList.size - 1)-i]) // 여러 field값 가져오기
+                    docRef1.get()
+                        .addOnSuccessListener { document2 ->
+                            if (document2 != null) {
+                                Log.d(ContentValues.TAG, "DocumentSnapshot data: ${document2.data}")
+                                //textViewName.setText(document.data?.get("name").toString()) // name 확인용
+                                notice_time.setText(document2.data?.get("time").toString())
+                                notice_board.setText(document2.data?.get("contents").toString())
+                                //notice_board.setText(mutableList.toString()) //////////////////////////////test
+
+
+                                // profile Image
+                                // document2.data?.get("uid").toString()
+                                val imageName = "gs://cacafirebase-554ac.appspot.com/profiles/" + document2.data?.get("uid").toString()
+                                Log.d("imageName", imageName)
+                                val storage = Firebase.storage
+                                val storageRef = storage.reference
+                                val profileRef1 = storage.getReferenceFromUrl(imageName)
+                                profileRef1?.getBytes(Long.MAX_VALUE)?.addOnSuccessListener {
+                                    val profilebmp = BitmapFactory.decodeByteArray(it, 0, it.size)
+                                    notice_profile.setImageBitmap(profilebmp) // 작성한 사람 uid로 profileImage 변경!
+                                }?.addOnFailureListener {
+                                    Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT).show()
+                                }
+
+                                // uid to Name
+                                val docRef = db.collection("Member").document(document2.data?.get("uid").toString())
+                                docRef.get()
+                                    .addOnSuccessListener { document3 ->
+                                        if (document3 != null) {
+                                            Log.d(ContentValues.TAG, "DocumentSnapshot data: ${document3.data}")
+                                            notice_name.setText(document3.data?.get("name").toString()) // name 확인용
+
+                                        } else {
+                                            Log.d(ContentValues.TAG, "No such document")
+                                        }
+                                    }
+                                    .addOnFailureListener { exception ->
+                                        Log.d(ContentValues.TAG, "get failed with ", exception)
+                                    }
+
+                            } else {
+                                Log.d(ContentValues.TAG, "No such document")
+                            }
+                        }
+                        .addOnFailureListener { exception ->
+                            Log.d(ContentValues.TAG, "get failed with ", exception)
+                        }
+
+
+
+                }
+            }
+
+
+        //게시판 새로고침하기
+        srl_Mainpage.setOnRefreshListener {
+        // 게시판 동적 생성
+            // Board_LineaLayout
+            Board_LinearLayout.removeAllViews()
+            var mutableList : MutableList<String> = mutableListOf("a")
+            mutableList.clear()
+
+            db.collection("Chats").document(FamilyName.toString()).collection("BOARD")
+                    .get()
+                    .addOnSuccessListener { documents ->
+                        for (document1 in documents) {
+                            Log.d(ContentValues.TAG, "${document1.id} => ${document1.data}")
+                            mutableList.add(document1.id.toString())
+                        }
+
+
+                        MMMAinPage.text = mutableList.toString()
+                        //for (i in 0..(mutableList.size - 1)) { // 거꾸로
+                        for (i in 0..(mutableList.size - 1)) { // 거꾸로
+                            val layoutInflater = this.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+                            val containView = layoutInflater.inflate(R.layout.notice_card, null) // mypage_content를 inflate
+                            Board_LinearLayout.addView(containView)
+
+
+                            val ContentView = containView as View
+                            var notice_board = ContentView.findViewById(R.id.notice_board) as TextView // 내용
+                            var notice_time = ContentView.findViewById(R.id.notice_time) as TextView // 시간
+                            var notice_name = ContentView.findViewById(R.id.notice_name) as TextView // uid
+                            var notice_profile = ContentView.findViewById(R.id.notice_profile) as ImageView // profile Image
+
+                            val docRef1 = db.collection("Chats").document(FamilyName.toString()).collection("BOARD").document(mutableList[(mutableList.size - 1)-i]) // 여러 field값 가져오기
+                            docRef1.get()
+                                    .addOnSuccessListener { document2 ->
+                                        if (document2 != null) {
+                                            Log.d(ContentValues.TAG, "DocumentSnapshot data: ${document2.data}")
+                                            //textViewName.setText(document.data?.get("name").toString()) // name 확인용
+                                            notice_time.setText(document2.data?.get("time").toString())
+                                            notice_board.setText(document2.data?.get("contents").toString())
+                                            //notice_board.setText(mutableList.toString()) //////////////////////////////test
+
+
+                                            // profile Image
+                                            // document2.data?.get("uid").toString()
+                                            val imageName = "gs://cacafirebase-554ac.appspot.com/profiles/" + document2.data?.get("uid").toString()
+                                            Log.d("imageName", imageName)
+                                            val storage = Firebase.storage
+                                            val storageRef = storage.reference
+                                            val profileRef1 = storage.getReferenceFromUrl(imageName)
+                                            profileRef1?.getBytes(Long.MAX_VALUE)?.addOnSuccessListener {
+                                                val profilebmp = BitmapFactory.decodeByteArray(it, 0, it.size)
+                                                notice_profile.setImageBitmap(profilebmp) // 작성한 사람 uid로 profileImage 변경!
+                                            }?.addOnFailureListener {
+                                                Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT).show()
+                                            }
+
+                                            // uid to Name
+                                            val docRef = db.collection("Member").document(document2.data?.get("uid").toString())
+                                            docRef.get()
+                                                    .addOnSuccessListener { document3 ->
+                                                        if (document3 != null) {
+                                                            Log.d(ContentValues.TAG, "DocumentSnapshot data: ${document3.data}")
+                                                            notice_name.setText(document3.data?.get("name").toString()) // name 확인용
+
+                                                        } else {
+                                                            Log.d(ContentValues.TAG, "No such document")
+                                                        }
+                                                    }
+                                                    .addOnFailureListener { exception ->
+                                                        Log.d(ContentValues.TAG, "get failed with ", exception)
+                                                    }
+
+                                        } else {
+                                            Log.d(ContentValues.TAG, "No such document")
+                                        }
+                                    }
+                                    .addOnFailureListener { exception ->
+                                        Log.d(ContentValues.TAG, "get failed with ", exception)
+                                    }
+
+
+
+                        }
+                    }
+            srl_Mainpage.isRefreshing = false // 인터넷 끊기
+        }
 
 
     }
