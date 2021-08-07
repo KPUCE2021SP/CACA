@@ -59,12 +59,6 @@ class LoginActivity : AppCompatActivity() {
         }
         else { // SharedPreferences 안에 값이 저장되어 있을 때 -> MainActivity로 이동
 
-            // 기기 정보 저장
-                //
-
-
-
-
             Toast.makeText(this, "${MySharedPreferences.getUserId(this)}님 자동 로그인 되었습니다.", Toast.LENGTH_SHORT).show()
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
@@ -193,6 +187,6 @@ class LoginActivity : AppCompatActivity() {
     }
 
 
-    
+
 
 }
