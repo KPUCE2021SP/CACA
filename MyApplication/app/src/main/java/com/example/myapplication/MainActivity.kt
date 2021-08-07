@@ -44,6 +44,7 @@ class MainActivity : AppCompatActivity() {
 
     val db: FirebaseFirestore = Firebase.firestore
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -72,6 +73,9 @@ class MainActivity : AppCompatActivity() {
             )
 
             db.collection("Member").document(uid).collection("DEVICE").document("TOKEN").set(deviceInfo)
+
+
+            
         })
 
 
@@ -217,4 +221,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+
+
 }
+
