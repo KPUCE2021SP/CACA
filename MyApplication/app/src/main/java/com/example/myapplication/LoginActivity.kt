@@ -191,5 +191,8 @@ class LoginActivity : AppCompatActivity() {
         val PASSWORD_PATTERN =
             Pattern.compile("^[a-zA-Z0-9!@.#$%^&*?_~]{4,16}$")
     }
+
+
     
+
 }
