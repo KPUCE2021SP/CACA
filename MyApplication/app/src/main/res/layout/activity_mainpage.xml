@@ -37,6 +37,18 @@
                 android:textSize="20dp"
                 android:textStyle="bold" />
 
+<!--            <TextView-->
+<!--                android:id="@+id/MMMAinPage"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:layout_weight="3"-->
+<!--                android:gravity="center"-->
+<!--                android:text="Familyship"-->
+<!--                android:textColor="@color/white"-->
+<!--                android:textSize="20dp"-->
+<!--                android:textStyle="bold" />-->
+
             <ImageButton
                 android:id="@+id/btnGroup"
                 android:layout_width="40dp"
@@ -289,23 +301,24 @@
                         android:textSize="30dp"
                         android:textStyle="bold"/>
                 </LinearLayout>
-                <!--                -->
+                <!--      minigame page         -->
                 <LinearLayout
                     android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:id="@+id/LinearMain3"
                     android:orientation="vertical">
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="미니게임 페이지"
-                        android:textSize="30dp"
-                        android:textStyle="bold"/>
+<!--                    <TextView-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:gravity="center"-->
+<!--                        android:text="미니게임 페이지"-->
+<!--                        android:textSize="30dp"-->
+<!--                        android:textStyle="bold"/>-->
                     <ScrollView
                         xmlns:android="http://schemas.android.com/apk/res/android"
                         xmlns:tools="http://schemas.android.com/tools"
+                        android:background="@color/white"
                         android:layout_margin="10dp"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
@@ -317,31 +330,6 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             tools:context=".MainActivity">
-
-                            <LinearLayout
-                                android:layout_margin="10dp"
-                                android:gravity="right"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                tools:ignore="RtlHardcoded">
-
-                                <ImageView
-                                    android:id="@+id/language_setting"
-                                    android:background="@drawable/keyboard_negative"
-                                    android:layout_width="30dp"
-                                    android:layout_height="30dp"
-                                    android:contentDescription="@string/language_setting" />
-
-                            </LinearLayout>
-
-
-
-                            <ImageView
-                                android:layout_marginTop="10dp"
-                                android:background="@drawable/random2_negative"
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
-                                android:contentDescription="@string/app_icon" />
 
                             <HorizontalScrollView
                                 android:fadeScrollbars="false"
@@ -362,15 +350,13 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:gravity="center"
-                                        android:text="@string/Txt_Print"
-                                        android:textColor="@color/white"
+                                        android:textColor="@color/black"
+                                        android:text="미니게임"
                                         android:textSize="30sp" />
-
 
                                 </LinearLayout>
 
                             </HorizontalScrollView>
-
 
                             <LinearLayout
                                 android:orientation="vertical"
@@ -381,14 +367,14 @@
                                 <Button
                                     android:drawableStart="@drawable/ic_left_random"
                                     android:id="@+id/btn_pick"
-                                    android:text="@string/Btn_Pick"
+                                    android:text="한명만 뽑기"
                                     android:layout_width="300dp"
                                     android:layout_height="50dp"/>
 
                                 <Button
                                     android:drawableStart="@drawable/ic_left_rank"
                                     android:id="@+id/btn_one_pick"
-                                    android:text="@string/Btn_One_Pick"
+                                    android:text="순위 정하기"
                                     android:layout_width="300dp"
                                     android:layout_height="50dp"/>
 
@@ -427,6 +413,8 @@
                                         android:hint="@string/Txt_Input"
                                         android:layout_width="300dp"
                                         android:layout_height="40dp"
+                                        android:textColor="@color/black"
+                                        android:background="@null"
                                         android:autofillHints=""
                                         android:inputType="text" />
 
@@ -439,9 +427,11 @@
 
                                     <EditText
                                         android:id="@+id/edit_input2"
-                                        android:hint="@string/please_enter_a_candidate"
+                                        android:hint="후보를 입력해주세요."
                                         android:layout_width="300dp"
                                         android:layout_height="40dp"
+                                        android:textColor="@color/black"
+                                        android:background="@null"
                                         android:autofillHints=""
                                         android:inputType="text" />
 
@@ -574,12 +564,8 @@
                                             android:inputType="text" />
                                     </LinearLayout>
 
-
                                 </LinearLayout>
                             </LinearLayout>
-
-
-
 
                         </LinearLayout>
                     </ScrollView>

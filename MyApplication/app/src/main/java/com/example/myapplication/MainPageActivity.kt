@@ -158,7 +158,7 @@ class MainPageActivity : TabActivity() {
                 }
 
 
-                MMMAinPage.text = mutableList.toString()
+//                MMMAinPage.text = mutableList.toString()
                 //for (i in 0..(mutableList.size - 1)) { // 거꾸로
                 for (i in 0..(mutableList.size - 1)) { // 거꾸로
                     val layoutInflater = this.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
@@ -244,7 +244,7 @@ class MainPageActivity : TabActivity() {
                         }
 
 
-                        MMMAinPage.text = mutableList.toString()
+//                        MMMAinPage.text = mutableList.toString()
                         //for (i in 0..(mutableList.size - 1)) { // 거꾸로
                         for (i in 0..(mutableList.size - 1)) { // 거꾸로
                             val layoutInflater = this.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
@@ -319,26 +319,6 @@ class MainPageActivity : TabActivity() {
         var layoutNumber = 0
         val layouts : Array<LinearLayout> = arrayOf(layout_input3, layout_input4, layout_input5, layout_input6,
             layout_input7, layout_input8, layout_input9, layout_input10)
-
-        language_setting.setOnClickListener {
-            if (language) {
-                text_result.text = "Draw after entering candidates!"
-                btn_pick.text = "Random draw"
-                btn_one_pick.text = "Draw without duplicates"
-                btn_add.text = "add"
-                btn_delete.text = "delete"
-                language = false
-                text_result.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20F)
-            } else {
-                text_result.text = "후보 입력 후 뽑기!"
-                btn_pick.text = "무작위로 뽑기"
-                btn_one_pick.text = "중복없이 뽑기"
-                btn_add.text = "추가"
-                btn_delete.text = "삭제"
-                language = true
-                text_result.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 30F)
-            }
-        }
 
         btn_add.setOnClickListener {
             if (layoutNumber == layouts.size) {
