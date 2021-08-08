@@ -95,6 +95,7 @@ class MainPageActivity : TabActivity() {
             LinearMain2.visibility = View.GONE
             LinearMain3.visibility = View.GONE
             LinearMain4.visibility = View.GONE
+            LinearMain5.visibility = View.GONE
             btnMain1.setTextColor(Color.WHITE)
         }
         btnMain2.setOnClickListener {
@@ -103,6 +104,7 @@ class MainPageActivity : TabActivity() {
             LinearMain2.visibility = View.VISIBLE
             LinearMain3.visibility = View.GONE
             LinearMain4.visibility = View.GONE
+            LinearMain5.visibility = View.GONE
             btnMain1.setTextColor(Color.WHITE)
         }
         btnMain3.setOnClickListener {
@@ -111,6 +113,7 @@ class MainPageActivity : TabActivity() {
             LinearMain2.visibility = View.GONE
             LinearMain3.visibility = View.VISIBLE
             LinearMain4.visibility = View.GONE
+            LinearMain5.visibility = View.GONE
             btnMain1.setTextColor(Color.WHITE)
         }
         btnMain4.setOnClickListener {
@@ -119,6 +122,16 @@ class MainPageActivity : TabActivity() {
             LinearMain2.visibility = View.GONE
             LinearMain3.visibility = View.GONE
             LinearMain4.visibility = View.VISIBLE
+            LinearMain5.visibility = View.GONE
+            btnMain1.setTextColor(Color.WHITE)
+        }
+        btnMain5.setOnClickListener {
+            LinearMainpage.visibility = View.GONE
+            LinearMain1.visibility = View.GONE
+            LinearMain2.visibility = View.GONE
+            LinearMain3.visibility = View.GONE
+            LinearMain4.visibility = View.GONE
+            LinearMain5.visibility = View.VISIBLE
             btnMain1.setTextColor(Color.WHITE)
         }
 

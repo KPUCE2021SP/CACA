@@ -129,6 +129,19 @@
                         android:textSize="18dp"
                         android:textStyle="bold"
                         android:background="#fcbf48"/>
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="0dp"/>
+                    <Button
+                        android:id="@+id/btnMain5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textColor="@color/white"
+                        android:text="펭귄"
+                        android:textSize="18dp"
+                        android:textStyle="bold"
+                        android:background="#fcbf48"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -585,7 +598,21 @@
                         android:textSize="30dp"
                         android:textStyle="bold"/>
                 </LinearLayout>
-
+                <!--                -->
+                <LinearLayout
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/LinearMain5"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="커스텀이미지 페이지"
+                        android:textSize="30dp"
+                        android:textStyle="bold"/>
+                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
