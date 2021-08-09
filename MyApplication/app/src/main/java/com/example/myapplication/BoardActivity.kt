@@ -69,6 +69,10 @@ class BoardActivity : AppCompatActivity() {
         val db: FirebaseFirestore = Firebase.firestore
 
 
+        boardLocation.setOnClickListener {
+            val intent = Intent(application, SearchMap::class.java)
+            startActivity(intent)
+        }
 
 
 

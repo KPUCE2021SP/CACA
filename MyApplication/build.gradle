@@ -4,6 +4,11 @@ buildscript {
     repositories {
         google()
         jcenter()
+
+        maven {
+            url 'https://devrepo.kakao.com/nexus/content/groups/public/'
+        }
+        maven{ url "https://maven.google.com" }
     }
     dependencies {
         classpath 'com.google.gms:google-services:4.2.0'
@@ -19,6 +24,8 @@ allprojects {
     repositories {
         google()
         jcenter()
+        maven { url "https://jitpack.io" }
+
     }
 }
 
