@@ -1,6 +1,7 @@
 package com.example.myapplication.SerachMap
 
 import android.Manifest
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageInfo
@@ -20,10 +21,18 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.example.myapplication.FamilySet.MainActivity
 import com.example.myapplication.HomeActivity
+import com.example.myapplication.Home_Board.BoardActivity
 import com.example.myapplication.R
 import com.example.myapplication.databinding.ActivityMainBinding
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
+import kotlinx.android.synthetic.main.activity_notification.view.*
 import kotlinx.android.synthetic.main.activity_search_map.*
+import kotlinx.android.synthetic.main.board.*
 import net.daum.mf.map.api.MapPOIItem
 import net.daum.mf.map.api.MapPoint
 import net.daum.mf.map.api.MapView
@@ -40,10 +49,19 @@ import java.util.*
 val PERMISSIONS_REQUEST_CODE = 100
 var REQUIRED_PERMISSIONS = arrayOf<String>(Manifest.permission.ACCESS_FINE_LOCATION)
 
+var fbAuth = FirebaseAuth.getInstance() // 로그인
+var uid = fbAuth?.uid.toString() // uid
+
+var fbFire = FirebaseFirestore.getInstance()
+var uemail = fbAuth?.currentUser?.email.toString()
+
+val db: FirebaseFirestore = Firebase.firestore
+
 class SearchMap : AppCompatActivity() {
     private lateinit var binding : ActivityMainBinding
     lateinit var resultArray: Array<String>
     lateinit var resultList: List<String>
+    lateinit var resultNameArray: Array<String>
     companion object {
         var BASE_URL = "https://dapi.kakao.com/"
         const val API_KEY = "KakaoAK 6f72cd8b31110c1031e1f004fb80c3c8"  // REST API 키
@@ -54,6 +72,9 @@ class SearchMap : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search_map)
+
+        val FamilyName = intent.getStringExtra("FamilyName") // 제목 선정 //formatted
+        val formatted = intent.getStringExtra("formatted")
 
         val mapView = MapView(this)
         val mapViewContainer = map_view
@@ -131,26 +152,36 @@ class SearchMap : AppCompatActivity() {
 
         }
         mapListView.setOnItemClickListener { parent, view, position, id -> // 검색한 결과 listView 클릭하면 넘어가기
-//            val intent= Intent(this, SearchMapContent::class.java) // 가족 초대하기 페이지
-//            Log.d("locccc", resultList[position])
-//            intent.putExtra("LocationInfo", resultList[position].toString())
-//
-//            startActivity(intent)
-
-            resultList
-
-            // 1. x, y DB에 저장
+//            // 1. x, y 값 return
             var r = resultList[position].replace(", x=", "*")
             r = r.replace(", y=", "*")
             r += "*"
             var rList = r.trim().splitToSequence("*").toList() // String to List // 0번째는 쓰레기값 // 1번째 x, 2번째y
 
+            var x = rList[1].toFloat()
+            var y = rList[2].toFloat()
+
+            val board_content = hashMapOf(
+                // Family name
+                "x" to x,
+                "y" to y,
+                "location" to resultNameArray[position].toString()
+            )
+
+            db.collection("Chats").document(FamilyName.toString()).collection("BOARD")
+                .document(formatted.toString()).update(board_content as Map<String, Any>) // 게시판 활성화
+
+            Toast.makeText(applicationContext, "${resultNameArray[position].toString()}", Toast.LENGTH_LONG).show()
 
 
 
             // 2. PIN
 
+//            val intent = Intent(application, BoardActivity::class.java)
+//            intent.putExtra("FamilyName", FamilyName)
+//            startActivity(intent)
 
+            finish()
 
         }
 
@@ -218,11 +249,10 @@ class SearchMap : AppCompatActivity() {
     fun makeList() {
         resultList =
             DummySearch.sDummySearch.trim().splitToSequence("*").toList() // String to List
-//        var resultArray: Array<String> = resultList.toTypedArray() // List to Array
-//        var myAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, resultArray)
-//        mapListView.adapter = myAdapter
         resultArray= resultList.toTypedArray() // List to Array
-        var resultNameArray: Array<String> = resultList.toTypedArray()
+        resultNameArray = resultList.toTypedArray()
+
+
         for (i in  0 .. (resultArray.size -1)){
             resultNameArray[i] = resultNameArray[i].replace("place_name=", "")
                 .substring(0, resultNameArray[i].indexOf(","))
@@ -235,4 +265,3 @@ class SearchMap : AppCompatActivity() {
     }
 
 }
-

@@ -30,6 +30,8 @@ import com.google.firebase.storage.ktx.storage
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.mypage_activity.*
 import kotlinx.android.synthetic.main.notice_card.*
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 import java.util.*
 
 
@@ -146,8 +148,22 @@ class HomeActivity : TabActivity() {
         }
 
         Board_Plus_Button.setOnClickListener() { // 게시판 글 작성하기 페이지로 이동
+            // board Format
+            val current = LocalDateTime.now() // 글 작성한 시간 가져오기
+            val formatter = DateTimeFormatter.ofPattern("yyyy년 MM월 dd일 HH시 mm분 ss초")
+            val formatted = current.format(formatter)
+//            var PhotoBoolean : Boolean = false // 사진 사용 여부
+            val board_format = hashMapOf(
+                // Family name
+                "location" to ""
+            )
+            db.collection("Chats").document(FamilyName.toString()).collection("BOARD")
+                .document(formatted).set(board_format as Map<String, Any>)//.set(board_content) // 게시판 활성화
+
+
             val intent = Intent(application, BoardActivity::class.java)
             intent.putExtra("FamilyName", FamilyName)
+            intent.putExtra("formatted", formatted)
             startActivity(intent)
 
         }
@@ -256,6 +272,8 @@ class HomeActivity : TabActivity() {
 
 
                 }
+                notice_image.background = getResources().getDrawable(R.drawable.imageview_cornerround, null)
+                notice_image.setClipToOutline(true)
             }
 
 

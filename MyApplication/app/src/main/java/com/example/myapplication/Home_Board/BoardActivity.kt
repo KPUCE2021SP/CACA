@@ -64,12 +64,42 @@ class BoardActivity : AppCompatActivity() {
     private var storageReference: StorageReference? = null
 
 
+    var location = "" // 초기값
+    var x = "0.0f"
+    var y = "0.0f"
+
+
+    lateinit var FamilyName : String
+    lateinit var formatted : String
+
+
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
 //        board_imageView.setImageResource(0) //////////////////////////////////////////////////////////////////////////////////////// ImageView 비우기
         storageReference = FirebaseStorage.getInstance().reference
         super.onCreate(savedInstanceState)
         setContentView(R.layout.board)
+
+
+        var fbAuth = FirebaseAuth.getInstance() // 로그인
+        var fbFire = FirebaseFirestore.getInstance()
+        var uid = fbAuth?.uid.toString() // uid
+        val db: FirebaseFirestore = Firebase.firestore
+
+
+        var message = edit_board_content.text.toString()
+        Log.d("message", message)
+
+
+        FamilyName = intent.getStringExtra("FamilyName").toString() // 제목 선정
+        formatted = intent.getStringExtra("formatted").toString()
+        //FamilyNameTextView.text = FamilyName
+
+
+//
+
+        board_imageView.background = getResources().getDrawable(R.drawable.imageview_cornerround, null)
+        board_imageView.setClipToOutline(true)
 
 
         //프로필사진 불러오기
@@ -86,20 +116,27 @@ class BoardActivity : AppCompatActivity() {
         }
 
 
-        val FamilyName = intent.getStringExtra("FamilyName") // 제목 선정
-        //FamilyNameTextView.text = FamilyName
-
-
-        var fbAuth = FirebaseAuth.getInstance() // 로그인
-        var fbFire = FirebaseFirestore.getInstance()
-        var uid = fbAuth?.uid.toString() // uid
-        val db: FirebaseFirestore = Firebase.firestore
-
 
         boardLocation.setOnClickListener {
             val intent = Intent(application, SearchMap::class.java)
+            intent.putExtra("FamilyName", FamilyName)
+            intent.putExtra("formatted", formatted)
             startActivity(intent)
+//            location = intent.getStringExtra("resultList").toString() // SearchMap Activity 에서 돌아오면 실행하는 코드
+//            board_location_textView.text = location
         }
+
+        // location Text
+        val docRef1 = db.collection("Chats").document(FamilyName.toString()).collection("BOARD").document(formatted) // 여러 field값 가져오기
+        docRef1.get()
+            .addOnSuccessListener { document2 ->
+                if (document2 != null) {
+                    Log.d(ContentValues.TAG, "DocumentSnapshot data: ${document2.data}")
+                    //textViewName.setText(document.data?.get("name").toString()) // name 확인용
+                    board_location_textView.setText(document2.data?.get("location").toString())
+                }
+            }
+
 
         boardVote.setOnClickListener {
             val intent = Intent(application, Notification::class.java)
@@ -181,16 +218,15 @@ class BoardActivity : AppCompatActivity() {
         }
 
         boardUpload.setOnClickListener() { // 게시판 글 업로드하기
-            var message = edit_board_content.text.toString()
-            val current = LocalDateTime.now() // 글 작성한 시간 가져오기
-            val formatter = DateTimeFormatter.ofPattern("yyyy년 MM월 dd일 HH시 mm분 ss초")
-            val formatted = current.format(formatter)
-            var PhotoBoolean : Boolean = false // 사진 사용 여부
+
+            var PhotoBoolean = false
 
             if (board_imageView.getDrawable() != null){ ///////////////////////// ImageView가 null이 아니라면 // 포토 사용
                 uploadPhoto(FamilyName.toString(), formatted)
                 PhotoBoolean = true
             }
+
+            var message = edit_board_content.text.toString()
 
             val board_content = hashMapOf(
                 // Family name
@@ -198,13 +234,13 @@ class BoardActivity : AppCompatActivity() {
                 "uid" to uid,
                 "time" to formatted,
                 "mention" to spinnerUID.toString(),
-                "photo" to PhotoBoolean
+                "photo" to PhotoBoolean,
             )
 
             Log.d("spinner", spinnerUID)
 
             db.collection("Chats").document(FamilyName.toString()).collection("BOARD")
-                .document(formatted).set(board_content) // 게시판 활성화
+                .document(formatted).update(board_content as Map<String, Any>)//.set(board_content) // 게시판 활성화
             Toast.makeText(this, "게시판 업로드 완료!!", Toast.LENGTH_SHORT).show()
 
 
@@ -240,6 +276,7 @@ class BoardActivity : AppCompatActivity() {
     }
 
 
+
     private fun displayImageRef(imageRef: StorageReference?, view: ImageView) {
         imageRef?.getBytes(Long.MAX_VALUE)?.addOnSuccessListener {
             val bmp = BitmapFactory.decodeByteArray(it, 0, it.size)
@@ -250,7 +287,7 @@ class BoardActivity : AppCompatActivity() {
     }
 
 
-    // 갤러리 접근
+    // 갤러리 접근\\
     private fun ImagePicker() {
         val intent = Intent()
         intent.type = "image/*"
@@ -308,4 +345,9 @@ class BoardActivity : AppCompatActivity() {
                 Log.e(TAG, e.toString())
             }
         }
+
+
+
 }
+
+
