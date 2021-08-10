@@ -10,15 +10,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <Button
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="&lt;"
-            android:textColor="#fcbf48"
+            android:text="LTaaaaaa"
+            android:textColor="@color/white"
             android:background="@color/white"
             android:layout_weight="1"
-            android:textSize="30dp"
-            android:id="@+id/arriveRtn"/>
+            android:textSize="20dp"/>
 
         <ImageView
             android:layout_width="match_parent"
