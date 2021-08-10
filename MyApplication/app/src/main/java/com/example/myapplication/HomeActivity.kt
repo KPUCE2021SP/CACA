@@ -195,6 +195,9 @@ class HomeActivity : TabActivity() {
                     val containView = layoutInflater.inflate(R.layout.notice_card, null) // mypage_content를 inflate
                     Board_LinearLayout.addView(containView)
 
+                    notice_image.background = getResources().getDrawable(R.drawable.imageview_cornerround, null)
+                    notice_image.setClipToOutline(true)
+
 
                     val ContentView = containView as View
                     var notice_board = ContentView.findViewById(R.id.notice_board) as TextView // 내용

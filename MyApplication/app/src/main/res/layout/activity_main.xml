@@ -8,17 +8,24 @@
     android:orientation="vertical"
     tools:context=".Mypage.MypageActivity">
 
+    <Button
+        android:id="@+id/btn"
+        android:gravity="center"
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:text="위젯추가"
+        android:textSize="15dp" />
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
         android:gravity="center"
-        android:paddingTop="30dp"
         android:text="가족 관리"
         android:textColor="@color/black"
         android:textSize="27dp"
         android:textStyle="bold"></TextView>
+
 
 
     <HorizontalScrollView
