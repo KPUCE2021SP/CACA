@@ -1,6 +1,7 @@
 package com.example.myapplication.Home_Board
 
 import android.content.ContentValues
+import android.content.ContentValues.TAG
 import android.content.Intent
 import android.graphics.BitmapFactory
 import android.os.Build
@@ -13,6 +14,9 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.Notification.Notification
+import com.example.myapplication.Notification.NotificationData
+import com.example.myapplication.Notification.PushNotification
+import com.example.myapplication.Notification.RetrofitInstance
 import com.example.myapplication.R
 import com.example.myapplication.SerachMap.SearchMap
 import com.google.firebase.auth.FirebaseAuth
@@ -22,7 +26,12 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.ktx.storage
+import com.google.gson.Gson
+import kotlinx.android.synthetic.main.activity_notification.*
 import kotlinx.android.synthetic.main.board.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
@@ -33,7 +42,9 @@ import java.time.format.DateTimeFormatter
 class BoardActivity : AppCompatActivity() {
     var fbAuth = FirebaseAuth.getInstance() // 로그인
     var mutableList: MutableList<String> = mutableListOf("a")
+    var mutableUIDList: MutableList<String> = mutableListOf("null")
     var uid = fbAuth?.uid.toString() // uid
+
     private var storageReference: StorageReference? = null
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -77,59 +88,10 @@ class BoardActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-
-
-        boardUpload.setOnClickListener(){ // 게시판 글 업로드하기
-            var message = edit_board_content.text.toString()
-            val current = LocalDateTime.now() // 글 작성한 시간 가져오기
-            val formatter = DateTimeFormatter.ofPattern("yyyy년 MM월 dd일 HH시 mm분 ss초")
-            val formatted = current.format(formatter)
-
-            val board_content = hashMapOf( // Family name
-                    "contents" to message,
-                    "uid" to uid,
-                    "time" to formatted,
-                    "timeStamp" to current
-            )
-
-            db.collection("Chats").document(FamilyName.toString()).collection("BOARD")
-                .document(formatted).set(board_content) // 게시판 활성화
-            Toast.makeText(this, "게시판 업로드 완료!!", Toast.LENGTH_SHORT).show()
-
-
-            //게시판으로 돌아가기기
-//            LinearMainage.visibility = View.GONE
-//            LinearMain1.visibility = View.GONE
-//            LinearMain2.visibility = View.VISIBLE
-//            LinearMain3.visibility = View.GONE
-//            LinearMain4.visibility = View.GONE
-//            val intent = Intent(application, MainPageActivity::class.java)
-//            startActivity(intent)
-            finish()
-//            LinearMainpage.visibility = View.GONE
-//            LinearMain1.visibility = View.GONE
-//            LinearMain2.visibility = View.VISIBLE
-//            LinearMain3.visibility = View.GONE
-//            LinearMain4.visibility = View.GONE
-
-
-        }
-
-
-
-
-
-
-
-
-
-
-
-
-
         mutableList.clear()
         mutableList.add("언급 안하기")
-        mutableList.add("모두 언급하기")
+//        mutableList.add("모두 언급하기")
+//        mutableUIDList.add("all")
         db.collection("Chats").document(FamilyName.toString()).collection("FamilyMember")
             .get()
             .addOnSuccessListener { documents ->
@@ -141,13 +103,20 @@ class BoardActivity : AppCompatActivity() {
                     docRef2.get()
                         .addOnSuccessListener { docName ->
                             if (docName != null) {
-                                Log.d(ContentValues.TAG, "DocumentSnapshot data: ${docName.data}")
+                                Log.d(
+                                    ContentValues.TAG,
+                                    "DocumentSnapshot data: ${docName.data}"
+                                )
+                                mutableUIDList.add(document.id.toString())
                                 mutableList.add(docName.data?.get("name").toString())
 //                                Log.d("ddddddddddddddd", mutableList.toString())
                                 var adapter: ArrayAdapter<String>
-                                adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, mutableList)
+                                adapter = ArrayAdapter(
+                                    this,
+                                    android.R.layout.simple_spinner_dropdown_item,
+                                    mutableList
+                                )
                                 spinner_member.adapter = adapter
-
 
 
                             } else {
@@ -165,12 +134,13 @@ class BoardActivity : AppCompatActivity() {
 
         //aaaaaaa.setText(mutableList.toString())////////TEST
 
-        var v = mutableList.toTypedArray() // !!ADAPTER!!
+//        var v = mutableList.toTypedArray() // !!ADAPTER!!
 //        var adapter: ArrayAdapter<String>
 //        adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, v)
 //        spinner_member.adapter = adapter
 
-
+        // 언급하기 스피너
+        var spinnerUID: String = ""
         spinner_member.setSelection(0, false)
         spinner_member.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
@@ -180,6 +150,8 @@ class BoardActivity : AppCompatActivity() {
                 id: Long
             ) {
 
+                spinnerUID = mutableUIDList[position].toString()
+                Log.d("spinnerUID", spinnerUID)
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -187,7 +159,78 @@ class BoardActivity : AppCompatActivity() {
             }
         }
 
+        boardUpload.setOnClickListener() { // 게시판 글 업로드하기
+            var message = edit_board_content.text.toString()
+            val current = LocalDateTime.now() // 글 작성한 시간 가져오기
+            val formatter = DateTimeFormatter.ofPattern("yyyy년 MM월 dd일 HH시 mm분 ss초")
+            val formatted = current.format(formatter)
+
+            val board_content = hashMapOf(
+                // Family name
+                "contents" to message,
+                "uid" to uid,
+                "time" to formatted,
+                "timeStamp" to current,
+                "mention" to spinnerUID.toString(),
+            )
+
+            Log.d("spinner", spinnerUID)
+
+            db.collection("Chats").document(FamilyName.toString()).collection("BOARD")
+                .document(formatted).set(board_content) // 게시판 활성화
+            Toast.makeText(this, "게시판 업로드 완료!!", Toast.LENGTH_SHORT).show()
+
+
+            var no_mention: String = ""
+            db.collection("Member").document(spinnerUID).collection("DEVICE").document("TOKEN")
+                .get()
+                .addOnSuccessListener { document ->
+                    if (document != null) {
+                        no_mention = document.data?.get("deviceInfo").toString()
+                        Log.d("recipientToken", no_mention.toString())
+                        //알람 울리기
+                        val title = "게시판에서 누군가 언급하였습니다!"
+                        val content = message.toString()
+                        val recipientToken = no_mention
+                        Log.d("recipientToken", recipientToken.toString())
+                        if (title != "" && content != "" && recipientToken != "") {
+                            PushNotification(
+                                NotificationData(title, content),
+                                recipientToken
+                            )
+//                    .also {
+//                    sendNotification(it)
+                            sendNotification(
+                                PushNotification(
+                                    NotificationData(title, message),
+                                    recipientToken
+                                )
+                            )
+                        }
+                    }
+                }
+
+
+            //게시판으로 돌아가기기
+            finish()
+
+
+        }
+
 
 
     }
+    private fun sendNotification(notification: PushNotification) =
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                val response = RetrofitInstance.api.postNotification(notification)
+                if (response.isSuccessful) {
+                    Log.d(TAG, "Response: ${Gson().toJson(response)}")
+                } else {
+                    Log.e(TAG, response.errorBody().toString())
+                }
+            } catch (e: Exception) {
+                Log.e(TAG, e.toString())
+            }
+        }
 }

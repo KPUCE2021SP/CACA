@@ -28,6 +28,7 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.mypage_activity.*
+import kotlinx.android.synthetic.main.notice_card.*
 import java.util.*
 
 
@@ -256,7 +257,6 @@ class HomeActivity : TabActivity() {
                             val containView = layoutInflater.inflate(R.layout.notice_card, null) // mypage_content를 inflate
                             Board_LinearLayout.addView(containView)
 
-
                             val ContentView = containView as View
                             var notice_board = ContentView.findViewById(R.id.notice_board) as TextView // 내용
                             var notice_time = ContentView.findViewById(R.id.notice_time) as TextView // 시간
@@ -343,7 +343,7 @@ class HomeActivity : TabActivity() {
 
         btn_add.setOnClickListener {
             if (layoutNumber == layouts.size) {
-                Toast.makeText(this,"최대 10개까지 추가 가능합니다.",Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,"최대 8개까지 추가 가능합니다.",Toast.LENGTH_SHORT).show()
             } else {
                 layouts[layoutNumber].visibility = View.VISIBLE
                 layoutNumber += 1
