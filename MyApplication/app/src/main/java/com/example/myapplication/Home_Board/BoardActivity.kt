@@ -209,7 +209,7 @@ class BoardActivity : AppCompatActivity() {
 
 
             var no_mention: String = ""
-            db.collection("Member").document(spinnerUID).collection("DEVICE").document("TOKEN")
+            db.collection("Member").document(spinnerUID.toString()).collection("DEVICE").document("TOKEN")
                 .get()
                 .addOnSuccessListener { document ->
                     if (document != null) {

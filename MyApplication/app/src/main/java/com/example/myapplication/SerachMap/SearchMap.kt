@@ -61,7 +61,7 @@ class SearchMap : AppCompatActivity() {
 
 
         btn_gps.setOnClickListener { // 현재위치
-            getHashKey()
+//            getHashKey()
             val permissionCheck = ContextCompat.checkSelfPermission(
                 this,
                 Manifest.permission.ACCESS_FINE_LOCATION
@@ -155,8 +155,6 @@ class SearchMap : AppCompatActivity() {
 
                 DummySearch.sDummySearch = result
 
-
-
                 makeList() // List
             }
 
@@ -167,24 +165,24 @@ class SearchMap : AppCompatActivity() {
         })
     }
 
-
-    fun getHashKey(){
-        var packageInfo : PackageInfo = PackageInfo()
-        try {
-            packageInfo = packageManager.getPackageInfo(packageName, PackageManager.GET_SIGNATURES)
-        } catch (e: PackageManager.NameNotFoundException){
-            e.printStackTrace()
-        }
-        for (signature: Signature in packageInfo.signatures){
-            try{
-                var md: MessageDigest = MessageDigest.getInstance("SHA")
-                md.update(signature.toByteArray())
-                Log.e("KEY_HASH", Base64.encodeToString(md.digest(), Base64.DEFAULT))
-            } catch(e: NoSuchAlgorithmException){
-                Log.e("KEY_HASH", "Unable to get MessageDigest. signature = " + signature, e)
-            }
-        }
-    }
+//
+//    fun getHashKey(){
+//        var packageInfo : PackageInfo = PackageInfo()
+//        try {
+//            packageInfo = packageManager.getPackageInfo(packageName, PackageManager.GET_SIGNATURES)
+//        } catch (e: PackageManager.NameNotFoundException){
+//            e.printStackTrace()
+//        }
+//        for (signature: Signature in packageInfo.signatures){
+//            try{
+//                var md: MessageDigest = MessageDigest.getInstance("SHA")
+//                md.update(signature.toByteArray())
+//                Log.e("KEY_HASH", Base64.encodeToString(md.digest(), Base64.DEFAULT))
+//            } catch(e: NoSuchAlgorithmException){
+//                Log.e("KEY_HASH", "Unable to get MessageDigest. signature = " + signature, e)
+//            }
+//        }
+//    }
 
 
 
@@ -192,8 +190,18 @@ class SearchMap : AppCompatActivity() {
     fun makeList() {
         var resultList =
             DummySearch.sDummySearch.trim().splitToSequence("*").toList() // String to List
+//        var resultArray: Array<String> = resultList.toTypedArray() // List to Array
+//        var myAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, resultArray)
+//        mapListView.adapter = myAdapter
         var resultArray: Array<String> = resultList.toTypedArray() // List to Array
-        var myAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, resultArray)
+        var resultNameArray: Array<String> = resultList.toTypedArray()
+        for (i in  0 .. (resultArray.size -1)){
+            resultNameArray[i] = resultNameArray[i].replace("place_name=", "")
+                .substring(0, resultNameArray[i].indexOf(","))
+                .replace(", address_n", "")
+        }
+//        var myAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, resultArray)
+        var myAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, resultNameArray)
         mapListView.adapter = myAdapter
         Log.d("Test", "List: ${resultList.toString()}")
     }

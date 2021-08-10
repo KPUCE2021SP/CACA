@@ -87,7 +87,6 @@
 
     </LinearLayout>
 
-
     <!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
     <!--        android:id="@+id/floatingActionButton2"-->
     <!--        android:layout_width="match_parent"-->
@@ -100,14 +99,28 @@
     <!--        app:srcCompat="@drawable/ic_baseline_arrow_circle_up_24"-->
     <!--        tools:ignore="VectorDrawableCompat" />-->
 
+
     <ImageView
         android:id="@+id/board_imageView"
+        android:layout_gravity="right"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_gravity="right"
-        android:layout_margin="5dp"
         android:scaleType="centerInside"
-        android:src="@drawable/nightsky" />
+        android:src="@drawable/nightsky"
+        android:layout_margin="5dp"/>
+
+
+<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--        android:id="@+id/floatingActionButton2"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="right"-->
+<!--        android:layout_margin="10dp"-->
+<!--        android:layout_weight="1"-->
+<!--        android:clickable="true"-->
+<!--        app:backgroundTint="#FCBF48"-->
+<!--        app:srcCompat="@drawable/ic_baseline_arrow_circle_up_24"-->
+<!--        tools:ignore="VectorDrawableCompat" />-->
 
     <LinearLayout
         android:layout_width="match_parent"
