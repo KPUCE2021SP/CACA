@@ -256,6 +256,8 @@ class HomeActivity : TabActivity() {
 
 
                 }
+                notice_image.background = getResources().getDrawable(R.drawable.imageview_cornerround, null)
+                notice_image.setClipToOutline(true)
             }
 
 

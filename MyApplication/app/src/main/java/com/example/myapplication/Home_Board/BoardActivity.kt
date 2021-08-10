@@ -71,6 +71,9 @@ class BoardActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.board)
 
+        board_imageView.background = getResources().getDrawable(R.drawable.imageview_cornerround, null)
+        board_imageView.setClipToOutline(true)
+
 
         //프로필사진 불러오기
         val imageName = "gs://cacafirebase-554ac.appspot.com/profiles/" + uid
