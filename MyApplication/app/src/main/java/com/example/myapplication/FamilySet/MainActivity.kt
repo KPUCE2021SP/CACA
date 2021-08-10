@@ -1,9 +1,13 @@
 package com.example.myapplication.FamilySet
 
+import android.app.PendingIntent
+import android.appwidget.AppWidgetManager
+import android.content.ComponentName
 import android.content.ContentValues.TAG
 import android.content.Context
 import android.content.Intent
 import android.graphics.BitmapFactory
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -11,8 +15,10 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
+import com.example.myapplication.AppWidgetProvider
 import com.example.myapplication.HomeActivity
 import com.example.myapplication.Mypage.MypageActivity
 import com.example.myapplication.Notification.Notification
@@ -232,6 +238,36 @@ class MainActivity : AppCompatActivity() {
 
 
 
+
+    }
+
+    @RequiresApi(Build.VERSION_CODES.M)
+    override fun onResume() {
+        super.onResume()
+
+        val appWidgetManager: AppWidgetManager? = getSystemService(AppWidgetManager::class.java)
+        val myProvider = ComponentName(this, AppWidgetProvider::class.java)
+
+        val successCallback: PendingIntent? = if (if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                appWidgetManager!!.isRequestPinAppWidgetSupported
+            } else {
+                TODO("VERSION.SDK_INT < O")
+            }
+        ) {
+            Intent(this, MainActivity::class.java).let { intent ->
+                PendingIntent.getBroadcast(applicationContext, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+            }
+        } else {
+            null
+        }
+
+        btn.setOnClickListener {
+            successCallback?.also { pendingIntent ->
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    appWidgetManager.requestPinAppWidget(myProvider, null, pendingIntent)
+                }
+            }
+        }
 
     }
 
