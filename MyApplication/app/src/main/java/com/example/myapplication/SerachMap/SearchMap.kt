@@ -12,6 +12,7 @@ import android.os.Bundle
 import android.util.Base64
 import android.util.Log
 import android.view.View
+import android.widget.ArrayAdapter
 import android.widget.SearchView
 import android.widget.TextView
 import android.widget.Toast
@@ -24,6 +25,7 @@ import kotlinx.android.synthetic.main.activity_search_map.*
 import net.daum.mf.map.api.MapPOIItem
 import net.daum.mf.map.api.MapPoint
 import net.daum.mf.map.api.MapView
+import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -31,6 +33,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
+import java.util.*
 
 val PERMISSIONS_REQUEST_CODE = 100
 var REQUIRED_PERMISSIONS = arrayOf<String>(Manifest.permission.ACCESS_FINE_LOCATION)
@@ -55,6 +58,7 @@ class SearchMap : AppCompatActivity() {
 
 
         val gpsmarker = MapPOIItem()
+
 
         btn_gps.setOnClickListener { // 현재위치
             getHashKey()
@@ -87,6 +91,7 @@ class SearchMap : AppCompatActivity() {
                             Log.d("Latitude", nLatitude.toString())
                             searchKeyword(query!!, nLatitude.toString(), nLongitude.toString())
 //                            searchKeyword(query!!, "37.34554066939573", "126.7362295488324")
+
                             return false
                         }
 
@@ -121,7 +126,6 @@ class SearchMap : AppCompatActivity() {
 
 
         }
-
     }
 
     // 키워드 검색 함수
@@ -142,29 +146,18 @@ class SearchMap : AppCompatActivity() {
             ) {
                 // 통신 성공 (검색 결과는 response.body()에 담겨있음)
                 Log.d("Test", "Raw: ${response.raw()}")
-                Log.d("Test", "Body: ${response.body()}")
-                DummySearch.sDummyData = ""
-                DummySearch.sDummyData = response.body().toString()
-                    .replace("ResultSearchKeyword(documents=[","")
-                    .replace("Place","")
-                    .replace("(","{\"")
-                    .replace("), ","\"},")
-                    .replace("=","\":\"")
-                    .replace(", ","\",\"")
-                    .replace(")])","\"}")
-//                    .replace("}, {", "},{")
-                Log.d("dummy", DummySearch.sDummyData.toString())
+                Log.d("Test", "Body: ${response.body()}") // 이거 사용
 
-                var mutableList : MutableList<String> = mutableListOf("a")
-                mutableList.clear()
+                var result = response.body().toString()
+                result = result.replace("ResultSearchKeyword(documents=[Place(", "")
+                result = result.replace("), Place(", "*")
+                result = result.replace(")])", "")
 
-                val containView = layoutInflater.inflate(R.layout.searchmap_content, null)
-                val ContentView = containView as View
-                var place_name = ContentView.findViewById(R.id.place_name) as TextView // 장소
-                var address_name = ContentView.findViewById(R.id.address_name) as TextView // 주소
-                var road_address_name = ContentView.findViewById(R.id.road_address_name) as TextView // 도로명주소
-                var x = ContentView.findViewById(R.id.x) as TextView    //x
-                var y = ContentView.findViewById(R.id.y) as TextView    //y
+                DummySearch.sDummySearch = result
+
+
+
+                makeList() // List
             }
 
             override fun onFailure(call: Call<ResultSearchKeyword>, t: Throwable) {
@@ -173,6 +166,7 @@ class SearchMap : AppCompatActivity() {
             }
         })
     }
+
 
     fun getHashKey(){
         var packageInfo : PackageInfo = PackageInfo()
@@ -190,6 +184,18 @@ class SearchMap : AppCompatActivity() {
                 Log.e("KEY_HASH", "Unable to get MessageDigest. signature = " + signature, e)
             }
         }
+    }
+
+
+
+    // list
+    fun makeList() {
+        var resultList =
+            DummySearch.sDummySearch.trim().splitToSequence("*").toList() // String to List
+        var resultArray: Array<String> = resultList.toTypedArray() // List to Array
+        var myAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, resultArray)
+        mapListView.adapter = myAdapter
+        Log.d("Test", "List: ${resultList.toString()}")
     }
 
 }
