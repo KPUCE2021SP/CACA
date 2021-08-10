@@ -3,53 +3,59 @@
     package="com.example.myapplication">
 
     <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
-    <uses-permission android:name="android.permission.READ_CALL_LOG" />
-
-    <!--갤러리 권한-->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <!--갤러리 권한-->
-    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.READ_CALL_LOG" /> <!-- 갤러리 권한 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- 갤러리 권한 -->
+    <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" /> <!-- Location -->
     <!-- 정확한 위치 -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> <!-- 대략적인 위치 -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+<!--    위젯-->
+    <uses-permission android:name="android.permission.VIBRATE"/>
 
     <application
-        android:requestLegacyExternalStorage="true"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:networkSecurityConfig="@xml/network_security_config"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <receiver android:name=".SerachMap.AppWidget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
 
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/app_widget_info" />
+        </receiver>
 
         <meta-data
             android:name="com.kakao.sdk.AppKey"
             android:value="945b139935b4dd7d948524834b84b539" />
-        <activity android:name=".Notification.Notification">
-        </activity>
-        <activity android:name=".FamilySet.MainActivity"></activity>
-        <activity android:name=".FamilySet.FamilySettingActivity"></activity>
-        <activity android:name=".LoginRegister.SignUpActivity">
-        </activity>
+
+        <activity android:name=".Notification.Notification"></activity>
+        <activity android:name=".FamilySet.MainActivity" />
+        <activity android:name=".FamilySet.FamilySettingActivity" />
+        <activity android:name=".LoginRegister.SignUpActivity"></activity>
         <activity android:name=".LoginRegister.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Mypage.MypageEditActivity"></activity>
-        <activity android:name=".Mypage.MypageActivity"></activity>
-        <activity android:name=".HomeActivity"></activity>
-
-        <activity android:name=".Home_Board.BoardActivity"
-            android:windowSoftInputMode="adjustResize"></activity>
-        <activity android:name=".SerachMap.SearchMap"/>
-
+        <activity android:name=".Mypage.MypageEditActivity" />
+        <activity android:name=".Mypage.MypageActivity" />
+        <activity android:name=".HomeActivity" />
+        <activity
+            android:name=".Home_Board.BoardActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".SerachMap.SearchMap" />
         <activity android:name=".StartActivity" />
         <activity android:name=".FamilySet.DynamicLinkActivity">
             <intent-filter android:autoVerify="true">
@@ -62,32 +68,24 @@
                     android:host="familyship.page.link"
                     android:path="/DynamicLinkActivity"
                     android:scheme="https" />
-
             </intent-filter>
-        </activity>
-
-
-<!--        <service-->
-<!--            android:name=".MyFirebaseMessagingService"-->
-<!--            android:exported="true"-->
-<!--            android:enabled="true">-->
-<!--            <intent-filter>-->
-<!--                <action android:name="com.google.firebase.MESSAGING_EVENT" />-->
-<!--            </intent-filter>-->
-<!--        </service>-->
-
-<!--        <activity android:name=".Notification.Notification"></activity>-->
-
-        <service android:name=".Notification.FirebaseService"
+        </activity> <!-- <service -->
+        <!-- android:name=".MyFirebaseMessagingService" -->
+        <!-- android:exported="true" -->
+        <!-- android:enabled="true"> -->
+        <!-- <intent-filter> -->
+        <!-- <action android:name="com.google.firebase.MESSAGING_EVENT" /> -->
+        <!-- </intent-filter> -->
+        <!-- </service> -->
+        <!-- <activity android:name=".Notification.Notification"></activity> -->
+        <service
+            android:name=".Notification.FirebaseService"
             android:permission="com.google.android.c2dm.permission.SEND">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
             </intent-filter>
-
         </service>
-
-
     </application>
 
 </manifest>
