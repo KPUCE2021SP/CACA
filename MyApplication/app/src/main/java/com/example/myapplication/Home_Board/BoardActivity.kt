@@ -33,7 +33,9 @@ import java.time.format.DateTimeFormatter
 class BoardActivity : AppCompatActivity() {
     var fbAuth = FirebaseAuth.getInstance() // 로그인
     var mutableList: MutableList<String> = mutableListOf("a")
+    var mutableUIDList: MutableList<String> = mutableListOf("null")
     var uid = fbAuth?.uid.toString() // uid
+
     private var storageReference: StorageReference? = null
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -77,7 +79,24 @@ class BoardActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        var spinnerUID : String = ""
+        spinner_member.setSelection(0, false)
+        spinner_member.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
 
+                spinnerUID = mutableUIDList[position].toString()
+                Log.d("spinnerUID", spinnerUID)
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                TODO("Not yet implemented")
+            }
+        }
 
         boardUpload.setOnClickListener(){ // 게시판 글 업로드하기
             var message = edit_board_content.text.toString()
@@ -89,9 +108,11 @@ class BoardActivity : AppCompatActivity() {
                     "contents" to message,
                     "uid" to uid,
                     "time" to formatted,
-                    "timeStamp" to current
+                    "timeStamp" to current,
+                    "mention" to spinnerUID.toString(),
             )
 
+            Log.d("spinner", spinnerUID)
             db.collection("Chats").document(FamilyName.toString()).collection("BOARD")
                 .document(formatted).set(board_content) // 게시판 활성화
             Toast.makeText(this, "게시판 업로드 완료!!", Toast.LENGTH_SHORT).show()
@@ -130,6 +151,7 @@ class BoardActivity : AppCompatActivity() {
         mutableList.clear()
         mutableList.add("언급 안하기")
         mutableList.add("모두 언급하기")
+        mutableUIDList.add("all")
         db.collection("Chats").document(FamilyName.toString()).collection("FamilyMember")
             .get()
             .addOnSuccessListener { documents ->
@@ -142,6 +164,7 @@ class BoardActivity : AppCompatActivity() {
                         .addOnSuccessListener { docName ->
                             if (docName != null) {
                                 Log.d(ContentValues.TAG, "DocumentSnapshot data: ${docName.data}")
+                                mutableUIDList.add(document.id.toString())
                                 mutableList.add(docName.data?.get("name").toString())
 //                                Log.d("ddddddddddddddd", mutableList.toString())
                                 var adapter: ArrayAdapter<String>
@@ -171,21 +194,7 @@ class BoardActivity : AppCompatActivity() {
 //        spinner_member.adapter = adapter
 
 
-        spinner_member.setSelection(0, false)
-        spinner_member.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(
-                parent: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
-            ) {
 
-            }
-
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-                TODO("Not yet implemented")
-            }
-        }
 
 
 
