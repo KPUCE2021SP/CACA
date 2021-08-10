@@ -59,6 +59,16 @@
             android:layout_margin="15dp"
             android:text="\@엄마 오늘 몇시에 오시나요??"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+
+        <ImageView
+            android:id="@+id/notice_image"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:src="@drawable/nightsky"
+            android:scaleType="centerCrop"/>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="30dp"
