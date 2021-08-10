@@ -205,37 +205,6 @@ class HomeActivity : TabActivity() {
                     var notice_card_Layout = ContentView.findViewById(R.id.notice_card_Layout) as LinearLayout
 
 
-                    notice_card_Layout?.setOnClickListener() { // 삭제
-
-                        val dlg: AlertDialog.Builder = AlertDialog.Builder(
-                            this,
-                            android.R.style.Theme_DeviceDefault_Light_Dialog_NoActionBar_MinWidth
-                        )
-                        dlg.setTitle("항목 삭제") //제목
-                        dlg.setMessage(notice_time.text.toString() + "를 정말 삭제하시겠습니까?") // 메시지
-                        dlg.setPositiveButton(
-                            "확인",
-                            DialogInterface.OnClickListener { dialog, which ->
-                                // DB 삭제
-                                var fbAuth = FirebaseAuth.getInstance()
-                                val db: FirebaseFirestore = Firebase.firestore
-
-                                val docRef = db.collection("Chats").document(FamilyName.toString())
-                                    .collection("BOARD").document(notice_time.text.toString())
-                                    .delete()
-
-                            })
-                        dlg.setNegativeButton(
-                            "취소",
-                            DialogInterface.OnClickListener { dialog, which ->
-                                // 취소
-                            })
-                        dlg.show()
-                    }
-
-
-
-
 
                     val docRef1 = db.collection("Chats").document(FamilyName.toString()).collection("BOARD").document(mutableList[(mutableList.size - 1)-i]) // 여러 field값 가져오기
                     docRef1.get()
@@ -305,6 +274,37 @@ class HomeActivity : TabActivity() {
                         .addOnFailureListener { exception ->
                             Log.d(ContentValues.TAG, "get failed with ", exception)
                         }
+
+
+
+
+                    notice_card_Layout?.setOnClickListener() { // 삭제
+
+                        val dlg: AlertDialog.Builder = AlertDialog.Builder(
+                            this,
+                            android.R.style.Theme_DeviceDefault_Light_Dialog_NoActionBar_MinWidth
+                        )
+                        dlg.setTitle("항목 삭제") //제목
+                        dlg.setMessage(notice_time.text.toString() + "를 정말 삭제하시겠습니까?") // 메시지
+                        dlg.setPositiveButton(
+                            "확인",
+                            DialogInterface.OnClickListener { dialog, which ->
+                                // DB 삭제
+                                var fbAuth = FirebaseAuth.getInstance()
+                                val db: FirebaseFirestore = Firebase.firestore
+
+                                val docRef = db.collection("Chats").document(FamilyName.toString())
+                                    .collection("BOARD").document(notice_time.text.toString())
+                                    .delete()
+
+                            })
+                        dlg.setNegativeButton(
+                            "취소",
+                            DialogInterface.OnClickListener { dialog, which ->
+                                // 취소
+                            })
+                        dlg.show()
+                    }
 
 
 
