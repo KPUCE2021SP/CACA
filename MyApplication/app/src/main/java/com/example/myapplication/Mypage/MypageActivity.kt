@@ -64,8 +64,6 @@ class MypageActivity : AppCompatActivity() {
         setContentView(R.layout.mypage_activity)
 
 
-
-
         // firestore에서 정보 받아와서 DummyData 덮어쓰기
         val db: FirebaseFirestore = Firebase.firestore
         val docRef = db.collection("Member").document(uid)
@@ -199,10 +197,6 @@ class MypageActivity : AppCompatActivity() {
             }
 
 
-
-
-
-
             srl_main.isRefreshing = false // 인터넷 끊기
         }
 
@@ -217,6 +211,9 @@ class MypageActivity : AppCompatActivity() {
         }
 
     }
+
+
+
     private fun displayImageRef(imageRef: StorageReference?, view: ImageView) {
         imageRef?.getBytes(Long.MAX_VALUE)?.addOnSuccessListener {
             val bmp = BitmapFactory.decodeByteArray(it, 0, it.size)
@@ -294,7 +291,7 @@ class MypageActivity : AppCompatActivity() {
     }
 
 
-    private fun setContent(layout: LinearLayout, content: String) {
+    private fun setContent(layout: LinearLayout, content: String) { // 인간 개인정보 동적 생성
 
         if (!TextUtils.isEmpty(content)) {
             var c: String = content

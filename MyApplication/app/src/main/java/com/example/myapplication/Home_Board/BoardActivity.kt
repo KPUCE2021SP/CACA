@@ -1,15 +1,19 @@
 package com.example.myapplication.Home_Board
 
+import android.app.Activity
 import android.content.ContentValues
 import android.content.ContentValues.TAG
 import android.content.Intent
 import android.graphics.BitmapFactory
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.provider.MediaStore
 import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
@@ -19,19 +23,25 @@ import com.example.myapplication.Notification.PushNotification
 import com.example.myapplication.Notification.RetrofitInstance
 import com.example.myapplication.R
 import com.example.myapplication.SerachMap.SearchMap
+import com.google.android.gms.tasks.OnFailureListener
+import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
+import com.google.firebase.storage.UploadTask
 import com.google.firebase.storage.ktx.storage
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_notification.*
 import kotlinx.android.synthetic.main.board.*
+import kotlinx.android.synthetic.main.mypage_activity.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.io.IOException
+import java.security.KeyStore
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
@@ -45,10 +55,18 @@ class BoardActivity : AppCompatActivity() {
     var mutableUIDList: MutableList<String> = mutableListOf("null")
     var uid = fbAuth?.uid.toString() // uid
 
+    var fbFire = FirebaseFirestore.getInstance()
+    var uemail = fbAuth?.currentUser?.email.toString()
+
+    private val PICK_IMAGE_REQUEST = 1
+    private var filePath: Uri? = null
+    private var firebaseStorage: FirebaseStorage? = null
     private var storageReference: StorageReference? = null
+
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
+//        board_imageView.setImageResource(0) //////////////////////////////////////////////////////////////////////////////////////// ImageView 비우기
         storageReference = FirebaseStorage.getInstance().reference
         super.onCreate(savedInstanceState)
         setContentView(R.layout.board)
@@ -109,7 +127,8 @@ class BoardActivity : AppCompatActivity() {
                                 )
                                 mutableUIDList.add(document.id.toString())
                                 mutableList.add(docName.data?.get("name").toString())
-//                                Log.d("ddddddddddddddd", mutableList.toString())
+
+
                                 var adapter: ArrayAdapter<String>
                                 adapter = ArrayAdapter(
                                     this,
@@ -132,12 +151,14 @@ class BoardActivity : AppCompatActivity() {
 
             }
 
-        //aaaaaaa.setText(mutableList.toString())////////TEST
 
-//        var v = mutableList.toTypedArray() // !!ADAPTER!!
-//        var adapter: ArrayAdapter<String>
-//        adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, v)
-//        spinner_member.adapter = adapter
+
+        // 사진 업로드하기
+        boradAddPic.setOnClickListener(){
+            ImagePicker()
+        }
+
+
 
         // 언급하기 스피너
         var spinnerUID: String = ""
@@ -164,14 +185,20 @@ class BoardActivity : AppCompatActivity() {
             val current = LocalDateTime.now() // 글 작성한 시간 가져오기
             val formatter = DateTimeFormatter.ofPattern("yyyy년 MM월 dd일 HH시 mm분 ss초")
             val formatted = current.format(formatter)
+            var PhotoBoolean : Boolean = false // 사진 사용 여부
+
+            if (board_imageView.getDrawable() != null){ ///////////////////////// ImageView가 null이 아니라면 // 포토 사용
+                uploadPhoto(FamilyName.toString(), formatted)
+                PhotoBoolean = true
+            }
 
             val board_content = hashMapOf(
                 // Family name
                 "contents" to message,
                 "uid" to uid,
                 "time" to formatted,
-                "timeStamp" to current,
                 "mention" to spinnerUID.toString(),
+                "photo" to PhotoBoolean
             )
 
             Log.d("spinner", spinnerUID)
@@ -198,8 +225,6 @@ class BoardActivity : AppCompatActivity() {
                                 NotificationData(title, content),
                                 recipientToken
                             )
-//                    .also {
-//                    sendNotification(it)
                             sendNotification(
                                 PushNotification(
                                     NotificationData(title, message),
@@ -209,17 +234,67 @@ class BoardActivity : AppCompatActivity() {
                         }
                     }
                 }
-
-
             //게시판으로 돌아가기기
             finish()
-
-
         }
-
-
-
     }
+
+
+    private fun displayImageRef(imageRef: StorageReference?, view: ImageView) {
+        imageRef?.getBytes(Long.MAX_VALUE)?.addOnSuccessListener {
+            val bmp = BitmapFactory.decodeByteArray(it, 0, it.size)
+            view.setImageBitmap(bmp)
+        }?.addOnFailureListener {
+            // Failed to download the image
+        }
+    }
+
+
+    // 갤러리 접근
+    private fun ImagePicker() {
+        val intent = Intent()
+        intent.type = "image/*"
+        intent.action = Intent.ACTION_GET_CONTENT
+        startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK) {
+            if(data == null || data.data == null){
+                return
+            }
+            filePath = data.data
+            try {
+                val bitmap = MediaStore.Images.Media.getBitmap(contentResolver, filePath)
+                board_imageView.setImageBitmap(bitmap)/////////////////////////////////////////////////////////////////////////// 사진 고르면 ImageView에 적용
+            } catch (e: IOException) {
+                e.printStackTrace()
+            }
+        }
+    }
+
+    private fun uploadPhoto(FamilyName : String, uploadPhoto : String){ // fireStore upload
+        val uidText : String = uid
+        if(filePath != null){
+            val ref = storageReference?.child("Family_Board/" + FamilyName + "_" + uploadPhoto)
+            ref?.putFile(filePath!!)?.addOnSuccessListener(OnSuccessListener<UploadTask.TaskSnapshot> {
+                Toast.makeText(applicationContext, "Board Image Uploaded", Toast.LENGTH_SHORT).show()
+            })?.addOnFailureListener(OnFailureListener { e ->
+                Toast.makeText(applicationContext, "Board Image Uploading Failed " + e.message, Toast.LENGTH_SHORT).show()
+            })
+        }else{
+            Toast.makeText(this, "Please Select an Image", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+
+
+
+
+
+
+
     private fun sendNotification(notification: PushNotification) =
         CoroutineScope(Dispatchers.IO).launch {
             try {
