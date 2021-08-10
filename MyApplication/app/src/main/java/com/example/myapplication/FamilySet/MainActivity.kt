@@ -76,7 +76,6 @@ class MainActivity : AppCompatActivity() {
             db.collection("Member").document(uid).collection("DEVICE").document("TOKEN").set(deviceInfo)
 
 
-
         })
 
 
