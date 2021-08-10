@@ -1,9 +1,11 @@
 package com.example.myapplication
 
 
+import android.app.AlertDialog
 import android.app.TabActivity
 import android.content.ContentValues
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.BitmapFactory
 import android.graphics.Color
@@ -23,6 +25,7 @@ import com.example.myapplication.Home_Board.BoardActivity
 import com.example.myapplication.Mypage.MypageActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -199,6 +202,40 @@ class HomeActivity : TabActivity() {
                     var notice_name = ContentView.findViewById(R.id.notice_name) as TextView // uid
                     var notice_profile = ContentView.findViewById(R.id.notice_profile) as ImageView // profile Image
                     var notice_image = ContentView.findViewById(R.id.notice_image) as ImageView // Board Image
+                    var notice_card_Layout = ContentView.findViewById(R.id.notice_card_Layout) as LinearLayout
+
+
+                    notice_card_Layout?.setOnClickListener() { // 삭제
+
+                        val dlg: AlertDialog.Builder = AlertDialog.Builder(
+                            this,
+                            android.R.style.Theme_DeviceDefault_Light_Dialog_NoActionBar_MinWidth
+                        )
+                        dlg.setTitle("항목 삭제") //제목
+                        dlg.setMessage(notice_time.text.toString() + "를 정말 삭제하시겠습니까?") // 메시지
+                        dlg.setPositiveButton(
+                            "확인",
+                            DialogInterface.OnClickListener { dialog, which ->
+                                // DB 삭제
+                                var fbAuth = FirebaseAuth.getInstance()
+                                val db: FirebaseFirestore = Firebase.firestore
+
+                                val docRef = db.collection("Chats").document(FamilyName.toString())
+                                    .collection("BOARD").document(notice_time.text.toString())
+                                    .delete()
+
+                            })
+                        dlg.setNegativeButton(
+                            "취소",
+                            DialogInterface.OnClickListener { dialog, which ->
+                                // 취소
+                            })
+                        dlg.show()
+                    }
+
+
+
+
 
                     val docRef1 = db.collection("Chats").document(FamilyName.toString()).collection("BOARD").document(mutableList[(mutableList.size - 1)-i]) // 여러 field값 가져오기
                     docRef1.get()
