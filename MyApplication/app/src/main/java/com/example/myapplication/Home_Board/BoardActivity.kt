@@ -1,6 +1,7 @@
 package com.example.myapplication.Home_Board
 
 import android.content.ContentValues
+import android.content.Intent
 import android.graphics.BitmapFactory
 import android.os.Build
 import android.os.Bundle
@@ -11,7 +12,9 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import com.example.myapplication.Notification.Notification
 import com.example.myapplication.R
+import com.example.myapplication.SerachMap.SearchMap
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
@@ -64,6 +67,15 @@ class BoardActivity : AppCompatActivity() {
         val db: FirebaseFirestore = Firebase.firestore
 
 
+        boardLocation.setOnClickListener {
+            val intent = Intent(application, SearchMap::class.java)
+            startActivity(intent)
+        }
+
+        boardVote.setOnClickListener {
+            val intent = Intent(application, Notification::class.java)
+            startActivity(intent)
+        }
 
 
 

@@ -10,7 +10,11 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <!--갤러리 권한-->
     <uses-permission android:name="android.permission.CAMERA"/>
-
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" /> <!-- Location -->
+    <!-- 정확한 위치 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> <!-- 대략적인 위치 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <application
         android:requestLegacyExternalStorage="true"
         android:allowBackup="true"
@@ -21,21 +25,23 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
         <activity android:name=".Notification.Notification">
+        </activity>
+        <activity android:name=".FamilySet.MainActivity"></activity>
+        <activity android:name=".FamilySet.FamilySettingActivity"></activity>
+        <activity android:name=".LoginRegister.SignUpActivity">
+        </activity>
+        <activity android:name=".LoginRegister.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".FamilySet.MainActivity"></activity>
-        <activity android:name=".FamilySet.FamilySettingActivity"></activity>
-        <activity android:name=".LoginRegister.SignUpActivity"></activity>
-
         <activity android:name=".Mypage.MypageEditActivity"></activity>
         <activity android:name=".Mypage.MypageActivity"></activity>
         <activity android:name=".HomeActivity"></activity>
 
         <activity android:name=".Home_Board.BoardActivity"></activity>
-
+        <activity android:name=".SerachMap.SearchMap"/>
 
         <activity android:name=".StartActivity" />
         <activity android:name=".FamilySet.DynamicLinkActivity">
