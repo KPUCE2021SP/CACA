@@ -12,6 +12,8 @@ import android.graphics.Color
 import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
+import com.example.myapplication.HomeActivity
+import com.example.myapplication.Home_Board.BoardActivity
 import com.example.myapplication.R
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
@@ -44,7 +46,7 @@ class FirebaseService : FirebaseMessagingService() {
     override fun onMessageReceived(message: RemoteMessage) {
         super.onMessageReceived(message)
 
-        val intent = Intent(this, Notification::class.java)
+        val intent = Intent(this, HomeActivity::class.java)     //알람누르면 가는 페이지
         val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 //        val notificationID = Random.nextInt()
         val random = Random()
