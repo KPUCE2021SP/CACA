@@ -126,6 +126,8 @@ class SearchMap : AppCompatActivity() {
 
 
         }
+        mapListView.setOnItemClickListener { parent, view, position, id ->  }
+
     }
 
     // 키워드 검색 함수
