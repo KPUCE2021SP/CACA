@@ -46,7 +46,8 @@
         <activity android:name=".Mypage.MypageActivity"></activity>
         <activity android:name=".HomeActivity"></activity>
 
-        <activity android:name=".Home_Board.BoardActivity"></activity>
+        <activity android:name=".Home_Board.BoardActivity"
+            android:windowSoftInputMode="adjustResize"></activity>
         <activity android:name=".SerachMap.SearchMap"/>
 
         <activity android:name=".StartActivity" />
