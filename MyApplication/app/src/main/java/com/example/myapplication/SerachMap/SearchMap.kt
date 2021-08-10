@@ -2,6 +2,7 @@ package com.example.myapplication.SerachMap
 
 import android.Manifest
 import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.content.pm.Signature
@@ -19,6 +20,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.example.myapplication.HomeActivity
 import com.example.myapplication.R
 import com.example.myapplication.databinding.ActivityMainBinding
 import kotlinx.android.synthetic.main.activity_search_map.*
@@ -40,6 +42,8 @@ var REQUIRED_PERMISSIONS = arrayOf<String>(Manifest.permission.ACCESS_FINE_LOCAT
 
 class SearchMap : AppCompatActivity() {
     private lateinit var binding : ActivityMainBinding
+    lateinit var resultArray: Array<String>
+    lateinit var resultList: List<String>
     companion object {
         var BASE_URL = "https://dapi.kakao.com/"
         const val API_KEY = "KakaoAK 6f72cd8b31110c1031e1f004fb80c3c8"  // REST API 키
@@ -126,7 +130,29 @@ class SearchMap : AppCompatActivity() {
 
 
         }
-        mapListView.setOnItemClickListener { parent, view, position, id ->  }
+        mapListView.setOnItemClickListener { parent, view, position, id -> // 검색한 결과 listView 클릭하면 넘어가기
+//            val intent= Intent(this, SearchMapContent::class.java) // 가족 초대하기 페이지
+//            Log.d("locccc", resultList[position])
+//            intent.putExtra("LocationInfo", resultList[position].toString())
+//
+//            startActivity(intent)
+
+            resultList
+
+            // 1. x, y DB에 저장
+            var r = resultList[position].replace(", x=", "*")
+            r = r.replace(", y=", "*")
+            r += "*"
+            var rList = r.trim().splitToSequence("*").toList() // String to List // 0번째는 쓰레기값 // 1번째 x, 2번째y
+
+
+
+
+            // 2. PIN
+
+
+
+        }
 
     }
 
@@ -190,12 +216,12 @@ class SearchMap : AppCompatActivity() {
 
     // list
     fun makeList() {
-        var resultList =
+        resultList =
             DummySearch.sDummySearch.trim().splitToSequence("*").toList() // String to List
 //        var resultArray: Array<String> = resultList.toTypedArray() // List to Array
 //        var myAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, resultArray)
 //        mapListView.adapter = myAdapter
-        var resultArray: Array<String> = resultList.toTypedArray() // List to Array
+        resultArray= resultList.toTypedArray() // List to Array
         var resultNameArray: Array<String> = resultList.toTypedArray()
         for (i in  0 .. (resultArray.size -1)){
             resultNameArray[i] = resultNameArray[i].replace("place_name=", "")
