@@ -1,4 +1,4 @@
-package com.example.myapplication
+package com.example.myapplication.Notification
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -12,11 +12,13 @@ import android.graphics.Color
 import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
-//import com.example.streetcat.R
+import com.example.myapplication.R
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 import java.util.*
 //import kotlin.random.Random
+
+
 
 private const val CHANNEL_ID = "my_channel"
 
@@ -34,20 +36,19 @@ class FirebaseService : FirebaseMessagingService() {
             }
     }
 
-    // 사용자 디바이스 토큰 새로 생성
     override fun onNewToken(newToken: String) {
         super.onNewToken(newToken)
         token = newToken
     }
 
-    //알람이 온 경우 --> 어떻게 보이게 할 것인지, 누르면 어디로 이동하게 할 것인지 정하는 메소드
     override fun onMessageReceived(message: RemoteMessage) {
         super.onMessageReceived(message)
 
-        //알림 팝업 누를 시 MainActivity로 이동
-        val intent = Intent(this, MainActivity::class.java)
+        val intent = Intent(this, Notification::class.java)
         val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        val notificationID = 1
+//        val notificationID = Random.nextInt()
+        val random = Random()
+        val notificationID = random.nextInt(1010)
 
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             createNotificationChannel(notificationManager)
@@ -69,11 +70,13 @@ class FirebaseService : FirebaseMessagingService() {
     @RequiresApi(Build.VERSION_CODES.O)
     private fun createNotificationChannel(notificationManager: NotificationManager) {
         val channelName = "channelName"
-        val channel = NotificationChannel(CHANNEL_ID, channelName, IMPORTANCE_HIGH).apply {
-            description = "My channel description"
-            enableLights(true)
-            lightColor = Color.GREEN
-        }
+        val channel = NotificationChannel(CHANNEL_ID, channelName, IMPORTANCE_HIGH)
+//            .apply {
+//            description = "My channel description"
+//            enableLights(true)
+//            lightColor = Color.GREEN
+//        }
         notificationManager.createNotificationChannel(channel)
     }
+
 }

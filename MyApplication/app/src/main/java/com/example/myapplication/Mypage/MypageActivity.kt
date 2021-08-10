@@ -1,4 +1,4 @@
-package com.example.myapplication
+package com.example.myapplication.Mypage
 
 import android.app.Activity
 import android.app.AlertDialog
@@ -18,10 +18,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.*
-import androidx.annotation.ContentView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.cardview.widget.CardView
-import androidx.core.content.ContextCompat.getSystemService
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
@@ -31,24 +28,18 @@ import com.google.firebase.ktx.Firebase
 //import com.google.firebase.firestore.ktx.firestore
 //import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.mypage_activity.*
-import kotlinx.android.synthetic.main.mypage_content.*
-import kotlinx.android.synthetic.main.mypage_edit.*
 import java.util.*
 import java.util.regex.Pattern
-import androidx.core.content.ContextCompat.getSystemServiceName
-import androidx.core.content.ContextCompat.getSystemService
+import com.example.myapplication.LoginRegister.LoginActivity
+import com.example.myapplication.R
 import com.google.android.gms.tasks.OnFailureListener
 import com.google.android.gms.tasks.OnSuccessListener
-import com.google.api.Distribution
 import com.google.firebase.auth.ktx.auth
-import com.google.firebase.auth.ktx.userProfileChangeRequest
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.UploadTask
 import com.google.firebase.storage.ktx.storage
-import kotlinx.android.synthetic.main.activity_familysetting.*
-import org.json.JSONObject
 import java.io.IOException
 
 class MypageActivity : AppCompatActivity() {

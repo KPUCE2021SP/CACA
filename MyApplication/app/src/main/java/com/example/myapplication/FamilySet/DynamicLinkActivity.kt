@@ -1,20 +1,19 @@
-package com.example.myapplication
+package com.example.myapplication.FamilySet
 
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.myapplication.HomeActivity
+import com.example.myapplication.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_dynamic.*
-import java.util.*
-import java.util.stream.IntStream.range
 
 class DynamicLinkActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,7 +42,7 @@ class DynamicLinkActivity : AppCompatActivity() {
 
 
             // MypageActivity로 이동
-            val intent= Intent(this, MainPageActivity::class.java) // 가족 초대하기 페이지
+            val intent= Intent(this, HomeActivity::class.java) // 가족 초대하기 페이지
             intent.putExtra("FamilyName", RandomCode)
             startActivity(intent)
         }

@@ -1,48 +1,53 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-<!--    android:paddingBottom="@dimen/activity_vertical_margin"-->
-<!--    android:paddingLeft="@dimen/activity_horizontal_margin"-->
-<!--    android:paddingRight="@dimen/activity_horizontal_margin"-->
-<!--    android:paddingTop="@dimen/activity_vertical_margin"-->
-<!--    tools:context="com.google.firebase.quickstart.fcm.java.MainActivity">-->
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:layout_gravity="center_horizontal"        />
-<!--        android:src="@drawable/firebase_lockup_400" -->
-
-
-    <TextView
-        android:id="@+id/informationTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:gravity="center_horizontal"        />
-<!--        android:text="@string/quickstart_message" -->
-
+    android:layout_height="match_parent">
 
     <Button
-        android:id="@+id/sendMessage"
+        android:id="@+id/btnSend"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="20dp"
-        android:text="sendMessage" />
-<!--        android:text="@string/subscribe_to_weather" -->
+        android:text="Send"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-
-    <Button
-        android:id="@+id/logTokenButton"
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/etMessage"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="logTokenButton" />
-<!--        android:text="@string/log_token" -->
+        android:ems="10"
+        android:hint="Enter message"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toStartOf="@+id/btnSend"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btnSend" />
 
+    <EditText
+        android:id="@+id/etToken"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Enter Token"
+        android:inputType="textPersonName"
+        android:visibility="visible"
+        app:layout_constraintEnd_toStartOf="@+id/btnSend"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etMessage" />
 
-</LinearLayout>
+    <EditText
+        android:id="@+id/etTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Enter Title"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/etMessage"
+        app:layout_constraintEnd_toStartOf="@+id/btnSend"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,9 +1,15 @@
 <resources>
     <string name="app_name">FAMILYSHIP</string>
+    <string name="Btn_Pick">무작위로 뽑기</string>
+    <string name="Btn_Add">추가</string>
+    <string name="Txt_Input">후보를 입력해주세요.</string>
+    <string name="Txt_Print">후보 입력 후 뽑기!</string>
+    <string name="Btn_Delete">삭제</string>
+    <string name="Btn_One_Pick">중복없이 뽑기</string>
+    <string name="app_icon">app_icon</string>
+    <string name="language_setting">language_setting</string>
+    <string name="please_enter_a_candidate">Please enter a candidate!</string>
     <string name="msg_token_fmt" translatable="false">%s</string>
     <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
-    <string name="default_notification_channel_name" translatable="false">default_notification_channel_name</string>
     <string name="fcm_message">FCM Message</string>
-    <string name="msg_subscribed">msg_subscribed</string>
-    <string name="msg_subscribe_failed">msg_subscribe_failed</string>
 </resources>

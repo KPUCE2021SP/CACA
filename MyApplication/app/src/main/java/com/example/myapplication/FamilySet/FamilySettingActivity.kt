@@ -1,26 +1,16 @@
-package com.example.myapplication
+package com.example.myapplication.FamilySet
 
 import android.app.Activity
-import android.app.AlertDialog
-import android.content.ContentUris
-import android.content.Context
 import android.content.Intent
-import android.content.pm.PackageManager
-import android.graphics.Bitmap
-import android.graphics.Bitmap.CompressFormat
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
-import android.os.Environment
 import android.provider.MediaStore
-import android.util.Log
 import android.widget.ImageView
 import android.widget.Toast
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import com.example.myapplication.R
 import com.google.android.gms.tasks.OnFailureListener
 import com.google.android.gms.tasks.OnSuccessListener
-import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
@@ -28,16 +18,9 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.UploadTask
-import com.google.firebase.storage.ktx.storage
 import kotlinx.android.synthetic.main.activity_familysetting.*
-import kotlinx.android.synthetic.main.board.*
-import kotlinx.android.synthetic.main.signuppage.*
-import java.io.File
-import java.io.FileOutputStream
 import java.io.IOException
-import java.io.OutputStream
 import java.util.*
-import java.util.jar.Manifest
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 

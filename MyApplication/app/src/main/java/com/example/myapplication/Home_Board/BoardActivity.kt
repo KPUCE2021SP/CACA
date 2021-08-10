@@ -1,20 +1,17 @@
-package com.example.myapplication
+package com.example.myapplication.Home_Board
 
-import android.app.TabActivity
 import android.content.ContentValues
-import android.content.Context
-import android.content.Intent
 import android.graphics.BitmapFactory
-import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.TextView
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import com.example.myapplication.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
@@ -22,10 +19,7 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.ktx.storage
-import kotlinx.android.synthetic.main.activity_familysetting.*
-import kotlinx.android.synthetic.main.activity_mainpage.*
 import kotlinx.android.synthetic.main.board.*
-import kotlinx.android.synthetic.main.mypage_activity.*
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
@@ -39,6 +33,7 @@ class BoardActivity : AppCompatActivity() {
     var uid = fbAuth?.uid.toString() // uid
     private var storageReference: StorageReference? = null
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         storageReference = FirebaseStorage.getInstance().reference
         super.onCreate(savedInstanceState)
@@ -85,7 +80,8 @@ class BoardActivity : AppCompatActivity() {
                     "timeStamp" to current
             )
 
-            db.collection("Chats").document(FamilyName.toString()).collection("BOARD").document(formatted).set(board_content) // 게시판 활성화
+            db.collection("Chats").document(FamilyName.toString()).collection("BOARD")
+                .document(formatted).set(board_content) // 게시판 활성화
             Toast.makeText(this, "게시판 업로드 완료!!", Toast.LENGTH_SHORT).show()
 
 
