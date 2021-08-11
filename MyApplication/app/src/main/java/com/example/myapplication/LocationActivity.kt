@@ -3,26 +3,45 @@ package com.example.myapplication
 import android.Manifest.permission.ACCESS_COARSE_LOCATION
 import android.Manifest.permission.ACCESS_FINE_LOCATION
 import android.annotation.SuppressLint
+import android.content.ContentValues
 import android.content.Context
 import android.content.pm.PackageManager
+import android.graphics.BitmapFactory
 import android.location.Address
 import android.location.Geocoder
 import android.location.Location
 import android.location.LocationManager
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import androidx.fragment.app.Fragment
+import com.example.myapplication.Mypage.DummyData
 import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationCallback
+import com.google.android.gms.location.LocationResult
 import com.google.android.gms.location.LocationServices
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.ktx.storage
 import com.gun0912.tedpermission.PermissionListener
 import com.gun0912.tedpermission.TedPermission
+import io.reactivex.Completable.timer
+import io.reactivex.Flowable.timer
+import io.reactivex.Maybe.timer
+import io.reactivex.Single.timer
 import kotlinx.android.synthetic.main.activity_location.*
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.mypage_activity.*
 import java.io.FileInputStream
 import java.io.FileOutputStream
+import java.lang.Thread.sleep
 import java.util.*
+import kotlin.concurrent.*
+
 
 
 class LocationActivity : AppCompatActivity() {
@@ -37,11 +56,12 @@ class LocationActivity : AppCompatActivity() {
 
     private var locationManager : LocationManager? = null
 
-
+    private lateinit var locationCallback: LocationCallback
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_location)
+
 
         var L : String = ""
 
@@ -57,171 +77,111 @@ class LocationActivity : AppCompatActivity() {
         }
 
         TedPermission.with(this)
-            .setPermissionListener(permissionListener)
-            .setRationaleConfirmText("권한 필요")
-            .setDeniedMessage("권한 거절")
-            .setPermissions(ACCESS_FINE_LOCATION)
-            .check()
+                .setPermissionListener(permissionListener)
+                .setRationaleConfirmText("권한 필요")
+                .setDeniedMessage("권한 거절")
+                .setPermissions(ACCESS_FINE_LOCATION)
+                .check()
 
 
+//
+//        var n = 100
+//        while(n>0){
 
+            fusedLocationClient = LocationServices.getFusedLocationProviderClient(this) // 위치 정보 받기
 
-
-        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this) // 위치 정보 받기
-
-        if (ActivityCompat.checkSelfPermission(
-                this,
-                ACCESS_FINE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
-                this,
-                ACCESS_COARSE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED
-        ) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            return
-        }
-        fusedLocationClient.lastLocation
-            .addOnSuccessListener { location : Location? ->
-                // Got last known location. In some rare situations this can be null.
-                if (location != null) {
-                    lat = location.latitude
-                    log = location.longitude
-
-
-                    var asdf : String = "위도 : " + lat.toString() + " 경도 : " + log.toString()
-                    Log.d("logD", asdf)
-                }
+            if (ActivityCompat.checkSelfPermission(
+                            this,
+                            ACCESS_FINE_LOCATION
+                    ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                            this,
+                            ACCESS_COARSE_LOCATION
+                    ) != PackageManager.PERMISSION_GRANTED
+            ) {
+                // TODO: Consider calling
+                //    ActivityCompat#requestPermissions
+                // here to request the missing permissions, and then overriding
+                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                //                                          int[] grantResults)
+                // to handle the case where the user grants the permission. See the documentation
+                // for ActivityCompat#requestPermissions for more details.
+                return
             }
+            fusedLocationClient.lastLocation
+                    .addOnSuccessListener { location : Location? ->
+                        // Got last known location. In some rare situations this can be null.
+                        if (location != null) {
+                            lat = location.latitude
+                            log = location.longitude
+
+
+                            var asdf : String = "위도 : " + lat.toString() + " 경도 : " + log.toString()
+                            L_textView.setText(asdf)
+                            Log.d("logD", asdf)
+                        }
+                    }
+
+//            n -= 1
+            lat = 0.0
+            log = 0.0
 
 
 
 
-        L_Btn.setOnClickListener {////////////////////////////////////////////////////////////////////////////// 위치 불러오기 버튼
-
-            val geocoder: Geocoder
-            val addresses: List<Address>
-            geocoder = Geocoder(this, Locale.getDefault())
-
-            addresses = geocoder.getFromLocation(
-                lat,
-                log,
-                1
-            ) // Here 1 represent max location result to returned, by documents it recommended 1 to 5
 
 
-            val address = addresses[0].getAddressLine(0) // If any additional address line present than only, check with max available address lines by getMaxAddressLineIndex()
+        hey.setOnRefreshListener { // 새로고침
+            // 사용자가 아래로 드래그 했다가 놓았을 때 호출 됩니다.
+            // 이때 새로고침 화살표가 계속 돌아갑니다.
 
+            fusedLocationClient = LocationServices.getFusedLocationProviderClient(this) // 위치 정보 받기
 
-
-
-
-            L_textView.setText(address)
-            editTextTextMultiLine.setText(textView2.getText().toString()) // 저장된 내용 불러오기
-
-            if(editTextTextMultiLine.getText().toString()==""){ // 아무것도 없다면 줄바꿈 없음
-                var a : String = editTextTextMultiLine.getText().toString() + address
-                editTextTextMultiLine.setText(a) // editText에 위치정보 추가하기
-            }else{
-                var a : String = editTextTextMultiLine.getText().toString() + "\n" + address
-                editTextTextMultiLine.setText(a) // editText에 위치정보 추가하기
+            if (ActivityCompat.checkSelfPermission(
+                    this,
+                    ACCESS_FINE_LOCATION
+                ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                    this,
+                    ACCESS_COARSE_LOCATION
+                ) != PackageManager.PERMISSION_GRANTED
+            ) {
+                // TODO: Consider calling
+                //    ActivityCompat#requestPermissions
+                // here to request the missing permissions, and then overriding
+                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                //                                          int[] grantResults)
+                // to handle the case where the user grants the permission. See the documentation
+                // for ActivityCompat#requestPermissions for more details.
+                return@setOnRefreshListener
             }
+            fusedLocationClient.lastLocation
+                .addOnSuccessListener { location : Location? ->
+                    // Got last known location. In some rare situations this can be null.
+                    if (location != null) {
+                        lat = location.latitude
+                        log = location.longitude
 
-        }
 
-
-
-
-
-
-        @SuppressLint("WrongConstant")
-        fun saveDiary(readyDay: String) {/////////////////////////////////////////////////////저장
-            var fos: FileOutputStream? = null
-
-            try {
-                fos = openFileOutput(readyDay, Context.MODE_PRIVATE)
-
-                var content: String = editTextTextMultiLine.getText().toString()
-                fos.write(content.toByteArray())
-                fos.close()
-
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
-
-        }
-
-        @SuppressLint("WrongConstant")
-        fun removeDiary(readyDay: String) {/////////////////////////////////////////////////////삭제
-            var fas: FileOutputStream? = null
-
-            try {
-                fas = openFileOutput(readyDay, Context.MODE_PRIVATE)
-                var content: String = ""
-                fas.write(content.toByteArray())
-                fas.close()
-
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
-
-        }
-
-        fun checkedDay (cYear : Int, cMonth : Int, cDay : Int) {
-            fname = "" + cYear + "-" + (cMonth + 1) + "-" + cDay + ".txt"
-
-            var fis: FileInputStream? = null
-
-            try {
-                fis = openFileInput(fname)
-                val fileData = ByteArray(fis.available())
-                fis.read(fileData)
-                fis.close()
-
-                str = String(fileData)
-                textView2.text = "${str}"
-                textView2.setText("${str}")
-
-                cha_Btn.setOnClickListener {// 수정 버튼
-                    editTextTextMultiLine.setText(str)
-                    textView2.text = "${editTextTextMultiLine.getText()}"
+                        var asdf : String = "위도 : " + lat.toString() + " 경도 : " + log.toString()
+                        L_textView.setText(asdf)
+                        Log.d("logD", asdf)
+                    }
                 }
 
-                del_Btn.setOnClickListener {// 삭제 버튼
-                    editTextTextMultiLine.setText("")
-                    removeDiary(fname)
-                    var t1 = Toast.makeText(this, fname + "데이터를 삭제했습니다.", Toast.LENGTH_SHORT)
-                    t1.show()
-                }
+//            n -= 1
+            lat = 0.0
+            log = 0.0
 
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
 
-            false
-        }
+            hey.isRefreshing = false // 인터넷 끊기
 
-        calendarView.setOnDateChangeListener{view, year, month, dayOfMonth -> // 날자 바꾸기
 
-            diaryTextView.text = String.format("%d / %d / %d", year, month + 1, dayOfMonth)
-            textView2.setText("")
-            checkedDay(year, month, dayOfMonth)
+
         }
 
 
-
-        save_Btn.setOnClickListener{// save 버튼
-            saveDiary(fname)
-            var t1 = Toast.makeText(this, fname + "데이터를 저장했습니다.", Toast.LENGTH_SHORT)
-            t1.show()
-            str = textView2.getText().toString()
-            textView2.text = "${str}"
-            textView2.setText("${str}")
-        }
     }
+
+
+
+
 }

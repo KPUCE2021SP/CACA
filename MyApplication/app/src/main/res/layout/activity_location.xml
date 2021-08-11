@@ -3,109 +3,37 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:layout_height="match_parent">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
 
-        <ScrollView
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-            <LinearLayout
+            <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:layout_height="wrap_content"
+                android:id = "@+id/hey">
 
-                <CalendarView
-                    android:id="@+id/calendarView"
+
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/diaryTextView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    tools:visibility="visible" />
-
-                <TextView
-                    android:id="@+id/L_textView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
-                <Button
-                    android:id="@+id/L_Btn"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="위치정보" />
-
-                <TextView
-                    android:id="@+id/textView3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="[직접 입력]" />
-
-                <EditText
-                    android:id="@+id/editTextTextMultiLine"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:gravity="start|top"
-                    android:inputType="textMultiLine"
-                    android:visibility="visible"
-                    tools:visibility="visible" />
-
-                <TextView
-                    android:id="@+id/textView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="[현재 저장된 내용]" />
-
-                <TextView
-                    android:id="@+id/textView2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="내용"
-                    android:visibility="visible"
-                    tools:visibility="visible" />
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <Button
-                        android:id="@+id/save_Btn"
-                        android:layout_width="wrap_content"
+                    <TextView
+                        android:id="@+id/L_textView"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="저장"
-                        android:visibility="visible"
-                        tools:visibility="visible" />
+                        android:text="위치" />
+                </LinearLayout>
+            </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
-                    <Button
-                        android:id="@+id/cha_Btn"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="수정"
-                        android:visibility="visible"
-                        tools:visibility="visible" />
 
-                    <Button
-                        android:id="@+id/del_Btn"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="삭제"
-                        android:visibility="visible"
-                        tools:visibility="visible" />
-                </TableRow>
+        </LinearLayout>
 
-            </LinearLayout>
-        </ScrollView>
-    </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
