@@ -15,10 +15,7 @@ import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.animation.AnimationUtils
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.core.view.isGone
 import com.example.myapplication.FamilySet.DynamicLinkActivity
 import com.example.myapplication.Home_Board.BoardActivity
@@ -31,6 +28,7 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 import kotlinx.android.synthetic.main.activity_home.*
+import kotlinx.android.synthetic.main.board.*
 import kotlinx.android.synthetic.main.mypage_activity.*
 import kotlinx.android.synthetic.main.notice_card.*
 import java.time.LocalDateTime
@@ -39,6 +37,11 @@ import java.util.*
 
 
 class HomeActivity : TabActivity() {
+    var mutableList: MutableList<String> = mutableListOf("a")
+    var mutableUIDList: MutableList<String> = mutableListOf("null")
+    var mutableList1: MutableList<String> = mutableListOf("a")
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
@@ -51,20 +54,22 @@ class HomeActivity : TabActivity() {
         var fbFire = FirebaseFirestore.getInstance()
         var uid = fbAuth?.uid.toString() // uid
         val db: FirebaseFirestore = Firebase.firestore
-        val docRef2 = db.collection("Member").document(uid).collection("MYPAGE").document(FamilyName.toString())
+        val docRef2 = db.collection("Member").document(uid).collection("MYPAGE")
+            .document(FamilyName.toString())
         docRef2.get()
-                .addOnSuccessListener { document ->
-                    if (document != null) {
-                        Log.d(ContentValues.TAG, "DocumentSnapshot data: ${document.data}")
-                        FamilyNameTextView.text = document.data?.get("name").toString() // family name 넣기
+            .addOnSuccessListener { document ->
+                if (document != null) {
+                    Log.d(ContentValues.TAG, "DocumentSnapshot data: ${document.data}")
+                    FamilyNameTextView.text =
+                        document.data?.get("name").toString() // family name 넣기
 
-                    } else {
-                        Log.d(ContentValues.TAG, "No such document")
-                    }
+                } else {
+                    Log.d(ContentValues.TAG, "No such document")
                 }
-                .addOnFailureListener { exception ->
-                    Log.d(ContentValues.TAG, "get failed with ", exception)
-                }
+            }
+            .addOnFailureListener { exception ->
+                Log.d(ContentValues.TAG, "get failed with ", exception)
+            }
 
 
         //val tabHost = this.tabHost
@@ -161,7 +166,8 @@ class HomeActivity : TabActivity() {
                 "location" to ""
             )
             db.collection("Chats").document(FamilyName.toString()).collection("BOARD")
-                .document(formatted).set(board_format as Map<String, Any>)//.set(board_content) // 게시판 활성화
+                .document(formatted)
+                .set(board_format as Map<String, Any>)//.set(board_content) // 게시판 활성화
 
 
             val intent = Intent(application, BoardActivity::class.java)
@@ -172,13 +178,8 @@ class HomeActivity : TabActivity() {
         }
 
 
-
-
-
-
-
 // Board_LineaLayout
-        var mutableList : MutableList<String> = mutableListOf("a")
+        var mutableList: MutableList<String> = mutableListOf("a")
         mutableList.clear()
 
         db.collection("Chats").document(FamilyName.toString()).collection("BOARD")
@@ -191,11 +192,16 @@ class HomeActivity : TabActivity() {
 
 
                 for (i in 0..(mutableList.size - 1)) { // 거꾸로
-                    val layoutInflater = this.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-                    val containView = layoutInflater.inflate(R.layout.notice_card, null) // mypage_content를 inflate
+                    val layoutInflater =
+                        this.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+                    val containView = layoutInflater.inflate(
+                        R.layout.notice_card,
+                        null
+                    ) // mypage_content를 inflate
                     Board_LinearLayout.addView(containView)
 
-                    notice_image.background = getResources().getDrawable(R.drawable.imageview_cornerround, null)
+                    notice_image.background =
+                        getResources().getDrawable(R.drawable.imageview_cornerround, null)
                     notice_image.setClipToOutline(true)
 
 
@@ -203,13 +209,17 @@ class HomeActivity : TabActivity() {
                     var notice_board = ContentView.findViewById(R.id.notice_board) as TextView // 내용
                     var notice_time = ContentView.findViewById(R.id.notice_time) as TextView // 시간
                     var notice_name = ContentView.findViewById(R.id.notice_name) as TextView // uid
-                    var notice_profile = ContentView.findViewById(R.id.notice_profile) as ImageView // profile Image
-                    var notice_image = ContentView.findViewById(R.id.notice_image) as ImageView // Board Image
-                    var notice_card_Layout = ContentView.findViewById(R.id.notice_card_Layout) as LinearLayout
+                    var notice_profile =
+                        ContentView.findViewById(R.id.notice_profile) as ImageView // profile Image
+                    var notice_image =
+                        ContentView.findViewById(R.id.notice_image) as ImageView // Board Image
+                    var notice_card_Layout =
+                        ContentView.findViewById(R.id.notice_card_Layout) as LinearLayout
 
 
-
-                    val docRef1 = db.collection("Chats").document(FamilyName.toString()).collection("BOARD").document(mutableList[(mutableList.size - 1)-i]) // 여러 field값 가져오기
+                    val docRef1 =
+                        db.collection("Chats").document(FamilyName.toString()).collection("BOARD")
+                            .document(mutableList[(mutableList.size - 1) - i]) // 여러 field값 가져오기
                     docRef1.get()
                         .addOnSuccessListener { document2 ->
                             if (document2 != null) {
@@ -221,7 +231,10 @@ class HomeActivity : TabActivity() {
 
                                 // profile Image
                                 // document2.data?.get("uid").toString()
-                                val imageName = "gs://cacafirebase-554ac.appspot.com/profiles/" + document2.data?.get("uid").toString()
+                                val imageName =
+                                    "gs://cacafirebase-554ac.appspot.com/profiles/" + document2.data?.get(
+                                        "uid"
+                                    ).toString()
                                 Log.d("imageName", imageName)
                                 val storage = Firebase.storage
                                 val storageRef = storage.reference
@@ -230,14 +243,19 @@ class HomeActivity : TabActivity() {
                                     val profilebmp = BitmapFactory.decodeByteArray(it, 0, it.size)
                                     notice_profile.setImageBitmap(profilebmp) // 작성한 사람 uid로 profileImage 변경!
                                 }?.addOnFailureListener {
-                                    Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT).show()
+                                    Toast.makeText(
+                                        this,
+                                        "image downloade failed",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
                                 }
 
 
-
-
                                 // Board Image
-                                val BoardImageName = "gs://cacafirebase-554ac.appspot.com/Family_Board/" + FamilyName + "_" + document2.data?.get("time").toString()
+                                val BoardImageName =
+                                    "gs://cacafirebase-554ac.appspot.com/Family_Board/" + FamilyName + "_" + document2.data?.get(
+                                        "time"
+                                    ).toString()
                                 Log.d("imageName", BoardImageName)
                                 val storage2 = Firebase.storage
                                 val storageRef2 = storage.reference
@@ -246,21 +264,29 @@ class HomeActivity : TabActivity() {
                                     val profilebmp2 = BitmapFactory.decodeByteArray(it, 0, it.size)
                                     notice_image.setImageBitmap(profilebmp2) // 작성한 사람 uid로 profileImage 변경!
                                 }?.addOnFailureListener {
-                                    Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT).show()
-                                    notice_image.isGone = true                            // 업로드된 이미지가 없다면
+                                    Toast.makeText(
+                                        this,
+                                        "image downloade failed",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                    notice_image.isGone =
+                                        true                            // 업로드된 이미지가 없다면
                                 }
 
 
-
-
-
                                 // uid to Name
-                                val docRef = db.collection("Member").document(document2.data?.get("uid").toString())
+                                val docRef = db.collection("Member")
+                                    .document(document2.data?.get("uid").toString())
                                 docRef.get()
                                     .addOnSuccessListener { document3 ->
                                         if (document3 != null) {
-                                            Log.d(ContentValues.TAG, "DocumentSnapshot data: ${document3.data}")
-                                            notice_name.setText(document3.data?.get("name").toString()) // name 확인용
+                                            Log.d(
+                                                ContentValues.TAG,
+                                                "DocumentSnapshot data: ${document3.data}"
+                                            )
+                                            notice_name.setText(
+                                                document3.data?.get("name").toString()
+                                            ) // name 확인용
 
                                         } else {
                                             Log.d(ContentValues.TAG, "No such document")
@@ -308,184 +334,259 @@ class HomeActivity : TabActivity() {
                             })
                         dlg.show()
                     }
-
-
-
                 }
-                notice_image.background = getResources().getDrawable(R.drawable.imageview_cornerround, null)
+                notice_image.background =
+                    getResources().getDrawable(R.drawable.imageview_cornerround, null)
                 notice_image.setClipToOutline(true)
             }
 
 
-
-
-
         //게시판 새로고침하기
         srl_Mainpage.setOnRefreshListener {
-        // 게시판 동적 생성
+            // 게시판 동적 생성
             // Board_LineaLayout
             Board_LinearLayout.removeAllViews()
-            var mutableList : MutableList<String> = mutableListOf("a")
+            var mutableList: MutableList<String> = mutableListOf("a")
             mutableList.clear()
 
             db.collection("Chats").document(FamilyName.toString()).collection("BOARD")
-                    .get()
-                    .addOnSuccessListener { documents ->
-                        for (document1 in documents) {
-                            Log.d(ContentValues.TAG, "${document1.id} => ${document1.data}")
-                            mutableList.add(document1.id.toString())
-                        }
+                .get()
+                .addOnSuccessListener { documents ->
+                    for (document1 in documents) {
+                        Log.d(ContentValues.TAG, "${document1.id} => ${document1.data}")
+                        mutableList.add(document1.id.toString())
+                    }
 
 
-                        for (i in 0..(mutableList.size - 1)) { // 거꾸로
-                            val layoutInflater = this.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-                            val containView = layoutInflater.inflate(R.layout.notice_card, null) // mypage_content를 inflate
-                            Board_LinearLayout.addView(containView)
+                    for (i in 0..(mutableList.size - 1)) { // 거꾸로
+                        val layoutInflater =
+                            this.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+                        val containView = layoutInflater.inflate(
+                            R.layout.notice_card,
+                            null
+                        ) // mypage_content를 inflate
+                        Board_LinearLayout.addView(containView)
 
-                            val ContentView = containView as View
-                            var notice_board = ContentView.findViewById(R.id.notice_board) as TextView // 내용
-                            var notice_time = ContentView.findViewById(R.id.notice_time) as TextView // 시간
-                            var notice_name = ContentView.findViewById(R.id.notice_name) as TextView // uid
-                            var notice_profile = ContentView.findViewById(R.id.notice_profile) as ImageView // profile Image
-                            var notice_image = ContentView.findViewById(R.id.notice_image) as ImageView // Board Image
+                        val ContentView = containView as View
+                        var notice_board =
+                            ContentView.findViewById(R.id.notice_board) as TextView // 내용
+                        var notice_time =
+                            ContentView.findViewById(R.id.notice_time) as TextView // 시간
+                        var notice_name =
+                            ContentView.findViewById(R.id.notice_name) as TextView // uid
+                        var notice_profile =
+                            ContentView.findViewById(R.id.notice_profile) as ImageView // profile Image
+                        var notice_image =
+                            ContentView.findViewById(R.id.notice_image) as ImageView // Board Image
+                        var notice_card_Layout =
+                            ContentView.findViewById(R.id.notice_card_Layout) as LinearLayout
 
-                            val docRef1 = db.collection("Chats").document(FamilyName.toString()).collection("BOARD").document(mutableList[(mutableList.size - 1)-i]) // 여러 field값 가져오기
-                            docRef1.get()
-                                    .addOnSuccessListener { document2 ->
-                                        if (document2 != null) {
-                                            Log.d(ContentValues.TAG, "DocumentSnapshot data: ${document2.data}")
-                                            //textViewName.setText(document.data?.get("name").toString()) // name 확인용
-                                            notice_time.setText(document2.data?.get("time").toString())
-                                            notice_board.setText(document2.data?.get("contents").toString())
-                                            //notice_board.setText(mutableList.toString()) //////////////////////////////test
+                        val docRef1 = db.collection("Chats").document(FamilyName.toString())
+                            .collection("BOARD")
+                            .document(mutableList[(mutableList.size - 1) - i]) // 여러 field값 가져오기
+                        docRef1.get()
+                            .addOnSuccessListener { document2 ->
+                                if (document2 != null) {
+                                    Log.d(
+                                        ContentValues.TAG,
+                                        "DocumentSnapshot data: ${document2.data}"
+                                    )
+                                    //textViewName.setText(document.data?.get("name").toString()) // name 확인용
+                                    notice_time.setText(document2.data?.get("time").toString())
+                                    notice_board.setText(document2.data?.get("contents").toString())
+                                    //notice_board.setText(mutableList.toString()) //////////////////////////////test
 
 
-                                            // profile Image
-                                            // document2.data?.get("uid").toString()
-                                            val imageName = "gs://cacafirebase-554ac.appspot.com/profiles/" + document2.data?.get("uid").toString()
-                                            Log.d("imageName", imageName)
-                                            val storage = Firebase.storage
-                                            val storageRef = storage.reference
-                                            val profileRef1 = storage.getReferenceFromUrl(imageName)
-                                            profileRef1?.getBytes(Long.MAX_VALUE)?.addOnSuccessListener {
-                                                val profilebmp = BitmapFactory.decodeByteArray(it, 0, it.size)
-                                                notice_profile.setImageBitmap(profilebmp) // 작성한 사람 uid로 profileImage 변경!
-                                            }?.addOnFailureListener {
-                                                Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT).show()
+                                    // profile Image
+                                    // document2.data?.get("uid").toString()
+                                    val imageName =
+                                        "gs://cacafirebase-554ac.appspot.com/profiles/" + document2.data?.get(
+                                            "uid"
+                                        ).toString()
+                                    Log.d("imageName", imageName)
+                                    val storage = Firebase.storage
+                                    val storageRef = storage.reference
+                                    val profileRef1 = storage.getReferenceFromUrl(imageName)
+                                    profileRef1?.getBytes(Long.MAX_VALUE)?.addOnSuccessListener {
+                                        val profilebmp =
+                                            BitmapFactory.decodeByteArray(it, 0, it.size)
+                                        notice_profile.setImageBitmap(profilebmp) // 작성한 사람 uid로 profileImage 변경!
+                                    }?.addOnFailureListener {
+                                        Toast.makeText(
+                                            this,
+                                            "image downloade failed",
+                                            Toast.LENGTH_SHORT
+                                        ).show()
+                                    }
+
+
+                                    // Board Image
+                                    val BoardImageName =
+                                        "gs://cacafirebase-554ac.appspot.com/Family_Board/" + FamilyName + "_" + document2.data?.get(
+                                            "time"
+                                        ).toString()
+                                    Log.d("imageName", BoardImageName)
+                                    val storage2 = Firebase.storage
+                                    val storageRef2 = storage.reference
+                                    val profileRef2 = storage.getReferenceFromUrl(BoardImageName)
+                                    profileRef2?.getBytes(Long.MAX_VALUE)?.addOnSuccessListener {
+                                        val profilebmp2 =
+                                            BitmapFactory.decodeByteArray(it, 0, it.size)
+                                        notice_image.setImageBitmap(profilebmp2) // 작성한 사람 uid로 profileImage 변경!
+                                    }?.addOnFailureListener {
+                                        Toast.makeText(
+                                            this,
+                                            "image downloade failed",
+                                            Toast.LENGTH_SHORT
+                                        ).show()
+                                        notice_image.isGone =
+                                            true                            // 업로드된 이미지가 없다면
+                                    }
+
+
+                                    // uid to Name
+                                    val docRef = db.collection("Member")
+                                        .document(document2.data?.get("uid").toString())
+                                    docRef.get()
+                                        .addOnSuccessListener { document3 ->
+                                            if (document3 != null) {
+                                                Log.d(
+                                                    ContentValues.TAG,
+                                                    "DocumentSnapshot data: ${document3.data}"
+                                                )
+                                                notice_name.setText(
+                                                    document3.data?.get("name").toString()
+                                                ) // name 확인용
+
+                                            } else {
+                                                Log.d(ContentValues.TAG, "No such document")
                                             }
-
-
-                                            // Board Image
-                                            val BoardImageName = "gs://cacafirebase-554ac.appspot.com/Family_Board/" + FamilyName + "_" + document2.data?.get("time").toString()
-                                            Log.d("imageName", BoardImageName)
-                                            val storage2 = Firebase.storage
-                                            val storageRef2 = storage.reference
-                                            val profileRef2 = storage.getReferenceFromUrl(BoardImageName)
-                                            profileRef2?.getBytes(Long.MAX_VALUE)?.addOnSuccessListener {
-                                                val profilebmp2 = BitmapFactory.decodeByteArray(it, 0, it.size)
-                                                notice_image.setImageBitmap(profilebmp2) // 작성한 사람 uid로 profileImage 변경!
-                                            }?.addOnFailureListener {
-                                                Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT).show()
-                                                notice_image.isGone = true                            // 업로드된 이미지가 없다면
-                                            }
-
-
-
-                                            // uid to Name
-                                            val docRef = db.collection("Member").document(document2.data?.get("uid").toString())
-                                            docRef.get()
-                                                    .addOnSuccessListener { document3 ->
-                                                        if (document3 != null) {
-                                                            Log.d(ContentValues.TAG, "DocumentSnapshot data: ${document3.data}")
-                                                            notice_name.setText(document3.data?.get("name").toString()) // name 확인용
-
-                                                        } else {
-                                                            Log.d(ContentValues.TAG, "No such document")
-                                                        }
-                                                    }
-                                                    .addOnFailureListener { exception ->
-                                                        Log.d(ContentValues.TAG, "get failed with ", exception)
-                                                    }
-
-                                        } else {
-                                            Log.d(ContentValues.TAG, "No such document")
                                         }
-                                    }
-                                    .addOnFailureListener { exception ->
-                                        Log.d(ContentValues.TAG, "get failed with ", exception)
-                                    }
+                                        .addOnFailureListener { exception ->
+                                            Log.d(ContentValues.TAG, "get failed with ", exception)
+                                        }
 
+                                } else {
+                                    Log.d(ContentValues.TAG, "No such document")
+                                }
+                            }
+                            .addOnFailureListener { exception ->
+                                Log.d(ContentValues.TAG, "get failed with ", exception)
+                            }
+                        notice_card_Layout?.setOnClickListener() { // 삭제
 
+                            val dlg: AlertDialog.Builder = AlertDialog.Builder(
+                                this,
+                                android.R.style.Theme_DeviceDefault_Light_Dialog_NoActionBar_MinWidth
+                            )
+                            dlg.setTitle("항목 삭제") //제목
+                            dlg.setMessage(notice_time.text.toString() + "를 정말 삭제하시겠습니까?") // 메시지
+                            dlg.setPositiveButton(
+                                "확인",
+                                DialogInterface.OnClickListener { dialog, which ->
+                                    // DB 삭제
+                                    var fbAuth = FirebaseAuth.getInstance()
+                                    val db: FirebaseFirestore = Firebase.firestore
 
+                                    val docRef = db.collection("Chats").document(FamilyName.toString())
+                                        .collection("BOARD").document(notice_time.text.toString())
+                                        .delete()
+
+                                })
+                            dlg.setNegativeButton(
+                                "취소",
+                                DialogInterface.OnClickListener { dialog, which ->
+                                    // 취소
+                                })
+                            dlg.show()
                         }
                     }
+                    notice_image.background =
+                        getResources().getDrawable(R.drawable.imageview_cornerround, null)
+                    notice_image.setClipToOutline(true)
+                }
+
             srl_Mainpage.isRefreshing = false // 인터넷 끊기
         }
 
 
+        // random pick game --------------------------------- minigame
+
+        mutableList1.clear()
+        db.collection("Chats").document(FamilyName.toString()).collection("FamilyMember")
+            .get()
+            .addOnSuccessListener { documents ->
+                for (document in documents) {
+                    Log.d("FamilyMember", "${document.id}")
+
+//                    //Member 이름 가져와서 mutableNameList에 저장
+                    val docRef2 = db.collection("Member").document(document.id)
+                    docRef2.get()
+                        .addOnSuccessListener { docName ->
+                            if (docName != null) {
+                                Log.d(
+                                    ContentValues.TAG,
+                                    "DocumentSnapshot data: ${docName.data}"
+                                )
+//                                mutableUIDList.add(document.id.toString())
+                                mutableList1.add(docName.data?.get("name").toString())
+
+                                var adapter: ArrayAdapter<String>
+                                adapter = ArrayAdapter(
+                                    this,
+                                    android.R.layout.simple_spinner_dropdown_item,
+                                    mutableList1
+                                )
+                                mutableView.adapter = adapter
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-    // random pick game
-        val docRef1 = db.collection("Member").document(uid) // 여러 field값 가져오기
-        docRef1.get()
-            .addOnSuccessListener { document ->
-                if (document != null) {
-                    Log.d(ContentValues.TAG, "DocumentSnapshot data: ${document.data}")
-                    testName.text = document.data?.get("name").toString() // name 확인용
-
-                } else {
-                    Log.d(ContentValues.TAG, "No such document")
+                            } else {
+                                Log.d(ContentValues.TAG, "No such document")
+                            }
+                        }
+                        .addOnFailureListener { exception ->
+                            Log.d(ContentValues.TAG, "get failed with ", exception)
+                        }
                 }
             }
-            .addOnFailureListener { exception ->
-                Log.d(ContentValues.TAG, "get failed with ", exception)
-            }
+
+
 
 
 
         var layoutNumber = 0
-        val layouts : Array<LinearLayout> = arrayOf(layout_input3, layout_input4, layout_input5, layout_input6,
-            layout_input7, layout_input8)
+//        val layouts : Array<LinearLayout> = arrayOf(layout_input3, layout_input4, layout_input5, layout_input6,
+//            layout_input7, layout_input8)
 
-        btn_add.setOnClickListener {
-            if (layoutNumber == layouts.size) {
-                Toast.makeText(this,"최대 8개까지 추가 가능합니다.",Toast.LENGTH_SHORT).show()
-            } else {
-                layouts[layoutNumber].visibility = View.VISIBLE
-                layoutNumber += 1
-            }
-        }
 
-        btn_delete.setOnClickListener {
-            val candidate3 = edit_input3.text
-            val candidate4 = edit_input4.text
-            val candidate5 = edit_input5.text
-            val candidate6 = edit_input6.text
-            val candidate7 = edit_input7.text
-            val candidate8 = edit_input8.text
-            val candidates = arrayOf(candidate3, candidate4, candidate5, candidate6,
-                candidate7, candidate8)
 
-            if (layoutNumber == 0) {
-                Toast.makeText(this,"최소 2개까지 삭제 가능합니다.",Toast.LENGTH_SHORT).show()
-            } else {
-                layouts[layoutNumber - 1].visibility = View.GONE
-                layoutNumber -= 1
-                candidates[layoutNumber].clear()
-            }
-        }
+//        btn_add.setOnClickListener {
+//            if (layoutNumber == layouts.size) {
+//                Toast.makeText(this,"최대 8개까지 추가 가능합니다.",Toast.LENGTH_SHORT).show()
+//            } else {
+//                layouts[layoutNumber].visibility = View.VISIBLE
+//                layoutNumber += 1
+//            }
+//        }
+
+//        btn_delete.setOnClickListener {
+//            val candidate3 = edit_input3.text
+//            val candidate4 = edit_input4.text
+//            val candidate5 = edit_input5.text
+//            val candidate6 = edit_input6.text
+//            val candidate7 = edit_input7.text
+//            val candidate8 = edit_input8.text
+//            val candidates = arrayOf(candidate3, candidate4, candidate5, candidate6,
+//                candidate7, candidate8)
+//
+//            if (layoutNumber == 0) {
+//                Toast.makeText(this,"최소 2개까지 삭제 가능합니다.",Toast.LENGTH_SHORT).show()
+//            } else {
+//                layouts[layoutNumber - 1].visibility = View.GONE
+//                layoutNumber -= 1
+//                candidates[layoutNumber].clear()
+//            }
+//        }
 
         btn_pick.setOnClickListener {
             text_result.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 25F)
@@ -517,7 +618,7 @@ class HomeActivity : TabActivity() {
             if (candidates[0] == "" || candidates[1] == "") {
                 Toast.makeText(this,"후보를 입력해주세요!",Toast.LENGTH_SHORT).show()
 //                text_result.text = info
-                } else {
+            } else {
                 for (i in 0..layoutNumber + 1) {
                     if (candidates[i] != "") {
                         candidateNumber += 1
@@ -548,20 +649,23 @@ class HomeActivity : TabActivity() {
             text_result.startAnimation(animationFadeIn)
         }
 
+
     }
 
     private fun editCandidate(): Array<String> {
-        val candidate1 = edit_input1.text.toString()
-        val candidate2 = edit_input2.text.toString()
-        val candidate3 = edit_input3.text.toString()
-        val candidate4 = edit_input4.text.toString()
-        val candidate5 = edit_input5.text.toString()
-        val candidate6 = edit_input6.text.toString()
-        val candidate7 = edit_input7.text.toString()
-        val candidate8 = edit_input8.text.toString()
-        return arrayOf(candidate1, candidate2, candidate3, candidate4, candidate5,
-            candidate6, candidate7, candidate8)
+//        for(i in 0 .. mutableList1.size-1){
+//            val candidate[i] = mutableList[i]
+//        }
+        val candidate1 = mutableList1[0]
+        val candidate2 = mutableList1[1]
+        return arrayOf(candidate1, candidate2)
+//        val candidate3 = mutableList1[2]
+//        val candidate4 = mutableList1[0]
+//        val candidate5 = mutableList1[0]
+//        val candidate6 = edit_input6.text.toString()
+//        val candidate7 = edit_input7.text.toString()
+//        val candidate8 = edit_input8.text.toString()
+//        return arrayOf(candidate1, candidate2, candidate3, candidate4, candidate5,
+//            candidate6, candidate7, candidate8)
     }
 }
-
-

@@ -12,7 +12,7 @@
     <!-- 정확한 위치 -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> <!-- 대략적인 위치 -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-<!--    위젯-->
+    <!--    위젯-->
     <uses-permission android:name="android.permission.VIBRATE"/>
 
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -47,19 +47,15 @@
         <activity android:name=".FamilySet.MainActivity" />
         <activity android:name=".FamilySet.FamilySettingActivity" />
         <activity android:name=".LoginRegister.SignUpActivity"></activity>
-<!--        <activity android:name=".LoginRegister.LoginActivity">-->
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
+        <activity android:name=".LoginRegister.LoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
-<!--        </activity>-->
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
         <activity android:name=".LocationActivity">
-                        <intent-filter>
-                            <action android:name="android.intent.action.MAIN" />
-                            <category android:name="android.intent.category.LAUNCHER" />
-                        </intent-filter>
         </activity>
 
 

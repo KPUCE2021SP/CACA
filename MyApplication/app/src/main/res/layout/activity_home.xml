@@ -37,17 +37,17 @@
                 android:textSize="20dp"
                 android:textStyle="bold" />
 
-<!--            <TextView-->
-<!--                android:id="@+id/MMMAinPage"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_gravity="center"-->
-<!--                android:layout_weight="3"-->
-<!--                android:gravity="center"-->
-<!--                android:text="Familyship"-->
-<!--                android:textColor="@color/white"-->
-<!--                android:textSize="20dp"-->
-<!--                android:textStyle="bold" />-->
+            <!--            <TextView-->
+            <!--                android:id="@+id/MMMAinPage"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_gravity="center"-->
+            <!--                android:layout_weight="3"-->
+            <!--                android:gravity="center"-->
+            <!--                android:text="Familyship"-->
+            <!--                android:textColor="@color/white"-->
+            <!--                android:textSize="20dp"-->
+            <!--                android:textStyle="bold" />-->
 
             <ImageButton
                 android:id="@+id/btnGroup"
@@ -71,9 +71,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
-<!--                <View-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="1dp"/>-->
+                <!--                <View-->
+                <!--                    android:layout_width="0dp"-->
+                <!--                    android:layout_height="1dp"/>-->
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -349,14 +349,6 @@
                                     android:layout_height="100dp">
 
                                     <TextView
-                                        android:text="name"
-                                        android:textColor="@color/black"
-                                        android:textSize="30dp"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:id="@+id/testName"/>
-
-                                    <TextView
                                         android:textStyle="bold"
                                         android:layout_margin="5dp"
                                         android:id="@+id/text_result"
@@ -397,6 +389,8 @@
                                         android:textStyle="bold"></TextView>
                                 </LinearLayout>
 
+
+
                                 <LinearLayout
                                     android:layout_width="150dp"
                                     android:layout_height="100dp"
@@ -421,170 +415,189 @@
                                 </LinearLayout>
                             </LinearLayout>
 
-                        <LinearLayout
-                            android:orientation="horizontal"
-                            android:layout_margin="10dp"
-                            android:layout_width="300dp"
-                            android:layout_height="50dp">
-                            <Button
-                                android:drawableStart="@drawable/ic_left_add"
-                                android:id="@+id/btn_add"
-                                android:text="@string/Btn_Add"
-                                android:layout_width="150dp"
-                                android:layout_marginRight="5dp"
-                                android:layout_height="50dp"/>
+                            <TextView
+                                android:text="후보 "
+                                android:textColor="@color/black"
+                                android:textSize="20dp"
+                                android:textStyle="bold"
+                                android:gravity="center"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/testName"/>
 
-                            <Button
-                                android:drawableStart="@drawable/ic_left_remove"
-                                android:id="@+id/btn_delete"
-                                android:text="@string/Btn_Delete"
-                                android:layout_width="150dp"
-                                android:layout_marginLeft="5dp"
-                                android:layout_height="50dp"/>
-                        </LinearLayout>
+                            <ListView
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="20dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/mutableView">
 
-                            <LinearLayout
-                                android:orientation="vertical"
-                                android:layout_margin="10dp"
-                                android:layout_width="300dp"
-                                android:layout_height="wrap_content">
+                            </ListView>
 
-                                <LinearLayout
-                                    android:orientation="horizontal"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content">
+                            <!--                        <LinearLayout-->
+                            <!--                            android:orientation="horizontal"-->
+                            <!--                            android:layout_margin="10dp"-->
+                            <!--                            android:layout_width="300dp"-->
+                            <!--                            android:layout_height="50dp">-->
+                            <!--                            <Button-->
+                            <!--                                android:drawableStart="@drawable/ic_left_add"-->
+                            <!--                                android:id="@+id/btn_add"-->
+                            <!--                                android:text="@string/Btn_Add"-->
+                            <!--                                android:layout_width="150dp"-->
+                            <!--                                android:layout_marginRight="5dp"-->
+                            <!--                                android:layout_height="50dp"/>-->
 
-                                    <EditText
-                                        android:id="@+id/edit_input1"
-                                        android:hint="@string/Txt_Input"
-                                        android:layout_width="300dp"
-                                        android:layout_height="40dp"
-                                        android:textColor="@color/black"
-                                        android:background="@null"
-                                        android:autofillHints=""
-                                        android:inputType="text" />
-                                </LinearLayout>
+                            <!--                            <Button-->
+                            <!--                                android:drawableStart="@drawable/ic_left_remove"-->
+                            <!--                                android:id="@+id/btn_delete"-->
+                            <!--                                android:text="@string/Btn_Delete"-->
+                            <!--                                android:layout_width="150dp"-->
+                            <!--                                android:layout_marginLeft="5dp"-->
+                            <!--                                android:layout_height="50dp"/>-->
+                            <!--                        </LinearLayout>-->
 
-                                <LinearLayout
-                                    android:orientation="horizontal"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content">
+                            <!--                            <LinearLayout-->
+                            <!--                                android:orientation="vertical"-->
+                            <!--                                android:layout_margin="10dp"-->
+                            <!--                                android:layout_width="300dp"-->
+                            <!--                                android:layout_height="wrap_content">-->
 
-                                    <EditText
-                                        android:id="@+id/edit_input2"
-                                        android:hint="후보를 입력해주세요."
-                                        android:layout_width="300dp"
-                                        android:layout_height="40dp"
-                                        android:textColor="@color/black"
-                                        android:background="@null"
-                                        android:autofillHints=""
-                                        android:inputType="text" />
+                            <!--                                <LinearLayout-->
+                            <!--                                    android:orientation="horizontal"-->
+                            <!--                                    android:layout_width="wrap_content"-->
+                            <!--                                    android:layout_height="wrap_content">-->
 
-                                </LinearLayout>
-                                <LinearLayout
-                                    android:orientation="vertical"
-                                    android:layout_width="300dp"
-                                    android:layout_height="wrap_content">
+                            <!--                                    <EditText-->
+                            <!--                                        android:id="@+id/edit_input1"-->
+                            <!--                                        android:hint="후보를 입력해주세요."-->
+                            <!--                                        android:layout_width="300dp"-->
+                            <!--                                        android:layout_height="40dp"-->
+                            <!--                                        android:textColor="@color/black"-->
+                            <!--                                        android:background="@null"-->
+                            <!--                                        android:autofillHints=""-->
+                            <!--                                        android:inputType="text" />-->
+                            <!--                                </LinearLayout>-->
 
-                                    <LinearLayout
-                                        android:visibility="gone"
-                                        android:id="@+id/layout_input3"
-                                        android:orientation="horizontal"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        tools:ignore="UselessParent">
-                                        <EditText
-                                            android:id="@+id/edit_input3"
-                                            android:hint="@string/Txt_Input"
-                                            android:layout_width="300dp"
-                                            android:layout_height="40dp"
-                                            android:background="@null"
-                                            android:autofillHints=""
-                                            android:inputType="text" />
-                                    </LinearLayout>
-                                    <LinearLayout
-                                        android:visibility="gone"
-                                        android:id="@+id/layout_input4"
-                                        android:orientation="horizontal"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        tools:ignore="UselessParent">
-                                        <EditText
-                                            android:id="@+id/edit_input4"
-                                            android:hint="@string/Txt_Input"
-                                            android:layout_width="300dp"
-                                            android:layout_height="40dp"
-                                            android:background="@null"
-                                            android:autofillHints=""
-                                            android:inputType="text" />
-                                    </LinearLayout>
-                                    <LinearLayout
-                                        android:visibility="gone"
-                                        android:id="@+id/layout_input5"
-                                        android:orientation="horizontal"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        tools:ignore="UselessParent">
-                                        <EditText
-                                            android:id="@+id/edit_input5"
-                                            android:hint="@string/Txt_Input"
-                                            android:layout_width="300dp"
-                                            android:layout_height="40dp"
-                                            android:background="@null"
-                                            android:autofillHints=""
-                                            android:inputType="text" />
-                                    </LinearLayout>
-                                    <LinearLayout
-                                        android:visibility="gone"
-                                        android:id="@+id/layout_input6"
-                                        android:orientation="horizontal"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        tools:ignore="UselessParent">
-                                        <EditText
-                                            android:id="@+id/edit_input6"
-                                            android:hint="@string/Txt_Input"
-                                            android:layout_width="300dp"
-                                            android:layout_height="40dp"
-                                            android:autofillHints=""
-                                            android:background="@null"
-                                            android:inputType="text" />
-                                    </LinearLayout>
-                                    <LinearLayout
-                                        android:visibility="gone"
-                                        android:id="@+id/layout_input7"
-                                        android:orientation="horizontal"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        tools:ignore="UselessParent">
-                                        <EditText
-                                            android:id="@+id/edit_input7"
-                                            android:hint="@string/Txt_Input"
-                                            android:layout_width="300dp"
-                                            android:background="@null"
-                                            android:layout_height="40dp"
-                                            android:autofillHints=""
-                                            android:inputType="text" />
-                                    </LinearLayout>
-                                    <LinearLayout
-                                        android:visibility="gone"
-                                        android:id="@+id/layout_input8"
-                                        android:orientation="horizontal"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        tools:ignore="UselessParent">
-                                        <EditText
-                                            android:id="@+id/edit_input8"
-                                            android:hint="@string/Txt_Input"
-                                            android:layout_width="300dp"
-                                            android:background="@null"
-                                            android:layout_height="40dp"
-                                            android:autofillHints=""
-                                            android:inputType="text" />
-                                    </LinearLayout>
+                            <!--&lt;!&ndash;                                <LinearLayout&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                    android:orientation="horizontal"&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                    android:layout_width="wrap_content"&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                    android:layout_height="wrap_content">&ndash;&gt;-->
 
-                                </LinearLayout>
-                            </LinearLayout>
+                            <!--&lt;!&ndash;                                    <EditText&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                        android:id="@+id/edit_input2"&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                        android:hint="후보를 입력해주세요."&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                        android:layout_width="300dp"&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                        android:layout_height="40dp"&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                        android:textColor="@color/black"&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                        android:background="@null"&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                        android:autofillHints=""&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                        android:inputType="text" />&ndash;&gt;-->
+
+                            <!--&lt;!&ndash;                                </LinearLayout>&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                <LinearLayout&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                    android:orientation="vertical"&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                    android:layout_width="300dp"&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                    android:layout_height="wrap_content">&ndash;&gt;-->
+
+                            <!--&lt;!&ndash;                                    <LinearLayout&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                        android:visibility="gone"&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                        android:id="@+id/layout_input3"&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                        android:orientation="horizontal"&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                        android:layout_width="wrap_content"&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                        android:layout_height="wrap_content"&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                        tools:ignore="UselessParent">&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                        <EditText&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                            android:id="@+id/edit_input3"&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                            android:hint="@string/Txt_Input"&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                            android:layout_width="300dp"&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                            android:layout_height="40dp"&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                            android:background="@null"&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                            android:autofillHints=""&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                            android:inputType="text" />&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                    </LinearLayout>&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                    <LinearLayout&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                        android:visibility="gone"&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                        android:id="@+id/layout_input4"&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                        android:orientation="horizontal"&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                        android:layout_width="wrap_content"&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                        android:layout_height="wrap_content"&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                        tools:ignore="UselessParent">&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                        <EditText&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                            android:id="@+id/edit_input4"&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                            android:hint="@string/Txt_Input"&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                            android:layout_width="300dp"&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                            android:layout_height="40dp"&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                            android:background="@null"&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                            android:autofillHints=""&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                            android:inputType="text" />&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                    </LinearLayout>&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                    <LinearLayout&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                        android:visibility="gone"&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                        android:id="@+id/layout_input5"&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                        android:orientation="horizontal"&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                        android:layout_width="wrap_content"&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                        android:layout_height="wrap_content"&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                        tools:ignore="UselessParent">&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                        <EditText&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                            android:id="@+id/edit_input5"&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                            android:hint="@string/Txt_Input"&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                            android:layout_width="300dp"&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                            android:layout_height="40dp"&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                            android:background="@null"&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                            android:autofillHints=""&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                            android:inputType="text" />&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                    </LinearLayout>&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                    <LinearLayout&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                        android:visibility="gone"&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                        android:id="@+id/layout_input6"&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                        android:orientation="horizontal"&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                        android:layout_width="wrap_content"&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                        android:layout_height="wrap_content"&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                        tools:ignore="UselessParent">&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                        <EditText&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                            android:id="@+id/edit_input6"&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                            android:hint="@string/Txt_Input"&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                            android:layout_width="300dp"&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                            android:layout_height="40dp"&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                            android:autofillHints=""&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                            android:background="@null"&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                            android:inputType="text" />&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                    </LinearLayout>&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                    <LinearLayout&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                        android:visibility="gone"&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                        android:id="@+id/layout_input7"&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                        android:orientation="horizontal"&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                        android:layout_width="wrap_content"&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                        android:layout_height="wrap_content"&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                        tools:ignore="UselessParent">&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                        <EditText&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                            android:id="@+id/edit_input7"&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                            android:hint="@string/Txt_Input"&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                            android:layout_width="300dp"&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                            android:background="@null"&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                            android:layout_height="40dp"&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                            android:autofillHints=""&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                            android:inputType="text" />&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                    </LinearLayout>&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                    <LinearLayout&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                        android:visibility="gone"&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                        android:id="@+id/layout_input8"&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                        android:orientation="horizontal"&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                        android:layout_width="wrap_content"&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                        android:layout_height="wrap_content"&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                        tools:ignore="UselessParent">&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                        <EditText&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                            android:id="@+id/edit_input8"&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                            android:hint="@string/Txt_Input"&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                            android:layout_width="300dp"&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                            android:background="@null"&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                            android:layout_height="40dp"&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                            android:autofillHints=""&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                            android:inputType="text" />&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                    </LinearLayout>&ndash;&gt;-->
+
+                            <!--&lt;!&ndash;                                </LinearLayout>&ndash;&gt;-->
+                            <!--                            </LinearLayout>-->
 
                         </LinearLayout>
                     </ScrollView>
