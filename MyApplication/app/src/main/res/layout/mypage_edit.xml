@@ -30,6 +30,7 @@
             android:layout_gravity="center">
 
             <EditText
+                style="@style/nanumTextView"
                 android:id="@+id/list_which"
                 android:layout_width="248dp"
                 android:layout_height="wrap_content"
@@ -42,6 +43,7 @@
 
 
             <EditText
+                style="@style/nanumTextView"
                 android:id="@+id/mypage_edittext"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
