@@ -40,6 +40,7 @@
             android:layout_weight="40">
 
             <TextView
+                style="@style/nanumTextView"
                 android:text="홍길동"
                 android:textSize="20dp"
                 android:layout_width="wrap_content"
@@ -56,6 +57,7 @@
                 android:id="@+id/bank_name_spinner"/>
 
             <EditText
+                style="@style/nanumTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
@@ -71,6 +73,7 @@
         </LinearLayout>
     </LinearLayout>
     <Button
+        style="@style/nanumButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="저장"
