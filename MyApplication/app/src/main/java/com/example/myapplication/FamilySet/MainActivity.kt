@@ -257,7 +257,7 @@ class MainActivity : AppCompatActivity() {
 
 
         val appWidgetManager: AppWidgetManager? = getSystemService(AppWidgetManager::class.java)
-        val myProvider = ComponentName(this, AppWidgetProvider::class.java)
+        var myProvider = ComponentName(this, AppWidgetProvider::class.java)
 
         val successCallback: PendingIntent? = if (if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 appWidgetManager!!.isRequestPinAppWidgetSupported

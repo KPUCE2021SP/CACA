@@ -4,7 +4,7 @@ import android.Manifest
 import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
-import android.content.ComponentName
+import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -12,30 +12,44 @@ import android.location.Location
 import android.location.LocationManager
 import android.util.Log
 import android.widget.RemoteViews
-import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import com.example.myapplication.FamilySet.MainActivity
+import com.example.myapplication.Notification.NotificationData
+import com.example.myapplication.Notification.PushNotification
+import com.example.myapplication.Notification.RetrofitInstance
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationCallback
 import com.google.android.gms.location.LocationServices
-import com.gun0912.tedpermission.PermissionListener
-import com.gun0912.tedpermission.TedPermission
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.messaging.FirebaseMessaging
+import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_location.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.util.*
+import com.example.myapplication.Notification.Notification
+import java.lang.Thread.sleep
+
+
+var fname : String  = ""
+var asdf : String = "호잇"
+
+var lat : Double = 1.0
+var log : Double = 1.0
+
+var token = ""
+
+lateinit var fusedLocationClient: FusedLocationProviderClient
+
+var locationManager : LocationManager? = null
+
+lateinit var locationCallback: LocationCallback
+
+
 
 class AppWidgetProvider : AppWidgetProvider() {
 
-    var fname : String  = ""
-    var asdf : String = "호잇"
-
-    var lat : Double = 1.0
-    var log : Double = 1.0
-
-    private lateinit var fusedLocationClient: FusedLocationProviderClient
-
-    private var locationManager : LocationManager? = null
-
-    private lateinit var locationCallback: LocationCallback
 
     override fun onUpdate(context: Context, appWidgetManager: AppWidgetManager, appWidgetIds: IntArray) {
 
@@ -84,6 +98,38 @@ class AppWidgetProvider : AppWidgetProvider() {
         // location
 
 
+        // message
+
+        // token
+
+        FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
+            if (!task.isSuccessful) {
+                Log.w(ContentValues.TAG, "Fetching FCM registration token failed", task.exception)
+                return@OnCompleteListener
+            }
+
+            // Get new FCM registration token
+            token = task.result
+
+            // Log and toast
+            val msg = token.toString()
+
+        })
+
+
+        //알람 울리기 // 아직 동작 안함
+        val title = "누군가가 나의 근처 위치를 언급하였습니다!"
+        val content = "누르면 앱으로 이동".toString()
+        if (lat == lat && log == log) {
+            PushNotification(NotificationData(title, content), token)
+            Log.d("logD", "o")
+        }else{
+            Log.d("logD", "x")
+        }
+
+        // message
+
+
         // Perform this loop procedure for each App Widget that belongs to this provider
         appWidgetIds.forEach { appWidgetId ->
             // Create an Intent to launch ExampleActivity
@@ -98,6 +144,7 @@ class AppWidgetProvider : AppWidgetProvider() {
             // Get the layout for the App Widget and attach an on-click listener
             // to the button
              val views: RemoteViews = RemoteViews(context.packageName, R.layout.appwidget).apply {
+                 sleep(1000)
                 setOnClickPendingIntent(R.id.btn, pendingIntent)
                  setTextViewText(R.id.appwidgetText, asdf)
             }
@@ -105,8 +152,6 @@ class AppWidgetProvider : AppWidgetProvider() {
             // Tell the AppWidgetManager to perform an update on the current app widget
             appWidgetManager.updateAppWidget(appWidgetId, views)
 
-
         }
     }
-
 }
