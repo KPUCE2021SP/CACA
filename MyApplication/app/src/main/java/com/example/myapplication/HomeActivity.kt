@@ -649,6 +649,14 @@ class HomeActivity : TabActivity() {
             text_result.startAnimation(animationFadeIn)
         }
 
+        // --------------------------------- 용돈 관리 ------------------
+        Account_Plus_Button.setOnClickListener {
+            val intent = Intent(application, AddAccount::class.java)
+            intent.putExtra("FamilyName", FamilyName)
+            startActivity(intent)
+        }
+        //용돈리스트 동적 생성
+        var mutableAccountList: MutableList<String> = mutableListOf("a")
 
     }
 
