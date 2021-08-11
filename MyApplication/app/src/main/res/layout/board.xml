@@ -22,6 +22,7 @@
             android:textSize="20dp"/>
 
         <TextView
+            style="@style/nanumTextView"
             android:id="@+id/aaaaaaa"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -32,6 +33,7 @@
             android:textSize="20dp" />
 
         <Button
+            style="@style/nanumButton"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:gravity="center"
@@ -72,6 +74,7 @@
                 android:src="@drawable/son" />
 
             <EditText
+                style="@style/nanumTextView"
                 android:scrollHorizontally="false"
                 android:layout_marginTop="17dp"
                 android:id="@+id/edit_board_content"

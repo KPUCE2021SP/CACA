@@ -31,6 +31,8 @@
         app:srcCompat="@drawable/familyship" />
 
     <TextView
+        style="@style/nanumTextView"
+        android:textStyle="bold"
         android:id="@+id/textView5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

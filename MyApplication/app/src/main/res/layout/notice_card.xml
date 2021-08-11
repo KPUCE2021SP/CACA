@@ -35,6 +35,8 @@
                     android:orientation="vertical">
 
                     <TextView
+                        style="@style/nanumTextView"
+                        android:textSize="17dp"
                         android:id="@+id/notice_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -42,6 +44,7 @@
                         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
                     <TextView
+                        style="@style/nanumTextView"
                         android:id="@+id/notice_time"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -57,6 +60,8 @@
             android:background="@color/black" />
 
         <TextView
+            style="@style/nanumTextView"
+            android:textSize="16dp"
             android:id="@+id/notice_board"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -86,6 +91,7 @@
                 android:src="@drawable/heart" />
 
             <TextView
+                style="@style/nanumTextView"
                 android:id="@+id/notice_heart"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -93,6 +99,7 @@
                 android:text="3" />
 
             <ImageView
+                style="@style/nanumTextView"
                 android:layout_width="30dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"

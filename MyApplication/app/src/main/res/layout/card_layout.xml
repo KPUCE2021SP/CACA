@@ -71,6 +71,7 @@
                     app:layout_constraintTop_toBottomOf="@id/middle_section_constraint">
 
                     <TextView
+                        style="@style/nanumTextView"
                         android:id="@+id/item_title_d"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"

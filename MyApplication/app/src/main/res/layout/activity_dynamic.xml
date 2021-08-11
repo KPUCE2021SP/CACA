@@ -10,31 +10,43 @@
 
     // 타이틀바
     <LinearLayout
+        android:background="#FCBF48"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="#fcbf48">
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="LTaaaaaa"
+            android:textColor="#FCBF48"
+            android:background="#FCBF48"
+            android:layout_weight="1"
+            android:textSize="20dp"/>
 
         <TextView
             style="@style/nanumTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="7"
             android:gravity="center"
             android:text="멤버 초대하기"
-            android:layout_gravity="center"
-            android:textSize="20dp"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_weight="3"/>
+            android:textSize="20dp" />
 
-        <TextView
-            android:layout_gravity="center"
+        <Button
+            style="@style/nanumButton"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:layout_weight="1"
-            android:textSize="30dp" />
-
+            android:layout_height="30dp"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_marginRight="10dp"
+            android:text="참여하"
+            android:id="@+id/JoinButton"
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:textColor="#FCBF48"
+            android:background="@drawable/solid_button_round_white"
+            android:layout_weight="1"/>
     </LinearLayout>
 
 
@@ -46,7 +58,7 @@
         android:layout_margin="15dp"
         android:orientation="vertical">
         <ImageView
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="40dp"
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:layout_gravity="center"
@@ -64,7 +76,7 @@
 
         <TextView
             style="@style/nanumTextView"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textStyle="bold"
@@ -90,11 +102,11 @@
         android:orientation="horizontal">
 
         <TextView
-            style="@style/nanumTextView"
             android:id="@+id/inviteCodeView"
+            style="@style/nanumTextView"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="40dp"
             android:layout_weight="2"
             android:background="@drawable/edge"
             android:gravity="center"
@@ -118,20 +130,16 @@
             android:src="@drawable/copy" />
     </RelativeLayout>
 
+
     <ImageView
         android:id="@+id/shareBtn"
         android:layout_width="45dp"
         android:layout_height="45dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="25dp"
         android:layout_gravity="center"
         android:src="@drawable/share"/>
 
-    <Button
-        style="@style/nanumButton"
-        android:id="@+id/JoinButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="참여하기" />
+
 
 
 </LinearLayout>
