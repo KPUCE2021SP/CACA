@@ -12,10 +12,27 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+
+        <!-- 아래 정의 해놓은 폰트 적용 -->
+        <item name="android:textViewStyle">@style/nanumTextView</item>
+        <item name="android:buttonStyle">@style/nanumButton</item>
+
     </style>
 
     <style name="ThemeOverlay.MyApplication.AppWidgetContainer" parent="">
         <item name="appWidgetBackgroundColor">@color/light_blue_600</item>
         <item name="appWidgetTextColor">@color/light_blue_50</item>
     </style>
+
+
+
+    <style name="nanumTextView" parent="android:Widget.TextView">
+    <item name="android:fontFamily">@font/nanumbarunpenr</item>
+
+    </style>
+    <style name="nanumButton" parent="android:Widget.Button">
+    <item name="android:fontFamily">@font/nanumbarunpenb</item>
+    </style>
+
+
 </resources>

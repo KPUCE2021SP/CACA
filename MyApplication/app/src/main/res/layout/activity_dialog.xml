@@ -9,7 +9,10 @@
     tools:ignore="LabelFor">
 
         <Button
+            style="@style/nanumButton"
             android:id="@+id/btnCall"
+            android:textSize="15dp"
+            android:textStyle="bold"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0"
@@ -19,6 +22,7 @@
         </Button>
 
     <EditText
+        style="@style/nanumTextView"
         android:id="@+id/edtCall"
         android:layout_width="match_parent"
         android:layout_height="1000dp"

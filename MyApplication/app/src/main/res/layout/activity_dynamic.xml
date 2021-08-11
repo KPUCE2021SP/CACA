@@ -16,6 +16,7 @@
         android:background="#fcbf48">
 
         <TextView
+            style="@style/nanumTextView"
             android:gravity="center"
             android:text="멤버 초대하기"
             android:layout_gravity="center"
@@ -62,6 +63,7 @@
         android:orientation="vertical">
 
         <TextView
+            style="@style/nanumTextView"
             android:layout_marginTop="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -70,10 +72,11 @@
             android:text="FamilyShip의 새로운 멤버 초대하기"/>
 
         <TextView
+            style="@style/nanumTextView"
             android:layout_marginTop="7dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="15dp"
+            android:textSize="17dp"
             android:text="아래 코드를 복사 또는 공유하여 초대할 수 있습니다."/>
 
     </LinearLayout>
@@ -87,6 +90,7 @@
         android:orientation="horizontal">
 
         <TextView
+            style="@style/nanumTextView"
             android:id="@+id/inviteCodeView"
             android:layout_width="match_parent"
             android:layout_height="60dp"
@@ -123,6 +127,7 @@
         android:src="@drawable/share"/>
 
     <Button
+        style="@style/nanumButton"
         android:id="@+id/JoinButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

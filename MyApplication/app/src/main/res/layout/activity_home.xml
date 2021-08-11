@@ -157,6 +157,11 @@
                     android:orientation="vertical"
                     android:id="@+id/LinearMain1"
                     android:visibility="gone">
+                    <Button
+                        android:id="@+id/Account_Plus_Button"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="용돈 계좌 추가하기" />
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -164,75 +169,86 @@
                         android:layout_margin="10dp"
                         android:textSize="27dp"
                         android:textStyle="bold"></TextView>
-
-
-                    <LinearLayout
+                    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                        android:id="@+id/srl_main"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:background="@drawable/solid_button_gray"
-                        android:orientation="horizontal">
-
-                        <LinearLayout
-                            android:layout_margin="5dp"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="10">
-
-                            <ImageView
-                                android:src="@drawable/youngster"
-                                android:id="@+id/img"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_centerInParent="true" />
-                        </LinearLayout>
-                        <TextView
-                            android:layout_width="10dp"
-                            android:layout_height="match_parent"
-                            android:text=" ">
-                        </TextView>
-
-                        <LinearLayout
+                        android:layout_height="wrap_content">
+                        <ScrollView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_margin="10dp"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:orientation="vertical"
-                            android:layout_weight="40">
+                            android:background="@drawable/solid_button_gray"
+                            android:orientation="horizontal">
 
-                            <TextView
-                                android:id="@+id/textArtist"
-                                android:text="성춘향"
-                                android:textSize="20dp"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@+id/textTitle"
-                                android:layout_marginLeft="10dp"
-                                android:layout_marginTop="5dp"
-                                android:textStyle="bold" />
+                            <!--                        <LinearLayout-->
+                            <!--                            android:layout_margin="5dp"-->
+                            <!--                            android:layout_width="0dp"-->
+                            <!--                            android:layout_height="match_parent"-->
+                            <!--                            android:layout_weight="10">-->
 
-                            <TextView
-                                android:id="@+id/textTitle"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentLeft="true"
-                                android:layout_alignParentTop="true"
-                                android:layout_marginLeft="10dp"
-                                android:layout_marginTop="10dp"
-                                android:text="국민은행 000000-000000"
-                                android:textStyle="bold" />
+                            <!--                            <ImageView-->
+                            <!--                                android:src="@drawable/youngster"-->
+                            <!--                                android:id="@+id/img"-->
+                            <!--                                android:layout_width="wrap_content"-->
+                            <!--                                android:layout_height="wrap_content"-->
+                            <!--                                android:layout_centerInParent="true" />-->
+                            <!--                        </LinearLayout>-->
+                            <!--                        <TextView-->
+                            <!--                            android:layout_width="10dp"-->
+                            <!--                            android:layout_height="match_parent"-->
+                            <!--                            android:text=" ">-->
+                            <!--                        </TextView>-->
 
-                            <TextView
-                                android:text="마지막 입금 일시: 2021-07-20"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@+id/textTitle"
-                                android:layout_marginLeft="10dp"
-                                android:layout_marginTop="5dp"
-                                android:layout_marginBottom="5dp"
-                                android:textStyle="bold" />
+                            <!--                        <LinearLayout-->
+                            <!--                            android:layout_margin="10dp"-->
+                            <!--                            android:layout_width="0dp"-->
+                            <!--                            android:layout_height="match_parent"-->
+                            <!--                            android:orientation="vertical"-->
+                            <!--                            android:layout_weight="40">-->
 
-                        </LinearLayout>
-                    </LinearLayout>
+                            <!--                            <TextView-->
+                            <!--                                android:id="@+id/textArtist"-->
+                            <!--                                android:text="성춘향"-->
+                            <!--                                android:textSize="20dp"-->
+                            <!--                                android:layout_width="wrap_content"-->
+                            <!--                                android:layout_height="wrap_content"-->
+                            <!--                                android:layout_below="@+id/textTitle"-->
+                            <!--                                android:layout_marginLeft="10dp"-->
+                            <!--                                android:layout_marginTop="5dp"-->
+                            <!--                                android:textStyle="bold" />-->
+
+                            <!--                            <TextView-->
+                            <!--                                android:id="@+id/textTitle"-->
+                            <!--                                android:layout_width="wrap_content"-->
+                            <!--                                android:layout_height="wrap_content"-->
+                            <!--                                android:layout_alignParentLeft="true"-->
+                            <!--                                android:layout_alignParentTop="true"-->
+                            <!--                                android:layout_marginLeft="10dp"-->
+                            <!--                                android:layout_marginTop="10dp"-->
+                            <!--                                android:text="국민은행 000000-000000"-->
+                            <!--                                android:textStyle="bold" />-->
+
+                            <!--                            <TextView-->
+                            <!--                                android:text="마지막 입금 일시: 2021-07-20"-->
+                            <!--                                android:layout_width="wrap_content"-->
+                            <!--                                android:layout_height="wrap_content"-->
+                            <!--                                android:layout_below="@+id/textTitle"-->
+                            <!--                                android:layout_marginLeft="10dp"-->
+                            <!--                                android:layout_marginTop="5dp"-->
+                            <!--                                android:layout_marginBottom="5dp"-->
+                            <!--                                android:textStyle="bold" />-->
+
+                            <!--                        </LinearLayout>-->
+                        </ScrollView>
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rv_main_account"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                        </androidx.recyclerview.widget.RecyclerView>
+                    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
 
                     <LinearLayout
                         android:layout_width="match_parent"
