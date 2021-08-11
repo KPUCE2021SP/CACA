@@ -10,6 +10,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
 import android.location.LocationManager
+import android.os.Bundle
 import android.util.Log
 import android.widget.RemoteViews
 import androidx.core.app.ActivityCompat
@@ -51,16 +52,33 @@ lateinit var locationCallback: LocationCallback
 class AppWidgetProvider : AppWidgetProvider() {
 
 
+    override fun onReceive(context: Context?, intent: Intent?) {
+        super.onReceive(context, intent)
+    }
+
+    override fun onAppWidgetOptionsChanged(context: Context?, appWidgetManager: AppWidgetManager?, appWidgetId: Int, newOptions: Bundle?) {
+        super.onAppWidgetOptionsChanged(context, appWidgetManager, appWidgetId, newOptions)
+    }
+
+    override fun onDeleted(context: Context?, appWidgetIds: IntArray?) {
+        super.onDeleted(context, appWidgetIds)
+    }
+
+    override fun onEnabled(context: Context?) {
+        super.onEnabled(context)
+    }
+
+    override fun onDisabled(context: Context?) {
+        super.onDisabled(context)
+    }
+
+    override fun onRestored(context: Context?, oldWidgetIds: IntArray?, newWidgetIds: IntArray?) {
+        super.onRestored(context, oldWidgetIds, newWidgetIds)
+    }
+
     override fun onUpdate(context: Context, appWidgetManager: AppWidgetManager, appWidgetIds: IntArray) {
 
         // location
-
-        var lat: Double = 1.0
-        var log: Double = 1.0
-
-        var fusedLocationClient: FusedLocationProviderClient
-        var locationManager: LocationManager? = null
-        var locationCallback: LocationCallback
 
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(context) // 위치 정보 받기
@@ -91,7 +109,7 @@ class AppWidgetProvider : AppWidgetProvider() {
 
 
                     asdf = "위도 : " + lat.toString() + " 경도 : " + log.toString()
-                    Log.d("logD", asdf)
+                    Log.d("a", asdf)
                 }
             }
 
@@ -122,9 +140,9 @@ class AppWidgetProvider : AppWidgetProvider() {
         val content = "누르면 앱으로 이동".toString()
         if (lat == lat && log == log) {
             PushNotification(NotificationData(title, content), token)
-            Log.d("logD", "o")
+            Log.d("a", "o")
         }else{
-            Log.d("logD", "x")
+            Log.d("a", "x")
         }
 
         // message
@@ -144,12 +162,15 @@ class AppWidgetProvider : AppWidgetProvider() {
             // Get the layout for the App Widget and attach an on-click listener
             // to the button
              val views: RemoteViews = RemoteViews(context.packageName, R.layout.appwidget).apply {
-                 sleep(1000)
                 setOnClickPendingIntent(R.id.btn, pendingIntent)
                  setTextViewText(R.id.appwidgetText, asdf)
             }
 
             // Tell the AppWidgetManager to perform an update on the current app widget
+            appWidgetManager.updateAppWidget(appWidgetId, views)
+
+            appWidgetManager.updateAppWidget(appWidgetId, views)
+            appWidgetManager.updateAppWidget(appWidgetId, views)
             appWidgetManager.updateAppWidget(appWidgetId, views)
 
         }
