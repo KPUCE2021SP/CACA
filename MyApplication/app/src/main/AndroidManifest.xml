@@ -11,12 +11,10 @@
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" /> <!-- Location -->
     <!-- 정확한 위치 -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> <!-- 대략적인 위치 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- 위젯 -->
+    <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <!--    위젯-->
-    <uses-permission android:name="android.permission.VIBRATE"/>
-
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -27,26 +25,30 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity android:name=".AddAccount"></activity>
 
-        <receiver android:name="AppWidgetProvider"
+        <receiver
+            android:name=".AppWidgetProvider"
             android:exported="false">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
-            <meta-data android:name="android.appwidget.provider"
+
+            <meta-data
+                android:name="android.appwidget.provider"
                 android:resource="@xml/appwidget_info" />
         </receiver>
 
-        <activity android:name=".SerachMap.SearchMapContent"></activity>
+        <activity android:name=".SerachMap.SearchMapContent" />
 
         <meta-data
             android:name="com.kakao.sdk.AppKey"
             android:value="945b139935b4dd7d948524834b84b539" />
 
-        <activity android:name=".Notification.Notification"></activity>
+        <activity android:name=".Notification.Notification" />
         <activity android:name=".FamilySet.MainActivity" />
         <activity android:name=".FamilySet.FamilySettingActivity" />
-        <activity android:name=".LoginRegister.SignUpActivity"></activity>
+        <activity android:name=".LoginRegister.SignUpActivity" />
         <activity android:name=".LoginRegister.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -54,11 +56,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".LocationActivity">
-        </activity>
-
-
+        <activity android:name=".LocationActivity"></activity>
         <activity android:name=".Mypage.MypageEditActivity" />
         <activity android:name=".Mypage.MypageActivity" />
         <activity android:name=".HomeActivity" />

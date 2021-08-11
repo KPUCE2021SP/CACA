@@ -157,6 +157,11 @@
                     android:orientation="vertical"
                     android:id="@+id/LinearMain1"
                     android:visibility="gone">
+                    <Button
+                        android:id="@+id/Account_Plus_Button"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="용돈 계좌 추가하기" />
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
