@@ -1,12 +1,16 @@
 package com.example.myapplication.FamilySet
 
+import android.Manifest
 import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
 import android.content.ComponentName
 import android.content.ContentValues.TAG
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.graphics.BitmapFactory
+import android.location.Location
+import android.location.LocationManager
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -18,11 +22,15 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
+import androidx.core.app.ActivityCompat
 import com.example.myapplication.AppWidgetProvider
 import com.example.myapplication.HomeActivity
 import com.example.myapplication.Mypage.MypageActivity
 import com.example.myapplication.Notification.Notification
 import com.example.myapplication.R
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationCallback
+import com.google.android.gms.location.LocationServices
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -33,6 +41,8 @@ import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.ktx.storage
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_main.btn
+import kotlinx.android.synthetic.main.appwidget.*
 import kotlinx.android.synthetic.main.card_layout.*
 import kotlinx.android.synthetic.main.mypage_activity.*
 import kotlinx.android.synthetic.main.signuppage.*
@@ -241,9 +251,10 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    @RequiresApi(Build.VERSION_CODES.M)
+    @RequiresApi(Build.VERSION_CODES.M) ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     override fun onResume() {
         super.onResume()
+
 
         val appWidgetManager: AppWidgetManager? = getSystemService(AppWidgetManager::class.java)
         val myProvider = ComponentName(this, AppWidgetProvider::class.java)
@@ -261,8 +272,10 @@ class MainActivity : AppCompatActivity() {
             null
         }
 
-        btn.setOnClickListener {
+        btn.setOnClickListener { // 위젯 추가
+
             successCallback?.also { pendingIntent ->
+
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                     appWidgetManager.requestPinAppWidget(myProvider, null, pendingIntent)
                 }
