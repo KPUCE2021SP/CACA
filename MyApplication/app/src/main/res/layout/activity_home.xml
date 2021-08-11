@@ -21,11 +21,13 @@
                 android:layout_height="40dp"
                 android:layout_gravity="center_vertical"
                 android:background="@android:color/transparent"
-                android:layout_margin="3dp"
+                android:layout_margin="5dp"
+                android:layout_marginLeft="3dp"
                 android:scaleType="fitCenter"
                 android:src="@drawable/mypage1" />
 
             <TextView
+                style="@style/nanumTextView"
                 android:id="@+id/FamilyNameTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -50,15 +52,19 @@
             <!--                android:textStyle="bold" />-->
 
             <ImageButton
+                android:layout_margin="5dp"
+                android:layout_marginRight="3dp"
                 android:id="@+id/btnGroup"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_gravity="center_vertical"
                 android:background="@android:color/transparent"
-                android:layout_margin="3dp"
                 android:scaleType="fitCenter"
                 android:src="@drawable/groups" />
         </LinearLayout>
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"/>
 
         <FrameLayout
             android:layout_weight="1"
@@ -81,6 +87,7 @@
                     android:orientation="horizontal">
 
                     <Button
+                        style="@style/nanumTextView"
                         android:id="@+id/btnMain1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -94,6 +101,7 @@
                         android:layout_width="1dp"
                         android:layout_height="0dp"/>
                     <Button
+                        style="@style/nanumTextView"
                         android:id="@+id/btnMain2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -107,6 +115,7 @@
                         android:layout_width="1dp"
                         android:layout_height="0dp"/>
                     <Button
+                        style="@style/nanumTextView"
                         android:id="@+id/btnMain3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -120,6 +129,7 @@
                         android:layout_width="1dp"
                         android:layout_height="0dp"/>
                     <Button
+                        style="@style/nanumTextView"
                         android:id="@+id/btnMain4"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -133,6 +143,7 @@
                         android:layout_width="1dp"
                         android:layout_height="0dp"/>
                     <Button
+                        style="@style/nanumTextView"
                         android:id="@+id/btnMain5"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -158,11 +169,13 @@
                     android:id="@+id/LinearMain1"
                     android:visibility="gone">
                     <Button
+                        style="@style/nanumTextView"
                         android:id="@+id/Account_Plus_Button"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="용돈 계좌 추가하기" />
                     <TextView
+                        style="@style/nanumTextView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="용돈 관리"
@@ -275,6 +288,7 @@
                                 android:layout_centerInParent="true" />
                         </LinearLayout>
                         <TextView
+                            style="@style/nanumTextView"
                             android:layout_width="10dp"
                             android:layout_height="match_parent"
                             android:text=" ">
@@ -288,6 +302,7 @@
                             android:layout_weight="40">
 
                             <TextView
+                                style="@style/nanumTextView"
                                 android:text="홍길동"
                                 android:textSize="20dp"
                                 android:layout_width="wrap_content"
@@ -298,6 +313,7 @@
                                 android:textStyle="bold" />
 
                             <TextView
+                                style="@style/nanumTextView"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentLeft="true"
@@ -308,6 +324,7 @@
                                 android:textStyle="bold" />
 
                             <TextView
+                                style="@style/nanumTextView"
                                 android:text="마지막 입금 일시: 2021-06-10"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -328,6 +345,7 @@
                     android:id="@+id/LinearMain2"
                     android:orientation="vertical">
                     <TextView
+                        style="@style/nanumTextView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
@@ -370,6 +388,7 @@
                                     android:layout_height="100dp">
 
                                     <TextView
+                                        style="@style/nanumTextView"
                                         android:textStyle="bold"
                                         android:layout_margin="5dp"
                                         android:id="@+id/text_result"
@@ -401,12 +420,13 @@
                                         android:id="@+id/btn_pick"
                                         android:layout_gravity="center" />
                                     <TextView
+                                        style="@style/nanumTextView"
                                         android:layout_marginTop="5dp"
                                         android:layout_width="100dp"
                                         android:layout_height="wrap_content"
                                         android:gravity="center"
                                         android:text="한명만 뽑기"
-                                        android:textSize="13dp"
+                                        android:textSize="15dp"
                                         android:textStyle="bold"></TextView>
                                 </LinearLayout>
 
@@ -425,19 +445,21 @@
                                         android:id="@+id/btn_one_pick"
                                         android:layout_gravity="center" />
                                     <TextView
+                                        style="@style/nanumTextView"
                                         android:layout_marginTop="5dp"
                                         android:layout_width="100dp"
                                         android:layout_height="wrap_content"
                                         android:gravity="center"
                                         android:text="순위 정하기"
-                                        android:textSize="13dp"
+                                        android:textSize="15dp"
                                         android:textStyle="bold"></TextView>
 
                                 </LinearLayout>
                             </LinearLayout>
 
                             <TextView
-                                android:text="후보 "
+                                style="@style/nanumTextView"
+                                android:text="후보"
                                 android:textColor="@color/black"
                                 android:textSize="20dp"
                                 android:textStyle="bold"
@@ -447,6 +469,7 @@
                                 android:id="@+id/testName"/>
 
                             <ListView
+                                style="@style/nanumTextView"
                                 android:layout_gravity="center"
                                 android:layout_marginLeft="20dp"
                                 android:layout_width="match_parent"
@@ -454,172 +477,6 @@
                                 android:id="@+id/mutableView">
 
                             </ListView>
-
-                            <!--                        <LinearLayout-->
-                            <!--                            android:orientation="horizontal"-->
-                            <!--                            android:layout_margin="10dp"-->
-                            <!--                            android:layout_width="300dp"-->
-                            <!--                            android:layout_height="50dp">-->
-                            <!--                            <Button-->
-                            <!--                                android:drawableStart="@drawable/ic_left_add"-->
-                            <!--                                android:id="@+id/btn_add"-->
-                            <!--                                android:text="@string/Btn_Add"-->
-                            <!--                                android:layout_width="150dp"-->
-                            <!--                                android:layout_marginRight="5dp"-->
-                            <!--                                android:layout_height="50dp"/>-->
-
-                            <!--                            <Button-->
-                            <!--                                android:drawableStart="@drawable/ic_left_remove"-->
-                            <!--                                android:id="@+id/btn_delete"-->
-                            <!--                                android:text="@string/Btn_Delete"-->
-                            <!--                                android:layout_width="150dp"-->
-                            <!--                                android:layout_marginLeft="5dp"-->
-                            <!--                                android:layout_height="50dp"/>-->
-                            <!--                        </LinearLayout>-->
-
-                            <!--                            <LinearLayout-->
-                            <!--                                android:orientation="vertical"-->
-                            <!--                                android:layout_margin="10dp"-->
-                            <!--                                android:layout_width="300dp"-->
-                            <!--                                android:layout_height="wrap_content">-->
-
-                            <!--                                <LinearLayout-->
-                            <!--                                    android:orientation="horizontal"-->
-                            <!--                                    android:layout_width="wrap_content"-->
-                            <!--                                    android:layout_height="wrap_content">-->
-
-                            <!--                                    <EditText-->
-                            <!--                                        android:id="@+id/edit_input1"-->
-                            <!--                                        android:hint="후보를 입력해주세요."-->
-                            <!--                                        android:layout_width="300dp"-->
-                            <!--                                        android:layout_height="40dp"-->
-                            <!--                                        android:textColor="@color/black"-->
-                            <!--                                        android:background="@null"-->
-                            <!--                                        android:autofillHints=""-->
-                            <!--                                        android:inputType="text" />-->
-                            <!--                                </LinearLayout>-->
-
-                            <!--&lt;!&ndash;                                <LinearLayout&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                    android:orientation="horizontal"&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                    android:layout_width="wrap_content"&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                    android:layout_height="wrap_content">&ndash;&gt;-->
-
-                            <!--&lt;!&ndash;                                    <EditText&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                        android:id="@+id/edit_input2"&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                        android:hint="후보를 입력해주세요."&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                        android:layout_width="300dp"&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                        android:layout_height="40dp"&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                        android:textColor="@color/black"&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                        android:background="@null"&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                        android:autofillHints=""&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                        android:inputType="text" />&ndash;&gt;-->
-
-                            <!--&lt;!&ndash;                                </LinearLayout>&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                <LinearLayout&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                    android:orientation="vertical"&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                    android:layout_width="300dp"&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                    android:layout_height="wrap_content">&ndash;&gt;-->
-
-                            <!--&lt;!&ndash;                                    <LinearLayout&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                        android:visibility="gone"&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                        android:id="@+id/layout_input3"&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                        android:orientation="horizontal"&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                        android:layout_width="wrap_content"&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                        android:layout_height="wrap_content"&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                        tools:ignore="UselessParent">&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                        <EditText&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                            android:id="@+id/edit_input3"&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                            android:hint="@string/Txt_Input"&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                            android:layout_width="300dp"&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                            android:layout_height="40dp"&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                            android:background="@null"&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                            android:autofillHints=""&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                            android:inputType="text" />&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                    </LinearLayout>&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                    <LinearLayout&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                        android:visibility="gone"&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                        android:id="@+id/layout_input4"&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                        android:orientation="horizontal"&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                        android:layout_width="wrap_content"&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                        android:layout_height="wrap_content"&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                        tools:ignore="UselessParent">&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                        <EditText&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                            android:id="@+id/edit_input4"&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                            android:hint="@string/Txt_Input"&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                            android:layout_width="300dp"&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                            android:layout_height="40dp"&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                            android:background="@null"&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                            android:autofillHints=""&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                            android:inputType="text" />&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                    </LinearLayout>&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                    <LinearLayout&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                        android:visibility="gone"&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                        android:id="@+id/layout_input5"&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                        android:orientation="horizontal"&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                        android:layout_width="wrap_content"&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                        android:layout_height="wrap_content"&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                        tools:ignore="UselessParent">&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                        <EditText&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                            android:id="@+id/edit_input5"&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                            android:hint="@string/Txt_Input"&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                            android:layout_width="300dp"&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                            android:layout_height="40dp"&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                            android:background="@null"&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                            android:autofillHints=""&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                            android:inputType="text" />&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                    </LinearLayout>&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                    <LinearLayout&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                        android:visibility="gone"&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                        android:id="@+id/layout_input6"&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                        android:orientation="horizontal"&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                        android:layout_width="wrap_content"&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                        android:layout_height="wrap_content"&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                        tools:ignore="UselessParent">&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                        <EditText&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                            android:id="@+id/edit_input6"&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                            android:hint="@string/Txt_Input"&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                            android:layout_width="300dp"&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                            android:layout_height="40dp"&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                            android:autofillHints=""&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                            android:background="@null"&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                            android:inputType="text" />&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                    </LinearLayout>&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                    <LinearLayout&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                        android:visibility="gone"&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                        android:id="@+id/layout_input7"&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                        android:orientation="horizontal"&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                        android:layout_width="wrap_content"&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                        android:layout_height="wrap_content"&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                        tools:ignore="UselessParent">&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                        <EditText&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                            android:id="@+id/edit_input7"&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                            android:hint="@string/Txt_Input"&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                            android:layout_width="300dp"&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                            android:background="@null"&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                            android:layout_height="40dp"&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                            android:autofillHints=""&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                            android:inputType="text" />&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                    </LinearLayout>&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                    <LinearLayout&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                        android:visibility="gone"&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                        android:id="@+id/layout_input8"&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                        android:orientation="horizontal"&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                        android:layout_width="wrap_content"&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                        android:layout_height="wrap_content"&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                        tools:ignore="UselessParent">&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                        <EditText&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                            android:id="@+id/edit_input8"&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                            android:hint="@string/Txt_Input"&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                            android:layout_width="300dp"&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                            android:background="@null"&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                            android:layout_height="40dp"&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                            android:autofillHints=""&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                            android:inputType="text" />&ndash;&gt;-->
-                            <!--&lt;!&ndash;                                    </LinearLayout>&ndash;&gt;-->
-
-                            <!--&lt;!&ndash;                                </LinearLayout>&ndash;&gt;-->
-                            <!--                            </LinearLayout>-->
-
                         </LinearLayout>
                     </ScrollView>
                 </LinearLayout>
@@ -631,6 +488,7 @@
                     android:id="@+id/LinearMain4"
                     android:orientation="vertical">
                     <TextView
+                        style="@style/nanumTextView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
@@ -646,6 +504,7 @@
                     android:id="@+id/LinearMain5"
                     android:orientation="vertical">
                     <TextView
+                        style="@style/nanumTextView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
@@ -662,6 +521,7 @@
                 android:orientation="vertical">
 
                 <Button
+                    style="@style/nanumTextView"
                     android:id="@+id/Board_Plus_Button"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -703,6 +563,7 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
                 <TextView
+                    style="@style/nanumTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
@@ -717,6 +578,7 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
                 <TextView
+                    style="@style/nanumTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="추억 돌아보기"
@@ -742,6 +604,7 @@
                         android:scaleType="centerCrop"/>
 
                     <TextView
+                        style="@style/nanumTextView"
                         android:layout_margin="10dp"
                         android:id="@+id/info_text"
                         android:text="2018년"
@@ -768,6 +631,7 @@
                         android:scaleType="centerCrop"/>
 
                     <TextView
+                        style="@style/nanumTextView"
                         android:layout_margin="10dp"
                         android:text="2019년"
                         android:textColor="#d3d3d3"
@@ -794,6 +658,7 @@
                         android:scaleType="centerCrop"/>
 
                     <TextView
+                        style="@style/nanumTextView"
                         android:layout_margin="10dp"
                         android:text="2020년"
                         android:textColor="#d3d3d3"

@@ -15,6 +15,9 @@
         android:src="@mipmap/familyship" />
 
     <EditText
+        style="@style/nanumTextView"
+        android:textStyle="bold"
+        android:textSize="18dp"
         android:id="@+id/et_eamil"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -28,6 +31,9 @@
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/et_password"
+        style="@style/nanumTextView"
+        android:textStyle="bold"
+        android:textSize="18dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
@@ -45,6 +51,8 @@
         android:orientation="vertical">
 
         <Button
+            style="@style/nanumButton"
+            android:textSize="18dp"
             android:id="@+id/btn_signIn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -58,6 +66,8 @@
             tools:ignore="OnClick" />
 
         <Button
+            style="@style/nanumButton"
+            android:textSize="18dp"
             android:id="@+id/btn_signUp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -82,6 +92,8 @@
         android:gravity="center">
 
         <Button
+            style="@style/nanumTextView"
+            android:textSize="16dp"
             android:id="@+id/find"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

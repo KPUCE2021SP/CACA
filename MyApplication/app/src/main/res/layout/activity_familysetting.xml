@@ -32,6 +32,7 @@
             android:textSize="20dp" />
 
         <Button
+            style="@style/nanumButton"
             android:id="@+id/doneFamilyButton"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
@@ -47,6 +48,7 @@
     </LinearLayout>
 
     <TextView
+        style="@style/nanumTextView"
         android:id="@+id/selectFamily"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -62,6 +64,7 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
     <TextView
+        style="@style/nanumTextView"
         android:id="@+id/selectImage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -96,6 +99,8 @@
 <!--        android:text="Button" />-->
 
     <EditText
+        style="@style/nanumTextView"
+        android:textSize="20dp"
         android:id="@+id/editTextFamilyname"
         android:layout_width="300dp"
         android:layout_gravity="center"

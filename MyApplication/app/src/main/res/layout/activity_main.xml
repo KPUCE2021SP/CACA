@@ -9,6 +9,7 @@
     tools:context=".Mypage.MypageActivity">
 
     <Button
+        style="@style/nanumButton"
         android:id="@+id/btn"
         android:gravity="center"
         android:layout_width="80dp"
@@ -17,6 +18,7 @@
         android:textSize="15dp" />
 
     <TextView
+        style="@style/nanumTextView"
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

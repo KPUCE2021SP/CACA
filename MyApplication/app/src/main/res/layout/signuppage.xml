@@ -16,6 +16,8 @@
         android:src="@mipmap/familyship"/>
 
     <EditText
+        style="@style/nanumTextView"
+        android:textSize="20dp"
         android:id="@+id/et_eamil"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -29,6 +31,8 @@
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/et_password"
+        style="@style/nanumTextView"
+        android:textSize="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="50dp"
@@ -39,18 +43,21 @@
         android:minHeight="48dp"
         tools:ignore="OnClick" />
     <TextView
+        style="@style/nanumTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/warning_pwd_pattern"
         android:visibility="visible"
         android:layout_marginLeft="55dp"
         android:layout_marginRight="50dp"
-        android:textSize="10dp"
+        android:textSize="12dp"
         android:text="소문자및 대문자와 숫자를 합한 4-16자가 필요합니다"
         android:textColor="#606060"/>
 
     <com.google.android.material.textfield.TextInputEditText
         android:inputType="textPassword"
+        style="@style/nanumTextView"
+        android:textSize="20dp"
         android:id="@+id/et_passwordConfirm"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -61,6 +68,8 @@
         android:minHeight="48dp"
         tools:ignore="OnClick" />
     <TextView
+        style="@style/nanumTextView"
+        android:textSize="12dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/warning_pwd"
@@ -71,6 +80,8 @@
         android:textColor="#FF0000"/>
 
     <EditText
+        style="@style/nanumTextView"
+        android:textSize="20dp"
         android:id="@+id/et_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -80,6 +91,8 @@
         android:minHeight="48dp" />
 
     <EditText
+        style="@style/nanumTextView"
+        android:textSize="20dp"
         android:id="@+id/et_birthday"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -90,6 +103,8 @@
         android:minHeight="48dp" />
 
     <EditText
+        style="@style/nanumTextView"
+        android:textSize="20dp"
         android:id="@+id/et_address"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -99,6 +114,8 @@
         android:minHeight="48dp" />
 
     <EditText
+        style="@style/nanumTextView"
+        android:textSize="20dp"
         android:id="@+id/et_phone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -114,6 +131,8 @@
         android:orientation="vertical">
 
         <Button
+            style="@style/nanumButton"
+            android:textSize="20dp"
             android:id="@+id/btn_signUp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

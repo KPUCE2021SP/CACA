@@ -47,6 +47,7 @@
             tools:ignore="MissingConstraints">
 
             <Button
+                style="@style/nanumButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="로그아웃"
@@ -79,6 +80,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
+                style="@style/nanumTextView"
                 android:id="@+id/textViewName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

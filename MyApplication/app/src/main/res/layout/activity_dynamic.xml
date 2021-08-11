@@ -24,7 +24,7 @@
             android:textSize="20dp"/>
 
         <TextView
-            android:id="@+id/aaaaaaa"
+            style="@style/nanumTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
