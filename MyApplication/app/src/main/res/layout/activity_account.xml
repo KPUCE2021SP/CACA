@@ -5,6 +5,7 @@
     android:layout_height="match_parent">
 
     <LinearLayout
+        android:id="@+id/account_All"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -17,8 +18,9 @@
             android:layout_height="match_parent"
             android:layout_weight="10">
 
-            <ImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:src="@drawable/boy"
+                android:id="@+id/account_profile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true" />
@@ -40,6 +42,7 @@
                 style="@style/nanumTextView"
                 android:text="홍길동"
                 android:textSize="20dp"
+                android:id="@+id/account_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/textTitle"
@@ -55,12 +58,14 @@
                 android:layout_alignParentTop="true"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
-                android:text="국민은행 000000-000000"
+                android:id="@+id/account_bankName"
+                android:text="국민은행"
                 android:textStyle="bold" />
 
             <TextView
                 style="@style/nanumTextView"
-                android:text="마지막 입금 일시: 2021-06-10"
+                android:text="000000-000000"
+                android:id="@+id/account_bankNum"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/textTitle"
