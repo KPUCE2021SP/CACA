@@ -77,7 +77,7 @@ class Notification : AppCompatActivity() {
         }
     }
 
-    private fun sendNotification(notification: PushNotification) = CoroutineScope(Dispatchers.IO).launch {
+    fun sendNotification(notification: PushNotification) = CoroutineScope(Dispatchers.IO).launch {
         try {
             val response = RetrofitInstance.api.postNotification(notification)
             if(response.isSuccessful) {
