@@ -69,20 +69,6 @@ class MainActivity : AppCompatActivity() {
 
     val db: FirebaseFirestore = Firebase.firestore
 
-    // location
-    var fname : String  = ""
-    var str : String = ""
-
-    var lat : Double = 1.0
-    var log : Double = 1.0
-
-    private lateinit var fusedLocationClient: FusedLocationProviderClient
-
-    private var locationManager : LocationManager? = null
-
-    private lateinit var locationCallback: LocationCallback
-    // location
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -335,82 +321,23 @@ class MainActivity : AppCompatActivity() {
 
 
         toggleButton.setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener { _, isChecked ->
-            // location 받아오기//
-            fusedLocationClient = LocationServices.getFusedLocationProviderClient(this) // 위치 정보 받기
 
-            if (ActivityCompat.checkSelfPermission(
-                            this,
-                            Manifest.permission.ACCESS_FINE_LOCATION
-                    ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
-                            this,
-                            Manifest.permission.ACCESS_COARSE_LOCATION
-                    ) != PackageManager.PERMISSION_GRANTED
-            ) {
-                // TODO: Consider calling
-                //    ActivityCompat#requestPermissions
-                // here to request the missing permissions, and then overriding
-                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                //                                          int[] grantResults)
-                // to handle the case where the user grants the permission. See the documentation
-                // for ActivityCompat#requestPermissions for more details.
-                return@OnCheckedChangeListener
-            }
-            fusedLocationClient.lastLocation
-                    .addOnSuccessListener { location : Location? ->
-                        // Got last known location. In some rare situations this can be null.
-                        if (location != null) {
-                            lat = location.latitude
-                            log = location.longitude
+                val toastMessage: String = if (isChecked) {
 
+                    val repeatInterval: Long = 1 * 1000
+                    // 위치가 비슷하다면
+                    val triggerTime = (SystemClock.elapsedRealtime() + repeatInterval)
+                    alarmManager.setRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP, triggerTime, repeatInterval, pendingIntent)
+                    "Exact periodic Alarm On"
 
-                            var asdf : String = "위도 : " + lat.toString() + " 경도 : " + log.toString()
-                            L_textView.setText(asdf)
-                            Log.d("logD", asdf)
-                        }
-                    }
-            // location 받아오기
-
-            // 저장된 location 받아오기 //
-            var X = 0.0f
-            var Y = 0.0f
-            var LOCATION = ""
-            val docRef10 = db.collection("Member").document(uid.toString()) // 여러 field값 가져오기
-            docRef10.get()
-                    .addOnSuccessListener { document7 ->
-                        if (document7 != null) {
-                            Log.d("asdfasdf", "asdfasdf: ${document7.data}")
-                            //textViewName.setText(document.data?.get("name").toString()) // name 확인용
-                            X = (document7.data?.get("x") as Float)
-                            Y = (document7.data?.get("y") as Float)
-                            LOCATION = (document7.data?.get("location") as String)
-                        }
-                    }
-
-            // 저장된 location 받아오기
-
-            // 위치 차이 계산
-
-            if((lat - X < 0.1) && (lat - X > -0.1)) {
-
-                if((log - Y < 0.1) && (log - Y > -0.1)) {
-
-                    val toastMessage: String = if (isChecked) {
-                        val repeatInterval: Long = 1 * 1000
-                        // 위치가 비슷하다면
-                        val triggerTime = (SystemClock.elapsedRealtime() + repeatInterval)
-                        alarmManager.setRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP, triggerTime, repeatInterval, pendingIntent)
-                        "Exact periodic Alarm On"
-
-                    } else {
-                        alarmManager.cancel(pendingIntent)
-                        "Exact periodic Alarm Off"
-                    }
-                    Log.d(TAG, toastMessage)
-                    Toast.makeText(this, toastMessage, Toast.LENGTH_SHORT).show()
-
+                } else {
+                    alarmManager.cancel(pendingIntent)
+                    "Exact periodic Alarm Off"
                 }
+                Log.d(TAG, toastMessage)
+                Toast.makeText(this, toastMessage, Toast.LENGTH_SHORT).show()
 
-            }
+
 
 
 

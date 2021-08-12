@@ -271,47 +271,6 @@ class BoardActivity : AppCompatActivity() {
                                 )
                             )
                         }
-
-
-
-
-
-//                        var x = 0.0f
-//                        var y = 0.0f
-//                        var location : String = ""
-//                        val docRef4 = db.collection("Chats").document(FamilyName).collection("BOARD").document(formatted)
-//                        docRef4.get()
-//                                .addOnSuccessListener { dd ->
-//                                    if (dd != null) {
-//                                        Log.d(
-//                                                ContentValues.TAG,
-//                                                "aaaaaaaaaaaaaaaaaa: ${dd.data}"
-//                                        )
-//
-//                                        x = dd.data?.get("x") as Float
-//                                        y = dd.data?.get("y") as Float
-//                                        location = dd.data?.get("location").toString()
-//
-//                                        Log.d("yyyyyy", x.toString())
-//
-//                                        val myPage_content = hashMapOf(
-//                                                // Family name
-//                                                "x" to x.toString(),
-//                                                "y" to y.toString(),
-//                                                "location" to location.toString(),
-//                                        )
-//
-//
-//                                        db.collection("Member").document(spinnerUID.toString()).update(myPage_content as Map<String, Any>) // mypage에 location정보 저장
-//
-//
-//                                    } else {
-//                                        Log.d(ContentValues.TAG, "No such document")
-//                                    }
-//                                }
-//                                .addOnFailureListener { exception ->
-//                                    Log.d(ContentValues.TAG, "get failed with ", exception)
-//                                }
                     }
                 }
 
@@ -332,8 +291,8 @@ class BoardActivity : AppCompatActivity() {
 
                         val myPage_content = hashMapOf(
 //                                                // Family name
-                                                "x" to X.toString(),
-                                                "y" to Y.toString(),
+                                                "x" to X,
+                                                "y" to Y,
                                                 "location" to Location.toString(),
                                         )
 
