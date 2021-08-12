@@ -45,7 +45,7 @@ import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.ktx.storage
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_main.btn
+//import kotlinx.android.synthetic.main.activity_main.btn
 import kotlinx.android.synthetic.main.appwidget.*
 import kotlinx.android.synthetic.main.card_layout.*
 import kotlinx.android.synthetic.main.mypage_activity.*
