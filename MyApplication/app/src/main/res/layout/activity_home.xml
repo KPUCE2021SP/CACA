@@ -183,7 +183,7 @@
                         android:textSize="27dp"
                         android:textStyle="bold"></TextView>
                     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-                        android:id="@+id/srl_main"
+                        android:id="@+id/srl_account"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
                         <ScrollView
