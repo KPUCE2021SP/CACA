@@ -39,6 +39,10 @@
                 android:resource="@xml/appwidget_info" />
         </receiver>
 
+        <receiver android:name=".AlarmReceiver"
+            android:exported="false">
+        </receiver>
+
         <activity android:name=".SerachMap.SearchMapContent" />
 
         <meta-data
