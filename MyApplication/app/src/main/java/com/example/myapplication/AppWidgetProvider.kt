@@ -56,9 +56,47 @@ class AppWidgetProvider : AppWidgetProvider() {
         super.onReceive(context, intent)
     }
 
+
+
+    // 위젯이 처음으로 배치될 때와 위젯의 크기가 조절될 때 호출됩니다.
     override fun onAppWidgetOptionsChanged(context: Context?, appWidgetManager: AppWidgetManager?, appWidgetId: Int, newOptions: Bundle?) {
         super.onAppWidgetOptionsChanged(context, appWidgetManager, appWidgetId, newOptions)
-    }
+
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(context!!) // 위치 정보 받기
+
+        if (ActivityCompat.checkSelfPermission(
+                        context,
+                        Manifest.permission.ACCESS_FINE_LOCATION
+                ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                        context,
+                        Manifest.permission.ACCESS_COARSE_LOCATION
+                ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return
+        }
+        fusedLocationClient.lastLocation
+                .addOnSuccessListener { location: Location? ->
+                    // Got last known location. In some rare situations this can be null.
+                    if (location != null) {
+                        lat = location.latitude
+                        log = location.longitude
+
+
+                        asdf = "위도 : " + lat.toString() + " 경도 : " + log.toString()
+                        Log.d("asdf", asdf)
+                    }
+                }
+
+        }
+
+
 
     override fun onDeleted(context: Context?, appWidgetIds: IntArray?) {
         super.onDeleted(context, appWidgetIds)
@@ -109,7 +147,7 @@ class AppWidgetProvider : AppWidgetProvider() {
 
 
                     asdf = "위도 : " + lat.toString() + " 경도 : " + log.toString()
-                    Log.d("a", asdf)
+                    Log.d("asdf", asdf)
                 }
             }
 
@@ -140,9 +178,9 @@ class AppWidgetProvider : AppWidgetProvider() {
         val content = "누르면 앱으로 이동".toString()
         if (lat == lat && log == log) {
             PushNotification(NotificationData(title, content), token)
-            Log.d("a", "o")
+            Log.d("asdf", "o")
         }else{
-            Log.d("a", "x")
+            Log.d("asdf", "x")
         }
 
         // message
@@ -167,10 +205,6 @@ class AppWidgetProvider : AppWidgetProvider() {
             }
 
             // Tell the AppWidgetManager to perform an update on the current app widget
-            appWidgetManager.updateAppWidget(appWidgetId, views)
-
-            appWidgetManager.updateAppWidget(appWidgetId, views)
-            appWidgetManager.updateAppWidget(appWidgetId, views)
             appWidgetManager.updateAppWidget(appWidgetId, views)
 
         }
