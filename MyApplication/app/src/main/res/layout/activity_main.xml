@@ -12,16 +12,16 @@
         android:id="@+id/toggleButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="ToggleButton" />
+        android:text="위치 알람" />
 
-    <Button
-        style="@style/nanumButton"
-        android:id="@+id/btn"
-        android:gravity="center"
-        android:layout_width="80dp"
-        android:layout_height="40dp"
-        android:text="위젯추가"
-        android:textSize="15dp" />
+<!--    <Button-->
+<!--        style="@style/nanumButton"-->
+<!--        android:id="@+id/btn"-->
+<!--        android:gravity="center"-->
+<!--        android:layout_width="80dp"-->
+<!--        android:layout_height="40dp"-->
+<!--        android:text="위젯추가"-->
+<!--        android:textSize="15dp" />-->
 
     <TextView
         style="@style/nanumTextView"

@@ -1,5 +1,5 @@
 package com.example.myapplication
-
+///////////////////////////////////////////////// 쓰는거 지우지마세요 (알람)
 import android.app.AlarmManager
 import android.app.NotificationChannel
 import android.app.NotificationManager

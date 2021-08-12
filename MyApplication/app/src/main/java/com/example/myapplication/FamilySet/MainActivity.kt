@@ -261,6 +261,8 @@ class MainActivity : AppCompatActivity() {
         super.onResume()
 
 
+
+        // 위젯 안씀
 //        val appWidgetManager: AppWidgetManager? = getSystemService(AppWidgetManager::class.java)
 //        var myProvider = ComponentName(this, AppWidgetProvider::class.java)
 //
