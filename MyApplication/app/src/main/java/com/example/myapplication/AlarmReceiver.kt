@@ -35,7 +35,7 @@ class AlarmReceiver : BroadcastReceiver() {
     }
 
     private fun deliverNotification(context: Context) {
-        val contentIntent = Intent(context, MainActivity::class.java)
+        val contentIntent = Intent(context, HomeActivity::class.java)
         val contentPendingIntent = PendingIntent.getActivity(
                 context,
                 NOTIFICATION_ID,
@@ -45,8 +45,8 @@ class AlarmReceiver : BroadcastReceiver() {
         val builder =
                 NotificationCompat.Builder(context, PRIMARY_CHANNEL_ID)
                         .setSmallIcon(R.drawable.familyship)
-                        .setContentTitle("Alert")
-                        .setContentText("This is repeating alarm")
+                        .setContentTitle("누군가가 나의 위치 주변을 언급했어요")
+                        .setContentText("어디 한 번 확인해 볼까요~~??")
                         .setContentIntent(contentPendingIntent)
                         .setPriority(NotificationCompat.PRIORITY_HIGH)
                         .setAutoCancel(true)
