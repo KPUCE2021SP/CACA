@@ -64,11 +64,6 @@ class BoardActivity : AppCompatActivity() {
     private var storageReference: StorageReference? = null
 
 
-    var location = "" // 초기값
-    var x = "0.0f"
-    var y = "0.0f"
-
-
     lateinit var FamilyName : String
     lateinit var formatted : String
 
@@ -93,6 +88,11 @@ class BoardActivity : AppCompatActivity() {
 
         FamilyName = intent.getStringExtra("FamilyName").toString() // 제목 선정
         formatted = intent.getStringExtra("formatted").toString()
+
+
+
+        Log.d("formatted", formatted)
+        aaaaaaa.setText(formatted)
         //FamilyNameTextView.text = FamilyName
 
 
@@ -127,15 +127,15 @@ class BoardActivity : AppCompatActivity() {
         }
 
         // location Text
-        val docRef1 = db.collection("Chats").document(FamilyName.toString()).collection("BOARD").document(formatted) // 여러 field값 가져오기
+        val docRef1 = db.collection("Chats").document(FamilyName.toString()).collection("BOARD").document(aaaaaaa.text.toString()) // 여러 field값 가져오기
         docRef1.get()
-            .addOnSuccessListener { document2 ->
-                if (document2 != null) {
-                    Log.d(ContentValues.TAG, "DocumentSnapshot data: ${document2.data}")
-                    //textViewName.setText(document.data?.get("name").toString()) // name 확인용
-                    board_location_textView.setText(document2.data?.get("location").toString())
+                .addOnSuccessListener { document2 ->
+                    if (document2 != null) {
+                        Log.d(ContentValues.TAG, "DocumentSnapshot data: ${document2.data}")
+                        //textViewName.setText(document.data?.get("name").toString()) // name 확인용
+                        board_location_textView.setText(document2.data?.get("location").toString())
+                    }
                 }
-            }
 
 
         boardVote.setOnClickListener {
@@ -145,8 +145,6 @@ class BoardActivity : AppCompatActivity() {
 
         mutableList.clear()
         mutableList.add("언급 안하기")
-//        mutableList.add("모두 언급하기")
-//        mutableUIDList.add("all")
         db.collection("Chats").document(FamilyName.toString()).collection("FamilyMember")
             .get()
             .addOnSuccessListener { documents ->
@@ -237,11 +235,16 @@ class BoardActivity : AppCompatActivity() {
                 "photo" to PhotoBoolean,
             )
 
+            val FFF= formatted.toString()
+            db.collection("Chats").document(FamilyName.toString()).collection("BOARD")
+                    .document(formatted).update(board_content as Map<String, Any>)//.set(board_content) // 게시판 활성화
+            Toast.makeText(this, "게시판 업로드 완료!!", Toast.LENGTH_SHORT).show()
+
             Log.d("spinner", spinnerUID)
 
-            db.collection("Chats").document(FamilyName.toString()).collection("BOARD")
-                .document(formatted).update(board_content as Map<String, Any>)//.set(board_content) // 게시판 활성화
-            Toast.makeText(this, "게시판 업로드 완료!!", Toast.LENGTH_SHORT).show()
+//            db.collection("Chats").document(FamilyName.toString()).collection("BOARD")
+//                .document(formatted).update(board_content as Map<String, Any>)//.set(board_content) // 게시판 활성화
+//            Toast.makeText(this, "게시판 업로드 완료!!", Toast.LENGTH_SHORT).show()
 
 
             var no_mention: String = ""
@@ -268,9 +271,79 @@ class BoardActivity : AppCompatActivity() {
                                 )
                             )
                         }
+
+
+
+
+
+//                        var x = 0.0f
+//                        var y = 0.0f
+//                        var location : String = ""
+//                        val docRef4 = db.collection("Chats").document(FamilyName).collection("BOARD").document(formatted)
+//                        docRef4.get()
+//                                .addOnSuccessListener { dd ->
+//                                    if (dd != null) {
+//                                        Log.d(
+//                                                ContentValues.TAG,
+//                                                "aaaaaaaaaaaaaaaaaa: ${dd.data}"
+//                                        )
+//
+//                                        x = dd.data?.get("x") as Float
+//                                        y = dd.data?.get("y") as Float
+//                                        location = dd.data?.get("location").toString()
+//
+//                                        Log.d("yyyyyy", x.toString())
+//
+//                                        val myPage_content = hashMapOf(
+//                                                // Family name
+//                                                "x" to x.toString(),
+//                                                "y" to y.toString(),
+//                                                "location" to location.toString(),
+//                                        )
+//
+//
+//                                        db.collection("Member").document(spinnerUID.toString()).update(myPage_content as Map<String, Any>) // mypage에 location정보 저장
+//
+//
+//                                    } else {
+//                                        Log.d(ContentValues.TAG, "No such document")
+//                                    }
+//                                }
+//                                .addOnFailureListener { exception ->
+//                                    Log.d(ContentValues.TAG, "get failed with ", exception)
+//                                }
                     }
                 }
-            //게시판으로 돌아가기기
+
+
+
+            Log.d("format", FFF.toString())
+            // x, y 받아오기///////////////////////////////////////////////////////////////////////////////////////////////////
+            val docRef10 = db.collection("Chats").document(FamilyName.toString()).collection("BOARD").document(FFF) // 여러 field값 가져오기
+            docRef10.get()
+                    .addOnSuccessListener { document7 ->
+                        if (document7 != null) {
+                            Log.d("asdfasdf", "asdfasdf: ${document7.data}")
+                            //textViewName.setText(document.data?.get("name").toString()) // name 확인용
+                            var X = (document7.data?.get("x"))
+                            var Y = (document7.data?.get("y"))
+                            var Location = (document7.data?.get("location"))
+                            Log.d("asdf", X.toString())
+
+                        val myPage_content = hashMapOf(
+//                                                // Family name
+                                                "x" to X.toString(),
+                                                "y" to Y.toString(),
+                                                "location" to Location.toString(),
+                                        )
+
+
+                        db.collection("Member").document(spinnerUID.toString()).update(myPage_content as Map<String, Any>)
+                        }
+                    }
+
+
+            //home으로 돌아가기기
             finish()
         }
     }
