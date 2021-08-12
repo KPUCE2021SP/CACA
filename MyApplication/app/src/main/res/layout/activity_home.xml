@@ -390,6 +390,7 @@
                                     <TextView
                                         style="@style/nanumTextView"
                                         android:textStyle="bold"
+                                        android:layout_marginTop="20dp"
                                         android:layout_margin="5dp"
                                         android:id="@+id/text_result"
                                         android:layout_width="wrap_content"
@@ -459,9 +460,10 @@
 
                             <TextView
                                 style="@style/nanumTextView"
-                                android:text="후보"
+                                android:layout_marginTop="30dp"
+                                android:text="참가자"
                                 android:textColor="@color/black"
-                                android:textSize="20dp"
+                                android:textSize="25dp"
                                 android:textStyle="bold"
                                 android:gravity="center"
                                 android:layout_width="match_parent"
@@ -470,10 +472,11 @@
 
                             <ListView
                                 style="@style/nanumTextView"
+                                android:clickable="false"
                                 android:layout_gravity="center"
-                                android:layout_marginLeft="20dp"
+                                android:layout_margin="20dp"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
+                                android:layout_height="300dp"
                                 android:id="@+id/mutableView">
 
                             </ListView>
