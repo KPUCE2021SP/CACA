@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_weight="1"
+       android:orientation="vertical">
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content">
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_margin="10dp"
+               android:orientation="horizontal">
+
+               <ImageView
+                   android:layout_width="48dp"
+                   android:layout_height="48dp"
+                   android:layout_margin="5dp"
+                   android:id="@+id/noticeProfile"
+                   android:src="@drawable/son" />
+
+               <LinearLayout
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_margin="10dp"
+                   android:orientation="vertical">
+
+                   <TextView
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:text="홍길동"
+                       android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+                   <TextView
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:text="2021-07-20 21:00" />
+               </LinearLayout>
+
+           </LinearLayout>
+       </LinearLayout>
+       <View
+           android:layout_width="match_parent"
+           android:layout_height="0.5dp"
+           android:background="@color/black"/>
+
+       <TextView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_margin="15dp"
+           android:text="오늘 몇시에 오시나요??"
+           android:id="@+id/noticeMT"
+           android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="30dp"
+           android:layout_margin="10dp"
+           android:orientation="horizontal">
+           <ImageView
+               android:layout_width="30dp"
+               android:layout_height="wrap_content"
+               android:layout_margin="5dp"
+               android:src="@drawable/heart"/>
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_gravity="center"
+               android:id="@+id/noticeLike"
+               android:text="3"/>
+           <ImageView
+               android:layout_width="30dp"
+               android:layout_height="wrap_content"
+               android:layout_margin="5dp"
+               android:src="@drawable/chat"/>
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_gravity="center"
+               android:id="@+id/noticeCM"
+               android:text="1"/>
+           <ImageView
+               android:layout_width="30dp"
+               android:layout_height="wrap_content"
+               android:layout_margin="5dp"
+               android:src="@drawable/mention"/>
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_gravity="center"
+               android:id="@+id/noticeTag"
+               android:text="엄마"/>
+       </LinearLayout>
+       <View
+           android:layout_width="match_parent"
+           android:layout_height="1dp"
+           android:background="@color/black"/>
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content">
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_margin="10dp"
+               android:orientation="horizontal">
+
+               <ImageView
+                   android:layout_width="48dp"
+                   android:layout_height="48dp"
+                   android:layout_margin="5dp"
+                   android:src="@drawable/daughter" />
+
+               <LinearLayout
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_margin="10dp"
+                   android:orientation="vertical">
+
+                   <TextView
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:text="성춘향"
+                       android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+                   <TextView
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:text="2021-07-18 17:00" />
+               </LinearLayout>
+           </LinearLayout>
+       </LinearLayout>
+       <View
+           android:layout_width="match_parent"
+           android:layout_height="0.5dp"
+           android:background="@color/black"/>
+
+       <TextView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_margin="15dp"
+           android:text="마트에서 식용류 사다주실 수 있나요?"
+           android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="20dp"
+           android:orientation="horizontal">
+           <ImageView
+               android:layout_width="15dp"
+               android:layout_height="15dp"
+               android:layout_marginLeft="15dp"
+               android:layout_gravity="center"
+               android:src="@drawable/location_pin" />
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginLeft="15dp"
+               android:id="@+id/noticePin"
+               android:text="경기도 시흥시 정왕1동 정왕대로 210"/>
+       </LinearLayout>
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="30dp"
+           android:layout_margin="10dp"
+           android:orientation="horizontal">
+           <ImageView
+               android:layout_width="30dp"
+               android:layout_height="wrap_content"
+               android:layout_margin="5dp"
+               android:src="@drawable/heart"/>
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_gravity="center"
+               android:text="1"/>
+           <ImageView
+               android:layout_width="30dp"
+               android:layout_height="wrap_content"
+               android:layout_margin="5dp"
+               android:src="@drawable/chat"/>
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_gravity="center"
+               android:text="1"/>
+           <ImageView
+               android:layout_width="30dp"
+               android:layout_height="wrap_content"
+               android:layout_margin="5dp"
+               android:src="@drawable/mention"/>
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_gravity="center"
+               android:text="아빠"/>
+       </LinearLayout>
+       <View
+           android:layout_width="match_parent"
+           android:layout_height="1dp"
+           android:background="@color/black"/>
+   </LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/noticeWrite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:layout_margin="10dp"
+        android:clickable="true"
+        app:backgroundTint="#FCBF48"
+        app:srcCompat="@drawable/ic_baseline_add_24"
+        tools:ignore="VectorDrawableCompat" />
+
+
+</LinearLayout>

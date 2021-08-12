@@ -1,0 +1,806 @@
+[
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_show_beret.jpg.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\show_beret.jpg"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_flushing.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\flushing.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_vote.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable-v24\\vote.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_color3circle.jpg.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\color3circle.jpg"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_normaleye.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\normaleye.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_copy.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\copy.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\xml_network_security_config.xml.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\xml\\network_security_config.xml"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\layout_loginactivity.xml.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\layout\\loginactivity.xml"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_baseline_clear_24.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_baseline_clear_24.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_standing_9.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\standing_9.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_show_normaleye.jpg.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\show_normaleye.jpg"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_familyship.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\mipmap-xxhdpi\\familyship.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_baseline_clear_24.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_baseline_clear_24.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_standing_10.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\standing_10.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_smile.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\smile.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_dancing_10.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\dancing_10.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_calling.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\calling.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_plus.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\plus.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_start.xml.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\layout\\activity_start.xml"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_boy.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable-v24\\boy.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_launcher_background.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_launcher_background.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\layout_defaultcard_layout.xml.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\layout\\defaultcard_layout.xml"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_launcher_background.xml.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_launcher_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_baseline_arrow_circle_up_24.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_baseline_arrow_circle_up_24.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_baseline_insert_link_24.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_baseline_insert_link_24.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_baseline_clear_24.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_baseline_clear_24.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_mypage1.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable-v24\\mypage1.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_baseline_arrow_circle_up_24.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_baseline_arrow_circle_up_24.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_youngster.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable-v24\\youngster.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_catmeow.jpg.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\catmeow.jpg"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_baseline_create_24.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_baseline_create_24.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_input_medicine.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\ic_input_medicine.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_color9circle.jpg.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\color9circle.jpg"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_solid_button_gray.xml.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\solid_button_gray.xml"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_insert_invite_code.xml.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\layout\\activity_insert_invite_code.xml"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_color6circle.jpg.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\color6circle.jpg"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_launcher_background.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_launcher_background.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_palet.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\palet.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_show_blackeye.jpg.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\show_blackeye.jpg"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_dancing_7.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\dancing_7.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v24_ic_launcher_foreground.xml.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v24\\ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\anim_fade_in.xml.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\anim\\fade_in.xml"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_standing_8.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\standing_8.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_sky.jpg.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\sky.jpg"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_add.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\ic_add.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_baseline_insert_link_24.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_baseline_insert_link_24.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_dynamic.xml.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\layout\\activity_dynamic.xml"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_heart.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable-v24\\heart.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\layout_notice.xml.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\layout\\notice.xml"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_standing_6.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\standing_6.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_sister.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\sister.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_blackeye.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\blackeye.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_baseline_insert_link_24.xml.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_baseline_insert_link_24.xml"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_baseline_add_24.xml.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_baseline_add_24.xml"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_baseline_add_24.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_baseline_add_24.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_left_remove.xml.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\ic_left_remove.xml"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_dancing_8.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\dancing_8.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_rank_negative.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\rank_negative.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_medical.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\medical.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_baseline_arrow_circle_up_24.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_baseline_arrow_circle_up_24.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_search_map.xml.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\layout\\activity_search_map.xml"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_left_add.xml.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\ic_left_add.xml"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\xml_activity_start_scene.xml.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\xml\\activity_start_scene.xml"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_launcher_background.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_launcher_background.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_color8circle.jpg.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\color8circle.jpg"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_groups.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable-v24\\groups.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_glass.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\glass.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_roundback.xml.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\roundback.xml"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_dancing_9.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\dancing_9.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\layout_signuppage.xml.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\layout\\signuppage.xml"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_baseline_add_24.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_baseline_add_24.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_baseline_create_24.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_baseline_create_24.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_familyship.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\familyship.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_round_corner.xml.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\round_corner.xml"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_color2circle.jpg.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\color2circle.jpg"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\layout_board.xml.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\layout\\board.xml"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_hungry.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\hungry.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_input_doctor.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\ic_input_doctor.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_standing_7.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\standing_7.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_color5circle.jpg.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\color5circle.jpg"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_baseline_insert_link_24.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_baseline_insert_link_24.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_xxx.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\xxx.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_time.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable-v24\\time.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_left_random.xml.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\ic_left_random.xml"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher_round.xml"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_invite.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\invite.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_random2_negative.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\random2_negative.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_baseline_add_24.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_baseline_add_24.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_baseline_create_24.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_baseline_create_24.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_daughter.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable-v24\\daughter.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_solid_button_white.xml.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\solid_button_white.xml"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable-nodpi_example_appwidget_preview.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable-nodpi\\example_appwidget_preview.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_baseline_clear_24.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_baseline_clear_24.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_standing_1.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\standing_1.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_show_flushing.jpg.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\show_flushing.jpg"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\layout_mypage_activity.xml.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\layout\\mypage_activity.xml"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_show_glass.jpg.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\show_glass.jpg"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_grandfa.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\grandfa.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_baseline_insert_link_24.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_baseline_insert_link_24.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_baseline_create_24.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_baseline_create_24.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_realhome.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\realhome.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_launcher_background.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_launcher_background.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_dancing_3.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\dancing_3.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_familysetting.xml.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\layout\\activity_familysetting.xml"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_solid_button_gray.xml.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable-v24\\solid_button_gray.xml"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_grandparents.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\grandparents.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_show_sister.jpg.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\show_sister.jpg"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_input_hospital.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\ic_input_hospital.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_launcher_background.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_launcher_background.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\anim_zoom_in.xml.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\anim\\zoom_in.xml"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_launcher_background.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_launcher_background.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_familyship_mipmap.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\mipmap-xxhdpi\\familyship_mipmap.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_standing_2.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\standing_2.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_birth.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\birth.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_left_rank.xml.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\ic_left_rank.xml"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\layout_card_layout.xml.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\layout\\card_layout.xml"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_upload.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable-v24\\upload.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_baseline_create_24.xml.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_baseline_create_24.xml"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_dancing_2.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\dancing_2.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_standing_3.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\standing_3.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_baseline_arrow_circle_up_24.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_baseline_arrow_circle_up_24.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_home.xml.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\layout\\activity_home.xml"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_chat.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable-v24\\chat.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_son.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable-v24\\son.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\xml_app_widget_info.xml.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\xml\\app_widget_info.xml"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_baseline_clear_24.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_baseline_clear_24.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_flower.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\flower.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_dancing_1.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\dancing_1.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_show_flower.jpg.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\show_flower.jpg"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_dialog.xml.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\layout\\activity_dialog.xml"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_check.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\check.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_baseline_insert_link_24.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_baseline_insert_link_24.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_baseline_arrow_circle_up_24.xml.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_baseline_arrow_circle_up_24.xml"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_standing_5.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\standing_5.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_baseline_add_24.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_baseline_add_24.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_dancing_4.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\dancing_4.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\layout_arrive.xml.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\layout\\arrive.xml"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_baseline_arrow_circle_up_24.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_baseline_arrow_circle_up_24.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\xml_remote_config_defaults.xml.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\xml\\remote_config_defaults.xml"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_baseline_insert_link_24.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_baseline_insert_link_24.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_nightsky.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\nightsky.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\xml_activity_dynamic_scene.xml.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\xml\\activity_dynamic_scene.xml"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_baseline_add_24.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_baseline_add_24.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\layout_mypage_edit.xml.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\layout\\mypage_edit.xml"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_location_pin.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable-v24\\location_pin.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_cake.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\cake.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_ic_stat_ic_notification.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable-v24\\ic_stat_ic_notification.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_baseline_add_24.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_baseline_add_24.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_sadness.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\sadness.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_show_baby.jpg.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\show_baby.jpg"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_crown.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\crown.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_home.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\home.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher.xml"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_baseline_create_24.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_baseline_create_24.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_familyship.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable-v24\\familyship.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_dancing_6.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\dancing_6.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_color4circle.jpg.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\color4circle.jpg"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_letter.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\letter.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_color10circle.jpg.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\color10circle.jpg"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_color7circle.jpg.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\color7circle.jpg"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_color1circle.jpg.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\color1circle.jpg"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_baseline_clear_24.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_baseline_clear_24.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_baseline_arrow_circle_up_24.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_baseline_arrow_circle_up_24.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_main.xml.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_mention.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable-v24\\mention.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_profile.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable-v24\\profile.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_show_crown.jpg.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\show_crown.jpg"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\layout_mypage_content.xml.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\layout\\mypage_content.xml"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_family.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable-v24\\family.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_dancing_5.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\dancing_5.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_pic.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable-v24\\pic.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_standing_4.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\standing_4.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_baseline_create_24.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_baseline_create_24.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_share.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\share.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_baseline_clear_24.xml.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_baseline_clear_24.xml"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\layout_app_widget.xml.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\layout\\app_widget.xml"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_remove.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\ic_remove.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_angry.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\angry.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_baby.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\baby.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_map.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\map.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_custom.xml.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\layout\\activity_custom.xml"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_save_icon.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\save_icon.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_pin.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable-v24\\pin.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\layout_notice_card.xml.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\layout\\notice_card.xml"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_beret.png.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\beret.png"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\res\\merged\\debug\\drawable_edge.xml.flat",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\drawable\\edge.xml"
+    }
+]

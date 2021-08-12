@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F6F6F6">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+    <FrameLayout
+        android:id="@+id/face"
+        android:layout_width="412dp"
+        android:layout_height="427dp"
+        android:foreground="@drawable/normaleye"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <FrameLayout
+            android:id="@+id/deco"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:foreground="@drawable/glass">
+
+            <FrameLayout
+                android:id="@+id/body"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:foreground="@drawable/standing_2">
+
+            </FrameLayout>
+        </FrameLayout>
+    </FrameLayout>
+
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+    <!--색깔 하얀 레이아웃-->
+
+    <HorizontalScrollView
+        android:id="@+id/scrollview_color"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/face"
+        android:visibility="visible">
+
+        <LinearLayout
+            android:id="@+id/linear_Color"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@color/white"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/ImageButton_color1"
+                android:layout_width="70dp"
+                android:layout_height="80dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="#FFFFFF"
+                android:scaleType="fitCenter"
+                android:src="@drawable/color1circle"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <ImageButton
+                android:id="@+id/ImageButton_color2"
+                android:layout_width="70dp"
+                android:layout_height="80dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="#FFFFFF"
+                android:scaleType="fitCenter"
+                android:src="@drawable/color2circle"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <ImageButton
+                android:id="@+id/ImageButton_color3"
+                android:layout_width="70dp"
+                android:layout_height="80dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="#FFFFFF"
+                android:scaleType="fitCenter"
+                android:src="@drawable/color3circle"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <ImageButton
+                android:id="@+id/ImageButton_color4"
+                android:layout_width="70dp"
+                android:layout_height="80dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="#FFFFFF"
+                android:scaleType="fitCenter"
+                android:src="@drawable/color4circle"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <ImageButton
+                android:id="@+id/ImageButton_color5"
+                android:layout_width="70dp"
+                android:layout_height="80dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="#FFFFFF"
+                android:scaleType="fitCenter"
+                android:padding="13dp"
+                android:src="@drawable/color5circle"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <ImageButton
+                android:id="@+id/ImageButton_color6"
+                android:layout_width="70dp"
+                android:layout_height="80dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="#FFFFFF"
+                android:scaleType="fitCenter"
+                android:src="@drawable/color6circle"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <ImageButton
+                android:id="@+id/ImageButton_color7"
+                android:layout_width="70dp"
+                android:layout_height="80dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="#FFFFFF"
+                android:scaleType="fitCenter"
+                android:src="@drawable/color7circle"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <ImageButton
+                android:id="@+id/ImageButton_color8"
+                android:layout_width="70dp"
+                android:layout_height="80dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="#FFFFFF"
+                android:scaleType="fitCenter"
+                android:src="@drawable/color8circle"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <ImageButton
+                android:id="@+id/ImageButton_color9"
+                android:layout_width="70dp"
+                android:layout_height="80dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="#FFFFFF"
+                android:scaleType="fitCenter"
+                android:src="@drawable/color9circle"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <ImageButton
+                android:id="@+id/ImageButton_color10"
+                android:layout_width="70dp"
+                android:layout_height="80dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="#FFFFFF"
+                android:scaleType="fitCenter"
+                android:src="@drawable/color10circle"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
+
+    <!--별버튼 클릭하면 나오는 하얀 레이아웃-->
+            <HorizontalScrollView
+                android:id="@+id/scrollview_deco"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:visibility="invisible">
+
+                <LinearLayout
+                    android:id="@+id/linear_deco"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:background="@color/white"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/ImageButton_color11"
+                        android:layout_width="70dp"
+                        android:layout_height="80dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:backgroundTint="#FFFFFF"
+                        android:foreground="@drawable/show_flushing"
+                        tools:ignore="SpeakableTextPresentCheck" />
+
+                    <Button
+                        android:id="@+id/ImageButton_color12"
+                        android:layout_width="70dp"
+                        android:layout_height="80dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:backgroundTint="#FFFFFF"
+                        android:foreground="@drawable/show_beret"
+                        tools:ignore="SpeakableTextPresentCheck" />
+
+                    <Button
+                        android:id="@+id/ImageButton_color13"
+                        android:layout_width="70dp"
+                        android:layout_height="80dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:backgroundTint="#FFFFFF"
+                        android:foreground="@drawable/show_glass"
+                        tools:ignore="SpeakableTextPresentCheck" />
+
+                    <Button
+                        android:id="@+id/ImageButton_color14"
+                        android:layout_width="70dp"
+                        android:layout_height="80dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:backgroundTint="#FFFFFF"
+                        android:foreground="@drawable/show_crown"
+                        tools:ignore="SpeakableTextPresentCheck" />
+
+                    <Button
+                        android:id="@+id/ImageButton_color15"
+                        android:layout_width="70dp"
+                        android:layout_height="80dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:backgroundTint="#FFFFFF"
+                        android:foreground="@drawable/show_flower"
+                        tools:ignore="SpeakableTextPresentCheck" />
+
+                    <Button
+                        android:id="@+id/ImageButton_color16"
+                        android:layout_width="70dp"
+                        android:layout_height="80dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:backgroundTint="#FFFFFF"
+                        android:foreground="@drawable/show_baby"
+                        tools:ignore="SpeakableTextPresentCheck" />
+
+                    <Button
+                        android:id="@+id/ImageButton_color17"
+                        android:layout_width="70dp"
+                        android:layout_height="80dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:backgroundTint="#FFFFFF"
+                        android:foreground="@drawable/show_sister"
+                        tools:ignore="SpeakableTextPresentCheck" />
+
+                </LinearLayout>
+            </HorizontalScrollView>
+
+    <!--눈 모양 클릭하면 나오는 하얀 레이어-->
+            <HorizontalScrollView
+                android:id="@+id/scrollview_eye"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:visibility="invisible">
+
+                <LinearLayout
+                    android:id="@+id/linear_eye"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:background="@color/white"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/ImageButton_color18"
+                        android:layout_width="70dp"
+                        android:layout_height="80dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:backgroundTint="#FFFFFF"
+                        android:foreground="@drawable/show_normaleye"
+                        tools:ignore="SpeakableTextPresentCheck" />
+
+                    <Button
+                        android:id="@+id/ImageButton_color19"
+                        android:layout_width="70dp"
+                        android:layout_height="80dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:backgroundTint="#FFFFFF"
+                        android:foreground="@drawable/show_blackeye"
+                        tools:ignore="SpeakableTextPresentCheck" />
+
+                </LinearLayout>
+            </HorizontalScrollView>
+        </FrameLayout>
+
+    <!--선택 레이아웃 팔레트 등-->
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/btn_color"
+            android:layout_width="70dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="#F6F6F6"
+            android:onClick="btnColor"
+            android:scaleType="fitCenter"
+            android:src="@drawable/palet" />
+
+        <ImageButton
+            android:id="@+id/btn_deco"
+            android:layout_width="70dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="#F6F6F6"
+            android:onClick="btnDeco"
+            android:scaleType="fitCenter"
+            android:src="@android:drawable/star_off" />
+
+        <ImageButton
+            android:id="@+id/btn_face"
+            android:layout_width="70dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="#F6F6F6"
+            android:onClick="btnEye"
+            android:scaleType="fitCenter"
+            android:src="@android:drawable/ic_menu_view" />
+
+
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginBottom="9dp"
+        android:layout_marginRight="9dp"
+        android:backgroundTint="#F6F6F6"
+        android:scaleType="fitCenter"
+        android:layout_gravity="right"
+        android:src="@android:drawable/ic_menu_save"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
