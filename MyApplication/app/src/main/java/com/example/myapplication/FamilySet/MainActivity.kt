@@ -312,7 +312,7 @@ class MainActivity : AppCompatActivity() {
                 "Exact periodic Alarm Off"
             }
             Log.d(TAG, toastMessage)
-            Toast.makeText(this, toastMessage, Toast.LENGTH_SHORT).show()9--
+            Toast.makeText(this, toastMessage, Toast.LENGTH_SHORT).show()
         })
 
     }
