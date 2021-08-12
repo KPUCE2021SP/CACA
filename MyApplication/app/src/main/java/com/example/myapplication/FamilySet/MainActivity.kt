@@ -1,6 +1,7 @@
 package com.example.myapplication.FamilySet
 
 import android.Manifest
+import android.app.AlarmManager
 import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
 import android.content.ComponentName
@@ -13,9 +14,11 @@ import android.location.Location
 import android.location.LocationManager
 import android.os.Build
 import android.os.Bundle
+import android.os.SystemClock
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.CompoundButton
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -23,7 +26,8 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.core.app.ActivityCompat
-import com.example.myapplication.AppWidgetProvider
+import com.example.myapplication.AlarmReceiver
+//import com.example.myapplication.AppWidgetProvider
 import com.example.myapplication.HomeActivity
 import com.example.myapplication.Mypage.MypageActivity
 import com.example.myapplication.Notification.Notification
@@ -46,6 +50,7 @@ import kotlinx.android.synthetic.main.appwidget.*
 import kotlinx.android.synthetic.main.card_layout.*
 import kotlinx.android.synthetic.main.mypage_activity.*
 import kotlinx.android.synthetic.main.signuppage.*
+import org.jetbrains.anko.alarmManager
 import java.util.*
 
 
@@ -256,33 +261,65 @@ class MainActivity : AppCompatActivity() {
         super.onResume()
 
 
-        val appWidgetManager: AppWidgetManager? = getSystemService(AppWidgetManager::class.java)
-        var myProvider = ComponentName(this, AppWidgetProvider::class.java)
 
-        val successCallback: PendingIntent? = if (if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                appWidgetManager!!.isRequestPinAppWidgetSupported
+        // 위젯 안씀
+//        val appWidgetManager: AppWidgetManager? = getSystemService(AppWidgetManager::class.java)
+//        var myProvider = ComponentName(this, AppWidgetProvider::class.java)
+//
+//        val successCallback: PendingIntent? = if (if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+//                appWidgetManager!!.isRequestPinAppWidgetSupported
+//            } else {
+//                TODO("VERSION.SDK_INT < O")
+//            }
+//        ) {
+//            Intent(this, MainActivity::class.java).let { intent ->
+//                PendingIntent.getBroadcast(applicationContext, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+//            }
+//        } else {
+//            null
+//        }
+//
+//        btn.setOnClickListener { // 위젯 추가
+//
+//            successCallback?.also { pendingIntent ->
+//
+//                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+//                    appWidgetManager.requestPinAppWidget(myProvider, null, pendingIntent)
+//                }
+//            }
+//        }
+
+
+
+        // 주기적으로 알람/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        val intent = Intent(this, AlarmReceiver::class.java)
+        val pendingIntent = PendingIntent.getBroadcast(
+                this, AlarmReceiver.NOTIFICATION_ID, intent,
+                PendingIntent.FLAG_UPDATE_CURRENT)
+
+
+        toggleButton.setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener { _, isChecked ->
+            val toastMessage: String = if (isChecked) {
+                val repeatInterval: Long = 1 * 1000
+                val triggerTime = (SystemClock.elapsedRealtime()
+                        + repeatInterval)
+                alarmManager.setRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP,
+                        triggerTime, repeatInterval,
+                        pendingIntent)
+                "Exact periodic Alarm On"
             } else {
-                TODO("VERSION.SDK_INT < O")
+                alarmManager.cancel(pendingIntent)
+                "Exact periodic Alarm Off"
             }
-        ) {
-            Intent(this, MainActivity::class.java).let { intent ->
-                PendingIntent.getBroadcast(applicationContext, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
-            }
-        } else {
-            null
-        }
-
-        btn.setOnClickListener { // 위젯 추가
-
-            successCallback?.also { pendingIntent ->
-
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                    appWidgetManager.requestPinAppWidget(myProvider, null, pendingIntent)
-                }
-            }
-        }
+            Log.d(TAG, toastMessage)
+            Toast.makeText(this, toastMessage, Toast.LENGTH_SHORT).show()
+        })
 
     }
+    // 주기적으로 알람/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
 
     private fun displayImageRef(imageRef: StorageReference?, view: ImageView) {
         imageRef?.getBytes(Long.MAX_VALUE)?.addOnSuccessListener {
@@ -292,9 +329,5 @@ class MainActivity : AppCompatActivity() {
             // Failed to download the image
         }
     }
-
-
-
 }
-
 
