@@ -325,7 +325,6 @@ class MainActivity : AppCompatActivity() {
                 val toastMessage: String = if (isChecked) {
 
                     val repeatInterval: Long = 1 * 1000
-                    // 위치가 비슷하다면
                     val triggerTime = (SystemClock.elapsedRealtime() + repeatInterval)
                     alarmManager.setRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP, triggerTime, repeatInterval, pendingIntent)
                     "Exact periodic Alarm On"

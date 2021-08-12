@@ -27,7 +27,10 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.gun0912.tedpermission.PermissionListener
+import com.gun0912.tedpermission.TedPermission
 import kotlinx.android.synthetic.main.activity_location.*
+import java.util.*
 
 class AlarmReceiver : BroadcastReceiver() {
 
@@ -71,7 +74,7 @@ class AlarmReceiver : BroadcastReceiver() {
     }
 
     private fun deliverNotification(context: Context) {
-        val contentIntent = Intent(context, HomeActivity::class.java)
+        val contentIntent = Intent(context, MainActivity::class.java)
         val contentPendingIntent = PendingIntent.getActivity(
                 context,
                 NOTIFICATION_ID,
@@ -81,7 +84,6 @@ class AlarmReceiver : BroadcastReceiver() {
 
 
 
-        // location 받아오기//
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(context) // 위치 정보 받기
 
         if (ActivityCompat.checkSelfPermission(
@@ -99,6 +101,7 @@ class AlarmReceiver : BroadcastReceiver() {
             //                                          int[] grantResults)
             // to handle the case where the user grants the permission. See the documentation
             // for ActivityCompat#requestPermissions for more details.
+            Log.d("hoihoihoi", "return")
             return
         }
         fusedLocationClient.lastLocation
@@ -107,48 +110,55 @@ class AlarmReceiver : BroadcastReceiver() {
                     if (location != null) {
                         lat = location.latitude
                         log = location.longitude
+                        Log.d("hoihoilatlat", lat.toString())
+//                        Toast.makeText(context, "${lat} // ${log} 현재 위치 받아오기", Toast.LENGTH_LONG).show()
+
+
+                        var X = 0.0
+                        var Y = 0.0
+                        var LOCATION = ""
+                        val docRef10 = db.collection("Member").document(uid.toString()) // 여러 field값 가져오기
+                        docRef10.get()
+                                .addOnSuccessListener { document7 ->
+                                    if (document7 != null) {
+                                        Log.d("hoihoihoi", "asdfasdf: ${document7.data}")
+                                        //textViewName.setText(document.data?.get("name").toString()) // name 확인용
+                                        X = (document7.data?.get("x") as Double)
+                                        Y = (document7.data?.get("y") as Double)
+                                        LOCATION = (document7.data?.get("location") as String)
+
+
+                                        // 저장된 location 받아오기
+
+//                        Toast.makeText(context, "${X} // ${Y} 저장된 위치 받아오기", Toast.LENGTH_LONG).show()
+
+                                        Log.d("hoihoiXX", X.toString())
+                                        Log.d("hoihoi현재", log.toString())
+
+                                        // 위치 차이 계산
+
+                                        if((log - X < 0.005) && (log - X > -0.005)) {
+                                            if ((lat - Y < 0.005) && (lat - Y > -0.005)) {
+                                                val builder = /////////////////////////////////////////////////////////////alarm
+                                                        NotificationCompat.Builder(context, PRIMARY_CHANNEL_ID)
+                                                                .setSmallIcon(R.drawable.familyship)
+                                                                .setContentTitle("누군가가 나의 위치 주변을 언급했어요")
+                                                                .setContentText("어디 한 번 확인해 볼까요~~??")
+                                                                .setContentIntent(contentPendingIntent)
+                                                                .setPriority(NotificationCompat.PRIORITY_HIGH)
+                                                                .setAutoCancel(true)
+                                                                .setDefaults(NotificationCompat.DEFAULT_ALL)
+
+                                                notificationManager.notify(NOTIFICATION_ID, builder.build())
+                                            }
+                                        }
+                                    }
+                                }
                     }
                 }
 // location 받아오기
 
 // 저장된 location 받아오기 //
-        var X = 0.0
-        var Y = 0.0
-        var LOCATION = ""
-        val docRef10 = db.collection("Member").document(uid.toString()) // 여러 field값 가져오기
-        docRef10.get()
-                .addOnSuccessListener { document7 ->
-                    if (document7 != null) {
-                        Log.d("hoihoihoi", "asdfasdf: ${document7.data}")
-                        //textViewName.setText(document.data?.get("name").toString()) // name 확인용
-                        X = (document7.data?.get("x") as Double)
-                        Y = (document7.data?.get("y") as Double)
-                        LOCATION = (document7.data?.get("location") as String)
-
-
-                        // 저장된 location 받아오기
-
-                        Log.d("hoihoi", X.toString())
-
-                        // 위치 차이 계산
-
-                        if((lat - X < 0.1) && (lat - X > -0.1)) {
-                            if ((log - Y < 0.1) && (log - Y > -0.1)) {
-                                val builder = /////////////////////////////////////////////////////////////alarm
-                                        NotificationCompat.Builder(context, PRIMARY_CHANNEL_ID)
-                                                .setSmallIcon(R.drawable.familyship)
-                                                .setContentTitle("누군가가 나의 위치 주변을 언급했어요")
-                                                .setContentText("어디 한 번 확인해 볼까요~~??")
-                                                .setContentIntent(contentPendingIntent)
-                                                .setPriority(NotificationCompat.PRIORITY_HIGH)
-                                                .setAutoCancel(true)
-                                                .setDefaults(NotificationCompat.DEFAULT_ALL)
-
-                                notificationManager.notify(NOTIFICATION_ID, builder.build())
-                            }
-                        }
-                    }
-                }
 
     }
 
