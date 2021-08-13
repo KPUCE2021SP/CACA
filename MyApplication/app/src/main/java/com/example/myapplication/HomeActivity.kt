@@ -515,57 +515,56 @@ class HomeActivity : TabActivity() {
         // random pick game --------------------------------- minigame
 
         mutableList1.clear()
+        mutableList1.add("Test1")
         db.collection("Chats").document(FamilyName.toString()).collection("FamilyMember")
-            .get()
-            .addOnSuccessListener { documents ->
-                for (document in documents) {
-                    Log.d("FamilyMember", "${document.id}")
+                .get()
+                .addOnSuccessListener { documents ->
+                    for (document in documents) {
+                        Log.d("FamilyMember", "${document.id}")
 
 //                    //Member 이름 가져와서 mutableNameList에 저장
-                    val docRef2 = db.collection("Member").document(document.id)
-                    docRef2.get()
-                        .addOnSuccessListener { docName ->
-                            if (docName != null) {
-                                Log.d(
-                                    ContentValues.TAG,
-                                    "DocumentSnapshot data: ${docName.data}"
-                                )
+                        val docRef2 = db.collection("Member").document(document.id)
+                        docRef2.get()
+                                .addOnSuccessListener { docName ->
+                                    if (docName != null) {
+                                        Log.d(
+                                                ContentValues.TAG,
+                                                "DocumentSnapshot data: ${docName.data}"
+                                        )
 //                                mutableUIDList.add(document.id.toString())
-                                mutableList1.add(docName.data?.get("name").toString())
+                                        mutableList1.add(docName.data?.get("name").toString())
 
-                                var adapter: ArrayAdapter<String>
-                                adapter = ArrayAdapter(
-                                    this,
-                                    android.R.layout.simple_spinner_dropdown_item,
-                                    mutableList1
-                                )
-                                mutableView.adapter = adapter
+                                        var adapter: ArrayAdapter<String>
+                                        adapter = ArrayAdapter(
+                                                this,
+                                                android.R.layout.simple_spinner_dropdown_item,
+                                                mutableList1
+                                        )
+                                        mutableView.adapter = adapter
 
 
-                            } else {
-                                Log.d(ContentValues.TAG, "No such document")
-                            }
-                        }
-                        .addOnFailureListener { exception ->
-                            Log.d(ContentValues.TAG, "get failed with ", exception)
-                        }
+                                    } else {
+                                        Log.d(ContentValues.TAG, "No such document")
+                                    }
+                                }
+                                .addOnFailureListener { exception ->
+                                    Log.d(ContentValues.TAG, "get failed with ", exception)
+                                }
+                    }
                 }
-            }
-
-
-
 
 
         var layoutNumber = 0
 
         btn_pick.setOnClickListener {
+            minigameRst_upload.visibility = View.VISIBLE
             text_result.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 25F)
             val candidates: ArrayList<String> = editCandidate()
             val random = Random()
             var candidateNumber = 0
 
             if (candidates[0] == "" || candidates[1] == "") {
-                Toast.makeText(this,"후보를 입력해주세요!",Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "후보를 입력해주세요!", Toast.LENGTH_SHORT).show()
 //                text_result.text = info
             } else {
                 for (i in 0..layoutNumber + 1) {
@@ -578,15 +577,17 @@ class HomeActivity : TabActivity() {
             }
             val animationFadeIn = AnimationUtils.loadAnimation(this, R.anim.fade_in)
             text_result.startAnimation(animationFadeIn)
+            minigameRst_upload.startAnimation(animationFadeIn)
         }
 
         btn_one_pick.setOnClickListener {
+            minigameRst_upload.visibility = View.VISIBLE
             text_result.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20F)
             val candidates: ArrayList<String> = editCandidate()
             var candidateNumber = 0
 
             if (candidates[0] == "" || candidates[1] == "") {
-                Toast.makeText(this,"후보를 입력해주세요!",Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "후보를 입력해주세요!", Toast.LENGTH_SHORT).show()
 //                text_result.text = info
             } else {
                 for (i in 0..layoutNumber + 1) {
@@ -601,24 +602,24 @@ class HomeActivity : TabActivity() {
                 var randomNum2: Int
 
                 for (i in 0..layoutNumber + 1) {
-                    randomNum1 = (Math.random()*candidateNumber).toInt()
+                    randomNum1 = (Math.random() * candidateNumber).toInt()
                     temp = candidates[randomNum1]
-                    randomNum2 = (Math.random()*candidateNumber).toInt()
+                    randomNum2 = (Math.random() * candidateNumber).toInt()
                     temp2 = candidates[randomNum2]
                     candidates[randomNum1] = temp2
                     candidates[randomNum2] = temp
                 }
 
-                text_result.text = "[1등] ${candidates[0]}"  + "\t\t\t\t[2등] ${candidates[1]}"
+                text_result.text = "[1등] ${candidates[0]}" + "\t\t\t\t[2등] ${candidates[1]}"
                 for (i in 2..layoutNumber + 1) {
-                    text_result.text = text_result.text.toString() + "\t\t\t\t[${i+1}등] ${candidates[i]}"
+                    text_result.text = text_result.text.toString() + "\t\t\t\t[${i + 1}등] ${candidates[i]}"
                 }
             }
 
             val animationFadeIn = AnimationUtils.loadAnimation(this, R.anim.fade_in)
             text_result.startAnimation(animationFadeIn)
+            minigameRst_upload.startAnimation(animationFadeIn)
         }
-
 
 
         // **--------------------------------- 용돈 관리 ----------------------------------------**
@@ -631,11 +632,12 @@ class HomeActivity : TabActivity() {
         //계좌 동적으로 보여주기
         var mutableAccountList: MutableList<String> = mutableListOf("a")
         mutableAccountList.clear()
-        db.collection("Chats").document(FamilyName.toString()).collection("ACCOUNT")
+        db.collection("Chats").document(FamilyName.toString()).collection("FamilyMember")
                 .get()
                 .addOnSuccessListener { documents ->
                     for (document_acc in documents) {
                         mutableAccountList.add(document_acc.id.toString())
+                        Log.d("mutableAccountList", document_acc.id.toString())
                     }
                     for (i in 0..(mutableAccountList.size - 1)) { // 거꾸로
                         val layoutInflater = this.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
@@ -657,6 +659,53 @@ class HomeActivity : TabActivity() {
                         var account_copy_btn = ContentView.findViewById(R.id.account_copy) as ImageView
                         var account_uid: String = ""
 
+
+                        // uid to Name
+                        val docRef = db.collection("Member").document(mutableAccountList[(mutableAccountList.size - 1) - i])
+                        docRef.get()
+                                .addOnSuccessListener { document ->
+                                    Log.d(
+                                            ContentValues.TAG,
+                                            "DocumentSnapshot data: ${document.data}"
+                                    )
+
+                                    account_name.setText(document.data?.get("name").toString()) // name 확인용
+                                    // profile Image
+                                    // document2.data?.get("uid").toString()
+                                    val imageName =
+                                            "gs://cacafirebase-554ac.appspot.com/profiles/" + document.id.toString()
+                                    Log.d("imageName_profile", imageName)
+                                    val storage = Firebase.storage
+                                    val storageRef = storage.reference
+                                    val profileRef1 = storage.getReferenceFromUrl(imageName)
+                                    profileRef1?.getBytes(Long.MAX_VALUE)?.addOnSuccessListener {
+                                        val profilebmp = BitmapFactory.decodeByteArray(it, 0, it.size)
+                                        account_profile.setImageBitmap(profilebmp) // 작성한 사람 uid로 profileImage 변경!
+
+
+                                    }?.addOnFailureListener {
+                                        Toast.makeText(this,"image downloade failed",Toast.LENGTH_SHORT).show()
+
+                                    }
+
+                                    if(uid == document.id){     //삭제버튼 보이게 하기
+//                                        Log.d("uiddocss", uid.toString() +":"+ document.id.toString())
+//                                        rebank_btn.visibility = View.VISIBLE
+                                    } else {
+                                        Log.d("uiddocdd", uid.toString() +":"+ document.id.toString())
+                                        rebank_btn.visibility = View.GONE
+                                    }
+
+                                    account_card_Layout.entrProfile_btn?.setOnClickListener() { // 프로필 들어가기
+                                        val intent = Intent(application, MypageActivity::class.java)
+                                        Log.d("uiduiduid", document.id)
+                                        intent.putExtra("uid", document.id)
+                                        startActivity(intent)
+
+                                    }
+                                }
+
+
                         val docRef1 =
                                 db.collection("Chats").document(FamilyName.toString()).collection("ACCOUNT")
                                         .document(mutableAccountList[(mutableAccountList.size - 1) - i]) // 여러 field값 가져오기
@@ -669,48 +718,6 @@ class HomeActivity : TabActivity() {
                                         account_bankNum.setText(document3.data?.get("bankAccount").toString())
 
                                         account_uid = document3.data?.get("uid").toString()
-                                        // profile Image
-                                        // document2.data?.get("uid").toString()
-                                        val imageName =
-                                                "gs://cacafirebase-554ac.appspot.com/profiles/" + document3.data?.get(
-                                                        "uid"
-                                                ).toString()
-                                        Log.d("imageName", imageName)
-                                        val storage = Firebase.storage
-                                        val storageRef = storage.reference
-                                        val profileRef1 = storage.getReferenceFromUrl(imageName)
-                                        profileRef1?.getBytes(Long.MAX_VALUE)?.addOnSuccessListener {
-                                            val profilebmp = BitmapFactory.decodeByteArray(it, 0, it.size)
-                                            account_profile.setImageBitmap(profilebmp) // 작성한 사람 uid로 profileImage 변경!
-                                        }?.addOnFailureListener {
-                                            Toast.makeText(
-                                                    this,
-                                                    "image downloade failed",
-                                                    Toast.LENGTH_SHORT
-                                            ).show()
-                                        }
-
-                                        // uid to Name
-                                        val docRef = db.collection("Member")
-                                                .document(document3.data?.get("uid").toString())
-                                        docRef.get()
-                                                .addOnSuccessListener { document ->
-                                                    if (document != null) {
-                                                        Log.d(
-                                                                ContentValues.TAG,
-                                                                "DocumentSnapshot data: ${document.data}"
-                                                        )
-                                                        account_name.setText(
-                                                                document.data?.get("name").toString()
-                                                        ) // name 확인용
-
-                                                    } else {
-                                                        Log.d(ContentValues.TAG, "No such document")
-                                                    }
-                                                }
-                                                .addOnFailureListener { exception ->
-                                                    Log.d(ContentValues.TAG, "get failed with ", exception)
-                                                }
 
                                     } else {
                                         Log.d(ContentValues.TAG, "No such document")
@@ -721,7 +728,7 @@ class HomeActivity : TabActivity() {
                                 }
 
 
-                        account_card_Layout?.setOnClickListener() { // 계좌 삭제
+                        account_card_Layout.rebank_btn?.setOnClickListener() { // 계좌 삭제
 
                             val dlg_account: AlertDialog.Builder = AlertDialog.Builder(
                                     this,
@@ -752,155 +759,173 @@ class HomeActivity : TabActivity() {
                         }
 
                         account_copy_btn.setOnClickListener { //계좌 복사
-                            var copy_account_num : String =""
-                            copy_account_num = account_bankName.text.toString() + " "+ account_bankNum.text.toString()
+                            var copy_account_num: String = ""
+                            copy_account_num = account_bankName.text.toString() + " " + account_bankNum.text.toString()
 
                             Log.d("bankAccount", copy_account_num.toString())
                             onClick_clipboard(copy_account_num.toString())
                         }
 
-                    }
+//                        account_card_Layout.entrProfile_btn?.setOnClickListener() { // 프로필 들어가기
+//                            val intent = Intent(application, MypageActivity::class.java)
+//                            intent.putExtra("uid", uid.toString())
+//                            startActivity(intent)
+//
+//                        }
 
+
+
+
+                    }
                 }
 
-        // account 새로고침
-        srl_account.setOnRefreshListener {
-            var mutableAccountList: MutableList<String> = mutableListOf("a")
-            mutableAccountList.clear()
-            account_Layout.removeAllViews()
-            db.collection("Chats").document(FamilyName.toString()).collection("ACCOUNT")
-                    .get()
-                    .addOnSuccessListener { documents ->
-                        for (document_acc in documents) {
-                            mutableAccountList.add(document_acc.id.toString())
-                        }
-                        for (i in 0..(mutableAccountList.size - 1)) { // 거꾸로
-                            val layoutInflater = this.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-                            val containView = layoutInflater.inflate(
-                                    R.layout.activity_account,
-                                    null
-                            ) // mypage_content를 inflate
-                            account_Layout.addView(containView)
 
-
-                            val ContentView = containView as View
-                            var account_name = ContentView.findViewById(R.id.account_name) as TextView // 이름
-                            var account_bankName = ContentView.findViewById(R.id.account_bankName) as TextView // 계좌은행
-                            var account_bankNum = ContentView.findViewById(R.id.account_bankNum) as TextView // 계좌 번호
-                            var account_profile =
-                                    ContentView.findViewById(R.id.account_profile) as ImageView // profile Image
-                            var account_card_Layout =
-                                    ContentView.findViewById(R.id.account_All) as LinearLayout
-                            var account_copy_btn = ContentView.findViewById(R.id.account_copy) as ImageView
-                            var account_uid: String = ""
-
-                            val docRef1 =
-                                    db.collection("Chats").document(FamilyName.toString()).collection("ACCOUNT")
-                                            .document(mutableAccountList[(mutableAccountList.size - 1) - i]) // 여러 field값 가져오기
-                            docRef1.get()
-                                    .addOnSuccessListener { document3 ->
-                                        if (document3 != null) {
-                                            Log.d(ContentValues.TAG, "DocumentSnapshot data: ${document3.data}")
-                                            //textViewName.setText(document.data?.get("name").toString()) // name 확인용
-                                            account_bankName.setText(document3.data?.get("bankName").toString())
-                                            account_bankNum.setText(document3.data?.get("bankAccount").toString())
-
-                                            account_uid = document3.data?.get("uid").toString()
-                                            // profile Image
-                                            // document2.data?.get("uid").toString()
-                                            val imageName =
-                                                    "gs://cacafirebase-554ac.appspot.com/profiles/" + document3.data?.get(
-                                                            "uid"
-                                                    ).toString()
-                                            Log.d("imageName", imageName)
-                                            val storage = Firebase.storage
-                                            val storageRef = storage.reference
-                                            val profileRef1 = storage.getReferenceFromUrl(imageName)
-                                            profileRef1?.getBytes(Long.MAX_VALUE)?.addOnSuccessListener {
-                                                val profilebmp = BitmapFactory.decodeByteArray(it, 0, it.size)
-                                                account_profile.setImageBitmap(profilebmp) // 작성한 사람 uid로 profileImage 변경!
-                                            }?.addOnFailureListener {
-                                                Toast.makeText(
-                                                        this,
-                                                        "image downloade failed",
-                                                        Toast.LENGTH_SHORT
-                                                ).show()
-                                            }
-
-                                            // uid to Name
-                                            val docRef = db.collection("Member")
-                                                    .document(document3.data?.get("uid").toString())
-                                            docRef.get()
-                                                    .addOnSuccessListener { document ->
-                                                        if (document != null) {
-                                                            Log.d(
-                                                                    ContentValues.TAG,
-                                                                    "DocumentSnapshot data: ${document.data}"
-                                                            )
-                                                            account_name.setText(
-                                                                    document.data?.get("name").toString()
-                                                            ) // name 확인용
-
-                                                        } else {
-                                                            Log.d(ContentValues.TAG, "No such document")
-                                                        }
-                                                    }
-                                                    .addOnFailureListener { exception ->
-                                                        Log.d(ContentValues.TAG, "get failed with ", exception)
-                                                    }
-
-                                        } else {
-                                            Log.d(ContentValues.TAG, "No such document")
-                                        }
-                                    }
-                                    .addOnFailureListener { exception ->
-                                        Log.d(ContentValues.TAG, "get failed with ", exception)
-                                    }
-
-
-                            account_card_Layout?.setOnClickListener() { // 계좌 삭제
-
-                                val dlg_account: AlertDialog.Builder = AlertDialog.Builder(
-                                        this,
-                                        android.R.style.Theme_DeviceDefault_Light_Dialog_NoActionBar_MinWidth
-                                )
-                                dlg_account.setTitle("항목 삭제") //제목
-                                dlg_account.setMessage(account_name.text.toString() + "의 계좌를 정말 삭제하시겠습니까?") // 메시지
-                                dlg_account.setPositiveButton(
-                                        "확인",
-                                        DialogInterface.OnClickListener { dialog, which ->
-                                            // DB 삭제
-                                            var fbAuth = FirebaseAuth.getInstance()
-                                            val db: FirebaseFirestore = Firebase.firestore
-
-                                            val docRef = db.collection("Chats").document(FamilyName.toString())
-                                                    .collection("ACCOUNT").document(account_uid.toString())
-                                                    .delete()
-
-                                        })
-                                dlg_account.setNegativeButton(
-                                        "취소",
-                                        DialogInterface.OnClickListener { dialog, which ->
-                                            // 취소
-                                        })
-                                dlg_account.show()
+//                    // account 새로고침
+//                    srl_account.setOnRefreshListener {
+//                        //계좌 동적으로 보여주기
+//                        var mutableAccountList: MutableList<String> = mutableListOf("a")
+//                        mutableAccountList.clear()
+//                        db.collection("Chats").document(FamilyName.toString()).collection("FamilyMember")
+//                                .get()
+//                                .addOnSuccessListener { documents ->
+//                                    for (document_acc in documents) {
+//                                        mutableAccountList.add(document_acc.id.toString())
+//                                        Log.d("mutableAccountList", document_acc.id.toString())
+//                                    }
+//                                    for (i in 0..(mutableAccountList.size - 1)) { // 거꾸로
+//                                        val layoutInflater = this.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+//                                        val containView = layoutInflater.inflate(
+//                                                R.layout.activity_account,
+//                                                null
+//                                        ) // mypage_content를 inflate
+//                                        account_Layout.addView(containView)
 //
-//                            return@setOnLongClickListener
-                            }
+//
+//                                        val ContentView = containView as View
+//                                        var account_name = ContentView.findViewById(R.id.account_name) as TextView // 이름
+//                                        var account_bankName = ContentView.findViewById(R.id.account_bankName) as TextView // 계좌은행
+//                                        var account_bankNum = ContentView.findViewById(R.id.account_bankNum) as TextView // 계좌 번호
+//                                        var account_profile =
+//                                                ContentView.findViewById(R.id.account_profile) as ImageView // profile Image
+//                                        var account_card_Layout =
+//                                                ContentView.findViewById(R.id.account_All) as LinearLayout
+//                                        var account_copy_btn = ContentView.findViewById(R.id.account_copy) as ImageView
+//                                        var account_uid: String = ""
+//
+//
+//                                        // uid to Name
+//                                        val docRef = db.collection("Member").document(mutableAccountList[(mutableAccountList.size - 1) - i])
+//                                        docRef.get()
+//                                                .addOnSuccessListener { document ->
+//                                                    Log.d(
+//                                                            ContentValues.TAG,
+//                                                            "DocumentSnapshot data: ${document.data}"
+//                                                    )
+//                                                    account_name.setText(document.data?.get("name").toString()) // name 확인용
+//                                                }
+//
+//                                        val docRef1 =
+//                                                db.collection("Chats").document(FamilyName.toString()).collection("ACCOUNT")
+//                                                        .document(mutableAccountList[(mutableAccountList.size - 1) - i]) // 여러 field값 가져오기
+//                                        docRef1.get()
+//                                                .addOnSuccessListener { document3 ->
+//                                                    if (document3 != null) {
+//                                                        Log.d(ContentValues.TAG, "DocumentSnapshot data: ${document3.data}")
+//                                                        //textViewName.setText(document.data?.get("name").toString()) // name 확인용
+//                                                        account_bankName.setText(document3.data?.get("bankName").toString())
+//                                                        account_bankNum.setText(document3.data?.get("bankAccount").toString())
+//
+//                                                        account_uid = document3.data?.get("uid").toString()
+//                                                        // profile Image
+//                                                        // document2.data?.get("uid").toString()
+//                                                        val imageName =
+//                                                                "gs://cacafirebase-554ac.appspot.com/profiles/" + document3.data?.get(
+//                                                                        "uid"
+//                                                                ).toString()
+//                                                        Log.d("imageName", imageName)
+//                                                        val storage = Firebase.storage
+//                                                        val storageRef = storage.reference
+//                                                        val profileRef1 = storage.getReferenceFromUrl(imageName)
+//                                                        profileRef1?.getBytes(Long.MAX_VALUE)?.addOnSuccessListener {
+//                                                            val profilebmp = BitmapFactory.decodeByteArray(it, 0, it.size)
+//                                                            account_profile.setImageBitmap(profilebmp) // 작성한 사람 uid로 profileImage 변경!
+//                                                        }?.addOnFailureListener {
+//                                                            Toast.makeText(
+//                                                                    this,
+//                                                                    "image downloade failed",
+//                                                                    Toast.LENGTH_SHORT
+//                                                            ).show()
+//                                                        }
+//
+//
+//
+//                                                    } else {
+//                                                        Log.d(ContentValues.TAG, "No such document")
+//                                                    }
+//                                                }
+//                                                .addOnFailureListener { exception ->
+//                                                    Log.d(ContentValues.TAG, "get failed with ", exception)
+//                                                }
+//
+//
+//                                        account_card_Layout.rebank_btn?.setOnClickListener() { // 계좌 삭제
+//
+//                                            val dlg_account: AlertDialog.Builder = AlertDialog.Builder(
+//                                                    this,
+//                                                    android.R.style.Theme_DeviceDefault_Light_Dialog_NoActionBar_MinWidth
+//                                            )
+//                                            dlg_account.setTitle("항목 삭제") //제목
+//                                            dlg_account.setMessage(account_name.text.toString() + "의 계좌를 정말 삭제하시겠습니까?") // 메시지
+//                                            dlg_account.setPositiveButton(
+//                                                    "확인",
+//                                                    DialogInterface.OnClickListener { dialog, which ->
+//                                                        // DB 삭제
+//                                                        var fbAuth = FirebaseAuth.getInstance()
+//                                                        val db: FirebaseFirestore = Firebase.firestore
+//
+//                                                        val docRef = db.collection("Chats").document(FamilyName.toString())
+//                                                                .collection("ACCOUNT").document(account_uid.toString())
+//                                                                .delete()
+//
+//                                                    })
+//                                            dlg_account.setNegativeButton(
+//                                                    "취소",
+//                                                    DialogInterface.OnClickListener { dialog, which ->
+//                                                        // 취소
+//                                                    })
+//                                            dlg_account.show()
+////
+////                            return@setOnLongClickListener
+//                                        }
+//
+//                                        account_copy_btn.setOnClickListener { //계좌 복사
+//                                            var copy_account_num: String = ""
+//                                            copy_account_num = account_bankName.text.toString() + " " + account_bankNum.text.toString()
+//
+//                                            Log.d("bankAccount", copy_account_num.toString())
+//                                            onClick_clipboard(copy_account_num.toString())
+//                                        }
+//
+//                                        account_card_Layout.entrProfile_btn?.setOnClickListener() { // 프로필 들어가기
+//                                            val intent = Intent(application, MypageActivity::class.java)
+//                                            intent.putExtra("uid", uid.toString())
+//                                            startActivity(intent)
+//
+//                                        }
+//
+//
+//
+//
+//                                    }
+//                                }
+//                }
 
-                            account_copy_btn.setOnClickListener { //계좌 복사
-                                var copy_account_num: String = ""
-                                copy_account_num = account_bankName.text.toString() + " " + account_bankNum.text.toString()
 
-                                Log.d("bankAccount", copy_account_num.toString())
-                                onClick_clipboard(copy_account_num.toString())
-                            }
 
-                        }
 
-                    }
-            srl_account.isRefreshing = false // 인터넷 끊기
-        }
+
+
+    }
 
 
 
@@ -911,7 +936,7 @@ class HomeActivity : TabActivity() {
 
 
 
-        }
+
 
 
 

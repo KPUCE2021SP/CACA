@@ -15,7 +15,7 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_margin="5dp"
-            android:layout_height="match_parent"
+            android:layout_height="150dp"
             android:layout_weight="10">
 
             <de.hdodenhof.circleimageview.CircleImageView
@@ -76,7 +76,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:id="@+id/account_bankName"
-                android:text="국민은행"
+                android:text="계좌를 등록하세요"
                 android:textStyle="bold" />
 
             <TextView
@@ -90,6 +90,23 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
                 android:textStyle="bold" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="계좌 삭제"
+                    android:layout_weight="1"
+                    android:id="@+id/rebank_btn"/>
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="프로필보기"
+                    android:layout_weight="1"
+                    android:id="@+id/entrProfile_btn"/>
+            </LinearLayout>
 
 
         </LinearLayout>

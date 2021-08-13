@@ -40,6 +40,7 @@ import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.UploadTask
 import com.google.firebase.storage.ktx.storage
+import kotlinx.android.synthetic.main.activity_account.*
 import java.io.IOException
 
 class MypageActivity : AppCompatActivity() {
@@ -62,6 +63,15 @@ class MypageActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.mypage_activity)
+
+        btnLogout.visibility = View.VISIBLE
+
+        val personuid = intent.getStringExtra("uid") // 가족 uid 가져오기
+        if (personuid != null){
+            uid = personuid.toString()
+            Log.d("personuid", uid)
+            btnLogout.visibility = View.GONE
+        }
 
 
         // firestore에서 정보 받아와서 DummyData 덮어쓰기
