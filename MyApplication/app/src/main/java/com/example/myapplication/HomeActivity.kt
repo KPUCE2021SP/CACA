@@ -515,6 +515,7 @@ class HomeActivity : TabActivity() {
         // random pick game --------------------------------- minigame
 
         mutableList1.clear()
+        mutableList1.add("Test1")
         db.collection("Chats").document(FamilyName.toString()).collection("FamilyMember")
                 .get()
                 .addOnSuccessListener { documents ->
@@ -556,6 +557,7 @@ class HomeActivity : TabActivity() {
         var layoutNumber = 0
 
         btn_pick.setOnClickListener {
+            minigameRst_upload.visibility = View.VISIBLE
             text_result.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 25F)
             val candidates: ArrayList<String> = editCandidate()
             val random = Random()
@@ -575,9 +577,11 @@ class HomeActivity : TabActivity() {
             }
             val animationFadeIn = AnimationUtils.loadAnimation(this, R.anim.fade_in)
             text_result.startAnimation(animationFadeIn)
+            minigameRst_upload.startAnimation(animationFadeIn)
         }
 
         btn_one_pick.setOnClickListener {
+            minigameRst_upload.visibility = View.VISIBLE
             text_result.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20F)
             val candidates: ArrayList<String> = editCandidate()
             var candidateNumber = 0
@@ -614,6 +618,7 @@ class HomeActivity : TabActivity() {
 
             val animationFadeIn = AnimationUtils.loadAnimation(this, R.anim.fade_in)
             text_result.startAnimation(animationFadeIn)
+            minigameRst_upload.startAnimation(animationFadeIn)
         }
 
 

@@ -403,6 +403,30 @@
                             </HorizontalScrollView>
 
                             <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:visibility="gone"
+                                android:id="@+id/minigameRst_upload"
+                                android:orientation="horizontal">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textStyle="bold"
+                                    android:text="게시판에 업로드"
+                                    android:textSize="15dp"
+                                    style="@style/nanumTextView"/>
+
+                                <ImageView
+                                    android:layout_margin="10dp"
+                                    android:layout_width="20dp"
+                                    android:layout_height="20dp"
+                                    android:src="@drawable/upload"
+                                    android:scaleType="fitCenter"
+                                    android:layout_gravity="center"/>
+                            </LinearLayout>
+
+                            <LinearLayout
                                 android:orientation="horizontal"
                                 android:layout_margin="10dp"
                                 android:layout_width="300dp"
