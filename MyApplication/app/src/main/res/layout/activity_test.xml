@@ -1,80 +1,35 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/legendLayout"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:gravity="center"
-    android:orientation="horizontal"
-    tools:ignore="HardcodedText">
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:id="@+id/homeRootLayout"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    tools:context=".HomeActivity">-->
 
-    <TextView
-        android:id="@+id/legendText1"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:text="SUN"
-        android:textColor="@color/black"
-        android:textSize="14sp" />
+<!--    <com.google.android.material.appbar.AppBarLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:theme="@style/AppTheme.AppBarOverlay">-->
 
-    <TextView
-        android:id="@+id/legendText2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:text="MON"
-        android:textColor="@color/black"
-        android:textSize="14sp" />
+<!--        <androidx.appcompat.widget.Toolbar-->
+<!--            android:id="@+id/homeToolbar"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="?attr/actionBarSize"-->
+<!--            app:popupTheme="@style/AppTheme.PopupOverlay" />-->
 
-    <TextView
-        android:id="@+id/legendText3"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:text="TUE"
-        android:textColor="@color/black"
-        android:textSize="14sp" />
+<!--    </com.google.android.material.appbar.AppBarLayout>-->
 
-    <TextView
-        android:id="@+id/legendText4"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:text="WED"
-        android:textColor="@color/black"
-        android:textSize="14sp" />
+<!--    <FrameLayout-->
+<!--        android:id="@+id/homeContainer"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        app:layout_behavior="@string/appbar_scrolling_view_behavior">-->
 
-    <TextView
-        android:id="@+id/legendText5"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:text="THU"
-        android:textColor="@color/black"
-        android:textSize="14sp" />
+<!--        <androidx.recyclerview.widget.RecyclerView-->
+<!--            android:id="@+id/examplesRv"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent" />-->
+<!--    </FrameLayout>-->
 
-    <TextView
-        android:id="@+id/legendText6"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:text="FRI"
-        android:textColor="@color/black"
-        android:textSize="14sp" />
-
-    <TextView
-        android:id="@+id/legendText7"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:text="SAT"
-        android:textColor="@color/black"
-        android:textSize="14sp" />
-
-</LinearLayout>
+<!--</androidx.coordinatorlayout.widget.CoordinatorLayout>-->

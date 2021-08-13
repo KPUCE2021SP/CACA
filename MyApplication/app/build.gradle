@@ -45,6 +45,12 @@ android {
 }
 
 dependencies {
+
+    // calendar
+    implementation 'com.github.kizitonwose:CalendarView:<latest-version>'
+
+
+
     // location
     implementation 'com.google.android.gms:play-services-maps:11'
 
