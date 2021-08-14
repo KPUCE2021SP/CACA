@@ -5,10 +5,10 @@
     android:paddingTop="1dp"
     android:paddingBottom="1dp">
 
-    <include
-        layout="@layout/calendar_day_legend"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center" />
+<!--    <include-->
+<!--        layout="@layout/calendar_day_legend"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="center" />-->
 
 </FrameLayout>

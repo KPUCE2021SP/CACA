@@ -1,5 +1,6 @@
 //package com.example.myapplication
 //
+//import android.os.Build
 //import android.os.Bundle
 //import android.util.TypedValue
 //import android.view.LayoutInflater
@@ -7,6 +8,7 @@
 //import android.view.ViewGroup
 //import android.widget.TextView
 //import androidx.annotation.ColorRes
+//import androidx.annotation.RequiresApi
 //import androidx.appcompat.widget.Toolbar
 //import androidx.core.content.ContentProviderCompat.requireContext
 //import androidx.core.view.children
@@ -23,6 +25,7 @@
 //import kotlinx.android.synthetic.main.calendar_day_legend.view.*
 //import java.time.LocalDate
 //import kotlinx.android.synthetic.main.activity_calendar_day.*
+//import kotlinx.android.synthetic.main.activity_calendar_fragment.*
 //import kotlinx.android.synthetic.main.activity_calendar_header.*
 //import kotlinx.android.synthetic.main.activity_calendar_view.*
 ////import org.threeten.bp.LocalDate
@@ -30,6 +33,7 @@
 ////import org.threeten.bp.YearMonth
 ////import org.threeten.bp.format.DateTimeFormatter
 //import java.time.LocalDateTime
+//import java.time.YearMonth
 //import java.time.format.DateTimeFormatter
 //
 //data class Flight(val time: LocalDateTime, val departure: Airport, val destination: Airport, @ColorRes val color: Int) {
@@ -47,7 +51,7 @@
 //    }
 //
 //    override fun onBindViewHolder(viewHolder: Example5FlightsViewHolder, position: Int) {
-//        viewHolder.bind(flights[position])
+////        viewHolder.bind(flights[position])
 //    }
 //
 //    override fun getItemCount(): Int = flights.size
@@ -55,16 +59,16 @@
 //    inner class Example5FlightsViewHolder(override val containerView: View) :
 //        RecyclerView.ViewHolder(containerView), LayoutContainer {
 //
-//        fun bind(flight: Flight) {
-//            itemFlightDateText.text = formatter.format(flight.time)
-//            itemFlightDateText.setBackgroundColor(itemView.context.getColorCompat(flight.color))
-//
-//            itemDepartureAirportCodeText.text = flight.departure.code
-//            itemDepartureAirportCityText.text = flight.departure.city
-//
-//            itemDestinationAirportCodeText.text = flight.destination.code
-//            itemDestinationAirportCityText.text = flight.destination.city
-//        }
+////        fun bind(flight: Flight) {
+////            itemFlightDateText.text = formatter.format(flight.time)
+////            itemFlightDateText.setBackgroundColor(itemView.context.getColorCompat(flight.color))
+////
+////            itemDepartureAirportCodeText.text = flight.departure.code
+////            itemDepartureAirportCityText.text = flight.departure.city
+////
+////            itemDestinationAirportCodeText.text = flight.destination.code
+////            itemDestinationAirportCityText.text = flight.destination.city
+////        }
 //    }
 //}
 //
@@ -77,7 +81,7 @@
 //    override val titleRes: Int = R.string.example_5_title
 //
 //    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-//        return inflater.inflate(R.layout.exmaple_5_fragment, container, false)
+//        return inflater.inflate(R.layout.activity_calendar_fragment, container, false)
 //    }
 //
 //    private var selectedDate: LocalDate? = null
@@ -198,11 +202,13 @@
 //        }
 //    }
 //
+//    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
 //    override fun onStart() {
 //        super.onStart()
 //        requireActivity().window.statusBarColor = requireContext().getColorCompat(R.color.example_5_toolbar_color)
 //    }
 //
+//    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
 //    override fun onStop() {
 //        super.onStop()
 //        requireActivity().window.statusBarColor = requireContext().getColorCompat(R.color.colorPrimaryDark)

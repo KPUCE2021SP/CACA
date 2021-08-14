@@ -14,7 +14,7 @@
 //import java.util.Collections.emptyList
 //
 //
-//class CalendarMonth internal constructor(
+//abstract class CalendarMonth internal constructor(
 //    val yearMonth: YearMonth,
 //    private val config: CalendarConfig,
 //    private val firstDayOfWeek: DayOfWeek

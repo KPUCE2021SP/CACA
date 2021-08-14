@@ -47,7 +47,7 @@ android {
 dependencies {
 
     // calendar
-    implementation 'com.github.kizitonwose:CalendarView:<latest-version>'
+//    implementation 'com.github.kizitonwose:CalendarView:<latest-version>'
 
 
 
