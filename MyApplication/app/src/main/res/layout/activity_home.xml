@@ -530,14 +530,64 @@
                     android:layout_height="match_parent"
                     android:id="@+id/LinearMain5"
                     android:orientation="vertical">
-                    <TextView
-                        style="@style/nanumTextView"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:text="커스텀이미지 페이지"
-                        android:textSize="30dp"
-                        android:textStyle="bold"/>
+                        android:orientation="vertical">
+
+
+                        <TextView
+                            android:id="@+id/customCharacter"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="15dp"
+                            android:text="커스텀 캐릭터"
+                            android:textColor="@color/black"
+                            android:textSize="30dp"
+                            android:textStyle="bold"/>
+
+
+                        <FrameLayout
+                            android:id="@+id/customImage"
+                            android:layout_width="412dp"
+                            android:layout_height="412dp">
+
+                            <FrameLayout
+                                android:id="@+id/deco"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <FrameLayout
+                                    android:id="@+id/body"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent">
+                                    <ImageView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:id="@+id/cu_body_Iv"/>
+
+                                </FrameLayout>
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:id="@+id/cu_acc_Iv"/>
+                            </FrameLayout>
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:id="@+id/cu_eye_Iv"/>
+                        </FrameLayout>
+
+                        <Button
+                            android:id="@+id/btn_familycustom"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right"
+                            android:layout_margin="5dp"
+                            android:text="가족 커스텀 만들러 가기" />
+
+                    </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
 

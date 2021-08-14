@@ -137,8 +137,8 @@ class AlarmReceiver : BroadcastReceiver() {
 
                                         // 위치 차이 계산
 
-                                        if((log - X < 0.0025) && (log - X > -0.0025)) {
-                                            if ((lat - Y < 0.0025) && (lat - Y > -0.0025)) {
+                                        if((log - X < 0.003) && (log - X > -0.003)) {
+                                            if ((lat - Y < 0.003) && (lat - Y > -0.003)) {
                                                 val builder = /////////////////////////////////////////////////////////////alarm
                                                         NotificationCompat.Builder(context, PRIMARY_CHANNEL_ID)
                                                                 .setSmallIcon(R.drawable.familyship)

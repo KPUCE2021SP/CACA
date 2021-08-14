@@ -8,6 +8,8 @@ import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.media.Image
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.text.TextUtils
 import android.util.Log
 import android.util.TypedValue
@@ -32,7 +34,9 @@ import kotlinx.android.synthetic.main.mypage_activity.*
 import kotlinx.android.synthetic.main.notice_card.*
 import kotlinx.android.synthetic.main.activity_account.*
 import kotlinx.android.synthetic.main.activity_account.view.*
+import kotlinx.android.synthetic.main.activity_custom.*
 import kotlinx.android.synthetic.main.activity_dynamic.*
+import kotlinx.coroutines.delay
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.*
@@ -55,6 +59,7 @@ class HomeActivity : TabActivity() {
         var fbAuth = FirebaseAuth.getInstance() // 로그인
         var fbFire = FirebaseFirestore.getInstance()
         var uid = fbAuth?.uid.toString() // uid
+        val storage = Firebase.storage
 
         val docRef2 = db.collection("Member").document(uid).collection("MYPAGE")
                 .document(FamilyName.toString())
@@ -141,6 +146,81 @@ class HomeActivity : TabActivity() {
             btnMain1.setTextColor(Color.WHITE)
         }
 
+
+
+        /***************펭귄 커스텀 화면으로 가는 버튼 추가********************/
+        btn_familycustom.setOnClickListener{
+            val intent = Intent(application, customActivity::class.java)
+            intent.putExtra("FamilyName", FamilyName)
+            startActivity(intent)
+        }
+
+
+        val emotion = mutableListOf<String>("angry.png", "hungry.png", "sadness.png", "smile.png")
+
+        db.collection("Chats").document(FamilyName.toString()).collection("CUSTOM").document(FamilyName.toString())
+                .get()
+                .addOnSuccessListener { docName ->
+                    if (docName != null) {
+                        var body_color = docName.data?.get("bodyColor").toString()
+                        val bodyName = "gs://cacafirebase-554ac.appspot.com/custom_image/color/" + body_color
+                        val customRef_body = storage.getReferenceFromUrl(bodyName)
+                        customRef_body?.getBytes(Long.MAX_VALUE)?.addOnSuccessListener {
+                            val customRef = BitmapFactory.decodeByteArray(it, 0, it.size)
+                            cu_body_Iv.setImageBitmap(customRef)
+                        }?.addOnFailureListener {
+                            Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT).show()
+                        }
+
+                        customImage.setOnClickListener {    //춤추기
+                            var dancing_custom = docName.data?.get("dancing").toString()
+                            val dancName = "gs://cacafirebase-554ac.appspot.com/custom_image/emotion/" + dancing_custom
+                            val customRef_dac = storage.getReferenceFromUrl(dancName)
+                            customRef_dac?.getBytes(Long.MAX_VALUE)?.addOnSuccessListener {
+                                val customRef = BitmapFactory.decodeByteArray(it, 0, it.size)
+                                cu_body_Iv.setImageBitmap(customRef)
+                            }?.addOnFailureListener {
+                                Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT).show()
+                            }
+
+                            Handler(Looper.getMainLooper()).postDelayed({
+                                var body_color = docName.data?.get("bodyColor").toString()
+                                val bodyName = "gs://cacafirebase-554ac.appspot.com/custom_image/color/" + body_color
+                                val customRef_body = storage.getReferenceFromUrl(bodyName)
+                                customRef_body?.getBytes(Long.MAX_VALUE)?.addOnSuccessListener {
+                                    val customRef = BitmapFactory.decodeByteArray(it, 0, it.size)
+                                    cu_body_Iv.setImageBitmap(customRef)
+                                }?.addOnFailureListener {
+                                    Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT).show()
+                                }
+                            }, 3000)
+
+
+
+                        }
+
+                        var custom_acc = docName.data?.get("customAcc").toString()
+                        val accName = "gs://cacafirebase-554ac.appspot.com/custom_image/acc/" + custom_acc
+                        val customRef_acc = storage.getReferenceFromUrl(accName)
+                        customRef_acc?.getBytes(Long.MAX_VALUE)?.addOnSuccessListener {
+                            val customRef = BitmapFactory.decodeByteArray(it, 0, it.size)
+                            cu_acc_Iv.setImageBitmap(customRef)
+                        }?.addOnFailureListener {
+                            Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT).show()
+                        }
+
+
+                        var custom_eye = docName.data?.get("customEye").toString()
+                        val eyeName = "gs://cacafirebase-554ac.appspot.com/custom_image/acc/" + custom_eye
+                        val customRef_eye = storage.getReferenceFromUrl(eyeName)
+                        customRef_eye?.getBytes(Long.MAX_VALUE)?.addOnSuccessListener {
+                            val customRef = BitmapFactory.decodeByteArray(it, 0, it.size)
+                            cu_eye_Iv.setImageBitmap(customRef)
+                        }?.addOnFailureListener {
+                            Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }
 
 
 

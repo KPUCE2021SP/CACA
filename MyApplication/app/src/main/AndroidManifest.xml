@@ -69,6 +69,7 @@
             android:windowSoftInputMode="adjustResize" />
         <activity android:name=".SerachMap.SearchMap" />
         <activity android:name=".StartActivity" />
+        <activity android:name=".customActivity"></activity>
         <activity android:name=".FamilySet.DynamicLinkActivity">
             <intent-filter android:autoVerify="true">
                 <action android:name="android.intent.action.VIEW" />
