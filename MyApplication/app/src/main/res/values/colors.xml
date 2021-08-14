@@ -12,9 +12,11 @@
     <color name="light_blue_600">#FF039BE5</color>
     <color name="light_blue_900">#FF01579B</color>
 
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#ADE6E0</color>
+    <color name="colorPrimaryDark">#6780E8</color>
+    <color name="colorAccent">#D81B60</color>
+
+
     <color name="example_1_bg">#3A284C</color>
     <color name="example_1_bg_light">#433254</color>
     <color name="example_1_white_light">#4DFFFFFF</color>

@@ -5,6 +5,7 @@ plugins {
     id 'com.google.gms.google-services'
     id 'com.google.firebase.crashlytics'
     id 'kotlin-kapt'
+    id 'realm-android'
 }
 
 android {
@@ -46,16 +47,16 @@ android {
 
 dependencies {
 
-    // calendar
-//    implementation 'com.github.kizitonwose:CalendarView:<latest-version>'
+    // Calendar
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+    implementation 'io.realm:android-adapters:2.0.0'
+    implementation 'io.realm:android-adapters:2.1.1'
+    implementation 'com.github.sundeepk:compact-calendar-view:3.0.0'
 
 
 
     // location
     implementation 'com.google.android.gms:play-services-maps:11'
-
-
-
 
 
     implementation 'gun0912.ted:tedpermission:2.2.0'
