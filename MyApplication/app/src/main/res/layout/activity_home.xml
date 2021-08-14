@@ -403,11 +403,11 @@
                             </HorizontalScrollView>
 
                             <LinearLayout
+                                android:id="@+id/minigameRst_upload"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
                                 android:visibility="gone"
-                                android:id="@+id/minigameRst_upload"
                                 android:orientation="horizontal">
                                 <TextView
                                     android:layout_width="wrap_content"
@@ -418,6 +418,7 @@
                                     style="@style/nanumTextView"/>
 
                                 <ImageView
+                                    android:id="@+id/minigameRst_btn"
                                     android:layout_margin="10dp"
                                     android:layout_width="20dp"
                                     android:layout_height="20dp"
