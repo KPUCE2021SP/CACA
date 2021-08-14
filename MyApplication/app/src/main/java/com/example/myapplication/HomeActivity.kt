@@ -701,6 +701,39 @@ class HomeActivity : TabActivity() {
             minigameRst_upload.startAnimation(animationFadeIn)
         }
 
+        ////////// 결과 게시판에 업로드
+        minigameRst_btn.setOnClickListener {
+//            var intent = Intent(this, BoardActivity::class.java)
+//            intent.putExtra("message",text_result.text)
+//            startActivity(intent)
+
+            var uid = fbAuth?.uid.toString() // uid
+            val current = LocalDateTime.now() // 글 작성한 시간 가져오기
+            val formatter = DateTimeFormatter.ofPattern("yyyy년 MM월 dd일 HH시 mm분 ss초")
+            val formatted = current.format(formatter)
+            val formmm1 = formatted.toString()
+
+            var message1 = "미니게임 결과: " + text_result.text.toString()
+            var location1 = ""
+            var mention1 = "null"
+            var PhotoBoolean = false
+
+
+            val minigame_board = hashMapOf(
+                // Family name
+                "contents" to message1,
+                "location" to location1,
+                "uid" to uid,
+                "time" to formmm1,
+                "mention" to mention1,
+                "photo" to PhotoBoolean,
+            )
+
+            db.collection("Chats").document(FamilyName.toString()).collection("BOARD")
+                .document(formmm1).set(minigame_board) // 게시판 활성화
+            Toast.makeText(this, "게시판 업로드 완료!!", Toast.LENGTH_SHORT).show()
+        }
+
 
         // **--------------------------------- 용돈 관리 ----------------------------------------**
         Account_Plus_Button.setOnClickListener {                //계좌 추가하기
