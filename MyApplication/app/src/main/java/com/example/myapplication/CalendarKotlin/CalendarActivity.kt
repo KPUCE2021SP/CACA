@@ -11,16 +11,16 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myapplication.R
 import com.github.sundeepk.compactcalendarview.CompactCalendarView
 import com.github.sundeepk.compactcalendarview.domain.Event
-//import com.github.sundeepk.compactcalendarview.CompactCalendarView
-//import com.github.sundeepk.compactcalendarview.domain.Event
 import io.realm.Realm
 import io.realm.RealmConfiguration
 import io.realm.kotlin.where
+import kotlinx.android.synthetic.main.activity_home.*
 
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_schedule_content.*
 import kotlinx.android.synthetic.main.activity_schedule_edit.*
 import kotlinx.android.synthetic.main.activity_schedule_main.*
+import kotlinx.android.synthetic.main.activity_schedule_main.fab
 import java.util.*
 
 class CalendarActivity : AppCompatActivity() {
