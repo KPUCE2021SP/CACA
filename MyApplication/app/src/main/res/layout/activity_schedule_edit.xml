@@ -128,12 +128,4 @@
             android:id="@+id/deleteButton"
             android:background="@color/colorPrimaryDark"
             android:textColor="@android:color/white"/>
-    <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/catmeow"
-            android:id="@+id/mapButton"
-            app:layout_constraintStart_toEndOf="@+id/placeEdit"
-            android:layout_marginStart="8dp"
-            app:layout_constraintTop_toTopOf="@+id/placeEdit"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

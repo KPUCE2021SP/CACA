@@ -23,7 +23,7 @@ class ScheduleEditActivity : AppCompatActivity()
     , SaveConfirmFragment.SaveListener
     , DeleteConfirmFragment.DeleteListener{
 
-    private lateinit var realm:Realm
+//    private lateinit var realm:Realm
     private var editStartDateFlag = true
     private var editStartTimeFlag = true
     private var scheduleId = -1L
@@ -33,40 +33,40 @@ class ScheduleEditActivity : AppCompatActivity()
         setContentView(R.layout.activity_schedule_edit)
 
 
-        val realmConfig = RealmConfiguration.Builder()
-            .deleteRealmIfMigrationNeeded()
-            .build()
-        realm = Realm.getInstance(realmConfig)
+//        val realmConfig = RealmConfiguration.Builder()
+//            .deleteRealmIfMigrationNeeded()
+//            .build()
+//        realm = Realm.getInstance(realmConfig)
 
         scheduleId = intent.getLongExtra("schedule_id", -1L)
 
-        if(scheduleId != -1L){
-            val schedule = realm.where<Schedule>()
-                .equalTo("id", scheduleId).findFirst()
-            titleEdit.setText(schedule?.title)
-            placeEdit.setText(schedule?.place)
-            startDateEdit.setText(DateFormat.format("yyyy/MM/dd",
-                schedule?.startTime?.let { Date(it) }))
-            startTimeEdit.setText(DateFormat.format("HH:mm",
-                schedule?.startTime?.let { Date(it) }))
-            endDateEdit.setText(DateFormat.format("yyyy/MM/dd",
-                schedule?.endTime?.let { Date(it) }))
-            endTimeEdit.setText(DateFormat.format("HH:mm",
-                schedule?.endTime?.let { Date(it) }))
-            detailEdit.setText(schedule?.detail)
-            saveButton.text = "Update"
-            deleteButton.visibility = View.VISIBLE
-        }else{
-            val selectedDate = intent.getStringExtra("selected_date")
-            startDateEdit.setText(selectedDate)
-            endDateEdit.setText(selectedDate)
-            val c = Calendar.getInstance()
-            startTimeEdit.setText("%1$02d:%2$02d"
-                .format(c.get(Calendar.HOUR_OF_DAY), c.get(Calendar.MINUTE)))
-            endTimeEdit.setText("%1$02d:%2$02d"
-                .format(c.get(Calendar.HOUR_OF_DAY) + 1, c.get(Calendar.MINUTE)))
-            deleteButton.text = "Cancel"
-        }
+//        if(scheduleId != -1L){
+//            val schedule = realm.where<Schedule>()
+//                .equalTo("id", scheduleId).findFirst()
+//            titleEdit.setText(schedule?.title)
+//            placeEdit.setText(schedule?.place)
+//            startDateEdit.setText(DateFormat.format("yyyy/MM/dd",
+//                schedule?.startTime?.let { Date(it) }))
+//            startTimeEdit.setText(DateFormat.format("HH:mm",
+//                schedule?.startTime?.let { Date(it) }))
+//            endDateEdit.setText(DateFormat.format("yyyy/MM/dd",
+//                schedule?.endTime?.let { Date(it) }))
+//            endTimeEdit.setText(DateFormat.format("HH:mm",
+//                schedule?.endTime?.let { Date(it) }))
+//            detailEdit.setText(schedule?.detail)
+//            saveButton.text = "Update"
+//            deleteButton.visibility = View.VISIBLE
+//        }else{
+//            val selectedDate = intent.getStringExtra("selected_date")
+//            startDateEdit.setText(selectedDate)
+//            endDateEdit.setText(selectedDate)
+//            val c = Calendar.getInstance()
+//            startTimeEdit.setText("%1$02d:%2$02d"
+//                .format(c.get(Calendar.HOUR_OF_DAY), c.get(Calendar.MINUTE)))
+//            endTimeEdit.setText("%1$02d:%2$02d"
+//                .format(c.get(Calendar.HOUR_OF_DAY) + 1, c.get(Calendar.MINUTE)))
+//            deleteButton.text = "Cancel"
+//        }
 
 
         startDateEdit.setOnClickListener {
@@ -109,12 +109,6 @@ class ScheduleEditActivity : AppCompatActivity()
             dialog.show(supportFragmentManager, "deleteConfirm_dialog")
         }
 
-        mapButton.setOnClickListener { view:View->
-            val place = placeEdit.text.toString()
-            val uri = Uri.parse("geo:0,0?q=$place")
-            val intent = Intent(Intent.ACTION_VIEW, uri)
-            startActivity(intent)
-        }
     }
 
     private fun String.toDate(pattern:String = "yyyy/MM/dd HH:mm"): Date?{
@@ -147,35 +141,35 @@ class ScheduleEditActivity : AppCompatActivity()
     override fun onSave() {
         when(scheduleId){
             -1L->{
-                realm.executeTransaction { db:Realm->
-                    val maxId = db.where<Schedule>().max("id")
-                    val nextId = (maxId?.toLong() ?: 0L) + 1
-                    val schedule = db.createObject<Schedule>(nextId)
-                    val startTime =(startDateEdit.text.toString() + " " + startTimeEdit.text.toString())
-                        .toDate("yyyy/MM/dd HH:mm")?.time
-                    schedule.startTime = startTime ?: Date().time
-                    val endTime =(endDateEdit.text.toString() + " " + endTimeEdit.text.toString())
-                        .toDate("yyyy/MM/dd HH:mm")?.time
-                    schedule.endTime = endTime ?: Date().time
-                    schedule.title = titleEdit.text.toString()
-                    schedule.place = placeEdit.text.toString()
-                    schedule.detail = detailEdit.text.toString()
-                }
+//                realm.executeTransaction { db:Realm->
+//                    val maxId = db.where<Schedule>().max("id")
+//                    val nextId = (maxId?.toLong() ?: 0L) + 1
+//                    val schedule = db.createObject<Schedule>(nextId)
+//                    val startTime =(startDateEdit.text.toString() + " " + startTimeEdit.text.toString())
+//                        .toDate("yyyy/MM/dd HH:mm")?.time
+//                    schedule.startTime = startTime ?: Date().time
+//                    val endTime =(endDateEdit.text.toString() + " " + endTimeEdit.text.toString())
+//                        .toDate("yyyy/MM/dd HH:mm")?.time
+//                    schedule.endTime = endTime ?: Date().time
+//                    schedule.title = titleEdit.text.toString()
+//                    schedule.place = placeEdit.text.toString()
+//                    schedule.detail = detailEdit.text.toString()
+//                }
             }
             else ->{
-                realm.executeTransaction { db:Realm->
-                    val schedule = db.where<Schedule>()
-                        .equalTo("id", scheduleId).findFirst()
-                    val startTime =(startDateEdit.text.toString() + " " + startTimeEdit.text.toString())
-                        .toDate("yyyy/MM/dd HH:mm")?.time
-                    schedule?.startTime = startTime ?: Date().time
-                    val endTime =(endDateEdit.text.toString() + " " + endTimeEdit.text.toString())
-                        .toDate("yyyy/MM/dd HH:mm")?.time
-                    schedule?.endTime = endTime ?: Date().time
-                    schedule?.title = titleEdit.text.toString()
-                    schedule?.place = placeEdit.text.toString()
-                    schedule?.detail = detailEdit.text.toString()
-                }
+//                realm.executeTransaction { db:Realm->
+//                    val schedule = db.where<Schedule>()
+//                        .equalTo("id", scheduleId).findFirst()
+//                    val startTime =(startDateEdit.text.toString() + " " + startTimeEdit.text.toString())
+//                        .toDate("yyyy/MM/dd HH:mm")?.time
+//                    schedule?.startTime = startTime ?: Date().time
+//                    val endTime =(endDateEdit.text.toString() + " " + endTimeEdit.text.toString())
+//                        .toDate("yyyy/MM/dd HH:mm")?.time
+//                    schedule?.endTime = endTime ?: Date().time
+//                    schedule?.title = titleEdit.text.toString()
+//                    schedule?.place = placeEdit.text.toString()
+//                    schedule?.detail = detailEdit.text.toString()
+//                }
             }
         }
         val intent = Intent(this, CalendarActivity::class.java)
@@ -184,10 +178,10 @@ class ScheduleEditActivity : AppCompatActivity()
 
     override fun onDelete() {
         if(scheduleId != -1L){
-            realm.executeTransaction {db:Realm->
-                db.where<Schedule>().equalTo("id", scheduleId)
-                    .findFirst()?.deleteFromRealm()
-            }
+//            realm.executeTransaction {db:Realm->
+//                db.where<Schedule>().equalTo("id", scheduleId)
+//                    .findFirst()?.deleteFromRealm()
+//            }
         }
         val intent = Intent(this, CalendarActivity::class.java)
         startActivity(intent)
@@ -195,6 +189,6 @@ class ScheduleEditActivity : AppCompatActivity()
 
         override fun onDestroy() {
         super.onDestroy()
-        realm.close()
+//        realm.close()
     }
 }
