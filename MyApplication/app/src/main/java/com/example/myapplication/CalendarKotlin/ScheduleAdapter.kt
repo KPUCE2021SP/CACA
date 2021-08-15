@@ -14,6 +14,7 @@ class ScheduleAdapter(data:OrderedRealmCollection<Schedule>):
     RealmRecyclerViewAdapter<Schedule, ScheduleAdapter.ViewHolder>(data, true){
 
     private var listener:((Long?)->Unit)? = null
+
     fun setOnItenClickListener(listener:(Long?)->Unit){
         this.listener = listener
     }

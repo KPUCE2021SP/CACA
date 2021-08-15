@@ -1008,24 +1008,24 @@ class HomeActivity : TabActivity() {
                 selectedCalendar.time = thisDate
                 val selectedDate = selectedCalendar.timeInMillis
 
-                selectedDateLabel.text = DateFormat.format("yyyy/MM/dd", selectedDate)
-//        toolbar.title = DateFormat.format("yyyy/MM", selectedDate)
+                selectedDateLabel.text = DateFormat.format("yyyy/MM/dd", selectedDate) // 선택한 날짜 라벨링
+                toolbar.title = DateFormat.format("yyyy/MM", selectedDate) // 옆으로 스크롤하면 월 바뀜
 
 //                val realmConfig = RealmConfiguration.Builder()
 //                    .deleteRealmIfMigrationNeeded()
 //                    .build()
 //                realm = Realm.getInstance(realmConfig)
 
-//                list.layoutManager = LinearLayoutManager(this)
-//
-//                compactcalendar_view.setFirstDayOfWeek(1)
-//                compactcalendar_view.removeAllEvents()
-//                var schedules = realm.where<Schedule>().findAll()
-//                for (schedule in schedules) {
-//                    val event = Event(Color.GREEN, schedule.startTime)
-//                    compactcalendar_view.addEvent(event)
-//                }
-//
+                list.layoutManager = LinearLayoutManager(this) // list Setting
+
+                compactcalendar_view.setFirstDayOfWeek(1) // CalendarView Setting
+                compactcalendar_view.removeAllEvents()
+                var schedules = realm.where<Schedule>().findAll()
+                for (schedule in schedules) {
+                    val event = Event(Color.GREEN, schedule.startTime)
+                    compactcalendar_view.addEvent(event)
+                }
+
 //                schedules = realm.where<Schedule>()
 //                    .greaterThanOrEqualTo("startTime", selectedDate)
 //                    .lessThan("startTime", selectedDate + 24 * 60 * 60 * 1000)
@@ -1043,6 +1043,10 @@ class HomeActivity : TabActivity() {
                             val dateFormat = DateFormat.format("yyyy/MM/dd", selectedTimeInMills)
                             selectedDateLabel.text = dateFormat
 
+                            // 1. DB에 내용 있는지 확인해서 불러오기
+
+                            // 2. 해당 날짜의 Edit으로 이동하기
+
 //                            schedules = realm.where<Schedule>()
 //                                .greaterThanOrEqualTo("startTime", selectedTimeInMills)
 //                                .lessThan("startTime", selectedTimeInMills + 24 * 60 * 60 * 1000)
@@ -1058,18 +1062,18 @@ class HomeActivity : TabActivity() {
 //                            }
                         }
 
-                        override fun onMonthScroll(firstDayOfNewMonth: Date?) {
-//                    toolbar.title = DateFormat.format("yyyy/MM", firstDayOfNewMonth)
+                        override fun onMonthScroll(firstDayOfNewMonth: Date?) { // 달이 바뀌면 그 달의 첫번째 날을 setting 
+                          toolbar.title = DateFormat.format("yyyy/MM", firstDayOfNewMonth)
                         }
                     })
 
 
-                fab.setOnClickListener { view ->
+                fab.setOnClickListener { view -> // 작성 or 수정으로 이동
                     val intent = Intent(this, ScheduleEditActivity::class.java)
                         .putExtra("selected_date", selectedDateLabel.text.toString())
                     startActivity(intent)
                 }
-//                adapter.setOnItenClickListener { id ->
+//                adapter.setOnItenClickListener { id -> // adapter 클릭하면 그 일정 수정할 수 있도록
 //                    val intent = Intent(this, ScheduleEditActivity::class.java)
 //                        .putExtra("schedule_id", id)
 //                    startActivity(intent)

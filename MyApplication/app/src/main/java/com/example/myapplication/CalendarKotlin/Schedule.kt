@@ -6,7 +6,7 @@ import io.realm.RealmObject
 import io.realm.annotations.PrimaryKey
 import java.util.*
 
-open class Schedule:RealmObject() { // 틀
+open class Schedule:RealmObject() { // Frame
     @PrimaryKey
     var id:Long = 0
     var startTime:Long = Date().time
