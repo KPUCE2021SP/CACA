@@ -1012,12 +1012,6 @@ class HomeActivity : TabActivity() {
 
                 selectedDateLabel.text = DateFormat.format("yyyy/MM/dd/mm/ss", selectedDate) // 선택한 날짜 라벨링
                 toolbar.title = DateFormat.format("yyyy/MM", selectedDate) // 옆으로 스크롤하면 월 바뀜
-
-//                val realmConfig = RealmConfiguration.Builder()
-//                    .deleteRealmIfMigrationNeeded()
-//                    .build()
-//                realm = Realm.getInstance(realmConfig)
-
                 list.layoutManager = LinearLayoutManager(this) // list Setting
 
                 compactcalendar_view.setFirstDayOfWeek(1) // CalendarView Initializing

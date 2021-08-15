@@ -43,42 +43,8 @@ class ScheduleEditActivity : AppCompatActivity(), DatePickerFragment.OnDateSelec
         setContentView(R.layout.activity_schedule_edit)
 
 
-//        val realmConfig = RealmConfiguration.Builder()
-//            .deleteRealmIfMigrationNeeded()
-//            .build()
-//        realm = Realm.getInstance(realmConfig)
-
-
         FamilyName = intent.getStringExtra("FamilyName").toString() // FamilyName
         scheduleId = intent.getStringExtra("selected_date").toString() // Date
-
-//        if(scheduleId != -1L){
-//            val schedule = realm.where<Schedule>()
-//                .equalTo("id", scheduleId).findFirst()
-//            titleEdit.setText(schedule?.title)
-//            placeEdit.setText(schedule?.place)
-//            startDateEdit.setText(DateFormat.format("yyyy/MM/dd",
-//                schedule?.startTime?.let { Date(it) }))
-//            startTimeEdit.setText(DateFormat.format("HH:mm",
-//                schedule?.startTime?.let { Date(it) }))
-//            endDateEdit.setText(DateFormat.format("yyyy/MM/dd",
-//                schedule?.endTime?.let { Date(it) }))
-//            endTimeEdit.setText(DateFormat.format("HH:mm",
-//                schedule?.endTime?.let { Date(it) }))
-//            detailEdit.setText(schedule?.detail)
-//            saveButton.text = "Update"
-//            deleteButton.visibility = View.VISIBLE
-//        }else{
-//            val selectedDate = intent.getStringExtra("selected_date")
-//            startDateEdit.setText(selectedDate)
-//            endDateEdit.setText(selectedDate)
-//            val c = Calendar.getInstance()
-//            startTimeEdit.setText("%1$02d:%2$02d"
-//                .format(c.get(Calendar.HOUR_OF_DAY), c.get(Calendar.MINUTE)))
-//            endTimeEdit.setText("%1$02d:%2$02d"
-//                .format(c.get(Calendar.HOUR_OF_DAY) + 1, c.get(Calendar.MINUTE)))
-//            deleteButton.text = "Cancel"
-//        }
 
 
         startDateEdit.setOnClickListener {
@@ -187,6 +153,5 @@ class ScheduleEditActivity : AppCompatActivity(), DatePickerFragment.OnDateSelec
 
         override fun onDestroy() {
         super.onDestroy()
-//        realm.close()
     }
 }
