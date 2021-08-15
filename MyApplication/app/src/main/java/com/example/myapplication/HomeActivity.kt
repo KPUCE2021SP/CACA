@@ -1018,13 +1018,13 @@ class HomeActivity : TabActivity() {
 
                 list.layoutManager = LinearLayoutManager(this) // list Setting
 
-                compactcalendar_view.setFirstDayOfWeek(1) // CalendarView Setting
+                compactcalendar_view.setFirstDayOfWeek(1) // CalendarView Initializing
                 compactcalendar_view.removeAllEvents()
-                var schedules = realm.where<Schedule>().findAll()
-                for (schedule in schedules) {
-                    val event = Event(Color.GREEN, schedule.startTime)
-                    compactcalendar_view.addEvent(event)
-                }
+//                var schedules = realm.where<Schedule>().findAll()
+//                for (schedule in schedules) {
+//                    val event = Event(Color.GREEN, schedule.startTime)
+//                    compactcalendar_view.addEvent(event)
+//                }
 
 //                schedules = realm.where<Schedule>()
 //                    .greaterThanOrEqualTo("startTime", selectedDate)
