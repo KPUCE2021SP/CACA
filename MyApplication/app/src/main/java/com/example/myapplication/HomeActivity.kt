@@ -1035,7 +1035,7 @@ class HomeActivity : TabActivity() {
 //                list.adapter = adapter
 
 
-                compactcalendar_view.setListener(
+                compactcalendar_view.setListener( // 캘린더 구경할때 사용
                     object : CompactCalendarView.CompactCalendarViewListener {
                         override fun onDayClick(dateClicked: Date) {
                             selectedCalendar.time = dateClicked
@@ -1045,8 +1045,6 @@ class HomeActivity : TabActivity() {
 
                             // 1. DB에 내용 있는지 확인해서 불러오기
 
-                            // 2. 해당 날짜의 Edit으로 이동하기
-
 //                            schedules = realm.where<Schedule>()
 //                                .greaterThanOrEqualTo("startTime", selectedTimeInMills)
 //                                .lessThan("startTime", selectedTimeInMills + 24 * 60 * 60 * 1000)
@@ -1054,7 +1052,11 @@ class HomeActivity : TabActivity() {
 //                                .sort("startTime")
 //                            adapter = ScheduleAdapter(schedules)
 //                            list.adapter = adapter
-//                            adapter.setOnItenClickListener { id ->
+
+
+                            // 2. 해당 날짜의 Edit으로 이동하기
+
+//                            adapter.setOnItenClickListener { id ->  // adapter 클릭하면 그 일정 수정할 수 있도록
 //                                val intent =
 //                                    Intent(this@HomeActivity, ScheduleEditActivity::class.java)
 //                                        .putExtra("schedule_id", id)
@@ -1070,9 +1072,12 @@ class HomeActivity : TabActivity() {
 
                 fab.setOnClickListener { view -> // 작성 or 수정으로 이동
                     val intent = Intent(this, ScheduleEditActivity::class.java)
-                        .putExtra("selected_date", selectedDateLabel.text.toString())
+                    intent.putExtra("selected_date", selectedDateLabel.text.toString()) // 날짜
+                    intent.putExtra("FamilyName", FamilyName) // FamilyName
                     startActivity(intent)
                 }
+
+
 //                adapter.setOnItenClickListener { id -> // adapter 클릭하면 그 일정 수정할 수 있도록
 //                    val intent = Intent(this, ScheduleEditActivity::class.java)
 //                        .putExtra("schedule_id", id)
