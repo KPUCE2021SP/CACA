@@ -26,6 +26,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity android:name=".AddAccount"></activity>
+        <activity android:name=".CalendarKotlin.CalendarActivity"></activity>
+        <activity android:name=".CalendarKotlin.ScheduleEditActivity"></activity>
 
 <!--        <receiver-->
 <!--            android:name=".AppWidgetProvider"-->
