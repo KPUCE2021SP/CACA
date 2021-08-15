@@ -20,6 +20,7 @@ import android.widget.*
 import androidx.core.view.isGone
 import com.example.myapplication.FamilySet.DynamicLinkActivity
 import com.example.myapplication.Home_Board.BoardActivity
+import com.example.myapplication.Home_Board.BoardContentActivity
 import com.example.myapplication.Mypage.MypageActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -377,6 +378,23 @@ class HomeActivity : TabActivity() {
                                                 .addOnFailureListener { exception ->
                                                     Log.d(ContentValues.TAG, "get failed with ", exception)
                                                 }
+                                        /////////////////////////// 게시글 크게보기 intent
+                                        notice_image.setOnClickListener {
+                                            var formattedB : String = notice_time.text.toString()
+                                            val secondintent = Intent(this, BoardContentActivity::class.java)
+
+                                            secondintent.putExtra("notice_boardB",notice_board.text.toString())
+                                            secondintent.putExtra("notice_nameB",notice_name.text.toString())
+                                            secondintent.putExtra("notice_profileB",imageName)
+                                            secondintent.putExtra("notice_imageB",BoardImageName)
+
+
+                                            secondintent.putExtra("FamilyNameB", FamilyName)
+                                            secondintent.putExtra("formattedB",formattedB)
+                                            Log.d("Fmt1",imageName)
+                                            Log.d("Fmt2",BoardImageName)
+                                            startActivity(secondintent)
+                                        }
 
                                     } else {
                                         Log.d(ContentValues.TAG, "No such document")

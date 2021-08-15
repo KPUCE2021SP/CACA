@@ -48,7 +48,8 @@
         <meta-data
             android:name="com.kakao.sdk.AppKey"
             android:value="945b139935b4dd7d948524834b84b539" />
-
+    
+        <activity android:name=".Home_Board.BoardContentActivity"/>
         <activity android:name=".Notification.Notification" />
         <activity android:name=".FamilySet.MainActivity" />
         <activity android:name=".FamilySet.FamilySettingActivity" />
