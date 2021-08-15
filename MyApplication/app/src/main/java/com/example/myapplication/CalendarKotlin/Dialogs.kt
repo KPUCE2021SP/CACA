@@ -12,7 +12,7 @@ import android.widget.TimePicker
 import androidx.fragment.app.DialogFragment
 import java.util.*
 
-class DatePickerFragment:DialogFragment(), DatePickerDialog.OnDateSetListener{
+class DatePickerFragment:DialogFragment(), DatePickerDialog.OnDateSetListener{ //  DatePicker
 
     interface OnDateSelectedListener{
         fun onSelected(year:Int, month:Int, date:Int)
@@ -38,7 +38,7 @@ class DatePickerFragment:DialogFragment(), DatePickerDialog.OnDateSetListener{
     }
 }
 
-class TimePickerFragment:DialogFragment()
+class TimePickerFragment:DialogFragment() // TimePicker
     , TimePickerDialog.OnTimeSetListener{
     interface OnTimeSelectedListener{
         fun onSelected(hourOfDay:Int, minute:Int)
@@ -62,7 +62,7 @@ class TimePickerFragment:DialogFragment()
     }
 }
 
-class SaveConfirmFragment:DialogFragment(){
+class SaveConfirmFragment:DialogFragment(){ //  Save
     interface SaveListener{
         fun onSave()
     }
@@ -86,7 +86,7 @@ class SaveConfirmFragment:DialogFragment(){
     }
 }
 
-class DeleteConfirmFragment:DialogFragment(){
+class DeleteConfirmFragment:DialogFragment(){ //  Delete
     interface DeleteListener {
         fun onDelete()
     }
@@ -109,7 +109,7 @@ class DeleteConfirmFragment:DialogFragment(){
     }
 }
 
-class InvalidTimeFragment:DialogFragment(){
+class InvalidTimeFragment:DialogFragment(){ // Invalid
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val builder = AlertDialog.Builder(requireActivity())
         builder.setMessage("예정 종료 시간이 시작 시간 전에 지정되어 있습니다.")
