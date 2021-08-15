@@ -6,27 +6,37 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.format.DateFormat
 import android.view.View
+import android.widget.Toast
+import com.example.myapplication.HomeActivity
 import com.example.myapplication.R
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 import io.realm.Realm
 import io.realm.RealmConfiguration
 import io.realm.kotlin.createObject
 import io.realm.kotlin.where
 import kotlinx.android.synthetic.main.activity_schedule_edit.*
+import kotlinx.android.synthetic.main.board.*
 import java.lang.IllegalArgumentException
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
 
-class ScheduleEditActivity : AppCompatActivity()
-    , DatePickerFragment.OnDateSelectedListener
-    , TimePickerFragment.OnTimeSelectedListener
-    , SaveConfirmFragment.SaveListener
-    , DeleteConfirmFragment.DeleteListener{
+class ScheduleEditActivity : AppCompatActivity(), DatePickerFragment.OnDateSelectedListener, TimePickerFragment.OnTimeSelectedListener, SaveConfirmFragment.SaveListener, DeleteConfirmFragment.DeleteListener{
 
-//    private lateinit var realm:Realm
     private var editStartDateFlag = true
     private var editStartTimeFlag = true
-    private var scheduleId = -1L
+    lateinit var scheduleId : String
+    lateinit var FamilyName : String
+
+    var fbAuth = FirebaseAuth.getInstance() // 로그인
+    var fbFire = FirebaseFirestore.getInstance()
+    var uid = fbAuth?.uid.toString() // uid
+    val db: FirebaseFirestore = Firebase.firestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,7 +48,9 @@ class ScheduleEditActivity : AppCompatActivity()
 //            .build()
 //        realm = Realm.getInstance(realmConfig)
 
-        scheduleId = intent.getLongExtra("schedule_id", -1L)
+
+        FamilyName = intent.getStringExtra("FamilyName").toString() // FamilyName
+        scheduleId = intent.getStringExtra("selected_date").toString() // Date
 
 //        if(scheduleId != -1L){
 //            val schedule = realm.where<Schedule>()
@@ -89,7 +101,9 @@ class ScheduleEditActivity : AppCompatActivity()
             val dialog = TimePickerFragment()
             dialog.show(supportFragmentManager, "endTime_dialog")
         }
-        saveButton.setOnClickListener {view:View->
+
+
+        saveButton.setOnClickListener {view:View-> // 저장!
             val startDateTime = (startDateEdit.text.toString() + " "+ startTimeEdit.text.toString())
                 .toDate()?.time
             val endDateTime = (endDateEdit.text.toString() + " " + endTimeEdit.text.toString())
@@ -102,9 +116,11 @@ class ScheduleEditActivity : AppCompatActivity()
                     val dialog = InvalidTimeFragment()
                     dialog.show(supportFragmentManager, "invalidTime_dialog")
                 }
+            }else{
+                onSave()
             }
         }
-        deleteButton.setOnClickListener {view:View->
+        deleteButton.setOnClickListener {view:View-> // 삭제
             val dialog = DeleteConfirmFragment()
             dialog.show(supportFragmentManager, "deleteConfirm_dialog")
         }
@@ -139,52 +155,34 @@ class ScheduleEditActivity : AppCompatActivity()
     }
 
     override fun onSave() {
-        when(scheduleId){
-            -1L->{
-//                realm.executeTransaction { db:Realm->
-//                    val maxId = db.where<Schedule>().max("id")
-//                    val nextId = (maxId?.toLong() ?: 0L) + 1
-//                    val schedule = db.createObject<Schedule>(nextId)
-//                    val startTime =(startDateEdit.text.toString() + " " + startTimeEdit.text.toString())
-//                        .toDate("yyyy/MM/dd HH:mm")?.time
-//                    schedule.startTime = startTime ?: Date().time
-//                    val endTime =(endDateEdit.text.toString() + " " + endTimeEdit.text.toString())
-//                        .toDate("yyyy/MM/dd HH:mm")?.time
-//                    schedule.endTime = endTime ?: Date().time
-//                    schedule.title = titleEdit.text.toString()
-//                    schedule.place = placeEdit.text.toString()
-//                    schedule.detail = detailEdit.text.toString()
-//                }
-            }
-            else ->{
-//                realm.executeTransaction { db:Realm->
-//                    val schedule = db.where<Schedule>()
-//                        .equalTo("id", scheduleId).findFirst()
-//                    val startTime =(startDateEdit.text.toString() + " " + startTimeEdit.text.toString())
-//                        .toDate("yyyy/MM/dd HH:mm")?.time
-//                    schedule?.startTime = startTime ?: Date().time
-//                    val endTime =(endDateEdit.text.toString() + " " + endTimeEdit.text.toString())
-//                        .toDate("yyyy/MM/dd HH:mm")?.time
-//                    schedule?.endTime = endTime ?: Date().time
-//                    schedule?.title = titleEdit.text.toString()
-//                    schedule?.place = placeEdit.text.toString()
-//                    schedule?.detail = detailEdit.text.toString()
-//                }
-            }
-        }
-        val intent = Intent(this, CalendarActivity::class.java)
+
+        var calendar_content = hashMapOf(
+            "title" to titleEdit.text.toString(),
+            "place" to placeEdit.text.toString(),
+            "detail" to detailEdit.text.toString(),
+            "start_date" to startDateEdit.text.toString(),
+            "start_time" to startTimeEdit.text.toString(),
+            "end_date" to endDateEdit.text.toString(),
+            "end_time" to endTimeEdit.text.toString(),
+        )
+
+        db.collection("Chats").document(FamilyName.toString()).collection("CALENDAR")
+            .document(scheduleId.toString()).set(calendar_content as Map<String, Any>)// DB
+        Toast.makeText(this, "${scheduleId} 일정 업로드 완료!", Toast.LENGTH_SHORT).show()
+
+        val intent = Intent(this, HomeActivity::class.java)
         startActivity(intent)
     }
 
     override fun onDelete() {
-        if(scheduleId != -1L){
-//            realm.executeTransaction {db:Realm->
-//                db.where<Schedule>().equalTo("id", scheduleId)
-//                    .findFirst()?.deleteFromRealm()
-//            }
-        }
-        val intent = Intent(this, CalendarActivity::class.java)
-        startActivity(intent)
+//        if(scheduleId != -1L){
+////            realm.executeTransaction {db:Realm->
+////                db.where<Schedule>().equalTo("id", scheduleId)
+////                    .findFirst()?.deleteFromRealm()
+////            }
+//        }
+//        val intent = Intent(this, HomeActivity::class.java)
+//        startActivity(intent)
     }
 
         override fun onDestroy() {

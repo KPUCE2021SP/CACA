@@ -98,6 +98,8 @@ class HomeActivity : TabActivity() {
 //        realm.close()
     }
 
+    // 끝 // Calendar// Calendar// Calendar// Calendar// Calendar// Calendar// Calendar// Calendar// Calendar// Calendar// Calendar// Calendar// Calendar // 끝
+
     fun onClick_clipboard(texttext: String) { // 클립 보드에 복사
 
         val clipboardManager = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
@@ -1008,7 +1010,7 @@ class HomeActivity : TabActivity() {
                 selectedCalendar.time = thisDate
                 val selectedDate = selectedCalendar.timeInMillis
 
-                selectedDateLabel.text = DateFormat.format("yyyy/MM/dd", selectedDate) // 선택한 날짜 라벨링
+                selectedDateLabel.text = DateFormat.format("yyyy/MM/dd/mm/ss", selectedDate) // 선택한 날짜 라벨링
                 toolbar.title = DateFormat.format("yyyy/MM", selectedDate) // 옆으로 스크롤하면 월 바뀜
 
 //                val realmConfig = RealmConfiguration.Builder()
@@ -1040,7 +1042,7 @@ class HomeActivity : TabActivity() {
                         override fun onDayClick(dateClicked: Date) {
                             selectedCalendar.time = dateClicked
                             val selectedTimeInMills = selectedCalendar.timeInMillis
-                            val dateFormat = DateFormat.format("yyyy/MM/dd", selectedTimeInMills)
+                            val dateFormat = DateFormat.format("yyyy/MM/dd/mm/ss", selectedTimeInMills)
                             selectedDateLabel.text = dateFormat
 
                             // 1. DB에 내용 있는지 확인해서 불러오기
