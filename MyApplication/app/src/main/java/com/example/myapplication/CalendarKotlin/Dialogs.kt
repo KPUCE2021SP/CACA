@@ -76,11 +76,11 @@ class SaveConfirmFragment:DialogFragment(){
     }
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val builder = AlertDialog.Builder(requireActivity())
-        builder.setMessage("スケジュールを保存しますか？")
-        builder.setNegativeButton("保存する"){dialog, which->
+        builder.setMessage("일정을 저장하시겠습니까?")
+        builder.setNegativeButton("저장"){dialog, which->
             listener?.onSave()
         }
-        builder.setPositiveButton("キャンセル"){dialog, which->
+        builder.setPositiveButton("취소"){dialog, which->
        }
         return builder.create()
     }
@@ -100,11 +100,11 @@ class DeleteConfirmFragment:DialogFragment(){
     }
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val builder = AlertDialog.Builder(requireActivity())
-        builder.setMessage("編集中のスケジュールを消去しますか？")
-        builder.setPositiveButton("消去する"){dialog, which ->
+        builder.setMessage("편집중인 스케줄을 지우시겠습니까?")
+        builder.setPositiveButton("삭제하기"){dialog, which ->
             listener?.onDelete()
         }
-        builder.setNegativeButton("編集を続ける"){dialog, which ->  }
+        builder.setNegativeButton("편집 계속하기"){dialog, which ->  }
         return builder.create()
     }
 }
@@ -112,8 +112,8 @@ class DeleteConfirmFragment:DialogFragment(){
 class InvalidTimeFragment:DialogFragment(){
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val builder = AlertDialog.Builder(requireActivity())
-        builder.setMessage("予定の終了時間が開始時間の前になっています！")
-        builder.setNeutralButton("編集"){dialog, which ->  }
+        builder.setMessage("예정 종료 시간이 시작 시간 전에 지정되어 있습니다.")
+        builder.setNeutralButton("편집"){dialog, which ->  }
         return builder.create()
     }
 }
