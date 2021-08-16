@@ -1000,47 +1000,87 @@ class HomeActivity : TabActivity() {
                 }
 
 // Messenger  // Messenger  // Messenger  // Messenger  // Messenger  // Messenger  // Messenger  // Messenger  // Messenger  // Messenger  // Messenger
-//                mutableList.clear()
-//                db.collection("Chats").document(FamilyName.toString()).collection("FamilyMember")
-//                    .get()
-//                    .addOnSuccessListener { documents ->
-//                        for (document in documents) {
-//                            Log.d("FamilyMember", "${document.id}")
+
+
+                var mutableListMessage: MutableList<String> = mutableListOf("a")
+                var mutableListMessageUID: MutableList<String> = mutableListOf("a")
+                var mutableListMessageDEVICE: MutableList<String> = mutableListOf("a")
+                mutableListMessage.clear()
+                mutableListMessageUID.clear()
+                mutableListMessageDEVICE.clear()
+
+                db.collection("Chats").document(FamilyName.toString()).collection("FamilyMember")
+                    .get()
+                    .addOnSuccessListener { documents ->
+                        for (document in documents) {
+                            Log.d("FamilyMember", "${document.id}")
+                            mutableListMessageUID.add(document.id)
+                            // DEVICE
+                            val docRef3 = db.collection("Member").document(document.id).collection("DEVICE").document("TOKEN")
+                            docRef3.get()
+                                .addOnSuccessListener { docName ->
+                                    if (docName != null) {
+                                        mutableListMessageDEVICE.add(docName.data?.get("deviceInfo").toString())
+                                        Log.d("device", mutableListMessageDEVICE.toString())
+                                    } else {
+                                        Log.d(ContentValues.TAG, "No such document")
+                                    }
+                                }
+                                .addOnFailureListener { exception ->
+                                    Log.d(ContentValues.TAG, "get failed with ", exception)
+                                }
+
+
+//                    //Member 이름 가져와서 mutableNameList에 저장
+                            val docRef2 = db.collection("Member").document(document.id)
+                            docRef2.get()
+                                .addOnSuccessListener { docName ->
+                                    if (docName != null) {
+                                        Log.d(
+                                            ContentValues.TAG,
+                                            "DocumentSnapshot data: ${docName.data}"
+                                        )
+                                        mutableListMessage.add(docName.data?.get("name").toString())
+
+                                    } else {
+                                        Log.d(ContentValues.TAG, "No such document")
+                                    }
+                                }
+                                .addOnFailureListener { exception ->
+                                    Log.d(ContentValues.TAG, "get failed with ", exception)
+                                }
+                        }
+
+                    }
+
+                var adapter: ArrayAdapter<String>
+                adapter = ArrayAdapter(
+                    this,
+                    android.R.layout.simple_spinner_dropdown_item,
+                    mutableListMessage
+                )
+                spinner_message.adapter = adapter
+
+
+//                spinner_message.setSelection(0, false)
+//                spinner_message.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+//                    override fun onItemSelected(
+//                        parent: AdapterView<*>?,
+//                        view: View?,
+//                        position: Int,
+//                        id: Long
+//                    ) {
 //
-////                    //Member 이름 가져와서 mutableNameList에 저장
-//                            val docRef2 = db.collection("Member").document(document.id)
-//                            docRef2.get()
-//                                .addOnSuccessListener { docName ->
-//                                    if (docName != null) {
-//                                        Log.d(
-//                                            ContentValues.TAG,
-//                                            "DocumentSnapshot data: ${docName.data}"
-//                                        )
-//                                        mutableUIDList.add(document.id.toString())
-//                                        mutableList.add(docName.data?.get("name").toString())
-//
-//
-//                                        var adapter: ArrayAdapter<String>
-//                                        adapter = ArrayAdapter(
-//                                            this,
-//                                            android.R.layout.simple_spinner_dropdown_item,
-//                                            mutableList
-//                                        )
-//                                        spinner_member.adapter = adapter
-//
-//
-//                                    } else {
-//                                        Log.d(ContentValues.TAG, "No such document")
-//                                    }
-//                                }
-//                                .addOnFailureListener { exception ->
-//                                    Log.d(ContentValues.TAG, "get failed with ", exception)
-//                                }
-////                    }
-//
-//                        }
-//
+//                        spinnerUID = mutableUIDList[position].toString()
+//                        Log.d("spinnerUID", spinnerUID)
 //                    }
+//
+//                    override fun onNothingSelected(parent: AdapterView<*>?) {
+//                        TODO("Not yet implemented")
+//                    }
+//                }
+
+
 
 
 // Calendar// Calendar// Calendar// Calendar// Calendar// Calendar// Calendar// Calendar// Calendar// Calendar// Calendar// Calendar// Calendar

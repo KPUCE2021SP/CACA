@@ -172,7 +172,6 @@ class BoardActivity : AppCompatActivity() {
                                 )
                                 spinner_member.adapter = adapter
 
-
                             } else {
                                 Log.d(ContentValues.TAG, "No such document")
                             }

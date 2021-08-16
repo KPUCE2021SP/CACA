@@ -162,11 +162,11 @@
                     android:id="@+id/LinearMainpage"
                     android:orientation="vertical">
 
-                    <Spinner
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/spinner_member"/>
 
+                    <Spinner
+                        android:id="@+id/spinner_message"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
 
                     <EditText
                         android:id="@+id/etToken"
