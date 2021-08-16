@@ -1000,48 +1000,47 @@ class HomeActivity : TabActivity() {
                 }
 
 // Messenger  // Messenger  // Messenger  // Messenger  // Messenger  // Messenger  // Messenger  // Messenger  // Messenger  // Messenger  // Messenger
-                mutableList.clear()
-                mutableList.add()
-                db.collection("Chats").document(FamilyName.toString()).collection("FamilyMember")
-                    .get()
-                    .addOnSuccessListener { documents ->
-                        for (document in documents) {
-                            Log.d("FamilyMember", "${document.id}")
-
-//                    //Member 이름 가져와서 mutableNameList에 저장
-                            val docRef2 = db.collection("Member").document(document.id)
-                            docRef2.get()
-                                .addOnSuccessListener { docName ->
-                                    if (docName != null) {
-                                        Log.d(
-                                            ContentValues.TAG,
-                                            "DocumentSnapshot data: ${docName.data}"
-                                        )
-                                        mutableUIDList.add(document.id.toString())
-                                        mutableList.add(docName.data?.get("name").toString())
-
-
-                                        var adapter: ArrayAdapter<String>
-                                        adapter = ArrayAdapter(
-                                            this,
-                                            android.R.layout.simple_spinner_dropdown_item,
-                                            mutableList
-                                        )
-                                        spinner_member.adapter = adapter
-
-
-                                    } else {
-                                        Log.d(ContentValues.TAG, "No such document")
-                                    }
-                                }
-                                .addOnFailureListener { exception ->
-                                    Log.d(ContentValues.TAG, "get failed with ", exception)
-                                }
+//                mutableList.clear()
+//                db.collection("Chats").document(FamilyName.toString()).collection("FamilyMember")
+//                    .get()
+//                    .addOnSuccessListener { documents ->
+//                        for (document in documents) {
+//                            Log.d("FamilyMember", "${document.id}")
+//
+////                    //Member 이름 가져와서 mutableNameList에 저장
+//                            val docRef2 = db.collection("Member").document(document.id)
+//                            docRef2.get()
+//                                .addOnSuccessListener { docName ->
+//                                    if (docName != null) {
+//                                        Log.d(
+//                                            ContentValues.TAG,
+//                                            "DocumentSnapshot data: ${docName.data}"
+//                                        )
+//                                        mutableUIDList.add(document.id.toString())
+//                                        mutableList.add(docName.data?.get("name").toString())
+//
+//
+//                                        var adapter: ArrayAdapter<String>
+//                                        adapter = ArrayAdapter(
+//                                            this,
+//                                            android.R.layout.simple_spinner_dropdown_item,
+//                                            mutableList
+//                                        )
+//                                        spinner_member.adapter = adapter
+//
+//
+//                                    } else {
+//                                        Log.d(ContentValues.TAG, "No such document")
+//                                    }
+//                                }
+//                                .addOnFailureListener { exception ->
+//                                    Log.d(ContentValues.TAG, "get failed with ", exception)
+//                                }
+////                    }
+//
+//                        }
+//
 //                    }
-
-                        }
-
-                    }
 
 
 // Calendar// Calendar// Calendar// Calendar// Calendar// Calendar// Calendar// Calendar// Calendar// Calendar// Calendar// Calendar// Calendar
