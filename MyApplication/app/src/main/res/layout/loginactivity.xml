@@ -15,7 +15,6 @@
         android:src="@mipmap/familyship" />
 
     <EditText
-        style="@style/nanumTextView"
         android:textStyle="bold"
         android:textSize="18dp"
         android:id="@+id/et_eamil"
@@ -31,7 +30,6 @@
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/et_password"
-        style="@style/nanumTextView"
         android:textStyle="bold"
         android:textSize="18dp"
         android:layout_width="match_parent"

@@ -40,7 +40,7 @@
             android:gravity="center"
             android:layout_gravity="center"
             android:layout_marginRight="10dp"
-            android:text="참여하"
+            android:text="참여하기"
             android:id="@+id/JoinButton"
             android:textStyle="bold"
             android:textSize="15dp"

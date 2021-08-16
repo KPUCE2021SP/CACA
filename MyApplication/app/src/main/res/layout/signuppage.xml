@@ -16,7 +16,6 @@
         android:src="@mipmap/familyship"/>
 
     <EditText
-        style="@style/nanumTextView"
         android:textSize="20dp"
         android:id="@+id/et_eamil"
         android:layout_width="match_parent"
@@ -31,7 +30,6 @@
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/et_password"
-        style="@style/nanumTextView"
         android:textSize="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -56,7 +54,6 @@
 
     <com.google.android.material.textfield.TextInputEditText
         android:inputType="textPassword"
-        style="@style/nanumTextView"
         android:textSize="20dp"
         android:id="@+id/et_passwordConfirm"
         android:layout_width="match_parent"
@@ -80,7 +77,6 @@
         android:textColor="#FF0000"/>
 
     <EditText
-        style="@style/nanumTextView"
         android:textSize="20dp"
         android:id="@+id/et_name"
         android:layout_width="match_parent"
@@ -91,7 +87,6 @@
         android:minHeight="48dp" />
 
     <EditText
-        style="@style/nanumTextView"
         android:textSize="20dp"
         android:id="@+id/et_birthday"
         android:layout_width="match_parent"
@@ -103,7 +98,6 @@
         android:minHeight="48dp" />
 
     <EditText
-        style="@style/nanumTextView"
         android:textSize="20dp"
         android:id="@+id/et_address"
         android:layout_width="match_parent"
@@ -114,7 +108,6 @@
         android:minHeight="48dp" />
 
     <EditText
-        style="@style/nanumTextView"
         android:textSize="20dp"
         android:id="@+id/et_phone"
         android:layout_width="match_parent"
