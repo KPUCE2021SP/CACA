@@ -161,6 +161,37 @@
                     android:layout_height="match_parent"
                     android:id="@+id/LinearMainpage"
                     android:orientation="vertical">
+
+                    <EditText
+                        android:id="@+id/etToken"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint="Enter Token"
+                        android:inputType="textPersonName"
+                        android:visibility="visible" />
+
+                    <EditText
+                        android:id="@+id/etTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint="Enter Title"
+                        android:inputType="textPersonName" />
+
+                    <EditText
+                        android:id="@+id/etMessage"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint="Enter message"
+                        android:inputType="textPersonName" />
+
+                    <Button
+                        android:id="@+id/btnSend"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Send" />
                 </LinearLayout>
                 <!--                -->
                 <LinearLayout
