@@ -47,22 +47,35 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.view.Menu
 import android.view.MenuItem
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.myapplication.AlarmReceiver.Companion.TAG
 import com.example.myapplication.CalendarKotlin.Schedule
 import com.example.myapplication.CalendarKotlin.ScheduleAdapter
 import com.example.myapplication.CalendarKotlin.ScheduleEditActivity
+import com.example.myapplication.Notification.NotificationData
+import com.example.myapplication.Notification.PushNotification
+import com.example.myapplication.Notification.RetrofitInstance
 import com.example.myapplication.R
 import com.github.sundeepk.compactcalendarview.CompactCalendarView
 import com.github.sundeepk.compactcalendarview.domain.Event
+import com.google.gson.Gson
 import io.realm.Realm
 import io.realm.RealmConfiguration
 import io.realm.kotlin.where
 import kotlinx.android.synthetic.main.activity_home.*
+import kotlinx.android.synthetic.main.activity_home.btnSend
+import kotlinx.android.synthetic.main.activity_home.etMessage
+import kotlinx.android.synthetic.main.activity_home.etTitle
+import kotlinx.android.synthetic.main.activity_home.etToken
 
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_notification.*
 import kotlinx.android.synthetic.main.activity_schedule_content.*
 import kotlinx.android.synthetic.main.activity_schedule_edit.*
 import kotlinx.android.synthetic.main.activity_schedule_main.*
 import kotlinx.android.synthetic.main.activity_schedule_main.fab
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.util.*
 
 class HomeActivity : TabActivity() {
@@ -1078,6 +1091,20 @@ class HomeActivity : TabActivity() {
                     }
                 }
 
+                btnSend.setOnClickListener {
+                    val title = etTitle.text.toString()
+                    val message = etMessage.text.toString()
+                    val recipientToken = etToken.text.toString()
+                    if(title != "" && message != "" && recipientToken != "") {
+                        PushNotification(
+                            NotificationData(title, message),
+                            recipientToken
+                        )
+                        sendNotification(PushNotification(NotificationData(title, message),recipientToken))
+
+                    }
+                }
+
 
 
 
@@ -1161,5 +1188,18 @@ class HomeActivity : TabActivity() {
 //                    startActivity(intent)
 //                }
             }
+    }
+
+    fun sendNotification(notification: PushNotification) = CoroutineScope(Dispatchers.IO).launch {
+        try {
+            val response = RetrofitInstance.api.postNotification(notification)
+            if(response.isSuccessful) {
+                Log.d(TAG, "Response: ${Gson().toJson(response)}")
+            } else {
+                Log.e(TAG, response.errorBody().toString())
+            }
+        } catch(e: Exception) {
+            Log.e(TAG, e.toString())
+        }
     }
 }
