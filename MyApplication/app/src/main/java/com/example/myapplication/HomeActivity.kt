@@ -1003,10 +1003,8 @@ class HomeActivity : TabActivity() {
 
 
                 var mutableListMessage: MutableList<String> = mutableListOf("a")
-                var mutableListMessageUID: MutableList<String> = mutableListOf("a")
                 var mutableListMessageDEVICE: MutableList<String> = mutableListOf("a")
                 mutableListMessage.clear()
-                mutableListMessageUID.clear()
                 mutableListMessageDEVICE.clear()
 
                 db.collection("Chats").document(FamilyName.toString()).collection("FamilyMember")
@@ -1014,7 +1012,7 @@ class HomeActivity : TabActivity() {
                     .addOnSuccessListener { documents ->
                         for (document in documents) {
                             Log.d("FamilyMember", "${document.id}")
-                            mutableListMessageUID.add(document.id)
+//                            mutableListMessageUID.add(document.id)
                             // DEVICE
                             val docRef3 = db.collection("Member").document(document.id).collection("DEVICE").document("TOKEN")
                             docRef3.get()
@@ -1042,6 +1040,13 @@ class HomeActivity : TabActivity() {
                                         )
                                         mutableListMessage.add(docName.data?.get("name").toString())
 
+                                        var adapter: ArrayAdapter<String> = ArrayAdapter(
+                                            this,
+                                            android.R.layout.simple_spinner_dropdown_item,
+                                            mutableListMessage
+                                        )
+                                        spinner_message.adapter = adapter
+
                                     } else {
                                         Log.d(ContentValues.TAG, "No such document")
                                     }
@@ -1053,32 +1058,25 @@ class HomeActivity : TabActivity() {
 
                     }
 
-                var adapter: ArrayAdapter<String>
-                adapter = ArrayAdapter(
-                    this,
-                    android.R.layout.simple_spinner_dropdown_item,
-                    mutableListMessage
-                )
-                spinner_message.adapter = adapter
 
+                var spinnerUID: String = ""
+                spinner_message.setSelection(0, false)
+                spinner_message.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                    override fun onItemSelected(
+                        parent: AdapterView<*>?,
+                        view: View?,
+                        position: Int,
+                        id: Long
+                    ) {
+                        spinnerUID = mutableListMessageDEVICE[position].toString()
+                        etToken.setText(mutableListMessageDEVICE[position])
+                        Log.d("spinnerUID", spinnerUID)
+                    }
 
-//                spinner_message.setSelection(0, false)
-//                spinner_message.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-//                    override fun onItemSelected(
-//                        parent: AdapterView<*>?,
-//                        view: View?,
-//                        position: Int,
-//                        id: Long
-//                    ) {
-//
-//                        spinnerUID = mutableUIDList[position].toString()
-//                        Log.d("spinnerUID", spinnerUID)
-//                    }
-//
-//                    override fun onNothingSelected(parent: AdapterView<*>?) {
-//                        TODO("Not yet implemented")
-//                    }
-//                }
+                    override fun onNothingSelected(parent: AdapterView<*>?) {
+                        TODO("Not yet implemented")
+                    }
+                }
 
 
 
