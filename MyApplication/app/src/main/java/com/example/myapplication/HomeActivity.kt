@@ -1188,6 +1188,51 @@ class HomeActivity : TabActivity() {
 //                    startActivity(intent)
 //                }
             }
+
+        /********************앨범 album**********************/
+        var mutableAlbumList: MutableList<String> = mutableListOf("a")
+        mutableAlbumList.clear()
+        db.collection("Chats").document(FamilyName.toString()).collection("BOARD")
+            .get()
+            .addOnSuccessListener { documents ->
+                for (document_acc in documents) {
+                    document_acc.id.replace(FamilyName.toString(), "")
+                        .replace("_", "")
+                    var str = document_acc.id.split("년")
+                    mutableAlbumList.add(str[0])
+
+                }
+
+                var mutableYear = mutableAlbumList.distinct()     //중복 제거
+                Log.d("dddddddddd",mutableYear.toString())
+                for (i in 0..(mutableYear.size - 1)) { // 거꾸로
+
+                    val layoutInflater =
+                        this.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+                    val containView = layoutInflater.inflate(
+                        R.layout.activity_album_card,
+                        null
+                    )
+                    album_layout.addView(containView)
+
+                    val ContentView = containView as View
+                    var albumCardbtn = ContentView.findViewById(R.id.medicineImageView) as ImageView
+                    var albumCardtxt = ContentView.findViewById(R.id.info_text) as TextView
+                    var albumCardLayout = ContentView.findViewById(R.id.album_LinearLayout) as LinearLayout
+                    var account_uid: String = ""
+
+                    albumCardtxt.setText(mutableYear[i].toString())
+
+                    albumCardLayout?.setOnClickListener() { // 해당 년도로 이동
+                        val intent = Intent(application, AlbumActivity::class.java)
+                        intent.putExtra("FamilyName", FamilyName)
+                        intent.putExtra("albumYear", mutableYear[i])
+                        startActivity(intent)
+                    }
+
+                }
+
+            }
     }
 
     fun sendNotification(notification: PushNotification) = CoroutineScope(Dispatchers.IO).launch {

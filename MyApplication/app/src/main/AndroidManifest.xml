@@ -54,6 +54,7 @@
         <activity android:name=".Home_Board.BoardContentActivity"/>
         <activity android:name=".Notification.Notification" />
         <activity android:name=".FamilySet.MainActivity" />
+        <activity android:name=".AlbumActivity"></activity>
         <activity android:name=".FamilySet.FamilySettingActivity" />
         <activity android:name=".LoginRegister.SignUpActivity" />
         <activity android:name=".LoginRegister.LoginActivity">

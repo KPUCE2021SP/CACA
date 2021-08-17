@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="5dp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/album_LinearLayout">
+        <androidx.cardview.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/album_card_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            card_view:cardCornerRadius="4dp">
+
+            <ImageView
+                android:id="@+id/medicineImageView"
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:background="@drawable/roundback"
+                android:scaleType="centerCrop"
+                android:src="@drawable/sky" />
+
+            <TextView
+                android:id="@+id/info_text"
+                style="@style/nanumTextView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:text="0000년"
+                android:textColor="#d3d3d3"
+                android:textSize="30dp"
+                android:textStyle="bold|italic" />
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+
+
+</LinearLayout>
