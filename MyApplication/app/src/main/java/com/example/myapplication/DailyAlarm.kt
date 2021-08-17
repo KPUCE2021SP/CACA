@@ -80,7 +80,7 @@ class DailyAlarm : BroadcastReceiver() {
         val formatter = DateTimeFormatter.ofPattern("mm") // 정각마다 알람
         val formatted = current.format(formatter)
 
-        if(formatted == "00") {
+        if(formatted == "00" || formatted == "01" || formatted == "02" || formatted == "03" || formatted == "04" || formatted == "05" || formatted == "06" || formatted == "07"  || formatted == "08" || formatted == "09") {
             val builder = /////////////////////////////////////////////////////////////alarm
                 NotificationCompat.Builder(context, PRIMARY_CHANNEL_ID)
                     .setSmallIcon(R.drawable.familyship)
