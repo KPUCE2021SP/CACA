@@ -252,30 +252,6 @@ class MainActivity : AppCompatActivity() {
                 Log.w(TAG, "Error getting documents: ", exception)
             }
 
-
-
-
-
-
-
-
-        //test
-        //test
-        //test
-//        val intent = Intent(this, Notification::class.java)
-//        startActivity(intent)
-
-
-
-
-
-
-
-
-
-
-
-
     }
 
     @RequiresApi(Build.VERSION_CODES.M) ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
