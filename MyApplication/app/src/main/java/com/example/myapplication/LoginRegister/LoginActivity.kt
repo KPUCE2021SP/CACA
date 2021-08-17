@@ -11,7 +11,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.FamilySet.MainActivity
 import com.example.myapplication.R
-import com.example.myapplication.StartActivity
+import com.example.myapplication.FamilySet.StartActivity
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.loginactivity.*

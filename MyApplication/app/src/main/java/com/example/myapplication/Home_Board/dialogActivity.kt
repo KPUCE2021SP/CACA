@@ -1,4 +1,4 @@
-package com.example.myapplication
+package com.example.myapplication.Home_Board
 
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
@@ -13,10 +13,9 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.*
+import com.example.myapplication.R
 import kotlinx.android.synthetic.main.activity_dialog.*
 import kotlinx.android.synthetic.main.activity_home.*
-import java.util.regex.Pattern
-import kotlin.collections.ArrayList
 
 class dialogActivity : AppCompatActivity() {
     lateinit var btnCall : Button

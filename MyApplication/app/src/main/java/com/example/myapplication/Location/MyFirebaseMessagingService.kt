@@ -1,4 +1,4 @@
-package com.example.myapplication
+package com.example.myapplication.Location
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -10,6 +10,7 @@ import android.os.Build
 import android.util.Log
 import androidx.core.app.NotificationCompat
 import com.example.myapplication.FamilySet.MainActivity
+import com.example.myapplication.R
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 //import com.google.firebase.quickstart.fcm.R

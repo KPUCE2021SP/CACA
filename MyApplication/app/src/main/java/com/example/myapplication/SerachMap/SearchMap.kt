@@ -1,29 +1,19 @@
 package com.example.myapplication.SerachMap
 
 import android.Manifest
-import android.app.Activity
 import android.content.Context
-import android.content.Intent
-import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
-import android.content.pm.Signature
 import android.location.Location
 import android.location.LocationManager
 import android.os.Build
 import android.os.Bundle
-import android.util.Base64
 import android.util.Log
-import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.SearchView
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import com.example.myapplication.FamilySet.MainActivity
-import com.example.myapplication.HomeActivity
-import com.example.myapplication.Home_Board.BoardActivity
 import com.example.myapplication.R
 import com.example.myapplication.databinding.ActivityMainBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -36,14 +26,11 @@ import kotlinx.android.synthetic.main.board.*
 import net.daum.mf.map.api.MapPOIItem
 import net.daum.mf.map.api.MapPoint
 import net.daum.mf.map.api.MapView
-import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.security.MessageDigest
-import java.security.NoSuchAlgorithmException
 import java.util.*
 
 val PERMISSIONS_REQUEST_CODE = 100

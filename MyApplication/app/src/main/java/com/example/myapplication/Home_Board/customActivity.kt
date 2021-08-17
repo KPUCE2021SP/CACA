@@ -1,7 +1,6 @@
-package com.example.myapplication
+package com.example.myapplication.Home_Board
 
 import android.app.Activity
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.*
@@ -9,11 +8,8 @@ import kotlinx.android.synthetic.main.activity_custom.*
 import kotlinx.android.synthetic.main.activity_home.*
 import android.graphics.BitmapFactory
 
-import android.graphics.Bitmap
 import android.net.Uri
-import android.util.Log
-import androidx.core.content.ContextCompat
-import androidx.core.view.drawToBitmap
+import com.example.myapplication.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore

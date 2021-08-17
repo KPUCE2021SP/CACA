@@ -1,24 +1,17 @@
 package com.example.myapplication.CalendarKotlin
 
 import android.content.Intent
-import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.format.DateFormat
 import android.view.View
 import android.widget.Toast
-import com.example.myapplication.HomeActivity
+import com.example.myapplication.Home_Board.HomeActivity
 import com.example.myapplication.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import com.google.firebase.storage.FirebaseStorage
-import com.google.firebase.storage.StorageReference
-import io.realm.Realm
-import io.realm.RealmConfiguration
-import io.realm.kotlin.createObject
-import io.realm.kotlin.where
 import kotlinx.android.synthetic.main.activity_schedule_edit.*
 import kotlinx.android.synthetic.main.board.*
 import java.lang.IllegalArgumentException

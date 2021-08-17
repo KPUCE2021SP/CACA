@@ -1,7 +1,6 @@
-package com.example.myapplication
+package com.example.myapplication.Location
 ///////////////////////////////////////////////// 쓰는거 지우지마세요 (알람)
 import android.Manifest
-import android.app.AlarmManager
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
@@ -13,13 +12,11 @@ import android.graphics.Color
 import android.location.Location
 import android.location.LocationManager
 import android.os.Build
-import android.os.SystemClock
 import android.util.Log
-import android.widget.RadioGroup
-import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
 import com.example.myapplication.FamilySet.MainActivity
+import com.example.myapplication.R
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationCallback
 import com.google.android.gms.location.LocationServices
@@ -27,8 +24,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import com.gun0912.tedpermission.PermissionListener
-import com.gun0912.tedpermission.TedPermission
 import kotlinx.android.synthetic.main.activity_location.*
 import java.util.*
 

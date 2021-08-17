@@ -8,12 +8,10 @@ import android.app.PendingIntent.FLAG_ONE_SHOT
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import android.graphics.Color
 import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
-import com.example.myapplication.HomeActivity
-import com.example.myapplication.Home_Board.BoardActivity
+import com.example.myapplication.Home_Board.HomeActivity
 import com.example.myapplication.R
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage

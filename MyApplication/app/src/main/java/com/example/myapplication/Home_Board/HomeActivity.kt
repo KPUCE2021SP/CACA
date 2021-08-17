@@ -1,4 +1,4 @@
-package com.example.myapplication
+package com.example.myapplication.Home_Board
 
 
 import android.Manifest
@@ -7,7 +7,6 @@ import android.app.TabActivity
 import android.content.*
 import android.graphics.BitmapFactory
 import android.graphics.Color
-import android.media.Image
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -20,12 +19,8 @@ import android.view.animation.AnimationUtils
 import android.widget.*
 import androidx.core.view.isGone
 import com.example.myapplication.FamilySet.DynamicLinkActivity
-import com.example.myapplication.Home_Board.BoardActivity
-import com.example.myapplication.Home_Board.BoardContentActivity
 import com.example.myapplication.Mypage.MypageActivity
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -38,34 +33,25 @@ import kotlinx.android.synthetic.main.activity_account.*
 import kotlinx.android.synthetic.main.activity_account.view.*
 import kotlinx.android.synthetic.main.activity_custom.*
 import kotlinx.android.synthetic.main.activity_dynamic.*
-import kotlinx.coroutines.delay
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.*
 import android.content.Intent
 import android.provider.CallLog
 import android.text.format.DateFormat
-import androidx.appcompat.app.AppCompatActivity;
 import android.view.Menu
 import android.view.MenuItem
 import androidx.core.app.ActivityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.myapplication.AlarmReceiver.Companion.TAG
-import com.example.myapplication.CalendarKotlin.Schedule
-import com.example.myapplication.CalendarKotlin.ScheduleAdapter
+import com.example.myapplication.Location.AlarmReceiver.Companion.TAG
 import com.example.myapplication.CalendarKotlin.ScheduleEditActivity
 import com.example.myapplication.Notification.NotificationData
 import com.example.myapplication.Notification.PushNotification
 import com.example.myapplication.Notification.RetrofitInstance
 import com.example.myapplication.R
 import com.github.sundeepk.compactcalendarview.CompactCalendarView
-import com.github.sundeepk.compactcalendarview.domain.Event
 import com.google.gson.Gson
-import io.realm.Realm
-import io.realm.RealmConfiguration
-import io.realm.kotlin.where
 import kotlinx.android.synthetic.main.activity_dialog.*
-import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.activity_home.btnCall
 import kotlinx.android.synthetic.main.activity_home.btnSend
 import kotlinx.android.synthetic.main.activity_home.etMessage
@@ -82,7 +68,6 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
-import java.util.*
 
 class HomeActivity : TabActivity() {
     var mutableList: MutableList<String> = mutableListOf("a")
