@@ -20,6 +20,7 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
+import com.example.myapplication.DailyAlarm
 import com.example.myapplication.Location.AlarmReceiver
 //import com.example.myapplication.AppWidgetProvider
 import com.example.myapplication.Home_Board.HomeActivity
@@ -44,6 +45,8 @@ import kotlinx.android.synthetic.main.card_layout.*
 import kotlinx.android.synthetic.main.mypage_activity.*
 import kotlinx.android.synthetic.main.signuppage.*
 import org.jetbrains.anko.alarmManager
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 import java.util.*
 
 
@@ -302,15 +305,35 @@ class MainActivity : AppCompatActivity() {
                 Log.d(TAG, toastMessage)
                 Toast.makeText(this, toastMessage, Toast.LENGTH_SHORT).show()
 
+        })
+        // 주기적으로 알람/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
+        // 12시마다 알람 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+        val intent2 = Intent(this, DailyAlarm::class.java)
+        val pendingIntent2 = PendingIntent.getBroadcast(
+            this, DailyAlarm.NOTIFICATION_ID, intent2,
+            PendingIntent.FLAG_UPDATE_CURRENT)
+
+        toggleButton2.setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener { _, isChecked ->
+
+            val toastMessage: String = if (isChecked) {
+
+                val repeatInterval: Long = 1 * 1000
+                val triggerTime = (SystemClock.elapsedRealtime() + repeatInterval)
+                alarmManager.setRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP, triggerTime, repeatInterval, pendingIntent2)
+                "Exact periodic Alarm On"
+
+            } else {
+                alarmManager.cancel(pendingIntent2)
+                "Exact periodic Alarm Off"
+            }
+            Log.d(TAG, toastMessage)
+            Toast.makeText(this, toastMessage, Toast.LENGTH_SHORT).show()
 
         })
-
     }
-    // 주기적으로 알람/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 
 
 

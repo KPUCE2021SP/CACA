@@ -23,6 +23,8 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 class DailyAlarm : BroadcastReceiver() {
 
@@ -74,18 +76,23 @@ class DailyAlarm : BroadcastReceiver() {
             PendingIntent.FLAG_UPDATE_CURRENT
         )
 
+        val current = LocalDateTime.now()
+        val formatter = DateTimeFormatter.ofPattern("mm") // 정각마다 알람
+        val formatted = current.format(formatter)
 
-        val builder = /////////////////////////////////////////////////////////////alarm
-            NotificationCompat.Builder(context, PRIMARY_CHANNEL_ID)
-                .setSmallIcon(R.drawable.familyship)
-                .setContentTitle("누군가가 나의 위치 주변을 언급했어요")
-                .setContentText("어디 한 번 확인해 볼까요~~??")
-                .setContentIntent(contentPendingIntent)
-                .setPriority(NotificationCompat.PRIORITY_HIGH)
-                .setAutoCancel(true)
-                .setDefaults(NotificationCompat.DEFAULT_ALL)
+        if(formatted == "00") {
+            val builder = /////////////////////////////////////////////////////////////alarm
+                NotificationCompat.Builder(context, PRIMARY_CHANNEL_ID)
+                    .setSmallIcon(R.drawable.familyship)
+                    .setContentTitle("앗! 정각입니다요!!")
+                    .setContentText("알람이 있나 확인해 볼깝쇼?")
+                    .setContentIntent(contentPendingIntent)
+                    .setPriority(NotificationCompat.PRIORITY_HIGH)
+                    .setAutoCancel(true)
+                    .setDefaults(NotificationCompat.DEFAULT_ALL)
 
-        notificationManager.notify(NOTIFICATION_ID, builder.build())
+            notificationManager.notify(NOTIFICATION_ID, builder.build())
+        }
     }
 
 
