@@ -28,7 +28,7 @@
         <activity android:name=".AddAccount"></activity>
         <activity android:name=".CalendarKotlin.CalendarActivity"></activity>
         <activity android:name=".CalendarKotlin.ScheduleEditActivity"></activity>
-
+        <activity android:name=".dialogActivity"/>
 <!--        <receiver-->
 <!--            android:name=".AppWidgetProvider"-->
 <!--            android:exported="false">-->

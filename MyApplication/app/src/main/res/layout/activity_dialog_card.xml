@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/dialogLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="6dp"
+    android:background="@drawable/round_corner"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/callImageView"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_input_medicine" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="16dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/dialog_date"
+            style="@style/nanumTextView"
+            android:text="날짜z"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:textSize="14dp"></TextView>
+
+        <TextView
+            style="@style/nanumTextView"
+            android:text="구분z"
+            android:id="@+id/dialog_ss"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:layout_toRightOf="@+id/tv_number"
+            android:textSize="14dp"></TextView>
+
+        <TextView
+            style="@style/nanumTextView"
+            android:id="@+id/dialog_number"
+            android:text="전화번호z"
+           android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:layout_toRightOf="@+id/tv_number"
+            android:textSize="14dp"></TextView>
+
+        <TextView
+            android:text="통화시간z"
+            style="@style/nanumTextView"
+            android:id="@+id/dialog_long"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:layout_toRightOf="@+id/tv_number"
+            android:textSize="14dp"></TextView>
+    </LinearLayout>
+
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/tv_number"-->
+    <!--        android:layout_width="24dp"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_alignParentStart="true"-->
+    <!--        android:layout_alignParentTop="true"-->
+    <!--        android:textColor="#ff0000"-->
+    <!--        android:textSize="14dp"-->
+    <!--        android:layout_alignParentLeft="true">-->
+    <!--    </TextView>-->
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/tv_text"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginTop="3dp"-->
+    <!--        android:layout_toRightOf="@+id/tv_number"-->
+    <!--        android:textColor="#0000ff"-->
+    <!--        android:textSize="11dp">-->
+    <!--    </TextView>-->
+
+</LinearLayout>
