@@ -54,6 +54,7 @@
         <activity android:name=".FamilySet.MainActivity" />
         <activity android:name=".FamilySet.FamilySettingActivity" />
         <activity android:name=".customActivity"/>
+        <activity android:name=".todo2Activity"/>
         <activity android:name=".LoginRegister.SignUpActivity" />
         <activity android:name=".Mypage.MypageEditActivity" />
         <activity android:name=".Mypage.MypageActivity" />

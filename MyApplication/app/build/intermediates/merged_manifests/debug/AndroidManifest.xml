@@ -82,6 +82,7 @@
         <activity android:name="com.example.myapplication.FamilySet.MainActivity" />
         <activity android:name="com.example.myapplication.FamilySet.FamilySettingActivity" />
         <activity android:name="com.example.myapplication.customActivity" />
+        <activity android:name="com.example.myapplication.todo2Activity" />
         <activity android:name="com.example.myapplication.LoginRegister.SignUpActivity" />
         <activity android:name="com.example.myapplication.Mypage.MypageEditActivity" />
         <activity android:name="com.example.myapplication.Mypage.MypageActivity" />

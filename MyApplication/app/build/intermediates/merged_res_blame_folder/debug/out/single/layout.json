@@ -16,20 +16,8 @@
         "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\layout\\activity_insert_invite_code.xml"
     },
     {
-        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\notice_card.xml",
-        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\layout\\notice_card.xml"
-    },
-    {
-        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\app_widget.xml",
-        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\layout\\app_widget.xml"
-    },
-    {
         "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\signuppage.xml",
         "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\layout\\signuppage.xml"
-    },
-    {
-        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\notice.xml",
-        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\layout\\notice.xml"
     },
     {
         "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_main.xml",
@@ -38,10 +26,6 @@
     {
         "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\arrive.xml",
         "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\layout\\arrive.xml"
-    },
-    {
-        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\defaultcard_layout.xml",
-        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\layout\\defaultcard_layout.xml"
     },
     {
         "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\mypage_edit.xml",
@@ -56,28 +40,56 @@
         "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\layout\\loginactivity.xml"
     },
     {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\card_layout.xml",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\layout\\card_layout.xml"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_home.xml",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\layout\\activity_home.xml"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\notice_card.xml",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\layout\\notice_card.xml"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\app_widget.xml",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\layout\\app_widget.xml"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\notice.xml",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\layout\\notice.xml"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_todo.xml",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\layout\\activity_todo.xml"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\defaultcard_layout.xml",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\layout\\defaultcard_layout.xml"
+    },
+    {
         "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_dialog.xml",
         "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\layout\\activity_dialog.xml"
     },
     {
-        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\card_layout.xml",
-        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\layout\\card_layout.xml"
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_todo2.xml",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\layout\\activity_todo2.xml"
     },
     {
         "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_start.xml",
         "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\layout\\activity_start.xml"
     },
     {
-        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_search_map.xml",
-        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\layout\\activity_search_map.xml"
-    },
-    {
         "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\board.xml",
         "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\layout\\board.xml"
     },
     {
-        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_home.xml",
-        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\layout\\activity_home.xml"
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_search_map.xml",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\layout\\activity_search_map.xml"
+    },
+    {
+        "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_dialogcard.xml",
+        "source": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\src\\main\\res\\layout\\activity_dialogcard.xml"
     },
     {
         "merged": "C:\\Users\\Type\\Desktop\\CACA\\MyApplication\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\mypage_activity.xml",

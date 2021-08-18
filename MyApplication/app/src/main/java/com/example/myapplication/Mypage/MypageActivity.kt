@@ -357,7 +357,7 @@ class MypageActivity : AppCompatActivity() {
 
 
                 mMedicineImageView[layoutIdx] =
-                    mVContentView[layoutIdx]!!.findViewById(R.id.medicineImageView) as ImageView  // default image 지정
+                    mVContentView[layoutIdx]!!.findViewById(R.id.todoImageView) as ImageView  // default image 지정
                 mMedicineImageView[layoutIdx]!!.setImageResource(R.drawable.heart)
 
                 if (mTvContentNumber[layoutIdx]!!.text.contains("doctor")) { // text에 따라서 imageView 바꾸기

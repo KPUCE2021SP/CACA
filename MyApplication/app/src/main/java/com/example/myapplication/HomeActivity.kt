@@ -10,6 +10,7 @@ import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.util.TypedValue
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.animation.AnimationUtils
@@ -17,6 +18,7 @@ import android.widget.*
 import com.example.myapplication.FamilySet.DynamicLinkActivity
 import com.example.myapplication.Home_Board.BoardActivity
 import com.example.myapplication.Mypage.MypageActivity
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
@@ -24,6 +26,10 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 import kotlinx.android.synthetic.main.activity_home.*
 import java.util.*
+import android.widget.LinearLayout
+
+
+
 
 
 class HomeActivity : TabActivity() {
@@ -131,6 +137,39 @@ class HomeActivity : TabActivity() {
             val intent = Intent(this, customActivity::class.java)
             startActivity(intent)
         })
+
+        /*공동할일 왼손 오른손 토글버튼*/
+        val righthanded: (LinearLayout) = findViewById(R.id.righthanded);
+        val lefthanded: (LinearLayout) = findViewById(R.id.lefthanded);
+        val addtodoleft: (FloatingActionButton) = findViewById(R.id.addtodoleft);
+        val addtodoright: (FloatingActionButton) = findViewById(R.id.addtodoright);
+
+        toggleBtnrightleft?.setOnCheckedChangeListener { buttonView, isChecked ->
+            if (isChecked) {
+                lefthanded.setVisibility(View.VISIBLE)
+                righthanded.setVisibility(View.GONE)
+                addtodoleft.setVisibility(View.VISIBLE)
+                addtodoright.setVisibility(View.GONE)
+            } else {
+                lefthanded.setVisibility(View.GONE)
+                righthanded.setVisibility(View.VISIBLE)
+                addtodoleft.setVisibility(View.GONE)
+                addtodoright.setVisibility(View.VISIBLE)
+            }
+        }
+
+        /*공동할일 플러스 버튼 누르면*/
+
+        addtodoright.setOnClickListener({
+            val intent = Intent(this, todo2Activity::class.java)
+            startActivity(intent)
+        })
+        addtodoleft.setOnClickListener({
+            val intent = Intent(this, todo2Activity::class.java)
+            startActivity(intent)
+        })
+
+
 
 
         btnMyPage.setOnClickListener {

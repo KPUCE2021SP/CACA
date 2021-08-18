@@ -23,7 +23,7 @@ public final class MypageContentBinding implements ViewBinding {
   public final LinearLayout allLayout;
 
   @NonNull
-  public final ImageView medicineImageView;
+  public final ImageView todoImageView;
 
   @NonNull
   public final TextView tvNumber;
@@ -32,10 +32,10 @@ public final class MypageContentBinding implements ViewBinding {
   public final TextView tvText;
 
   private MypageContentBinding(@NonNull LinearLayout rootView, @NonNull LinearLayout allLayout,
-      @NonNull ImageView medicineImageView, @NonNull TextView tvNumber, @NonNull TextView tvText) {
+      @NonNull ImageView todoImageView, @NonNull TextView tvNumber, @NonNull TextView tvText) {
     this.rootView = rootView;
     this.allLayout = allLayout;
-    this.medicineImageView = medicineImageView;
+    this.todoImageView = todoImageView;
     this.tvNumber = tvNumber;
     this.tvText = tvText;
   }
@@ -69,9 +69,9 @@ public final class MypageContentBinding implements ViewBinding {
     missingId: {
       LinearLayout allLayout = (LinearLayout) rootView;
 
-      id = R.id.medicineImageView;
-      ImageView medicineImageView = rootView.findViewById(id);
-      if (medicineImageView == null) {
+      id = R.id.todoImageView;
+      ImageView todoImageView = rootView.findViewById(id);
+      if (todoImageView == null) {
         break missingId;
       }
 
@@ -87,8 +87,8 @@ public final class MypageContentBinding implements ViewBinding {
         break missingId;
       }
 
-      return new MypageContentBinding((LinearLayout) rootView, allLayout, medicineImageView,
-          tvNumber, tvText);
+      return new MypageContentBinding((LinearLayout) rootView, allLayout, todoImageView, tvNumber,
+          tvText);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

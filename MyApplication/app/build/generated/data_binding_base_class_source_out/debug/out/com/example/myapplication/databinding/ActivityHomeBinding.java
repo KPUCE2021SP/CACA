@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
@@ -13,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.TabHost;
 import android.widget.TabWidget;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
@@ -20,6 +22,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.viewbinding.ViewBinding;
 import com.example.myapplication.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
@@ -54,6 +57,15 @@ public final class ActivityHomeBinding implements ViewBinding {
 
   @NonNull
   public final LinearLayout LinearMainpage;
+
+  @NonNull
+  public final LinearLayout addtodoLayout;
+
+  @NonNull
+  public final FloatingActionButton addtodoleft;
+
+  @NonNull
+  public final FloatingActionButton addtodoright;
 
   @NonNull
   public final FrameLayout body;
@@ -96,6 +108,12 @@ public final class ActivityHomeBinding implements ViewBinding {
 
   @NonNull
   public final CardView cardView;
+
+  @NonNull
+  public final CheckBox checkedTextView1;
+
+  @NonNull
+  public final CheckBox checkedTextView2;
 
   @NonNull
   public final TextView customCharacter;
@@ -161,13 +179,16 @@ public final class ActivityHomeBinding implements ViewBinding {
   public final LinearLayout layoutInput8;
 
   @NonNull
+  public final LinearLayout lefthanded;
+
+  @NonNull
   public final LinearLayout linearLayout;
 
   @NonNull
   public final LinearLayout linearLayout1;
 
   @NonNull
-  public final ImageView medicineImageView;
+  public final LinearLayout righthanded;
 
   @NonNull
   public final RecyclerView rvMain;
@@ -205,30 +226,40 @@ public final class ActivityHomeBinding implements ViewBinding {
   @NonNull
   public final TextView textTitle;
 
+  @NonNull
+  public final ImageView todoImageView;
+
+  @NonNull
+  public final ToggleButton toggleBtnrightleft;
+
   private ActivityHomeBinding(@NonNull TabHost rootView, @NonNull LinearLayout BoardLinearLayout,
       @NonNull Button BoardPlusButton, @NonNull TextView FamilyNameTextView,
       @NonNull LinearLayout LinearMain1, @NonNull LinearLayout LinearMain2,
       @NonNull LinearLayout LinearMain3, @NonNull LinearLayout LinearMain4,
       @NonNull LinearLayout LinearMain5, @NonNull LinearLayout LinearMainpage,
-      @NonNull FrameLayout body, @NonNull Button btnAdd, @NonNull Button btnDelete,
-      @NonNull Button btnFamilycustom, @NonNull ImageButton btnGroup, @NonNull Button btnMain1,
-      @NonNull Button btnMain2, @NonNull Button btnMain3, @NonNull Button btnMain4,
-      @NonNull Button btnMain5, @NonNull ImageButton btnMyPage, @NonNull ImageView btnOnePick,
-      @NonNull ImageView btnPick, @NonNull CardView cardView, @NonNull TextView customCharacter,
-      @NonNull FrameLayout deco, @NonNull EditText editInput1, @NonNull EditText editInput2,
-      @NonNull EditText editInput3, @NonNull EditText editInput4, @NonNull EditText editInput5,
-      @NonNull EditText editInput6, @NonNull EditText editInput7, @NonNull EditText editInput8,
-      @NonNull FrameLayout face, @NonNull ImageView imageView1, @NonNull ImageView imageView2,
-      @NonNull ImageView img, @NonNull TextView infoText, @NonNull LinearLayout layoutInput3,
-      @NonNull LinearLayout layoutInput4, @NonNull LinearLayout layoutInput5,
-      @NonNull LinearLayout layoutInput6, @NonNull LinearLayout layoutInput7,
-      @NonNull LinearLayout layoutInput8, @NonNull LinearLayout linearLayout,
-      @NonNull LinearLayout linearLayout1, @NonNull ImageView medicineImageView,
+      @NonNull LinearLayout addtodoLayout, @NonNull FloatingActionButton addtodoleft,
+      @NonNull FloatingActionButton addtodoright, @NonNull FrameLayout body, @NonNull Button btnAdd,
+      @NonNull Button btnDelete, @NonNull Button btnFamilycustom, @NonNull ImageButton btnGroup,
+      @NonNull Button btnMain1, @NonNull Button btnMain2, @NonNull Button btnMain3,
+      @NonNull Button btnMain4, @NonNull Button btnMain5, @NonNull ImageButton btnMyPage,
+      @NonNull ImageView btnOnePick, @NonNull ImageView btnPick, @NonNull CardView cardView,
+      @NonNull CheckBox checkedTextView1, @NonNull CheckBox checkedTextView2,
+      @NonNull TextView customCharacter, @NonNull FrameLayout deco, @NonNull EditText editInput1,
+      @NonNull EditText editInput2, @NonNull EditText editInput3, @NonNull EditText editInput4,
+      @NonNull EditText editInput5, @NonNull EditText editInput6, @NonNull EditText editInput7,
+      @NonNull EditText editInput8, @NonNull FrameLayout face, @NonNull ImageView imageView1,
+      @NonNull ImageView imageView2, @NonNull ImageView img, @NonNull TextView infoText,
+      @NonNull LinearLayout layoutInput3, @NonNull LinearLayout layoutInput4,
+      @NonNull LinearLayout layoutInput5, @NonNull LinearLayout layoutInput6,
+      @NonNull LinearLayout layoutInput7, @NonNull LinearLayout layoutInput8,
+      @NonNull LinearLayout lefthanded, @NonNull LinearLayout linearLayout,
+      @NonNull LinearLayout linearLayout1, @NonNull LinearLayout righthanded,
       @NonNull RecyclerView rvMain, @NonNull SwipeRefreshLayout srlMainpage,
       @NonNull LinearLayout tabAlbum, @NonNull LinearLayout tabBoard,
       @NonNull LinearLayout tabCalendar, @NonNull LinearLayout tabHome,
       @NonNull FrameLayout tabcontent, @NonNull TabHost tabhost, @NonNull TabWidget tabs,
-      @NonNull TextView textArtist, @NonNull TextView textResult, @NonNull TextView textTitle) {
+      @NonNull TextView textArtist, @NonNull TextView textResult, @NonNull TextView textTitle,
+      @NonNull ImageView todoImageView, @NonNull ToggleButton toggleBtnrightleft) {
     this.rootView = rootView;
     this.BoardLinearLayout = BoardLinearLayout;
     this.BoardPlusButton = BoardPlusButton;
@@ -239,6 +270,9 @@ public final class ActivityHomeBinding implements ViewBinding {
     this.LinearMain4 = LinearMain4;
     this.LinearMain5 = LinearMain5;
     this.LinearMainpage = LinearMainpage;
+    this.addtodoLayout = addtodoLayout;
+    this.addtodoleft = addtodoleft;
+    this.addtodoright = addtodoright;
     this.body = body;
     this.btnAdd = btnAdd;
     this.btnDelete = btnDelete;
@@ -253,6 +287,8 @@ public final class ActivityHomeBinding implements ViewBinding {
     this.btnOnePick = btnOnePick;
     this.btnPick = btnPick;
     this.cardView = cardView;
+    this.checkedTextView1 = checkedTextView1;
+    this.checkedTextView2 = checkedTextView2;
     this.customCharacter = customCharacter;
     this.deco = deco;
     this.editInput1 = editInput1;
@@ -274,9 +310,10 @@ public final class ActivityHomeBinding implements ViewBinding {
     this.layoutInput6 = layoutInput6;
     this.layoutInput7 = layoutInput7;
     this.layoutInput8 = layoutInput8;
+    this.lefthanded = lefthanded;
     this.linearLayout = linearLayout;
     this.linearLayout1 = linearLayout1;
-    this.medicineImageView = medicineImageView;
+    this.righthanded = righthanded;
     this.rvMain = rvMain;
     this.srlMainpage = srlMainpage;
     this.tabAlbum = tabAlbum;
@@ -289,6 +326,8 @@ public final class ActivityHomeBinding implements ViewBinding {
     this.textArtist = textArtist;
     this.textResult = textResult;
     this.textTitle = textTitle;
+    this.todoImageView = todoImageView;
+    this.toggleBtnrightleft = toggleBtnrightleft;
   }
 
   @Override
@@ -369,6 +408,24 @@ public final class ActivityHomeBinding implements ViewBinding {
       id = R.id.LinearMainpage;
       LinearLayout LinearMainpage = rootView.findViewById(id);
       if (LinearMainpage == null) {
+        break missingId;
+      }
+
+      id = R.id.addtodoLayout;
+      LinearLayout addtodoLayout = rootView.findViewById(id);
+      if (addtodoLayout == null) {
+        break missingId;
+      }
+
+      id = R.id.addtodoleft;
+      FloatingActionButton addtodoleft = rootView.findViewById(id);
+      if (addtodoleft == null) {
+        break missingId;
+      }
+
+      id = R.id.addtodoright;
+      FloatingActionButton addtodoright = rootView.findViewById(id);
+      if (addtodoright == null) {
         break missingId;
       }
 
@@ -453,6 +510,18 @@ public final class ActivityHomeBinding implements ViewBinding {
       id = R.id.card_view;
       CardView cardView = rootView.findViewById(id);
       if (cardView == null) {
+        break missingId;
+      }
+
+      id = R.id.checkedTextView1;
+      CheckBox checkedTextView1 = rootView.findViewById(id);
+      if (checkedTextView1 == null) {
+        break missingId;
+      }
+
+      id = R.id.checkedTextView2;
+      CheckBox checkedTextView2 = rootView.findViewById(id);
+      if (checkedTextView2 == null) {
         break missingId;
       }
 
@@ -582,6 +651,12 @@ public final class ActivityHomeBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.lefthanded;
+      LinearLayout lefthanded = rootView.findViewById(id);
+      if (lefthanded == null) {
+        break missingId;
+      }
+
       id = R.id.linearLayout;
       LinearLayout linearLayout = rootView.findViewById(id);
       if (linearLayout == null) {
@@ -594,9 +669,9 @@ public final class ActivityHomeBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.medicineImageView;
-      ImageView medicineImageView = rootView.findViewById(id);
-      if (medicineImageView == null) {
+      id = R.id.righthanded;
+      LinearLayout righthanded = rootView.findViewById(id);
+      if (righthanded == null) {
         break missingId;
       }
 
@@ -668,15 +743,29 @@ public final class ActivityHomeBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.todoImageView;
+      ImageView todoImageView = rootView.findViewById(id);
+      if (todoImageView == null) {
+        break missingId;
+      }
+
+      id = R.id.toggleBtnrightleft;
+      ToggleButton toggleBtnrightleft = rootView.findViewById(id);
+      if (toggleBtnrightleft == null) {
+        break missingId;
+      }
+
       return new ActivityHomeBinding((TabHost) rootView, BoardLinearLayout, BoardPlusButton,
           FamilyNameTextView, LinearMain1, LinearMain2, LinearMain3, LinearMain4, LinearMain5,
-          LinearMainpage, body, btnAdd, btnDelete, btnFamilycustom, btnGroup, btnMain1, btnMain2,
-          btnMain3, btnMain4, btnMain5, btnMyPage, btnOnePick, btnPick, cardView, customCharacter,
-          deco, editInput1, editInput2, editInput3, editInput4, editInput5, editInput6, editInput7,
+          LinearMainpage, addtodoLayout, addtodoleft, addtodoright, body, btnAdd, btnDelete,
+          btnFamilycustom, btnGroup, btnMain1, btnMain2, btnMain3, btnMain4, btnMain5, btnMyPage,
+          btnOnePick, btnPick, cardView, checkedTextView1, checkedTextView2, customCharacter, deco,
+          editInput1, editInput2, editInput3, editInput4, editInput5, editInput6, editInput7,
           editInput8, face, imageView1, imageView2, img, infoText, layoutInput3, layoutInput4,
-          layoutInput5, layoutInput6, layoutInput7, layoutInput8, linearLayout, linearLayout1,
-          medicineImageView, rvMain, srlMainpage, tabAlbum, tabBoard, tabCalendar, tabHome,
-          tabcontent, tabhost, tabs, textArtist, textResult, textTitle);
+          layoutInput5, layoutInput6, layoutInput7, layoutInput8, lefthanded, linearLayout,
+          linearLayout1, righthanded, rvMain, srlMainpage, tabAlbum, tabBoard, tabCalendar, tabHome,
+          tabcontent, tabhost, tabs, textArtist, textResult, textTitle, todoImageView,
+          toggleBtnrightleft);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

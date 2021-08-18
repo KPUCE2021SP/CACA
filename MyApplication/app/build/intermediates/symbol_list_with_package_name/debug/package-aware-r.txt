@@ -2037,6 +2037,9 @@ id action_text
 id actions
 id activity_chooser_view_content
 id add
+id addtodoLayout
+id addtodoleft
+id addtodoright
 id adjust_height
 id adjust_width
 id alertTitle
@@ -2121,6 +2124,8 @@ id chain
 id chains
 id checkbox
 id checked
+id checkedTextView1
+id checkedTextView2
 id chip
 id chip1
 id chip2
@@ -2250,6 +2255,7 @@ id imageView9
 id image_content_root
 id image_root
 id image_view
+id imageview_profile
 id img
 id info
 id info_text
@@ -2279,6 +2285,7 @@ id layout_input7
 id layout_input8
 id left
 id leftToRight
+id lefthanded
 id light
 id line1
 id line3
@@ -2317,7 +2324,6 @@ id material_timepicker_ok_button
 id material_timepicker_view
 id material_value_index
 id media_actions
-id medicineImageView
 id message
 id message_body
 id message_title
@@ -2414,6 +2420,7 @@ id right
 id rightToLeft
 id right_icon
 id right_side
+id righthanded
 id rounded
 id row_index_key
 id rv_main
@@ -2523,6 +2530,8 @@ id textView3
 id textView4
 id textView5
 id textViewName
+id textView_name
+id textView_phonenum
 id text_input_end_icon
 id text_input_error_icon
 id text_input_start_icon
@@ -2537,7 +2546,10 @@ id time
 id title
 id titleDividerNoCustom
 id title_template
+id todoImageView
+id todoTextView1
 id toggle
+id toggleBtnrightleft
 id top
 id topPanel
 id touch_outside
@@ -2640,6 +2652,7 @@ layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_custom
 layout activity_dialog
+layout activity_dialogcard
 layout activity_dynamic
 layout activity_familysetting
 layout activity_home
@@ -2647,6 +2660,8 @@ layout activity_insert_invite_code
 layout activity_main
 layout activity_search_map
 layout activity_start
+layout activity_todo
+layout activity_todo2
 layout app_widget
 layout arrive
 layout banner
