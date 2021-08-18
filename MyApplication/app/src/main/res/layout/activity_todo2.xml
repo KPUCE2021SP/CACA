@@ -10,7 +10,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="6dp"
-    android:background="@drawable/round_corner"
     android:orientation="horizontal">
 
     <LinearLayout
@@ -34,15 +33,24 @@
         android:layout_marginLeft="16dp"
         android:orientation="vertical">
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/todoTitle"
+            android:text="항목 추가"
+            android:textSize="18dp"
+            style="@style/nanumTextView"
+            android:textStyle="bold"/>
+
         <EditText
-            android:id="@+id/todoTextView1"
+            android:id="@+id/todoEdit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:textColor="#ff0000"
             android:hint="할 일 쓰기"
+            style="@style/nanumTextView"
             android:textSize="14dp"></EditText>
     </LinearLayout>
 </LinearLayout>

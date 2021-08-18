@@ -613,35 +613,37 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="vertical">
-                            <LinearLayout
-                                android:id="@+id/righthanded"
-                                android:layout_width="match_parent"
-                                android:layout_height="80dp"
-                                android:background="@drawable/round_corner"
-                                android:gravity="center_vertical"
-                                android:visibility="visible"
-                                android:layout_gravity="center_vertical">
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="할 일"
-                                    android:textStyle="bold"/>
-                                <View
-                                    android:layout_width="0dp"
-                                    android:layout_height="0dp"
-                                    android:layout_weight="1" />
 
-                                <CheckBox
-                                    android:id="@+id/checkedTextView1"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="right|center_vertical"
-                                    android:checkMark="?android:attr/listChoiceIndicatorMultiple"
-                                    android:checked="false"
-                                    android:clickable="true"
-                                    android:text="" />
+                            ////// righthanded
+<!--                            <LinearLayout-->
+<!--                                android:id="@+id/righthanded"-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="80dp"-->
+<!--                                android:background="@drawable/round_corner"-->
+<!--                                android:gravity="center_vertical"-->
+<!--                                android:visibility="visible"-->
+<!--                                android:layout_gravity="center_vertical">-->
+<!--                                <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:text="할 일"-->
+<!--                                    android:textStyle="bold"/>-->
+<!--                                <View-->
+<!--                                    android:layout_width="0dp"-->
+<!--                                    android:layout_height="0dp"-->
+<!--                                    android:layout_weight="1" />-->
 
-                            </LinearLayout>
+<!--                                <CheckBox-->
+<!--                                    android:id="@+id/checkedTextView1"-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_gravity="right|center_vertical"-->
+<!--                                    android:checkMark="?android:attr/listChoiceIndicatorMultiple"-->
+<!--                                    android:checked="false"-->
+<!--                                    android:clickable="true"-->
+<!--                                    android:text="" />-->
+
+<!--                            </LinearLayout>-->
 
                             <!--왼손잡이용 할일 카드-->
                             <LinearLayout

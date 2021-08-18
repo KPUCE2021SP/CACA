@@ -66,6 +66,7 @@ import kotlinx.android.synthetic.main.activity_schedule_content.*
 import kotlinx.android.synthetic.main.activity_schedule_edit.*
 import kotlinx.android.synthetic.main.activity_schedule_main.*
 import kotlinx.android.synthetic.main.activity_schedule_main.fab
+import kotlinx.android.synthetic.main.todo_right.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -482,20 +483,20 @@ class HomeActivity : TabActivity() {
             }
 
         /*공동할일 왼손 오른손 토글버튼*/
-        val righthanded: (LinearLayout) = findViewById(R.id.righthanded);
-        val lefthanded: (LinearLayout) = findViewById(R.id.lefthanded);
-        val addtodoleft: (FloatingActionButton) = findViewById(R.id.addtodoleft);
-        val addtodoright: (FloatingActionButton) = findViewById(R.id.addtodoright);
+//        val righthanded: (LinearLayout) = findViewById(R.id.righthanded);
+//        val lefthanded: (LinearLayout) = findViewById(R.id.lefthanded);
+//        val addtodoleft: (FloatingActionButton) = findViewById(R.id.addtodoleft);
+//        val addtodoright: (FloatingActionButton) = findViewById(R.id.addtodoright);
 
         toggleBtnrightleft?.setOnCheckedChangeListener { buttonView, isChecked ->
             if (isChecked) {
                 lefthanded.setVisibility(View.VISIBLE)
-                righthanded.setVisibility(View.GONE)
+//                righthanded.setVisibility(View.GONE)
                 addtodoleft.setVisibility(View.VISIBLE)
                 addtodoright.setVisibility(View.GONE)
             } else {
                 lefthanded.setVisibility(View.GONE)
-                righthanded.setVisibility(View.VISIBLE)
+//                righthanded.setVisibility(View.VISIBLE)
                 addtodoleft.setVisibility(View.GONE)
                 addtodoright.setVisibility(View.VISIBLE)
             }
@@ -503,11 +504,48 @@ class HomeActivity : TabActivity() {
 
         /*공동할일 플러스 버튼 누르면*/
 
-        addtodoright.setOnClickListener {
-            val intent1 = Intent(this, todo2Activity::class.java)
-            startActivity(intent1)
+//        addtodoright.setOnClickListener {
+//            val intent1 = Intent(this, todo2Activity::class.java)
+//            startActivity(intent1)
+//        }
+
+        addtodoright.setOnClickListener { // 수정 & 추가 dialog
+            val builder = AlertDialog.Builder(this)
+            val dialogView = layoutInflater.inflate(R.layout.activity_todo2, null)
+//            val dialogText_title = dialogView.findViewById<EditText>(R.id.list_which)
+            val Todo_title = dialogView.findViewById<EditText>(R.id.todoEdit)
+            var TodoBoolean = false
+
+            builder.setView(dialogView)
+                .setPositiveButton("확인") { dialogInterface, i ->
+                    var fbAuth = FirebaseAuth.getInstance()
+                    //firestore에 넣기
+                    val db: FirebaseFirestore = Firebase.firestore
+//                    var uid = fbAuth?.uid.toString()
+//                    var map = mutableMapOf<String, Any>()
+//                    map[Todo_title.text.toString()] = Todo_title.text.toString()
+//                    Log.d("map",map.toString())
+
+                    val TodoContent = hashMapOf(
+                        "title" to Todo_title.text.toString(),
+                        "check" to TodoBoolean,
+                    )
+
+                    db.collection("Chats").document(FamilyName.toString()).collection("TODO").add(TodoContent)
+//                        .document("title").set(TodoContent)
+                        .addOnCompleteListener {
+                            if (it.isSuccessful) {
+                                Toast.makeText(applicationContext, "할일 추가 완료", Toast.LENGTH_SHORT)
+                                    .show()
+                            }
+                        }
+                }
+                .setNegativeButton("취소") { dialogInterface, i ->
+                    /* 취소일 때 아무 액션이 없으므로 빈칸 */
+                }
+                .show()
         }
-        
+
         addtodoleft.setOnClickListener {
             val intent1 = Intent(this, todo2Activity::class.java)
             startActivity(intent1)
