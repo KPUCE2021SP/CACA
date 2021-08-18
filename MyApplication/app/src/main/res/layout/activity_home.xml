@@ -587,21 +587,126 @@
                         </LinearLayout>
                     </ScrollView>
                 </LinearLayout>
-                <!--                -->
+                <!--       공동할일         -->
                 <LinearLayout
-                    android:visibility="gone"
+                    android:visibility="visible"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:id="@+id/LinearMain4"
                     android:orientation="vertical">
-                    <TextView
-                        style="@style/nanumTextView"
+                    <ToggleButton
+                        android:id="@+id/toggleBtnrightleft"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="공동할일 페이지"
-                        android:textSize="30dp"
-                        android:textStyle="bold"/>
+                        android:layout_gravity="center"
+                        android:backgroundTint="#FCBF48"
+                        android:checked="false"
+                        android:textColor="@color/white"
+                        android:textOff="오른손잡이용 화면"
+                        android:textOn="왼손잡이용 화면" />
+
+                    <ScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                            <LinearLayout
+                                android:id="@+id/righthanded"
+                                android:layout_width="match_parent"
+                                android:layout_height="80dp"
+                                android:background="@drawable/round_corner"
+                                android:gravity="center_vertical"
+                                android:visibility="visible"
+                                android:layout_gravity="center_vertical">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="할 일"
+                                    android:textStyle="bold"/>
+                                <View
+                                    android:layout_width="0dp"
+                                    android:layout_height="0dp"
+                                    android:layout_weight="1" />
+
+                                <CheckBox
+                                    android:id="@+id/checkedTextView1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="right|center_vertical"
+                                    android:checkMark="?android:attr/listChoiceIndicatorMultiple"
+                                    android:checked="false"
+                                    android:clickable="true"
+                                    android:text="" />
+
+                            </LinearLayout>
+
+                            <!--왼손잡이용 할일 카드-->
+                            <LinearLayout
+                                android:id="@+id/lefthanded"
+                                android:layout_width="match_parent"
+                                android:layout_height="80dp"
+                                android:background="@drawable/round_corner"
+                                android:gravity="center_vertical"
+                                android:visibility="invisible"
+                                android:orientation="horizontal">
+
+                                <CheckBox
+                                    android:id="@+id/checkedTextView2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:checkMark="?android:attr/listChoiceIndicatorMultiple"
+                                    android:checked="false"
+                                    android:clickable="true"
+                                    android:text="" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text=" 할 일"
+                                    android:textStyle="bold"/>
+
+                            </LinearLayout>
+                        </LinearLayout>
+                    </ScrollView>
+                    <LinearLayout
+                        android:id="@+id/addtodoLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <!--왼손용-->
+                        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                            android:id="@+id/addtodoleft"
+                            android:visibility="gone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom|left"
+                            android:layout_margin="10dp"
+                            android:clickable="true"
+                            android:backgroundTint="#FCBF48"
+                            android:src="@drawable/ic_baseline_add_24"
+                            tools:ignore="VectorDrawableCompat" />
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_weight="1" />
+
+                        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                            android:id="@+id/addtodoright"
+                            android:visibility="visible"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:clickable="true"
+                            android:backgroundTint="#FCBF48"
+                            android:src="@drawable/ic_baseline_add_24"
+                            tools:ignore="VectorDrawableCompat" />
+
+
+                    </LinearLayout>
+
                 </LinearLayout>
                 <!--                -->
                 <LinearLayout

@@ -49,7 +49,9 @@ import com.example.myapplication.Notification.NotificationData
 import com.example.myapplication.Notification.PushNotification
 import com.example.myapplication.Notification.RetrofitInstance
 import com.example.myapplication.R
+import com.example.myapplication.todo2Activity
 import com.github.sundeepk.compactcalendarview.CompactCalendarView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_dialog.*
 import kotlinx.android.synthetic.main.activity_home.btnCall
@@ -478,6 +480,38 @@ class HomeActivity : TabActivity() {
                     }
                 }
             }
+
+        /*공동할일 왼손 오른손 토글버튼*/
+        val righthanded: (LinearLayout) = findViewById(R.id.righthanded);
+        val lefthanded: (LinearLayout) = findViewById(R.id.lefthanded);
+        val addtodoleft: (FloatingActionButton) = findViewById(R.id.addtodoleft);
+        val addtodoright: (FloatingActionButton) = findViewById(R.id.addtodoright);
+
+        toggleBtnrightleft?.setOnCheckedChangeListener { buttonView, isChecked ->
+            if (isChecked) {
+                lefthanded.setVisibility(View.VISIBLE)
+                righthanded.setVisibility(View.GONE)
+                addtodoleft.setVisibility(View.VISIBLE)
+                addtodoright.setVisibility(View.GONE)
+            } else {
+                lefthanded.setVisibility(View.GONE)
+                righthanded.setVisibility(View.VISIBLE)
+                addtodoleft.setVisibility(View.GONE)
+                addtodoright.setVisibility(View.VISIBLE)
+            }
+        }
+
+        /*공동할일 플러스 버튼 누르면*/
+
+        addtodoright.setOnClickListener {
+            val intent1 = Intent(this, todo2Activity::class.java)
+            startActivity(intent1)
+        }
+        
+        addtodoleft.setOnClickListener {
+            val intent1 = Intent(this, todo2Activity::class.java)
+            startActivity(intent1)
+        }
 
 
 

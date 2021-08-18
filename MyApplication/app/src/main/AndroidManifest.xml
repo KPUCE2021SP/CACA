@@ -46,6 +46,7 @@
         </receiver>
 
         <activity android:name=".SerachMap.SearchMapContent" />
+        <activity android:name=".todo2Activity"/>
 
         <meta-data
             android:name="com.kakao.sdk.AppKey"
