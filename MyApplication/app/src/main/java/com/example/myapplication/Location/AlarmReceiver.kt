@@ -90,19 +90,19 @@ class AlarmReceiver : BroadcastReceiver() {
 
 
 
-//        if(formatted != "") { // 복구 예정
-//            val builder = /////////////////////////////////////////////////////////////alarm
-//                    NotificationCompat.Builder(context, DailyAlarm.PRIMARY_CHANNEL_ID)
-//                            .setSmallIcon(R.drawable.familyship)
-//                            .setContentTitle("앗! 정각입니다요!!")
-//                            .setContentText("${formatted}")
-//                            .setContentIntent(contentPendingIntent)
-//                            .setPriority(NotificationCompat.PRIORITY_HIGH)
-//                            .setAutoCancel(true)
-//                            .setDefaults(NotificationCompat.DEFAULT_ALL)
-//
-//            notificationManager.notify(DailyAlarm.NOTIFICATION_ID, builder.build())
-//        }
+        if(formatted != "") { // 복구 예정
+            val builder = /////////////////////////////////////////////////////////////alarm
+                    NotificationCompat.Builder(context, DailyAlarm.PRIMARY_CHANNEL_ID)
+                            .setSmallIcon(R.drawable.familyship)
+                            .setContentTitle("앗! 정각입니다요!!")
+                            .setContentText("${formatted}")
+                            .setContentIntent(contentPendingIntent)
+                            .setPriority(NotificationCompat.PRIORITY_HIGH)
+                            .setAutoCancel(true)
+                            .setDefaults(NotificationCompat.DEFAULT_ALL)
+
+            notificationManager.notify(DailyAlarm.NOTIFICATION_ID, builder.build())
+        }
 
 
 
