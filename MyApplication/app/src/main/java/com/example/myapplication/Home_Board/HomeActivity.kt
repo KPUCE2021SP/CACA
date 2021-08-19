@@ -43,6 +43,8 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.core.app.ActivityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.myapplication.CalendarKotlin.Schedule
+import com.example.myapplication.CalendarKotlin.ScheduleAdapter
 import com.example.myapplication.Location.AlarmReceiver.Companion.TAG
 import com.example.myapplication.CalendarKotlin.ScheduleEditActivity
 import com.example.myapplication.Notification.NotificationData
@@ -1358,9 +1360,15 @@ class HomeActivity : TabActivity() {
                 selectedCalendar.time = thisDate
                 val selectedDate = selectedCalendar.timeInMillis
 
+//                Realm.init(getApplicationContext())
+//                val realmConfig = RealmConfiguration.Builder()
+//                        .deleteRealmIfMigrationNeeded()
+//                        .build()
+//                realm = Realm.getInstance(realmConfig)
+
                 selectedDateLabel.text = DateFormat.format("yyyy/MM/dd/mm/ss", selectedDate) // 선택한 날짜 라벨링
                 toolbar.title = DateFormat.format("yyyy/MM", selectedDate) // 옆으로 스크롤하면 월 바뀜
-                list.layoutManager = LinearLayoutManager(this) // list Setting
+//                list.layoutManager = LinearLayoutManager(this) // list Setting
 
                 compactcalendar_view.setFirstDayOfWeek(1) // CalendarView Initializing
                 compactcalendar_view.removeAllEvents()
@@ -1369,6 +1377,19 @@ class HomeActivity : TabActivity() {
 //                    val event = Event(Color.GREEN, schedule.startTime)
 //                    compactcalendar_view.addEvent(event)
 //                }
+
+
+
+                var todoList = arrayListOf<Schedule>(
+                    Schedule("18:00", "asdf"),
+                    Schedule("19:00", "qwer"),
+                )
+
+                val mAdapter = ScheduleAdapter(todoList)
+                val layoutManager = LinearLayoutManager(this)
+                recyclerView.layoutManager = layoutManager
+                recyclerView.adapter = mAdapter
+
 
 //                schedules = realm.where<Schedule>()
 //                    .greaterThanOrEqualTo("startTime", selectedDate)
@@ -1387,8 +1408,9 @@ class HomeActivity : TabActivity() {
                             val dateFormat = DateFormat.format("yyyy/MM/dd/mm/ss", selectedTimeInMills)
                             selectedDateLabel.text = dateFormat
 
-                            // 1. DB에 내용 있는지 확인해서 불러오기
-
+//                             //1. DB에 내용 있는지 확인해서 불러오기
+//
+//
 //                            schedules = realm.where<Schedule>()
 //                                .greaterThanOrEqualTo("startTime", selectedTimeInMills)
 //                                .lessThan("startTime", selectedTimeInMills + 24 * 60 * 60 * 1000)
@@ -1396,20 +1418,31 @@ class HomeActivity : TabActivity() {
 //                                .sort("startTime")
 //                            adapter = ScheduleAdapter(schedules)
 //                            list.adapter = adapter
-
-
-                            // 2. 해당 날짜의 Edit으로 이동하기
-
+//
+//
+//
+//                             //2. 해당 날짜의 Edit으로 이동하기
+//
 //                            adapter.setOnItenClickListener { id ->  // adapter 클릭하면 그 일정 수정할 수 있도록
 //                                val intent =
 //                                    Intent(this@HomeActivity, ScheduleEditActivity::class.java)
 //                                        .putExtra("schedule_id", id)
 //                                startActivity(intent)
 //                            }
+
+
+
+
+
+
+
+
+
+
                         }
 
                         override fun onMonthScroll(firstDayOfNewMonth: Date?) { // 달이 바뀌면 그 달의 첫번째 날을 setting 
-                          toolbar.title = DateFormat.format("yyyy/MM", firstDayOfNewMonth)
+                            toolbar.title = DateFormat.format("yyyy/MM", firstDayOfNewMonth)
                         }
                     })
 
