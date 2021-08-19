@@ -311,28 +311,28 @@ class MainActivity : AppCompatActivity() {
 
         // 12시마다 알람 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        val intent2 = Intent(this, DailyAlarm::class.java)
-        val pendingIntent2 = PendingIntent.getBroadcast(
-            this, DailyAlarm.NOTIFICATION_ID, intent2,
-            PendingIntent.FLAG_UPDATE_CURRENT)
-
-        toggleButton2.setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener { _, isChecked ->
-
-            val toastMessage: String = if (isChecked) {
-
-                val repeatInterval: Long = 1 * 1000
-                val triggerTime = (SystemClock.elapsedRealtime() + repeatInterval)
-                alarmManager.setRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP, triggerTime, repeatInterval, pendingIntent2)
-                "Exact periodic Alarm On"
-
-            } else {
-                alarmManager.cancel(pendingIntent2)
-                "Exact periodic Alarm Off"
-            }
-            Log.d(TAG, toastMessage)
-            Toast.makeText(this, toastMessage, Toast.LENGTH_SHORT).show()
-
-        })
+//        val intent2 = Intent(this, DailyAlarm::class.java)
+//        val pendingIntent2 = PendingIntent.getBroadcast(
+//            this, DailyAlarm.NOTIFICATION_ID, intent2,
+//            PendingIntent.FLAG_UPDATE_CURRENT)
+//
+//        toggleButton2.setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener { _, isChecked ->
+//
+//            val toastMessage: String = if (isChecked) {
+//
+//                val repeatInterval: Long = 1 * 1000
+//                val triggerTime = (SystemClock.elapsedRealtime() + repeatInterval)
+//                alarmManager.setRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP, triggerTime, repeatInterval, pendingIntent2)
+//                "Exact periodic Alarm On"
+//
+//            } else {
+//                alarmManager.cancel(pendingIntent2)
+//                "Exact periodic Alarm Off"
+//            }
+//            Log.d(TAG, toastMessage)
+//            Toast.makeText(this, toastMessage, Toast.LENGTH_SHORT).show()
+//
+//        })
     }
 
 

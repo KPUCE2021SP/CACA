@@ -15,6 +15,7 @@ import android.os.Build
 import android.util.Log
 import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
+import com.example.myapplication.DailyAlarm
 import com.example.myapplication.FamilySet.MainActivity
 import com.example.myapplication.R
 import com.google.android.gms.location.FusedLocationProviderClient
@@ -25,6 +26,8 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_location.*
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 import java.util.*
 
 class AlarmReceiver : BroadcastReceiver() {
@@ -77,84 +80,112 @@ class AlarmReceiver : BroadcastReceiver() {
                 PendingIntent.FLAG_UPDATE_CURRENT
         )
 
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        val current = LocalDateTime.now()
+        val formatter = DateTimeFormatter.ofPattern("mm") // 정각마다 알람
+        val formatted = current.format(formatter)
+
+        Log.d("timetime", formatted)
 
 
-        fusedLocationClient = LocationServices.getFusedLocationProviderClient(context) // 위치 정보 받기
 
-        if (ActivityCompat.checkSelfPermission(
-                        context,
-                        Manifest.permission.ACCESS_FINE_LOCATION
-                ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
-                        context,
-                        Manifest.permission.ACCESS_COARSE_LOCATION
-                ) != PackageManager.PERMISSION_GRANTED
-        ) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            Log.d("hoihoihoi", "return")
-            return
+        if(formatted == "20" || formatted == "21" || formatted == "22" || formatted == "23" || formatted == "24" || formatted == "25" || formatted == "26" || formatted == "27"  || formatted == "28" || formatted == "29") {
+            val builder = /////////////////////////////////////////////////////////////alarm
+                    NotificationCompat.Builder(context, DailyAlarm.PRIMARY_CHANNEL_ID)
+                            .setSmallIcon(R.drawable.familyship)
+                            .setContentTitle("앗! 정각입니다요!!")
+                            .setContentText("알람이 있나 확인해 볼깝쇼?")
+                            .setContentIntent(contentPendingIntent)
+                            .setPriority(NotificationCompat.PRIORITY_HIGH)
+                            .setAutoCancel(true)
+                            .setDefaults(NotificationCompat.DEFAULT_ALL)
+
+            notificationManager.notify(DailyAlarm.NOTIFICATION_ID, builder.build())
         }
-        fusedLocationClient.lastLocation
-                .addOnSuccessListener { location : Location? ->
-                    // Got last known location. In some rare situations this can be null.
-                    if (location != null) {
-                        lat = location.latitude
-                        log = location.longitude
-                        Log.d("hoihoilatlat", lat.toString())
+
+
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+        else {
+
+            fusedLocationClient = LocationServices.getFusedLocationProviderClient(context) // 위치 정보 받기
+
+            if (ActivityCompat.checkSelfPermission(
+                            context,
+                            Manifest.permission.ACCESS_FINE_LOCATION
+                    ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                            context,
+                            Manifest.permission.ACCESS_COARSE_LOCATION
+                    ) != PackageManager.PERMISSION_GRANTED
+            ) {
+                // TODO: Consider calling
+                //    ActivityCompat#requestPermissions
+                // here to request the missing permissions, and then overriding
+                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                //                                          int[] grantResults)
+                // to handle the case where the user grants the permission. See the documentation
+                // for ActivityCompat#requestPermissions for more details.
+                Log.d("hoihoihoi", "return")
+                return
+            }
+            fusedLocationClient.lastLocation
+                    .addOnSuccessListener { location: Location? ->
+                        // Got last known location. In some rare situations this can be null.
+                        if (location != null) {
+                            lat = location.latitude
+                            log = location.longitude
+                            Log.d("hoihoilatlat", lat.toString())
 //                        Toast.makeText(context, "${lat} // ${log} 현재 위치 받아오기", Toast.LENGTH_LONG).show()
 
 
-                        var X = 0.0
-                        var Y = 0.0
-                        var LOCATION = ""
-                        val docRef10 = db.collection("Member").document(uid.toString()) // 여러 field값 가져오기
-                        docRef10.get()
-                                .addOnSuccessListener { document7 ->
-                                    if (document7 != null) {
-                                        Log.d("hoihoihoi", "asdfasdf: ${document7.data}")
-                                        //textViewName.setText(document.data?.get("name").toString()) // name 확인용
-                                        X = (document7.data?.get("x") as Double)
-                                        Y = (document7.data?.get("y") as Double)
-                                        LOCATION = (document7.data?.get("location") as String)
+                            var X = 0.0
+                            var Y = 0.0
+                            var LOCATION = ""
+                            val docRef10 = db.collection("Member").document(uid.toString()) // 여러 field값 가져오기
+                            docRef10.get()
+                                    .addOnSuccessListener { document7 ->
+                                        if (document7 != null) {
+                                            Log.d("hoihoihoi", "asdfasdf: ${document7.data}")
+                                            //textViewName.setText(document.data?.get("name").toString()) // name 확인용
+                                            X = (document7.data?.get("x") as Double)
+                                            Y = (document7.data?.get("y") as Double)
+                                            LOCATION = (document7.data?.get("location") as String)
 
 
-                                        // 저장된 location 받아오기
+                                            // 저장된 location 받아오기
 
 //                        Toast.makeText(context, "${X} // ${Y} 저장된 위치 받아오기", Toast.LENGTH_LONG).show()
 
-                                        Log.d("hoihoiXX", X.toString())
-                                        Log.d("hoihoi현재", log.toString())
+                                            Log.d("hoihoiXX", X.toString())
+                                            Log.d("hoihoi현재", log.toString())
 
-                                        // 위치 차이 계산
+                                            // 위치 차이 계산
 
-                                        if((log - X < 0.003) && (log - X > -0.003)) {
-                                            if ((lat - Y < 0.003) && (lat - Y > -0.003)) {
-                                                val builder = /////////////////////////////////////////////////////////////alarm
-                                                        NotificationCompat.Builder(context, PRIMARY_CHANNEL_ID)
-                                                                .setSmallIcon(R.drawable.familyship)
-                                                                .setContentTitle("누군가가 나의 위치 주변을 언급했어요")
-                                                                .setContentText("어디 한 번 확인해 볼까요~~??")
-                                                                .setContentIntent(contentPendingIntent)
-                                                                .setPriority(NotificationCompat.PRIORITY_HIGH)
-                                                                .setAutoCancel(true)
-                                                                .setDefaults(NotificationCompat.DEFAULT_ALL)
+                                            if ((log - X < 0.003) && (log - X > -0.003)) {
+                                                if ((lat - Y < 0.003) && (lat - Y > -0.003)) {
+                                                    val builder = /////////////////////////////////////////////////////////////alarm
+                                                            NotificationCompat.Builder(context, PRIMARY_CHANNEL_ID)
+                                                                    .setSmallIcon(R.drawable.familyship)
+                                                                    .setContentTitle("누군가가 나의 위치 주변을 언급했어요")
+                                                                    .setContentText("어디 한 번 확인해 볼까요~~??")
+                                                                    .setContentIntent(contentPendingIntent)
+                                                                    .setPriority(NotificationCompat.PRIORITY_HIGH)
+                                                                    .setAutoCancel(true)
+                                                                    .setDefaults(NotificationCompat.DEFAULT_ALL)
 
-                                                notificationManager.notify(NOTIFICATION_ID, builder.build())
+                                                    notificationManager.notify(NOTIFICATION_ID, builder.build())
+                                                }
                                             }
                                         }
                                     }
-                                }
+                        }
                     }
-                }
-// location 받아오기
 
-// 저장된 location 받아오기 //
-
+        }
     }
 
     fun createNotificationChannel() {
