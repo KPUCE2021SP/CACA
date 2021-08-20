@@ -82,27 +82,27 @@ class AlarmReceiver : BroadcastReceiver() {
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        val current = LocalDateTime.now()
-        val formatter = DateTimeFormatter.ofPattern("mm") // 정각마다 알람
-        val formatted = current.format(formatter)
-
-        Log.d("timetime", formatted)
-
-
-
-        if(formatted != "") { // 복구 예정
-            val builder = /////////////////////////////////////////////////////////////alarm
-                    NotificationCompat.Builder(context, DailyAlarm.PRIMARY_CHANNEL_ID)
-                            .setSmallIcon(R.drawable.familyship)
-                            .setContentTitle("앗! 정각입니다요!!")
-                            .setContentText("${formatted}")
-                            .setContentIntent(contentPendingIntent)
-                            .setPriority(NotificationCompat.PRIORITY_HIGH)
-                            .setAutoCancel(true)
-                            .setDefaults(NotificationCompat.DEFAULT_ALL)
-
-            notificationManager.notify(DailyAlarm.NOTIFICATION_ID, builder.build())
-        }
+//        val current = LocalDateTime.now()
+//        val formatter = DateTimeFormatter.ofPattern("mm") // 정각마다 알람
+//        val formatted = current.format(formatter)
+//
+//        Log.d("timetime", formatted)
+//
+//
+//
+//        if(formatted != "") { // 복구 예정
+//            val builder = /////////////////////////////////////////////////////////////alarm
+//                    NotificationCompat.Builder(context, DailyAlarm.PRIMARY_CHANNEL_ID)
+//                            .setSmallIcon(R.drawable.familyship)
+//                            .setContentTitle("앗! 정각입니다요!!")
+//                            .setContentText("${formatted}")
+//                            .setContentIntent(contentPendingIntent)
+//                            .setPriority(NotificationCompat.PRIORITY_HIGH)
+//                            .setAutoCancel(true)
+//                            .setDefaults(NotificationCompat.DEFAULT_ALL)
+//
+//            notificationManager.notify(DailyAlarm.NOTIFICATION_ID, builder.build())
+//        }
 
 
 
@@ -138,7 +138,7 @@ class AlarmReceiver : BroadcastReceiver() {
                     if (location != null) {
                         lat = location.latitude
                         log = location.longitude
-                        Log.d("hoihoilatlat", lat.toString())
+//                        Log.d("hoihoilatlat", lat.toString())
 //                        Toast.makeText(context, "${lat} // ${log} 현재 위치 받아오기", Toast.LENGTH_LONG).show()
 
 
@@ -149,7 +149,7 @@ class AlarmReceiver : BroadcastReceiver() {
                         docRef10.get()
                                 .addOnSuccessListener { document7 ->
                                     if (document7 != null) {
-                                        Log.d("hoihoihoi", "asdfasdf: ${document7.data}")
+//                                        Log.d("hoihoihoi", "asdfasdf: ${document7.data}")
                                         //textViewName.setText(document.data?.get("name").toString()) // name 확인용
                                         X = (document7.data?.get("x") as Double)
                                         Y = (document7.data?.get("y") as Double)
@@ -165,13 +165,13 @@ class AlarmReceiver : BroadcastReceiver() {
 
                                         // 위치 차이 계산
 
-                                        if ((log - X < 0.002) && (log - X > -0.002)) {
-                                            if ((lat - Y < 0.002) && (lat - Y > -0.002)) {
+                                        if ((log - X < 0.005) && (log - X > -0.005)) {
+                                            if ((lat - Y < 0.005) && (lat - Y > -0.005)) {
                                                 val builder = /////////////////////////////////////////////////////////////alarm
                                                         NotificationCompat.Builder(context, PRIMARY_CHANNEL_ID)
                                                                 .setSmallIcon(R.drawable.familyship)
                                                                 .setContentTitle("누군가가 나의 위치 주변을 언급했어요")
-                                                                .setContentText("어디 한 번 확인해 볼까요~~??")
+                                                                .setContentText("${log.toString() + "/" + lat.toString()}")
                                                                 .setContentIntent(contentPendingIntent)
                                                                 .setPriority(NotificationCompat.PRIORITY_HIGH)
                                                                 .setAutoCancel(true)
