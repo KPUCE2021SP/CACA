@@ -1,33 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:id="@+id/todo_right_card"
+    android:id="@+id/todo_left_card"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <LinearLayout
-        android:id="@+id/righthandcard"
+        android:id="@+id/lefthandcard"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="@drawable/round_corner"
         android:gravity="center_vertical"
         android:visibility="visible"
-        android:layout_gravity="center_vertical">
-        <TextView
-            style="@style/nanumTextView"
-            android:id="@+id/todo_right_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="18dp"
-            android:text="할 일"
-            android:textStyle="bold"/>
-        <View
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
+        android:orientation="horizontal">
 
         <CheckBox
-            android:id="@+id/todo_right_checkbx"
+            android:id="@+id/todo_left_checkbx"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right|center_vertical"
@@ -36,5 +24,17 @@
             android:clickable="true"
             android:text="" />
 
+        <TextView
+            android:layout_marginLeft="10dp"
+            style="@style/nanumTextView"
+            android:id="@+id/todo_left_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:text="할 일"
+            android:textStyle="bold"/>
+
+
     </LinearLayout>
+
 </LinearLayout>
