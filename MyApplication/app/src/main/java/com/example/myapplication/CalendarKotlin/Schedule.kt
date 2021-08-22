@@ -16,4 +16,4 @@ import java.util.*
 ////    var detail:String = ""
 //}
 
-class Schedule(val time : String, val title : String)
+class Schedule(val sche_title : String, val shce_content : String)

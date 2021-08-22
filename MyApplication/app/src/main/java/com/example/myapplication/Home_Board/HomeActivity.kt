@@ -1787,12 +1787,21 @@ class HomeActivity : TabActivity() {
 
 
 
-                var todoList = arrayListOf<Schedule>(
-                    Schedule("18:00", "asdf"),
-                    Schedule("19:00", "qwer"),
-                )
+//                var todoList = arrayListOf<Schedule>(
+//                    Schedule("18:00", "asdf"),
+//                    Schedule("19:00", "qwer"),
+//                )
+//
+//                val mAdapter = ScheduleAdapter(todoList)
+//                val layoutManager = LinearLayoutManager(this)
+//                recyclerView.layoutManager = layoutManager
+//                recyclerView.adapter = mAdapter
 
-                val mAdapter = ScheduleAdapter(todoList)
+                var scheduleList = arrayListOf<Schedule>()
+//
+//                db.collection("Chats").document(FamilyName.toString()).collection("CALENDAR")
+//
+                val mAdapter = ScheduleAdapter(scheduleList)
                 val layoutManager = LinearLayoutManager(this)
                 recyclerView.layoutManager = layoutManager
                 recyclerView.adapter = mAdapter
@@ -1807,13 +1816,56 @@ class HomeActivity : TabActivity() {
 //                list.adapter = adapter
 
 
+                var mutableListSchedule: MutableList<String> = mutableListOf("a")
+                mutableListSchedule.clear()
                 compactcalendar_view.setListener( // 캘린더 구경할때 사용
                     object : CompactCalendarView.CompactCalendarViewListener {
                         override fun onDayClick(dateClicked: Date) {
                             selectedCalendar.time = dateClicked
                             val selectedTimeInMills = selectedCalendar.timeInMillis
-                            val dateFormat = DateFormat.format("yyyy/MM/dd/mm/ss", selectedTimeInMills)
+                            val dateFormat = DateFormat.format("yyyyMMddmmss", selectedTimeInMills)
                             selectedDateLabel.text = dateFormat
+
+                            mutableListSchedule.clear()
+                            scheduleList.clear()
+                            val schedule_year = DateFormat.format("yyyy", selectedTimeInMills)
+                            val schedule_month = DateFormat.format("MM", selectedTimeInMills)
+                            val schedule_day = DateFormat.format("dd", selectedTimeInMills)
+//                            val schedule_min = DateFormat.format("mm", selectedTimeInMills)
+//                            val schedule_sec = DateFormat.format("ss", selectedTimeInMills)
+
+                            val scheduleDaydata = DateFormat.format("yyydd", selectedTimeInMills)
+////                            Log.d("asdfasdfa", selectedDate.toString())
+                            db.collection("Chats").document(FamilyName.toString()).collection("CALENDAR").document(selectedDateLabel.text.toString())
+                                .get()
+//                                    .addOnSuccessListener { docName ->
+//                                        if (docName != null) {
+//                                            scheduleList.add(Schedule(docName.data?.get("title").toString(), docName.data?.get("detail").toString()))
+//                                        }
+                                .addOnSuccessListener { docs ->
+                                    Log.d("selectedTimeInMills", selectedDateLabel.text.toString())
+                                    scheduleList.add(Schedule(docs.data?.get("title").toString(), docs.data?.get("detail").toString()))
+//                                    for (document_acc in docs) {
+////
+//                                        mutableListSchedule.add(document_acc.id)
+//                                    }
+//                                    Log.d("asdfasdfa", mutableListSchedule.toString())
+//
+//                                    for (i in 0..(mutableListSchedule.size - 1)) {
+//                                        db.collection("Chats").document(FamilyName.toString()).collection("CALENDAR").document(mutableListSchedule[i].toString())
+//                                            .get()
+//                                            .addOnSuccessListener { docs2 ->
+//                                                scheduleList.add(Schedule(docs2.data?.get("title").toString(), docs2.data?.get("detail").toString()))
+//                                            }
+//                                    }
+
+                                    val mAdapter = ScheduleAdapter(scheduleList)
+                                    //                            val layoutManager = LinearLayoutManager(this)
+                                    //                            recyclerView.layoutManager = layoutManager
+                                    recyclerView.adapter = mAdapter
+
+
+
 
 //                             //1. DB에 내용 있는지 확인해서 불러오기
 //
@@ -1835,7 +1887,8 @@ class HomeActivity : TabActivity() {
 //                                    Intent(this@HomeActivity, ScheduleEditActivity::class.java)
 //                                        .putExtra("schedule_id", id)
 //                                startActivity(intent)
-//                            }
+
+                                }
 
 
 

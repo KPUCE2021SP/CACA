@@ -27,7 +27,7 @@ import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
 
-class ScheduleEditActivity : AppCompatActivity(), DatePickerFragment.OnDateSelectedListener, TimePickerFragment.OnTimeSelectedListener, SaveConfirmFragment.SaveListener, DeleteConfirmFragment.DeleteListener{
+class ScheduleEditActivity : AppCompatActivity(), DatePickerFragment.OnDateSelectedListener, SaveConfirmFragment.SaveListener, DeleteConfirmFragment.DeleteListener{
 
     private var editStartDateFlag = true
     private var editStartTimeFlag = true
@@ -53,36 +53,13 @@ class ScheduleEditActivity : AppCompatActivity(), DatePickerFragment.OnDateSelec
             val dialog = DatePickerFragment()
             dialog.show(supportFragmentManager, "startDate_dialog")
         }
-        endDateEdit.setOnClickListener {
-            editStartDateFlag = false
-            val dialog = DatePickerFragment()
-            dialog.show(supportFragmentManager, "endDate_dialog")
-        }
-        startTimeEdit.setOnClickListener {
-            editStartTimeFlag = true
-            val dialog = TimePickerFragment()
-            dialog.show(supportFragmentManager, "startTime_dialog")
-        }
-        endTimeEdit.setOnClickListener {
-            editStartTimeFlag = false
-            val dialog = TimePickerFragment()
-            dialog.show(supportFragmentManager, "endTime_dialog")
-        }
 
 
         saveButton.setOnClickListener {view:View-> // 저장!
-            val startDateTime = (startDateEdit.text.toString() + " "+ startTimeEdit.text.toString())
-                .toDate()?.time
-            val endDateTime = (endDateEdit.text.toString() + " " + endTimeEdit.text.toString())
-                .toDate()?.time
-            if (startDateTime != null && endDateTime != null) {
-                if(startDateTime <= endDateTime){
-                    val dialog = SaveConfirmFragment()
-                    dialog.show(supportFragmentManager, "saveConfirm_dialog")
-                }else{
-                    val dialog = InvalidTimeFragment()
-                    dialog.show(supportFragmentManager, "invalidTime_dialog")
-                }
+            val startDateTime = (startDateEdit.text.toString().toDate()?.time)
+            if (startDateTime != null) {
+                val dialog = SaveConfirmFragment()
+                dialog.show(supportFragmentManager, "saveConfirm_dialog")
             }else{
                 onSave()
             }
@@ -110,14 +87,6 @@ class ScheduleEditActivity : AppCompatActivity(), DatePickerFragment.OnDateSelec
         if(editStartDateFlag){
             startDateEdit.setText(DateFormat.format("yyyy/MM/dd", c))
         }else{
-            endDateEdit.setText(DateFormat.format("yyyy/MM/dd", c))
-        }
-    }
-    override fun onSelected(hourOfDay: Int, minute: Int) {
-        if(editStartTimeFlag){
-            startTimeEdit.setText("%1$02d:%2$02d".format(hourOfDay, minute))
-        }else{
-            endTimeEdit.setText("%1$02d:%2$02d".format(hourOfDay, minute))
         }
     }
 
@@ -125,20 +94,17 @@ class ScheduleEditActivity : AppCompatActivity(), DatePickerFragment.OnDateSelec
 
         var calendar_content = hashMapOf(
             "title" to titleEdit.text.toString(),
-            "place" to placeEdit.text.toString(),
             "detail" to detailEdit.text.toString(),
             "start_date" to startDateEdit.text.toString(),
-            "start_time" to startTimeEdit.text.toString(),
-            "end_date" to endDateEdit.text.toString(),
-            "end_time" to endTimeEdit.text.toString(),
         )
 
         db.collection("Chats").document(FamilyName.toString()).collection("CALENDAR")
             .document(scheduleId.toString()).set(calendar_content as Map<String, Any>)// DB
         Toast.makeText(this, "${scheduleId} 일정 업로드 완료!", Toast.LENGTH_SHORT).show()
 
-        val intent = Intent(this, HomeActivity::class.java)
-        startActivity(intent)
+//        val intent = Intent(this, HomeActivity::class.java)
+//        startActivity(intent)
+        finish()
     }
 
     override fun onDelete() {
@@ -155,4 +121,5 @@ class ScheduleEditActivity : AppCompatActivity(), DatePickerFragment.OnDateSelec
         override fun onDestroy() {
         super.onDestroy()
     }
+
 }

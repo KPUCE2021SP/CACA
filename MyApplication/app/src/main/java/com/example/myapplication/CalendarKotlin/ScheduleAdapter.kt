@@ -1,18 +1,22 @@
 package com.example.myapplication.CalendarKotlin
 
+import android.app.AlertDialog
 import android.content.Context
-import android.graphics.Rect
-import android.text.format.DateFormat
+import android.content.DialogInterface
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
-import io.realm.OrderedRealmCollection
-import io.realm.RealmRecyclerViewAdapter
-import java.util.*
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
+import kotlinx.android.synthetic.main.activity_schedule_content.*
 import kotlin.collections.ArrayList
 
 //class ScheduleAdapter(data: OrderedRealmCollection<Schedule>):
@@ -54,7 +58,7 @@ import kotlin.collections.ArrayList
 //    }
 //}
 
-class ScheduleAdapter(val todoList : ArrayList<Schedule>) :
+class ScheduleAdapter(val scheduleList: ArrayList<Schedule>) :
 RecyclerView.Adapter<ScheduleAdapter.ViewHolder>(){
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -66,8 +70,6 @@ RecyclerView.Adapter<ScheduleAdapter.ViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         Log.d("tag1" , "onCreateViewHolder")
         val inflater = LayoutInflater.from(parent.context)
-//        val view = inflater.inflate(android.R.layout.simple_list_item_1,
-//            parent, false)
         val view = inflater.inflate(R.layout.activity_schedulelist,
                 parent, false)
         return ViewHolder(view)
@@ -75,37 +77,30 @@ RecyclerView.Adapter<ScheduleAdapter.ViewHolder>(){
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        holder.todoDay?.text = todoList[position].time
-        holder.todoTitle?.text = todoList[position].title
-        Log.d("tag1" , todoList[position].time + todoList[position].title)
+        holder.todoDay?.text = scheduleList[position].sche_title
+        holder.todoTitle?.text = scheduleList[position].shce_content
+        Log.d("tag1" , scheduleList[position].sche_title + scheduleList[position].shce_content)
+
+        holder.itemView.setOnClickListener {
+
+
+        }
 
     }
 
-    override fun getItemCount() = todoList.size
+    override fun getItemCount() = scheduleList.size
+
+    fun setItemClickListener(onItemClickListener: AdapterView.OnItemClickListener) {
+        this.itemClickListener = onItemClickListener
+    }
+
+    private lateinit var itemClickListener : AdapterView.OnItemClickListener
+
+
 
 
 }
 
-//
-//class VerticalItemDecorator(private val divHeight : Int) : RecyclerView.ItemDecoration() {
-//
-//    @Override
-//    override fun getItemOffsets(outRect: Rect, view: View, parent : RecyclerView, state : RecyclerView.State) {
-//        super.getItemOffsets(outRect, view, parent, state)
-//        outRect.top = divHeight
-//        outRect.bottom = divHeight
-//    }
-//}
-//
-//class HorizontalItemDecorator(private val divHeight : Int) : RecyclerView.ItemDecoration() {
-//
-//    @Override
-//    override fun getItemOffsets(outRect: Rect, view: View, parent : RecyclerView, state : RecyclerView.State) {
-//        super.getItemOffsets(outRect, view, parent, state)
-//        outRect.left = divHeight
-//        outRect.right = divHeight
-//    }
-//}
 
 
 
