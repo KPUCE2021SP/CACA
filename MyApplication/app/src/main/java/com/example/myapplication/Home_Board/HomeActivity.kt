@@ -42,6 +42,7 @@ import android.text.format.DateFormat
 import android.view.Menu
 import android.view.MenuItem
 import androidx.core.app.ActivityCompat
+import androidx.core.graphics.drawable.toDrawable
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myapplication.CalendarKotlin.Schedule
 import com.example.myapplication.CalendarKotlin.ScheduleAdapter
@@ -51,9 +52,7 @@ import com.example.myapplication.Notification.NotificationData
 import com.example.myapplication.Notification.PushNotification
 import com.example.myapplication.Notification.RetrofitInstance
 import com.example.myapplication.R
-import com.example.myapplication.todo2Activity
 import com.github.sundeepk.compactcalendarview.CompactCalendarView
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_dialog.*
 import kotlinx.android.synthetic.main.activity_home.btnCall
@@ -73,6 +72,7 @@ import kotlinx.android.synthetic.main.todo_right.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import org.jetbrains.anko.image
 import java.text.SimpleDateFormat
 
 class HomeActivity : TabActivity() {
@@ -1925,18 +1925,40 @@ class HomeActivity : TabActivity() {
         /********************앨범 album**********************/
         var mutableAlbumList: MutableList<String> = mutableListOf("a")
         mutableAlbumList.clear()
+        var mutableAlbumCoverList: MutableList<String> = mutableListOf("a")
+        mutableAlbumCoverList.clear()
         db.collection("Chats").document(FamilyName.toString()).collection("BOARD")
             .get()
             .addOnSuccessListener { documents ->
                 for (document_acc in documents) {
+                    mutableAlbumCoverList.add(document_acc.id)
                     document_acc.id.replace(FamilyName.toString(), "")
                         .replace("_", "")
                     var str = document_acc.id.split("년")
                     mutableAlbumList.add(str[0])
 
+
                 }
 
                 var mutableYear = mutableAlbumList.distinct()     //중복 제거
+
+//                for (i in 0..(mutableYear.size -1)){
+//                    db.collection("Chats").document(FamilyName.toString()).collection("BOARD")      //앨범 커버 사진
+//                            .get()
+//                            .addOnSuccessListener { document2 ->
+//                                for (document_acc in document2) {       //해당 년도 가져오기
+//                                    if(document_acc.id.contains(mutableYear[i].toString())){
+//                                        mutableAlbumCoverList.add(document_acc.id)
+//                                    }
+//                                }
+//
+//
+//                }
+
+
+
+
+
                 Log.d("dddddddddd",mutableYear.toString())
                 for (i in 0..(mutableYear.size - 1)) { // 거꾸로
 
@@ -1949,12 +1971,23 @@ class HomeActivity : TabActivity() {
                     album_layout.addView(containView)
 
                     val ContentView = containView as View
-                    var albumCardbtn = ContentView.findViewById(R.id.medicineImageView) as ImageView
+                    var albumCardbtn = ContentView.findViewById(R.id.albumImageView) as ImageView
                     var albumCardtxt = ContentView.findViewById(R.id.info_text) as TextView
                     var albumCardLayout = ContentView.findViewById(R.id.album_LinearLayout) as LinearLayout
                     var account_uid: String = ""
 
                     albumCardtxt.setText(mutableYear[i].toString())
+
+                    ////////////////////////// 앨범 커버
+                    var imageName =
+                            "gs://cacafirebase-554ac.appspot.com/Family_Board/" + FamilyName + "_" + mutableAlbumCoverList[i]
+                    Log.d("albumImage", imageName)
+                    val storage = Firebase.storage
+                    var familyImgRef = storage.getReferenceFromUrl(imageName)
+                    familyImgRef?.getBytes(Long.MAX_VALUE)?.addOnSuccessListener {
+                        val profilebmp = BitmapFactory.decodeByteArray(it, 0, it.size)
+                        albumCardbtn.setImageBitmap(profilebmp)
+                    }
 
                     albumCardLayout?.setOnClickListener() { // 해당 년도로 이동
                         val intent = Intent(application, AlbumActivity::class.java)
@@ -1965,7 +1998,31 @@ class HomeActivity : TabActivity() {
 
                 }
 
+//                for (i in 0..mutableAlbumList.size -1){
+//                    val layoutInflater = this.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+//                    val containView = layoutInflater.inflate(
+//                            R.layout.activity_album_card,
+//                            null
+//                    )
+//                    val ContentView = containView as View
+//                    var albumCardLayout = ContentView.findViewById(R.id.albumImageView) as ImageView
+//                    var imageName =
+//                            "gs://cacafirebase-554ac.appspot.com/Family_Board/" + FamilyName + "_" + mutableAlbumList[i]
+//                    Log.d("familyimageName", imageName)
+//                    val storage = Firebase.storage
+//                    var familyImgRef = storage.getReferenceFromUrl(imageName)
+//                    familyImgRef?.getBytes(Long.MAX_VALUE)?.addOnSuccessListener {
+//                        val profilebmp = BitmapFactory.decodeByteArray(it, 0, it.size)
+//                        albumCardLayout.setImageBitmap(profilebmp)
+//                        finish()
+//                    }
+//
+//                }
+
             }
+
+
+
     }
 
     fun sendNotification(notification: PushNotification) = CoroutineScope(Dispatchers.IO).launch {

@@ -1,5 +1,6 @@
 package com.example.myapplication.Home_Board
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
@@ -30,6 +31,7 @@ class AlbumActivity : AppCompatActivity() {
 
 
 
+    @SuppressLint("WrongViewCast")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_album)
@@ -137,6 +139,8 @@ class AlbumActivity : AppCompatActivity() {
 
                         family_contain.addView(containView)
                     }
+
+
                 }
 
 
