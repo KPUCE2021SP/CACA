@@ -91,6 +91,7 @@ class ScheduleEditActivity : AppCompatActivity(), DatePickerFragment.OnDateSelec
     }
 
     override fun onSave() {
+        var calendar_title : String = titleEdit.text.toString()
 
         var calendar_content = hashMapOf(
             "title" to titleEdit.text.toString(),
@@ -99,8 +100,8 @@ class ScheduleEditActivity : AppCompatActivity(), DatePickerFragment.OnDateSelec
         )
 
         db.collection("Chats").document(FamilyName.toString()).collection("CALENDAR")
-            .document(scheduleId.toString()).set(calendar_content as Map<String, Any>)// DB
-        Toast.makeText(this, "${scheduleId} 일정 업로드 완료!", Toast.LENGTH_SHORT).show()
+            .document(calendar_title.toString()).set(calendar_content as Map<String, Any>)// DB
+        Toast.makeText(this, "${calendar_title} 일정 업로드 완료!", Toast.LENGTH_SHORT).show()
 
 //        val intent = Intent(this, HomeActivity::class.java)
 //        startActivity(intent)
