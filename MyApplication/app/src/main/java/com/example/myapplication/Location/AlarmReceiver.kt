@@ -74,10 +74,10 @@ class AlarmReceiver : BroadcastReceiver() {
     private fun deliverNotification(context: Context) {
         val contentIntent = Intent(context, MainActivity::class.java)
         val contentPendingIntent = PendingIntent.getActivity(
-                context,
-                NOTIFICATION_ID,
-                contentIntent,
-                PendingIntent.FLAG_UPDATE_CURRENT
+            context,
+            NOTIFICATION_ID,
+            contentIntent,
+            PendingIntent.FLAG_UPDATE_CURRENT
         )
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -115,12 +115,12 @@ class AlarmReceiver : BroadcastReceiver() {
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(context) // 위치 정보 받기
 
         if (ActivityCompat.checkSelfPermission(
-                        context,
-                        Manifest.permission.ACCESS_FINE_LOCATION
-                ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
-                        context,
-                        Manifest.permission.ACCESS_COARSE_LOCATION
-                ) != PackageManager.PERMISSION_GRANTED
+                context,
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                context,
+                Manifest.permission.ACCESS_COARSE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED
         ) {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions
@@ -133,57 +133,57 @@ class AlarmReceiver : BroadcastReceiver() {
             return
         }
         fusedLocationClient.lastLocation
-                .addOnSuccessListener { location: Location? ->
-                    // Got last known location. In some rare situations this can be null.
-                    if (location != null) {
-                        lat = location.latitude
-                        log = location.longitude
+            .addOnSuccessListener { location: Location? ->
+                // Got last known location. In some rare situations this can be null.
+                if (location != null) {
+                    lat = location.latitude
+                    log = location.longitude
 //                        Log.d("hoihoilatlat", lat.toString())
 //                        Toast.makeText(context, "${lat} // ${log} 현재 위치 받아오기", Toast.LENGTH_LONG).show()
 
 
-                        var X = 0.0
-                        var Y = 0.0
-                        var LOCATION = ""
-                        val docRef10 = db.collection("Member").document(uid.toString()) // 여러 field값 가져오기
-                        docRef10.get()
-                                .addOnSuccessListener { document7 ->
-                                    if (document7 != null) {
+                    var X = 0.0
+                    var Y = 0.0
+                    var LOCATION = ""
+                    val docRef10 = db.collection("Member").document(uid.toString()) // 여러 field값 가져오기
+                    docRef10.get()
+                        .addOnSuccessListener { document7 ->
+                            if (document7 != null) {
 //                                        Log.d("hoihoihoi", "asdfasdf: ${document7.data}")
-                                        //textViewName.setText(document.data?.get("name").toString()) // name 확인용
-                                        X = (document7.data?.get("x") as Double)
-                                        Y = (document7.data?.get("y") as Double)
-                                        LOCATION = (document7.data?.get("location") as String)
+                                //textViewName.setText(document.data?.get("name").toString()) // name 확인용
+                                X = (document7.data?.get("x") as Double)
+                                Y = (document7.data?.get("y") as Double)
+                                LOCATION = (document7.data?.get("location") as String)
 
 
-                                        // 저장된 location 받아오기
+                                // 저장된 location 받아오기
 
 //                        Toast.makeText(context, "${X} // ${Y} 저장된 위치 받아오기", Toast.LENGTH_LONG).show()
 
-                                        Log.d("hoihoiXX", X.toString())
-                                        Log.d("hoihoi현재", log.toString())
+                                Log.d("hoihoiXX", X.toString())
+                                Log.d("hoihoi현재", log.toString())
 
-                                        // 위치 차이 계산
+                                // 위치 차이 계산
 
-                                        if ((log - X < 0.005) && (log - X > -0.005)) {
-                                            if ((lat - Y < 0.005) && (lat - Y > -0.005)) {
-                                                val builder = /////////////////////////////////////////////////////////////alarm
-                                                        NotificationCompat.Builder(context, PRIMARY_CHANNEL_ID)
-                                                                .setSmallIcon(R.drawable.familyship)
-                                                                .setContentTitle("누군가가 나의 위치 주변을 언급했어요")
-                                                                .setContentText("${log.toString() + "/" + lat.toString()}")
-                                                                .setContentIntent(contentPendingIntent)
-                                                                .setPriority(NotificationCompat.PRIORITY_HIGH)
-                                                                .setAutoCancel(true)
-                                                                .setDefaults(NotificationCompat.DEFAULT_ALL)
+                                if ((log - X < 0.01) && (log - X > -0.01)) {
+                                    if ((lat - Y < 0.01) && (lat - Y > -0.01)) {
+                                        val builder = /////////////////////////////////////////////////////////////alarm
+                                            NotificationCompat.Builder(context, PRIMARY_CHANNEL_ID)
+                                                .setSmallIcon(R.drawable.familyship)
+                                                .setContentTitle("누군가가 나의 위치 주변을 언급했어요")
+                                                .setContentText("${log.toString() + "/" + lat.toString()}")
+                                                .setContentIntent(contentPendingIntent)
+                                                .setPriority(NotificationCompat.PRIORITY_HIGH)
+                                                .setAutoCancel(true)
+                                                .setDefaults(NotificationCompat.DEFAULT_ALL)
 
-                                                notificationManager.notify(NOTIFICATION_ID, builder.build())
-                                            }
-                                        }
+                                        notificationManager.notify(NOTIFICATION_ID, builder.build())
                                     }
                                 }
-                    }
+                            }
+                        }
                 }
+            }
 
 
     }
@@ -191,9 +191,9 @@ class AlarmReceiver : BroadcastReceiver() {
     fun createNotificationChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val notificationChannel = NotificationChannel(
-                    PRIMARY_CHANNEL_ID,
-                    "Stand up notification",
-                    NotificationManager.IMPORTANCE_HIGH
+                PRIMARY_CHANNEL_ID,
+                "Stand up notification",
+                NotificationManager.IMPORTANCE_HIGH
             )
             notificationChannel.enableLights(true)
             notificationChannel.lightColor = Color.RED
