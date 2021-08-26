@@ -30,8 +30,6 @@ class AlbumActivity : AppCompatActivity() {
     var albumYear2 : String = ""
 
 
-
-
     @SuppressLint("WrongViewCast")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
