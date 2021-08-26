@@ -1831,73 +1831,28 @@ class HomeActivity : TabActivity() {
                             val schedule_year = DateFormat.format("yyyy", selectedTimeInMills)
                             val schedule_month = DateFormat.format("MM", selectedTimeInMills)
                             val schedule_day = DateFormat.format("dd", selectedTimeInMills)
-//                            val schedule_min = DateFormat.format("mm", selectedTimeInMills)
-//                            val schedule_sec = DateFormat.format("ss", selectedTimeInMills)
 
                             val scheduleDaydata = DateFormat.format("yyydd", selectedTimeInMills)
 ////                            Log.d("asdfasdfa", selectedDate.toString())
-                            db.collection("Chats").document(FamilyName.toString()).collection("CALENDAR").document(selectedDateLabel.text.toString())
-                                .get()
-//                                    .addOnSuccessListener { docName ->
-//                                        if (docName != null) {
-//                                            scheduleList.add(Schedule(docName.data?.get("title").toString(), docName.data?.get("detail").toString()))
-//                                        }
-                                .addOnSuccessListener { docs ->
-                                    Log.d("selectedTimeInMills", selectedDateLabel.text.toString())
-                                    scheduleList.add(Schedule(docs.data?.get("title").toString(), docs.data?.get("detail").toString()))
-//                                    for (document_acc in docs) {
-////
-//                                        mutableListSchedule.add(document_acc.id)
-//                                    }
-//                                    Log.d("asdfasdfa", mutableListSchedule.toString())
-//
-//                                    for (i in 0..(mutableListSchedule.size - 1)) {
-//                                        db.collection("Chats").document(FamilyName.toString()).collection("CALENDAR").document(mutableListSchedule[i].toString())
-//                                            .get()
-//                                            .addOnSuccessListener { docs2 ->
-//                                                scheduleList.add(Schedule(docs2.data?.get("title").toString(), docs2.data?.get("detail").toString()))
-//                                            }
-//                                    }
+                            db.collection("Chats").document(FamilyName.toString()).collection("CALENDAR")       //DB에서 캘린더 가져오기
+                                    .document(selectedDateLabel.text.toString()).collection(selectedDateLabel.text.toString())
+                                    .get()
+                                    .addOnSuccessListener { documents ->
 
-                                    val mAdapter = ScheduleAdapter(scheduleList)
-                                    //                            val layoutManager = LinearLayoutManager(this)
-                                    //                            recyclerView.layoutManager = layoutManager
-                                    recyclerView.adapter = mAdapter
+                                        for (document in documents) {
+                                            db.collection("Chats").document(FamilyName.toString()).collection("CALENDAR")
+                                                    .document(selectedDateLabel.text.toString())
+                                                    .collection(selectedDateLabel.text.toString()).document(document.id.toString())
+                                                    .get()
+                                                    .addOnSuccessListener { docs ->
+                                                        scheduleList.add(Schedule(docs.data?.get("title").toString(), docs.data?.get("detail").toString()))     // 리스트 형태로 어뎁터에 넣어주기
 
+                                                    }
+                                        }
 
-
-
-//                             //1. DB에 내용 있는지 확인해서 불러오기
-//
-//
-//                            schedules = realm.where<Schedule>()
-//                                .greaterThanOrEqualTo("startTime", selectedTimeInMills)
-//                                .lessThan("startTime", selectedTimeInMills + 24 * 60 * 60 * 1000)
-//                                .findAll()
-//                                .sort("startTime")
-//                            adapter = ScheduleAdapter(schedules)
-//                            list.adapter = adapter
-//
-//
-//
-//                             //2. 해당 날짜의 Edit으로 이동하기
-//
-//                            adapter.setOnItenClickListener { id ->  // adapter 클릭하면 그 일정 수정할 수 있도록
-//                                val intent =
-//                                    Intent(this@HomeActivity, ScheduleEditActivity::class.java)
-//                                        .putExtra("schedule_id", id)
-//                                startActivity(intent)
-
-                                }
-
-
-
-
-
-
-
-
-
+                                        val mAdapter = ScheduleAdapter(scheduleList)    // 스케줄 보여주기
+                                        recyclerView.adapter = mAdapter
+                                    }
 
                         }
 

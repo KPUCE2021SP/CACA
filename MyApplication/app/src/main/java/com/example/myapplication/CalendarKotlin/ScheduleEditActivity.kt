@@ -99,8 +99,21 @@ class ScheduleEditActivity : AppCompatActivity(), DatePickerFragment.OnDateSelec
             "start_date" to startDateEdit.text.toString(),
         )
 
+        var calendar_doc = hashMapOf(
+                "title" to startDateEdit.text.toString(),
+        )
+
+//        db.collection("Chats").document(FamilyName.toString()).collection("CALENDAR")
+//            .document(calendar_title.toString()).set(calendar_content as Map<String, Any>)// DB
+//        Toast.makeText(this, "${calendar_title} 일정 업로드 완료!", Toast.LENGTH_SHORT).show()
+
         db.collection("Chats").document(FamilyName.toString()).collection("CALENDAR")
-            .document(calendar_title.toString()).set(calendar_content as Map<String, Any>)// DB
+                .document(scheduleId.toString()).set(calendar_doc as Map<String, Any>)
+
+        db.collection("Chats").document(FamilyName.toString()).collection("CALENDAR")
+                .document(scheduleId.toString())
+                .collection(scheduleId.toString()).document(calendar_title.toString())
+                .set(calendar_content as Map<String, Any>)// DB
         Toast.makeText(this, "${calendar_title} 일정 업로드 완료!", Toast.LENGTH_SHORT).show()
 
 //        val intent = Intent(this, HomeActivity::class.java)
