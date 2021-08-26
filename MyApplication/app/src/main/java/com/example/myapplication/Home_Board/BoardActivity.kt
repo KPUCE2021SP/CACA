@@ -225,25 +225,32 @@ class BoardActivity : AppCompatActivity() {
 
             var message = edit_board_content.text.toString()
 
-            val board_content = hashMapOf(
-                // Family name
-                "contents" to message,
-                "uid" to uid,
-                "time" to formatted,
-                "mention" to spinnerUID.toString(),
-                "photo" to PhotoBoolean,
-            )
+            if (message == ""){ // 내용이 없으면 게시판 삭제
 
-            val FFF= formatted.toString()
-            db.collection("Chats").document(FamilyName.toString()).collection("BOARD")
+                db.collection("Chats").document(FamilyName.toString()).collection("BOARD")
+                    .document(formatted).delete()
+                Toast.makeText(this, "내용이 입력되지 않았습니다.", Toast.LENGTH_SHORT).show()
+
+            }else{ // 내용이 있는 경우
+
+                val board_content = hashMapOf(
+                    // Family name
+                    "contents" to message,
+                    "uid" to uid,
+                    "time" to formatted,
+                    "mention" to spinnerUID.toString(),
+                    "photo" to PhotoBoolean,
+                )
+
+                val FFF= formatted.toString()
+                db.collection("Chats").document(FamilyName.toString()).collection("BOARD")
                     .document(formatted).update(board_content as Map<String, Any>)//.set(board_content) // 게시판 활성화
-            Toast.makeText(this, "게시판 업로드 완료!!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "게시판 업로드 완료!!", Toast.LENGTH_SHORT).show()
+
+            }
 
             Log.d("spinner", spinnerUID)
 
-//            db.collection("Chats").document(FamilyName.toString()).collection("BOARD")
-//                .document(formatted).update(board_content as Map<String, Any>)//.set(board_content) // 게시판 활성화
-//            Toast.makeText(this, "게시판 업로드 완료!!", Toast.LENGTH_SHORT).show()
 
 
             var no_mention: String = ""
