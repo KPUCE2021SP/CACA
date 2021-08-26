@@ -217,6 +217,7 @@ class BoardActivity : AppCompatActivity() {
         boardUpload.setOnClickListener() { // 게시판 글 업로드하기
 
             var PhotoBoolean = false
+            val FFF= formatted.toString()
 
             if (board_imageView.getDrawable() != null){ ///////////////////////// ImageView가 null이 아니라면 // 포토 사용
                 uploadPhoto(FamilyName.toString(), formatted)
@@ -242,7 +243,6 @@ class BoardActivity : AppCompatActivity() {
                     "photo" to PhotoBoolean,
                 )
 
-                val FFF= formatted.toString()
                 db.collection("Chats").document(FamilyName.toString()).collection("BOARD")
                     .document(formatted).update(board_content as Map<String, Any>)//.set(board_content) // 게시판 활성화
                 Toast.makeText(this, "게시판 업로드 완료!!", Toast.LENGTH_SHORT).show()
@@ -282,7 +282,7 @@ class BoardActivity : AppCompatActivity() {
 
 
 
-            Log.d("format", FFF.toString())
+//            Log.d("format", FFF.toString())
             // x, y 받아오기///////////////////////////////////////////////////////////////////////////////////////////////////
             val docRef10 = db.collection("Chats").document(FamilyName.toString()).collection("BOARD").document(FFF) // 여러 field값 가져오기
             docRef10.get()
