@@ -32,8 +32,7 @@
             android:id="@+id/textView2"
             android:paddingRight="15dp"
             android:layout_marginTop="8dp"/>
-        <EditText
-
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="date"
@@ -41,7 +40,18 @@
             android:ems="10"
             android:id="@+id/startDateEdit"
             android:textSize="14sp"
+            android:layout_marginTop="4dp"
             android:hint="Date"/>
+<!--        <EditText-->
+
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:inputType="date"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:ems="10"-->
+<!--            android:id="@+id/startDateEdit"-->
+<!--            android:textSize="14sp"-->
+<!--            android:hint="Date"/>-->
     </LinearLayout>
 
     <EditText

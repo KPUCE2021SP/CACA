@@ -47,12 +47,14 @@ class ScheduleEditActivity : AppCompatActivity(), DatePickerFragment.OnDateSelec
         FamilyName = intent.getStringExtra("FamilyName").toString() // FamilyName
         scheduleId = intent.getStringExtra("selected_date").toString() // Date
 
+        startDateEdit.text = scheduleId
 
-        startDateEdit.setOnClickListener {
-            editStartDateFlag = true
-            val dialog = DatePickerFragment()
-            dialog.show(supportFragmentManager, "startDate_dialog")
-        }
+
+//        startDateEdit.setOnClickListener {
+//            editStartDateFlag = true
+//            val dialog = DatePickerFragment()
+//            dialog.show(supportFragmentManager, "startDate_dialog")
+//        }
 
 
         saveButton.setOnClickListener {view:View-> // 저장!

@@ -1823,7 +1823,8 @@ class HomeActivity : TabActivity() {
                         override fun onDayClick(dateClicked: Date) {
                             selectedCalendar.time = dateClicked
                             val selectedTimeInMills = selectedCalendar.timeInMillis
-                            val dateFormat = DateFormat.format("yyyyMMddmmss", selectedTimeInMills)
+//                            val dateFormat = DateFormat.format("yyyyMMddmmss", selectedTimeInMills)
+                            val dateFormat = DateFormat.format("yyyyMMdd", selectedTimeInMills)
                             selectedDateLabel.text = dateFormat
 
                             mutableListSchedule.clear()
