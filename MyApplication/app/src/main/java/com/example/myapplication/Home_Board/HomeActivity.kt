@@ -1151,7 +1151,7 @@ class HomeActivity : TabActivity() {
 
 
 
-                    notice_card_Layout?.setOnClickListener() { // 삭제
+                    notice_board?.setOnClickListener() { // 삭제
 
                         val dlg: AlertDialog.Builder = AlertDialog.Builder(
                             this,
