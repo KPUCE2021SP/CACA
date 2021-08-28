@@ -1979,30 +1979,34 @@ class HomeActivity : TabActivity() {
 //                        Log.d("AlbumList1", mutableYear[i].toString()) // 해당 년도의 전체
                         Log.d("AlbumList11", AlbumList1.toString()) // 해당 년도의 전체
 
-                        for (i in 0..(AlbumList1.size - 1)){
-                            db.collection("Chats").document(FamilyName.toString()).collection("BOARD").document(AlbumList1[i])
-                                .get()
-                                .addOnSuccessListener { document2 ->
-                                    if (document2 != null) {
-                                        if (document2.data?.get("photo").toString() == "true") { // photo 가 있을 경우
-                                            Log.d("AlbumList11", AlbumList1[i].toString()) // 해당 년도의 전체
-                                            AlbumList2.add(AlbumList1[i].toString())
-                                        }else{
-
-                                        }
-
-                                    }
-                                }
-                        }
-
 
 
 
                         intent.putExtra("FamilyName", FamilyName)
                         intent.putExtra("albumYear", mutableYear[i])
-                        Log.d("AlbumList222", AlbumList2.toString()) // 해당 년도의 전체
-                        intent.putExtra("PhtoAlbumList", AlbumList2.toString()) // Phto List를 String으로 가져가기
-//                        startActivity(intent)
+
+
+                        for (i in 0..(AlbumList1.size - 1)){
+                            db.collection("Chats").document(FamilyName.toString()).collection("BOARD").document(AlbumList1[i])
+                                    .get()
+                                    .addOnSuccessListener { document2 ->
+                                        if (document2 != null) {
+                                            if (document2.data?.get("photo").toString() == "true") { // photo 가 있을 경우
+                                                Log.d("AlbumList11", AlbumList1[i].toString()) // 해당 년도의 전체
+                                                AlbumList2.add(AlbumList1[i].toString())
+                                            }else{
+
+                                            }
+
+                                        }
+
+                                        if(i == (AlbumList1.size - 2)){ // 마지막까지 for문 돌면 그때 넘기기
+                                            Log.d("AlbumList222", AlbumList2.toString()) // 해당 년도의 전체
+                                            intent.putExtra("PhtoAlbumList", AlbumList2.toString()) // Phto List를 String으로 가져가기
+                                            startActivity(intent)
+                                        }
+                                    }
+                        }
                     }
 
                 }
