@@ -1945,11 +1945,64 @@ class HomeActivity : TabActivity() {
                         albumCardbtn.setImageBitmap(profilebmp)
                     }
 
+
+
+
+
+
+
                     albumCardLayout?.setOnClickListener() { // 해당 년도로 이동
-                        val intent = Intent(application, AlbumActivity::class.java)
+                        val intent = Intent(application, AlbumActivity::class.java) // 인텐트 옮기기
+
+                        // 해당 년도의 photo 여부를 먼저 판단해서 넘김.
+                        var AlbumList1: MutableList<String> = mutableListOf("a") // 모든 게시판
+                        AlbumList1.clear()
+                        var AlbumList2: MutableList<String> = mutableListOf("a") // 앨범 있는 게시판
+                        AlbumList2.clear()
+
+                        db.collection("Chats").document(FamilyName.toString()).collection("BOARD")
+                            .get()
+                            .addOnSuccessListener { document2 ->
+                                for (document_acc in document2) {//해당 년도 가져오기
+//                                    AlbumList1.add(document_acc.id) // 해당 년도의 모든 게시판 가져오기
+
+                                    if (document_acc.id.toString().contains(mutableYear[i].toString(), true)) {
+                                        Log.d("AlbumList1", document_acc.id.toString()) // 해당 년도의 전체
+                                        AlbumList1.add(document_acc.id.toString()) // 해당 년도의 모든 게시판 가져오기
+                                    }else{
+                                        Log.d("AlbumList1", "NOPE") // 해당 년도의 전체
+                                    }
+
+                                }
+                            }
+
+//                        Log.d("AlbumList1", mutableYear[i].toString()) // 해당 년도의 전체
+                        Log.d("AlbumList11", AlbumList1.toString()) // 해당 년도의 전체
+
+                        for (i in 0..(AlbumList1.size - 1)){
+                            db.collection("Chats").document(FamilyName.toString()).collection("BOARD").document(AlbumList1[i])
+                                .get()
+                                .addOnSuccessListener { document2 ->
+                                    if (document2 != null) {
+                                        if (document2.data?.get("photo").toString() == "true") { // photo 가 있을 경우
+                                            Log.d("AlbumList11", AlbumList1[i].toString()) // 해당 년도의 전체
+                                            AlbumList2.add(AlbumList1[i].toString())
+                                        }else{
+
+                                        }
+
+                                    }
+                                }
+                        }
+
+
+
+
                         intent.putExtra("FamilyName", FamilyName)
                         intent.putExtra("albumYear", mutableYear[i])
-                        startActivity(intent)
+                        Log.d("AlbumList222", AlbumList2.toString()) // 해당 년도의 전체
+                        intent.putExtra("PhtoAlbumList", AlbumList2.toString()) // Phto List를 String으로 가져가기
+//                        startActivity(intent)
                     }
 
                 }
