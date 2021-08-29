@@ -18,18 +18,18 @@
             android:layout_weight="1"
             android:src="@mipmap/familyship"
             android:id="@+id/albumView1"/>
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/familyship"
-            android:layout_weight="1"
-            android:id="@+id/albumView2"/>
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/familyship"
-            android:layout_weight="1"
-            android:id="@+id/albumView3"/>
+<!--        <ImageView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:src="@mipmap/familyship"-->
+<!--            android:layout_weight="1"-->
+<!--            android:id="@+id/albumView2"/>-->
+<!--        <ImageView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:src="@mipmap/familyship"-->
+<!--            android:layout_weight="1"-->
+<!--            android:id="@+id/albumView3"/>-->
     </LinearLayout>
 
 
