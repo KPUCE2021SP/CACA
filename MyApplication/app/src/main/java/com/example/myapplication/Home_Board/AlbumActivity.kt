@@ -100,8 +100,17 @@ class AlbumActivity : AppCompatActivity() {
 
             family_contain.removeAllViews()
 
-            for (i: Int in 0..(mutableAlbumList.size - 1)) {
+            for (i: Int in 0..(mutableAlbumList.size - 1) step 3) {
 
+                val layoutInflater =
+                        this.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+                val containView = layoutInflater.inflate(
+                        R.layout.activity_album_content,
+                        null
+                )
+                val ContentView = containView as View
+
+                // 1
                 var imageName =
                         "gs://cacafirebase-554ac.appspot.com/Family_Board/" + FamilyName + "_" + mutableAlbumList[i]
                 Log.d("familyimageName", imageName)
@@ -109,23 +118,53 @@ class AlbumActivity : AppCompatActivity() {
                 var familyImgRef = storage.getReferenceFromUrl(imageName)
                 familyImgRef?.getBytes(Long.MAX_VALUE)?.addOnSuccessListener {
 
-                    val layoutInflater =
-                            this.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-                    val containView = layoutInflater.inflate(
-                            R.layout.activity_album_content,
-                            null
-                    )
-                    val ContentView = containView as View
-
-
                     var album_Iv1 = ContentView.findViewById(R.id.albumView1) as ImageView
                     album_Iv1.image = R.drawable.birth.toDrawable()
 
                     val profilebmp = BitmapFactory.decodeByteArray(it, 0, it.size)
                     album_Iv1.setImageBitmap(profilebmp)
 
-                    family_contain.addView(containView)
                 }
+
+
+                // 2
+                if((i+1) <= (mutableAlbumList.size - 1)) {
+                    imageName =
+                            "gs://cacafirebase-554ac.appspot.com/Family_Board/" + FamilyName + "_" + mutableAlbumList[i + 1]
+                    Log.d("familyimageName", imageName)
+                    familyImgRef = storage.getReferenceFromUrl(imageName)
+                    familyImgRef?.getBytes(Long.MAX_VALUE)?.addOnSuccessListener {
+
+                        var album_Iv1 = ContentView.findViewById(R.id.albumView2) as ImageView
+                        album_Iv1.image = R.drawable.birth.toDrawable()
+
+                        val profilebmp = BitmapFactory.decodeByteArray(it, 0, it.size)
+                        album_Iv1.setImageBitmap(profilebmp)
+
+                    }
+                }
+
+
+                // 3
+                if((i+2) <= (mutableAlbumList.size - 1)) {
+                    imageName =
+                            "gs://cacafirebase-554ac.appspot.com/Family_Board/" + FamilyName + "_" + mutableAlbumList[i + 2]
+                    Log.d("familyimageName", imageName)
+                    familyImgRef = storage.getReferenceFromUrl(imageName)
+                    familyImgRef?.getBytes(Long.MAX_VALUE)?.addOnSuccessListener {
+
+                        var album_Iv1 = ContentView.findViewById(R.id.albumView3) as ImageView
+                        album_Iv1.image = R.drawable.birth.toDrawable()
+
+                        val profilebmp = BitmapFactory.decodeByteArray(it, 0, it.size)
+                        album_Iv1.setImageBitmap(profilebmp)
+
+                    }
+                }
+
+
+                // final
+                family_contain.addView(containView)
 
             }
             srl_Mainpage.isRefreshing = false // 인터넷 끊기
