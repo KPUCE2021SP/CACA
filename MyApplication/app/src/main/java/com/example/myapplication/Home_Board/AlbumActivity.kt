@@ -11,6 +11,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.core.graphics.drawable.toDrawable
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.myapplication.R
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
@@ -96,7 +97,7 @@ class AlbumActivity : AppCompatActivity() {
 ////                    }
 //
 //
-                    Log.d("mutableAlbumList", mutableAlbumList.toString())
+                    Log.d("mutableAlbumListasdf", mutableAlbumList.toString())
 //
 //
 //
@@ -120,6 +121,9 @@ class AlbumActivity : AppCompatActivity() {
                 )
                 val ContentView = containView as View
 
+                Log.d("mutableAlbumListasdf", imageName.toString())
+                Log.d("mutableAlbumListasdf", i.toString())
+
                 var album_Iv1 = ContentView.findViewById(R.id.albumView1) as ImageView
                 album_Iv1.image = R.drawable.birth.toDrawable()
 
@@ -128,9 +132,53 @@ class AlbumActivity : AppCompatActivity() {
 
                 family_contain.addView(containView)
             }
-                    .addOnFailureListener {
-//                                album_Iv1.image = R.drawable.birth.toDrawable()
-                    }
+//                    .addOnFailureListener {
+////                                album_Iv1.image = R.drawable.birth.toDrawable()
+//                    }
+        }
+
+
+        // 새로고침
+        var srl_Mainpage = findViewById<SwipeRefreshLayout>(R.id.srl_Mainpage)
+        srl_Mainpage.setOnRefreshListener {
+
+            family_contain.removeAllViews()
+
+            for (i: Int in 0..(mutableAlbumList.size - 1)) {
+
+                var imageName =
+                        "gs://cacafirebase-554ac.appspot.com/Family_Board/" + FamilyName + "_" + mutableAlbumList[i]
+                Log.d("familyimageName", imageName)
+                val storage = Firebase.storage
+                var familyImgRef = storage.getReferenceFromUrl(imageName)
+                familyImgRef?.getBytes(Long.MAX_VALUE)?.addOnSuccessListener {
+
+                    val layoutInflater =
+                            this.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+                    val containView = layoutInflater.inflate(
+                            R.layout.activity_album_content,
+                            null
+                    )
+                    val ContentView = containView as View
+
+                    Log.d("mutableAlbumListasdf", imageName.toString())
+                    Log.d("mutableAlbumListasdf", i.toString())
+
+                    var album_Iv1 = ContentView.findViewById(R.id.albumView1) as ImageView
+                    album_Iv1.image = R.drawable.birth.toDrawable()
+
+                    val profilebmp = BitmapFactory.decodeByteArray(it, 0, it.size)
+                    album_Iv1.setImageBitmap(profilebmp)
+
+                    family_contain.addView(containView)
+                }
+//                    .addOnFailureListener {
+////                                album_Iv1.image = R.drawable.birth.toDrawable()
+//                    }
+            }
+
+            srl_Mainpage.isRefreshing = false // 인터넷 끊기
+
         }
     }
 }
