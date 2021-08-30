@@ -172,9 +172,7 @@ class AlbumActivity : AppCompatActivity() {
 
                     family_contain.addView(containView)
                 }
-//                    .addOnFailureListener {
-////                                album_Iv1.image = R.drawable.birth.toDrawable()
-//                    }
+
             }
 
             srl_Mainpage.isRefreshing = false // 인터넷 끊기
