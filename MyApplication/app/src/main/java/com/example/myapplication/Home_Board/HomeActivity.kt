@@ -1035,6 +1035,7 @@ class HomeActivity : TabActivity() {
                         ContentView.findViewById(R.id.notice_image) as ImageView // Board Image
                     var notice_card_Layout =
                         ContentView.findViewById(R.id.notice_card_Layout) as LinearLayout
+                    var notice_delete_button = ContentView.findViewById(R.id.notice_card_delete) as ImageView // 삭제버튼
 
 
                     val docRef1 =
@@ -1139,6 +1140,31 @@ class HomeActivity : TabActivity() {
                                     Log.d("Fmt2", BoardImageName)
                                     startActivity(secondintent)
                                 }
+                                notice_board.setOnClickListener {
+                                    var formattedB: String = notice_time.text.toString()
+                                    val secondintent =
+                                            Intent(this, BoardContentActivity::class.java)
+
+                                    secondintent.putExtra(
+                                            "notice_boardB",
+                                            notice_board.text.toString()
+                                    )
+                                    secondintent.putExtra(
+                                            "notice_nameB",
+                                            notice_name.text.toString()
+                                    )
+                                    secondintent.putExtra("notice_profileB", imageName)
+                                    secondintent.putExtra("notice_imageB", BoardImageName)
+
+
+                                    secondintent.putExtra("FamilyNameB", FamilyName)
+                                    secondintent.putExtra("formattedB", formattedB)
+                                    Log.d("Fmt1", imageName)
+                                    Log.d("Fmt2", BoardImageName)
+                                    startActivity(secondintent)
+                                }
+
+
 
                             } else {
                                 Log.d(ContentValues.TAG, "No such document")
@@ -1151,7 +1177,7 @@ class HomeActivity : TabActivity() {
 
 
 
-                    notice_board?.setOnClickListener() { // 삭제
+                    notice_delete_button?.setOnClickListener() { // 삭제
 
                         val dlg: AlertDialog.Builder = AlertDialog.Builder(
                             this,
@@ -1224,6 +1250,8 @@ class HomeActivity : TabActivity() {
                             ContentView.findViewById(R.id.notice_image) as ImageView // Board Image
                         var notice_card_Layout =
                             ContentView.findViewById(R.id.notice_card_Layout) as LinearLayout
+
+                        var notice_delete_button = ContentView.findViewById(R.id.notice_card_delete) as ImageView // 삭제버튼
 
                         val docRef1 = db.collection("Chats").document(FamilyName.toString())
                             .collection("BOARD")
@@ -1310,6 +1338,55 @@ class HomeActivity : TabActivity() {
                                             Log.d(ContentValues.TAG, "get failed with ", exception)
                                         }
 
+                                    /////////////////////////// 게시글 크게보기 intent
+                                    notice_image.setOnClickListener {
+                                        var formattedB: String = notice_time.text.toString()
+                                        val secondintent =
+                                                Intent(this, BoardContentActivity::class.java)
+
+                                        secondintent.putExtra(
+                                                "notice_boardB",
+                                                notice_board.text.toString()
+                                        )
+                                        secondintent.putExtra(
+                                                "notice_nameB",
+                                                notice_name.text.toString()
+                                        )
+                                        secondintent.putExtra("notice_profileB", imageName)
+                                        secondintent.putExtra("notice_imageB", BoardImageName)
+
+
+                                        secondintent.putExtra("FamilyNameB", FamilyName)
+                                        secondintent.putExtra("formattedB", formattedB)
+                                        Log.d("Fmt1", imageName)
+                                        Log.d("Fmt2", BoardImageName)
+                                        startActivity(secondintent)
+                                    }
+
+                                    notice_board.setOnClickListener {
+                                        var formattedB: String = notice_time.text.toString()
+                                        val secondintent =
+                                                Intent(this, BoardContentActivity::class.java)
+
+                                        secondintent.putExtra(
+                                                "notice_boardB",
+                                                notice_board.text.toString()
+                                        )
+                                        secondintent.putExtra(
+                                                "notice_nameB",
+                                                notice_name.text.toString()
+                                        )
+                                        secondintent.putExtra("notice_profileB", imageName)
+                                        secondintent.putExtra("notice_imageB", BoardImageName)
+
+
+                                        secondintent.putExtra("FamilyNameB", FamilyName)
+                                        secondintent.putExtra("formattedB", formattedB)
+                                        Log.d("Fmt1", imageName)
+                                        Log.d("Fmt2", BoardImageName)
+                                        startActivity(secondintent)
+                                    }
+
                                 } else {
                                     Log.d(ContentValues.TAG, "No such document")
                                 }
@@ -1317,7 +1394,7 @@ class HomeActivity : TabActivity() {
                             .addOnFailureListener { exception ->
                                 Log.d(ContentValues.TAG, "get failed with ", exception)
                             }
-                        notice_card_Layout?.setOnClickListener() { // 삭제
+                        notice_delete_button?.setOnClickListener() { // 삭제
 
                             val dlg: AlertDialog.Builder = AlertDialog.Builder(
                                 this,
