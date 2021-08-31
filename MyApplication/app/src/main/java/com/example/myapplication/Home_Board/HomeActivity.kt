@@ -42,7 +42,6 @@ import android.text.format.DateFormat
 import android.view.Menu
 import android.view.MenuItem
 import androidx.core.app.ActivityCompat
-import androidx.core.graphics.drawable.toDrawable
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myapplication.CalendarKotlin.Schedule
 import com.example.myapplication.CalendarKotlin.ScheduleAdapter
@@ -72,7 +71,6 @@ import kotlinx.android.synthetic.main.todo_right.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import org.jetbrains.anko.image
 import java.text.SimpleDateFormat
 
 class HomeActivity : TabActivity() {
@@ -1893,8 +1891,6 @@ class HomeActivity : TabActivity() {
 //                list.adapter = adapter
 
 
-                var mutableListSchedule: MutableList<String> = mutableListOf("a")
-                mutableListSchedule.clear()
                 compactcalendar_view.setListener( // 캘린더 구경할때 사용
                     object : CompactCalendarView.CompactCalendarViewListener {
                         override fun onDayClick(dateClicked: Date) {
@@ -1904,32 +1900,41 @@ class HomeActivity : TabActivity() {
                             val dateFormat = DateFormat.format("yyyyMMdd", selectedTimeInMills)
                             selectedDateLabel.text = dateFormat
 
-                            mutableListSchedule.clear()
                             scheduleList.clear()
-                            val schedule_year = DateFormat.format("yyyy", selectedTimeInMills)
-                            val schedule_month = DateFormat.format("MM", selectedTimeInMills)
-                            val schedule_day = DateFormat.format("dd", selectedTimeInMills)
-
-                            val scheduleDaydata = DateFormat.format("yyydd", selectedTimeInMills)
-////                            Log.d("asdfasdfa", selectedDate.toString())
                             db.collection("Chats").document(FamilyName.toString()).collection("CALENDAR")       //DB에서 캘린더 가져오기
-                                    .document(selectedDateLabel.text.toString()).collection(selectedDateLabel.text.toString())
-                                    .get()
-                                    .addOnSuccessListener { documents ->
+                                .document(selectedDateLabel.text.toString()).collection(selectedDateLabel.text.toString())
+                                .get()
+                                .addOnSuccessListener { documents ->
 
-                                        for (document in documents) {
-                                            db.collection("Chats").document(FamilyName.toString()).collection("CALENDAR")
-                                                    .document(selectedDateLabel.text.toString())
-                                                    .collection(selectedDateLabel.text.toString()).document(document.id.toString())
-                                                    .get()
-                                                    .addOnSuccessListener { docs ->
-                                                        scheduleList.add(Schedule(docs.data?.get("title").toString(), docs.data?.get("detail").toString()))     // 리스트 형태로 어뎁터에 넣어주기
+                                    for (document in documents) {
+                                        db.collection("Chats").document(FamilyName.toString()).collection("CALENDAR")
+                                            .document(selectedDateLabel.text.toString())
+                                            .collection(selectedDateLabel.text.toString()).document(document.id.toString())
+                                            .get()
+                                            .addOnSuccessListener { docs ->
+                                                scheduleList.add(Schedule(docs.data?.get("title").toString(), docs.data?.get("detail").toString()))     // 리스트 형태로 어뎁터에 넣어주기
+                                                val mAdapter = ScheduleAdapter(scheduleList)    // 스케줄 보여주기
+                                                recyclerView.adapter = mAdapter
+
+                                                mAdapter.setItemClickListener( object : ScheduleAdapter.ItemClickListener{  // 해당 어뎁터 눌렀을때 -> 삭제
+                                                    override fun onClick(view: View, position: Int) {
+//                                                        Log.d("SSS", "${position}번 리스트 선택")
+
+                                                        scheduleDialog(selectedDateLabel.text.toString(), scheduleList[position].sche_title.toString(), FamilyName.toString())  //스케줄 삭제 다이어로그
+
 
                                                     }
-                                        }
+                                                })
+                                            }
+                                    }
 
-                                        val mAdapter = ScheduleAdapter(scheduleList)    // 스케줄 보여주기
-                                        recyclerView.adapter = mAdapter
+
+
+
+
+
+
+
                                     }
 
                         }
@@ -1954,6 +1959,10 @@ class HomeActivity : TabActivity() {
 //                    startActivity(intent)
 //                }
             }
+
+
+
+
 
         /********************앨범 album**********************/
         var mutableAlbumList: MutableList<String> = mutableListOf("a")
@@ -2128,5 +2137,33 @@ class HomeActivity : TabActivity() {
         } catch(e: Exception) {
             Log.e(TAG, e.toString())
         }
+    }
+
+    fun scheduleDialog(selectedDate : String, scheduleDoc : String, FamilyName : String){       //스케줄 삭제하기
+        val dlg_schedule: AlertDialog.Builder = AlertDialog.Builder(
+            this,
+            android.R.style.Theme_DeviceDefault_Light_Dialog_NoActionBar_MinWidth
+        )
+        dlg_schedule.setTitle("항목 삭제") //제목
+        dlg_schedule.setMessage(scheduleDoc + "를 정말 삭제하시겠습니까?") // 메시지
+        dlg_schedule.setPositiveButton(
+            "확인",
+            DialogInterface.OnClickListener { dialog, which ->
+                // DB 삭제
+                var fbAuth = FirebaseAuth.getInstance()
+                val db: FirebaseFirestore = Firebase.firestore
+
+                db.collection("Chats").document(FamilyName.toString()).collection("CALENDAR")
+                    .document(selectedDate)
+                    .collection(selectedDate).document(scheduleDoc)
+                    .delete()
+
+            })
+        dlg_schedule.setNegativeButton(
+            "취소",
+            DialogInterface.OnClickListener { dialog, which ->
+                // 취소
+            })
+        dlg_schedule.show()
     }
 }
