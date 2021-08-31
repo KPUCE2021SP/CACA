@@ -99,19 +99,19 @@
             android:layout_margin="10dp"
             android:orientation="horizontal">
 
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:src="@drawable/heart" />
+<!--            <ImageView-->
+<!--                android:layout_width="30dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_margin="5dp"-->
+<!--                android:src="@drawable/heart" />-->
 
-            <TextView
-                style="@style/nanumTextView"
-                android:id="@+id/notice_heart"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="3" />
+<!--            <TextView-->
+<!--                style="@style/nanumTextView"-->
+<!--                android:id="@+id/notice_heart"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:text="3" />-->
 
             <ImageView
                 style="@style/nanumTextView"
@@ -125,7 +125,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="1" />
+                android:text="0" />
         </LinearLayout>
 
         <View

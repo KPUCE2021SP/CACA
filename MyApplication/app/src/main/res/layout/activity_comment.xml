@@ -16,12 +16,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-            <ImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
+                android:id="@+id/comment_profile"
                 android:src="@drawable/boy" />
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
             <LinearLayout
@@ -33,13 +34,17 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="홍길동"
+                    android:id="@+id/commentName"
                     android:layout_marginLeft="10dp"
                     android:textStyle="bold"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="3일전"
+                    android:id="@+id/commentDate"
+                    android:text="2021-07-20 21:00"
                     android:layout_marginLeft="10dp" />
+
+
             </LinearLayout>
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -49,45 +54,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:text="댓글 내용 fsdfasfsafasfasfasfsdfsfaf"
+                android:text="댓글 내용"
+                android:id="@+id/comment_content"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:textStyle="bold" />
             </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:layout_margin="10dp"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
-                        android:src="@drawable/heart"
-                        app:tint="@color/example_2_red"/>
-
-                    <TextView
-                        style="@style/nanumTextView"
-                        android:id="@+id/notice_heart"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:text="1" />
-
-                    <ImageView
-                        style="@style/nanumTextView"
-                        android:layout_width="30dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
-                        android:src="@drawable/chat" />
-
-                    <TextView
-                        android:id="@+id/notice_comment"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:text="1" />
-                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
 

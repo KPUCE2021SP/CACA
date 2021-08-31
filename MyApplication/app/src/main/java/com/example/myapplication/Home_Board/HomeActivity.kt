@@ -53,6 +53,7 @@ import com.example.myapplication.Notification.RetrofitInstance
 import com.example.myapplication.R
 import com.github.sundeepk.compactcalendarview.CompactCalendarView
 import com.google.gson.Gson
+import kotlinx.android.synthetic.main.activity_board_content.*
 import kotlinx.android.synthetic.main.activity_dialog.*
 import kotlinx.android.synthetic.main.activity_home.btnCall
 import kotlinx.android.synthetic.main.activity_home.btnSend
@@ -1022,11 +1023,11 @@ class HomeActivity : TabActivity() {
                         getResources().getDrawable(R.drawable.imageview_cornerround, null)
                     notice_image.setClipToOutline(true)
 
-
                     val ContentView = containView as View
                     var notice_board = ContentView.findViewById(R.id.notice_board) as TextView // 내용
                     var notice_time = ContentView.findViewById(R.id.notice_time) as TextView // 시간
                     var notice_name = ContentView.findViewById(R.id.notice_name) as TextView // uid
+                    var notice_comment = ContentView.findViewById(R.id.notice_comment) as TextView // uid
                     var notice_profile =
                         ContentView.findViewById(R.id.notice_profile) as ImageView // profile Image
                     var notice_image =
@@ -1034,6 +1035,28 @@ class HomeActivity : TabActivity() {
                     var notice_card_Layout =
                         ContentView.findViewById(R.id.notice_card_Layout) as LinearLayout
                     var notice_delete_button = ContentView.findViewById(R.id.notice_card_delete) as ImageView // 삭제버튼
+
+
+
+
+
+//                    var mutableCommentList: MutableList<String> = mutableListOf("a")
+//                    mutableCommentList.clear()
+//                    db.collection("Chats").document(FamilyName.toString()).collection("BOARD")  //댓글 갯수
+//                        .document(mutableList[i]).collection(mutableList[i])
+//                        .get()
+//                        .addOnSuccessListener { documents ->
+//                            for (document1 in documents) {
+//                                mutableCommentList.add(document1.id.toString())
+//
+//                            }
+//                            notice_comment.setText(mutableCommentList.size.toString())
+//
+//                        }
+
+
+
+
 
 
                     val docRef1 =
@@ -1046,6 +1069,9 @@ class HomeActivity : TabActivity() {
                                 //textViewName.setText(document.data?.get("name").toString()) // name 확인용
                                 notice_time.setText(document2.data?.get("time").toString())
                                 notice_board.setText(document2.data?.get("contents").toString())
+
+
+
 
 
                                 // profile Image
@@ -1207,6 +1233,8 @@ class HomeActivity : TabActivity() {
                     getResources().getDrawable(R.drawable.imageview_cornerround, null)
                 notice_image.setClipToOutline(true)
             }
+
+
 
 
         //게시판 새로고침하기
