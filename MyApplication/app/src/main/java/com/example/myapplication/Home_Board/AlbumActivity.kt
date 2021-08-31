@@ -64,10 +64,6 @@ class AlbumActivity : AppCompatActivity() {
         albumTV.setText(albumYear.toString())       //년도 표시하기
 
 
-
-
-
-
         var mutableAlbumList: MutableList<String> = mutableListOf("a")
         mutableAlbumList.clear()
 //        var mutableAlbumList2: MutableList<String> = mutableListOf("a")
@@ -78,40 +74,33 @@ class AlbumActivity : AppCompatActivity() {
                 .addOnSuccessListener { document2 ->
                     for (document_acc in document2) {       //해당 년도 가져오기
                         if (document_acc.id.contains(albumYear.toString())) {
-                            mutableAlbumList.add(document_acc.id)
+//                            mutableAlbumList.add(document_acc.id)
+                            db.collection("Chats").document(FamilyName.toString()).collection("BOARD").document(document_acc.id.toString())
+                                    .get()
+                                    .addOnSuccessListener { document2 ->
+                                        if (document2 != null) {
+                                            if (document2.data?.get("photo").toString() == "true") {
+                                                mutableAlbumList.add(document_acc.id.toString())
+                                            }
+                                        }
+                                    }
+
                         }
-
                     }
-//
-////                    for (i in 0..(mutableAlbumList.size - 1)){
-////                        db.collection("Chats").document(FamilyName.toString()).collection("BOARD").document(mutableAlbumList[i])
-////                            .get()
-////                            .addOnSuccessListener { document2 ->
-////                                if (document2 != null) {
-////                                    if (document2.data?.get("photo").toString() == "true") {
-////                                        mutableAlbumList2.add(mutableAlbumList[i].toString())
-////                                    }
-////
-////                                }
-////                            }
-////                    }
-//
-//
-                    Log.d("mutableAlbumListasdf", mutableAlbumList.toString())
-//
-//
-//
-
                 }
 
-        for (i: Int in 0..(mutableAlbumList.size - 1)) {
 
-            var imageName =
-                    "gs://cacafirebase-554ac.appspot.com/Family_Board/" + FamilyName + "_" + mutableAlbumList[i]
-            Log.d("familyimageName", imageName)
-            val storage = Firebase.storage
-            var familyImgRef = storage.getReferenceFromUrl(imageName)
-            familyImgRef?.getBytes(Long.MAX_VALUE)?.addOnSuccessListener {
+
+
+        // 새로고침
+        var srl_Mainpage = findViewById<SwipeRefreshLayout>(R.id.srl_Mainpage)
+        srl_Mainpage.setOnRefreshListener {
+
+            Log.d("mutableAlbumListasdf", mutableAlbumList.toString())
+
+            family_contain.removeAllViews()
+
+            for (i: Int in 0..(mutableAlbumList.size - 1) step 3) {
 
                 val layoutInflater =
                         this.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
@@ -121,31 +110,7 @@ class AlbumActivity : AppCompatActivity() {
                 )
                 val ContentView = containView as View
 
-                Log.d("mutableAlbumListasdf", imageName.toString())
-                Log.d("mutableAlbumListasdf", i.toString())
-
-                var album_Iv1 = ContentView.findViewById(R.id.albumView1) as ImageView
-                album_Iv1.image = R.drawable.birth.toDrawable()
-
-                val profilebmp = BitmapFactory.decodeByteArray(it, 0, it.size)
-                album_Iv1.setImageBitmap(profilebmp)
-
-                family_contain.addView(containView)
-            }
-//                    .addOnFailureListener {
-////                                album_Iv1.image = R.drawable.birth.toDrawable()
-//                    }
-        }
-
-
-        // 새로고침
-        var srl_Mainpage = findViewById<SwipeRefreshLayout>(R.id.srl_Mainpage)
-        srl_Mainpage.setOnRefreshListener {
-
-            family_contain.removeAllViews()
-
-            for (i: Int in 0..(mutableAlbumList.size - 1)) {
-
+                // 1
                 var imageName =
                         "gs://cacafirebase-554ac.appspot.com/Family_Board/" + FamilyName + "_" + mutableAlbumList[i]
                 Log.d("familyimageName", imageName)
@@ -153,28 +118,55 @@ class AlbumActivity : AppCompatActivity() {
                 var familyImgRef = storage.getReferenceFromUrl(imageName)
                 familyImgRef?.getBytes(Long.MAX_VALUE)?.addOnSuccessListener {
 
-                    val layoutInflater =
-                            this.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-                    val containView = layoutInflater.inflate(
-                            R.layout.activity_album_content,
-                            null
-                    )
-                    val ContentView = containView as View
-
-                    Log.d("mutableAlbumListasdf", imageName.toString())
-                    Log.d("mutableAlbumListasdf", i.toString())
-
                     var album_Iv1 = ContentView.findViewById(R.id.albumView1) as ImageView
                     album_Iv1.image = R.drawable.birth.toDrawable()
 
                     val profilebmp = BitmapFactory.decodeByteArray(it, 0, it.size)
                     album_Iv1.setImageBitmap(profilebmp)
 
-                    family_contain.addView(containView)
                 }
 
-            }
 
+                // 2
+                if((i+1) <= (mutableAlbumList.size - 1)) {
+                    imageName =
+                            "gs://cacafirebase-554ac.appspot.com/Family_Board/" + FamilyName + "_" + mutableAlbumList[i + 1]
+                    Log.d("familyimageName", imageName)
+                    familyImgRef = storage.getReferenceFromUrl(imageName)
+                    familyImgRef?.getBytes(Long.MAX_VALUE)?.addOnSuccessListener {
+
+                        var album_Iv1 = ContentView.findViewById(R.id.albumView2) as ImageView
+                        album_Iv1.image = R.drawable.birth.toDrawable()
+
+                        val profilebmp = BitmapFactory.decodeByteArray(it, 0, it.size)
+                        album_Iv1.setImageBitmap(profilebmp)
+
+                    }
+                }
+
+
+                // 3
+                if((i+2) <= (mutableAlbumList.size - 1)) {
+                    imageName =
+                            "gs://cacafirebase-554ac.appspot.com/Family_Board/" + FamilyName + "_" + mutableAlbumList[i + 2]
+                    Log.d("familyimageName", imageName)
+                    familyImgRef = storage.getReferenceFromUrl(imageName)
+                    familyImgRef?.getBytes(Long.MAX_VALUE)?.addOnSuccessListener {
+
+                        var album_Iv1 = ContentView.findViewById(R.id.albumView3) as ImageView
+                        album_Iv1.image = R.drawable.birth.toDrawable()
+
+                        val profilebmp = BitmapFactory.decodeByteArray(it, 0, it.size)
+                        album_Iv1.setImageBitmap(profilebmp)
+
+                    }
+                }
+
+
+                // final
+                family_contain.addView(containView)
+
+            }
             srl_Mainpage.isRefreshing = false // 인터넷 끊기
 
         }
