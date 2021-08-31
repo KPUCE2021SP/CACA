@@ -122,6 +122,7 @@ class BoardActivity : AppCompatActivity() {
             intent.putExtra("FamilyName", FamilyName)
             intent.putExtra("formatted", formatted)
             startActivity(intent)
+            finish()
 //            location = intent.getStringExtra("resultList").toString() // SearchMap Activity 에서 돌아오면 실행하는 코드
 //            board_location_textView.text = location
         }
@@ -141,6 +142,7 @@ class BoardActivity : AppCompatActivity() {
         boardVote.setOnClickListener {
             val intent = Intent(application, Notification::class.java)
             startActivity(intent)
+            finish()
         }
 
         mutableList.clear()

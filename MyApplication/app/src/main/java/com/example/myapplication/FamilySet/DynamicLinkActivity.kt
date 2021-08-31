@@ -45,6 +45,7 @@ class DynamicLinkActivity : AppCompatActivity() {
             val intent= Intent(this, HomeActivity::class.java) // 가족 초대하기 페이지
             intent.putExtra("FamilyName", RandomCode)
             startActivity(intent)
+            finish()
         }
 
 
@@ -76,6 +77,7 @@ class DynamicLinkActivity : AppCompatActivity() {
 
             val chooser = Intent.createChooser(intent, "공유하기")
             startActivity(chooser)
+            finish()
         }
 
 

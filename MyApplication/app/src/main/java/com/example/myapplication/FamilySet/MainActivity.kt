@@ -167,6 +167,7 @@ class MainActivity : AppCompatActivity() {
                         cardView[layoutIdx]?.setOnClickListener() {
                             val intent = Intent(application, MypageActivity::class.java)
                             startActivity(intent)
+                            finish()
                         }
 
                     }else{ // 나머지
@@ -214,6 +215,7 @@ class MainActivity : AppCompatActivity() {
                             val intent = Intent(application, HomeActivity::class.java)
                             intent.putExtra("FamilyName", mutableList[layoutIdx])
                             startActivity(intent)
+                            finish()
                         }
                     }
 
@@ -236,6 +238,7 @@ class MainActivity : AppCompatActivity() {
                 cardView_d.setOnClickListener(){ // 가족 추가 클릭하면 가족 추가 activity로 이동
                     val intent = Intent(this, FamilySettingActivity::class.java)
                     startActivity(intent)
+                    finish()
                 }
 
                 l_contain.addView(containView)
