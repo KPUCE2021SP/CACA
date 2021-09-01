@@ -73,7 +73,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/saveButton"
-            android:background="@color/colorPrimaryDark"
+            android:background="#FCBF48"
             android:textColor="@android:color/white"/>
 
         <Button
@@ -82,7 +82,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:layout_marginLeft="200dp"
-            android:background="@color/colorPrimaryDark"
+            android:background="#FCBF48"
             android:text="Delete"
             android:textColor="@android:color/white" />
     </LinearLayout>

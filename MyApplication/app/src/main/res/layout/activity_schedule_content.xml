@@ -18,9 +18,9 @@
             app:compactCalendarTargetHeight="250dp"
             app:compactCalendarTextSize="12sp"
             app:compactCalendarBackgroundColor="@android:color/background_light"
-            app:compactCalendarTextColor="@color/design_default_color_primary_dark"
-            app:compactCalendarCurrentSelectedDayBackgroundColor="@color/colorPrimary"
-            app:compactCalendarCurrentDayBackgroundColor="@color/colorPrimaryDark"
+            app:compactCalendarTextColor="#231B0A"
+            app:compactCalendarCurrentSelectedDayBackgroundColor="#FCD448"
+            app:compactCalendarCurrentDayBackgroundColor="#FCA948"
             app:compactCalendarMultiEventIndicatorColor="#fff"
             android:layout_marginStart="8dp"
             app:layout_constraintStart_toStartOf="parent"
@@ -49,7 +49,7 @@
             app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="16dp"
             android:id="@+id/selectedDateLabel"
             app:layout_constraintTop_toBottomOf="@+id/compactcalendar_view" android:layout_marginTop="8dp"
-            android:textSize="18sp" android:textColor="@color/design_default_color_primary"/>
+            android:textSize="18sp" android:textColor="#231B0A"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
