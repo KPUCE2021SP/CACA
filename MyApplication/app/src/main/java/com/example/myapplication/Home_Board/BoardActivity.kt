@@ -387,7 +387,13 @@ class BoardActivity : AppCompatActivity() {
         }
 
 
+    override fun onBackPressed(){
+        Toast.makeText(this, "작성하신 글이 저장되지 않았습니다.", Toast.LENGTH_SHORT).show()
+        return
+    }
+
+
+
 
 }
-
 
