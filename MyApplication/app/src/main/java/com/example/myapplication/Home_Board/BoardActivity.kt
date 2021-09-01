@@ -365,13 +365,6 @@ class BoardActivity : AppCompatActivity() {
         }
     }
 
-
-
-
-
-
-
-
     private fun sendNotification(notification: PushNotification) =
         CoroutineScope(Dispatchers.IO).launch {
             try {
@@ -392,8 +385,4 @@ class BoardActivity : AppCompatActivity() {
         return
     }
 
-
-
-
 }
-
