@@ -1039,11 +1039,10 @@ class HomeActivity : TabActivity() {
 
 
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+                    // 댓글 갯수
                     var mutableCommentList: MutableList<String> = mutableListOf("a")
                     mutableCommentList.clear()
-                    db.collection("Chats").document(FamilyName.toString()).collection("BOARD")  //댓글 갯수
+                    db.collection("Chats").document(FamilyName.toString()).collection("BOARD")
                         .document(mutableList[(mutableList.size - 1) - i]).collection(mutableList[(mutableList.size - 1) - i])
                         .get()
                         .addOnSuccessListener { documents ->
@@ -1055,7 +1054,6 @@ class HomeActivity : TabActivity() {
 
                         }
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
