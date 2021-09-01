@@ -740,7 +740,7 @@
                         android:ems="10"
                         android:hint="Enter Token"
                         android:inputType="textPersonName"
-                        android:visibility="visible" />
+                        android:visibility="invisible" />
 
                     <EditText
                         android:id="@+id/etTitle"
