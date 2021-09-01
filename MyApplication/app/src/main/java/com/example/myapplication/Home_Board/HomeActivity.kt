@@ -1039,22 +1039,23 @@ class HomeActivity : TabActivity() {
 
 
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+                    var mutableCommentList: MutableList<String> = mutableListOf("a")
+                    mutableCommentList.clear()
+                    db.collection("Chats").document(FamilyName.toString()).collection("BOARD")  //댓글 갯수
+                        .document(mutableList[(mutableList.size - 1) - i]).collection(mutableList[(mutableList.size - 1) - i])
+                        .get()
+                        .addOnSuccessListener { documents ->
+                            for (document1 in documents) {
+                                mutableCommentList.add(document1.id.toString())
 
-//                    var mutableCommentList: MutableList<String> = mutableListOf("a")
-//                    mutableCommentList.clear()
-//                    db.collection("Chats").document(FamilyName.toString()).collection("BOARD")  //댓글 갯수
-//                        .document(mutableList[i]).collection(mutableList[i])
-//                        .get()
-//                        .addOnSuccessListener { documents ->
-//                            for (document1 in documents) {
-//                                mutableCommentList.add(document1.id.toString())
-//
-//                            }
-//                            notice_comment.setText(mutableCommentList.size.toString())
-//
-//                        }
+                            }
+                            notice_comment.setText(mutableCommentList.size.toString())
 
+                        }
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
