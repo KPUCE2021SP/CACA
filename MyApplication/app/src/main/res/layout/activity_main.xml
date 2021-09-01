@@ -10,8 +10,10 @@
 
     <ToggleButton
         android:id="@+id/toggleButton"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="#fcbf48"
+        android:shadowColor="#9C27B0"
         android:text="위치 알람"
         android:textOff="위치 알람 끄기"
         android:textOn="위치 알람 키기" />
@@ -25,13 +27,13 @@
 <!--        android:text="위젯추가"-->
 <!--        android:textSize="15dp" />-->
 
-    <ToggleButton
-        android:id="@+id/toggleButton2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="ToggleButton"
-        android:textOff="일정 알람 끄기"
-        android:textOn="일정 알람 키기" />
+<!--    <ToggleButton-->
+<!--        android:id="@+id/toggleButton2"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="ToggleButton"-->
+<!--        android:textOff="일정 알람 끄기"-->
+<!--        android:textOn="일정 알람 키기" />-->
 
     <TextView
         style="@style/nanumTextView"
