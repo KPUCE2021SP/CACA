@@ -21,8 +21,9 @@ class DynamicLinkActivity : AppCompatActivity() {
         setContentView(R.layout.activity_dynamic)
 
         val RandomCode = intent.getStringExtra("Random_Code")
+        val FamilyName = intent.getStringExtra("FamilyName") // 제목 선정
 
-        inviteCodeView.setText(RandomCode) // 8자리 코드 랜덤 생성해서 set
+        inviteCodeView.setText(FamilyName) // 8자리 코드 랜덤 생성해서 set
 
 
         JoinButton.setOnClickListener(){ // 참여하기 누르면 chat에 member로 추가 && Member Mypage에 가족 이름 추가
@@ -62,9 +63,9 @@ class DynamicLinkActivity : AppCompatActivity() {
 
 
 
-        inviteCodeImage.setOnClickListener(){ // 이미지 누르면 8자리 코드 클립보드에 복사
-            onClick_clipboard(inviteCodeView.text.toString())
-        }
+//        inviteCodeImage.setOnClickListener(){ // 이미지 누르면 8자리 코드 클립보드에 복사
+//            onClick_clipboard(inviteCodeView.text.toString())
+//        }
 
         var link = "https://familyship.page.link/DynamicLinkActivity?key=" + inviteCodeView.text.toString()
         // https://familyship.page.link/DynamicLinkActivity?key=choi

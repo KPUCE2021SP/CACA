@@ -971,6 +971,7 @@ class HomeActivity : TabActivity() {
 
         btnGroup.setOnClickListener {
             val intent = Intent(application, DynamicLinkActivity::class.java)
+            intent.putExtra("FamilyName", FamilyName)
             startActivity(intent)
         }
 

@@ -114,20 +114,20 @@
             android:textSize="35dp"
             android:textStyle="bold" />
 
-        <ImageView
-            android:id="@+id/inviteCodeImage"
-            android:layout_width="40dp"
-            android:layout_height="50dp"
-            android:layout_alignRight="@+id/inviteCodeView"
-            android:layout_alignBottom="@+id/inviteCodeView"
-            android:layout_gravity="center"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="5dp"
-            android:layout_weight="1"
-            android:src="@drawable/copy" />
+<!--        <ImageView-->
+<!--            android:id="@+id/inviteCodeImage"-->
+<!--            android:layout_width="40dp"-->
+<!--            android:layout_height="50dp"-->
+<!--            android:layout_alignRight="@+id/inviteCodeView"-->
+<!--            android:layout_alignBottom="@+id/inviteCodeView"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:layout_marginStart="10dp"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:layout_marginEnd="10dp"-->
+<!--            android:layout_marginRight="10dp"-->
+<!--            android:layout_marginBottom="5dp"-->
+<!--            android:layout_weight="1"-->
+<!--            android:src="@drawable/copy" />-->
     </RelativeLayout>
 
 
