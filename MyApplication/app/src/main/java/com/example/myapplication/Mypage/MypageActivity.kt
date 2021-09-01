@@ -323,11 +323,26 @@ class MypageActivity : AppCompatActivity() {
 
 
 
+
+//            for (splitIdx in splitContent.indices) {
+//                if (TextUtils.isEmpty(splitContent[splitIdx])) {
+//                    splitNumber.add("")
+//                    splitText.add("")
+//
+//                } else if (Pattern.matches("^[0-9]+$", splitContent[splitIdx].substring(0, 1))) {
+//                    splitNumber.add(splitContent[splitIdx].substring(0, 2))
+//                    splitText.add(splitContent[splitIdx].substring(2).trim { it <= ' ' })
+//
+//                } else {
+//                    splitNumber.add("")
+//                    splitText.add(splitContent[splitIdx])
+//                }
+//            }
+
             for (splitIdx in splitContent.indices) {
                 if (TextUtils.isEmpty(splitContent[splitIdx])) {
                     splitNumber.add("")
                     splitText.add("")
-
                 } else if (Pattern.matches("^[0-9]+$", splitContent[splitIdx].substring(0, 1))) {
                     splitNumber.add(splitContent[splitIdx].substring(0, 2))
                     splitText.add(splitContent[splitIdx].substring(2).trim { it <= ' ' })
@@ -335,6 +350,7 @@ class MypageActivity : AppCompatActivity() {
                 } else {
                     splitNumber.add("")
                     splitText.add(splitContent[splitIdx])
+
                 }
             }
 
@@ -345,7 +361,7 @@ class MypageActivity : AppCompatActivity() {
                     this.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
                 val containView =
                     layoutInflater.inflate(R.layout.mypage_content, null) // mypage_content를 inflate
-                layout.addView(containView)
+
 
                 mVContentView[layoutIdx] = containView as View
 
@@ -354,31 +370,38 @@ class MypageActivity : AppCompatActivity() {
                 mTvContentText[layoutIdx] =
                     mVContentView[layoutIdx]!!.findViewById(R.id.tv_text) as TextView
 
-
                 var str1: String = splitText[layoutIdx]
                 str1 = str1.substring(0, str1.indexOf(" :")).trim()
-                mTvContentNumber[layoutIdx]!!.text = str1 // 위 textView
 
-                var str2: String = splitText[layoutIdx]
-                str2 = str2.substring(str2.indexOf(": "), str2.length)
-                mTvContentText[layoutIdx]!!.text = str2 // 아래 textView
+                if (str1 != "x" && str1 != "y" && str1 != "location") {
+                    layout.addView(containView)
+                    mTvContentNumber[layoutIdx]!!.text = str1 // 위 textView
 
+                    var str2: String = splitText[layoutIdx]
+                    str2 = str2.substring(str2.indexOf(": "), str2.length)
+                    mTvContentText[layoutIdx]!!.text = str2 // 아래 textView
 
-                mMedicineImageView[layoutIdx] =
-                    mVContentView[layoutIdx]!!.findViewById(R.id.albumImageView) as ImageView  // default image 지정
-                mMedicineImageView[layoutIdx]!!.setImageResource(R.drawable.heart)
+                    mMedicineImageView[layoutIdx] =
+                            mVContentView[layoutIdx]!!.findViewById(R.id.albumImageView) as ImageView  // default image 지정
+                    mMedicineImageView[layoutIdx]!!.setImageResource(R.drawable.heart)
 
-                if (mTvContentNumber[layoutIdx]!!.text.contains("doctor")) { // text에 따라서 imageView 바꾸기
-                    mMedicineImageView[layoutIdx]!!.setImageResource(R.drawable.ic_input_doctor)
-                } else if (mTvContentNumber[layoutIdx]!!.text.contains("birth")) {
-                    mMedicineImageView[layoutIdx]!!.setImageResource(R.drawable.cake)
-                } else if (mTvContentNumber[layoutIdx]!!.text.contains("address")) {
-                    mMedicineImageView[layoutIdx]!!.setImageResource(R.drawable.home)
-                } else if (mTvContentNumber[layoutIdx]!!.text.contains("phone")) {
-                    mMedicineImageView[layoutIdx]!!.setImageResource(R.drawable.calling)
-                } else if (mTvContentNumber[layoutIdx]!!.text.contains("name")) {
-                    mMedicineImageView[layoutIdx]!!.setImageResource(R.drawable.boy)
+                    if (mTvContentNumber[layoutIdx]!!.text.contains("doctor")) { // text에 따라서 imageView 바꾸기
+                        mMedicineImageView[layoutIdx]!!.setImageResource(R.drawable.ic_input_doctor)
+                    } else if (mTvContentNumber[layoutIdx]!!.text.contains("birth")) {
+                        mMedicineImageView[layoutIdx]!!.setImageResource(R.drawable.cake)
+                    } else if (mTvContentNumber[layoutIdx]!!.text.contains("address")) {
+                        mMedicineImageView[layoutIdx]!!.setImageResource(R.drawable.home)
+                    } else if (mTvContentNumber[layoutIdx]!!.text.contains("phone")) {
+                        mMedicineImageView[layoutIdx]!!.setImageResource(R.drawable.calling)
+                    } else if (mTvContentNumber[layoutIdx]!!.text.contains("name")) {
+                        mMedicineImageView[layoutIdx]!!.setImageResource(R.drawable.boy)
+                    }
                 }
+
+
+
+
+
             }
 
 
