@@ -44,12 +44,12 @@ class customActivity: Activity() {
 
 
         val color = mutableListOf<String>("standing_1.png", "standing_2.png", "standing_3.png", "standing_4.png", "standing_5.png",
-            "standing_6.png", "standing_7.png", "standing_8.png", "standing_9.png")
-        val acc = mutableListOf<String>("flushing.png", "beret.png", "glass.png", "crown.png", "flower.png", "baby.png", "flower.png",   "sister.png")
+            "standing_6.png", "standing_7.png", "standing_8.png", "standing_9.png", "standing_10.png")
+        val acc = mutableListOf<String>("flushing.png", "beret.png", "glass.png", "crown.png", "flower.png", "baby.png", "sister.png")
         val emotion = mutableListOf<String>("angry.png", "hungry.png", "sadness.png", "smile.png")
         val eyes = mutableListOf<String>("normaleye.png", "blackeye.png",)
         val dancing = mutableListOf<String>("dancing_1.png", "dancing_2.png", "dancing_3.png", "dancing_4.png",
-            "dancing_5.png", "dancing_6.png", "dancing_7.png", "dancing_8.png", "dancing_9.png")
+            "dancing_5.png", "dancing_6.png", "dancing_7.png", "dancing_8.png", "dancing_9.png", "dancing_10.png")
 
 
 
