@@ -426,7 +426,7 @@ class HomeActivity : TabActivity() {
                         val customRef = BitmapFactory.decodeByteArray(it, 0, it.size)
                         cu_body_Iv.setImageBitmap(customRef)
                     }?.addOnFailureListener {
-                        Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT).show()
+                     //   Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT).show()
                     }
 
                     customImage.setOnClickListener {    //춤추기
@@ -438,8 +438,8 @@ class HomeActivity : TabActivity() {
                             val customRef = BitmapFactory.decodeByteArray(it, 0, it.size)
                             cu_body_Iv.setImageBitmap(customRef)
                         }?.addOnFailureListener {
-                            Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT)
-                                .show()
+                       //     Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT)
+                                //.show()
                         }
 
                         Handler(Looper.getMainLooper()).postDelayed({
@@ -451,8 +451,8 @@ class HomeActivity : TabActivity() {
                                 val customRef = BitmapFactory.decodeByteArray(it, 0, it.size)
                                 cu_body_Iv.setImageBitmap(customRef)
                             }?.addOnFailureListener {
-                                Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT)
-                                    .show()
+                       //         Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT)
+                                //    .show()
                             }
                         }, 3000)
 
@@ -467,7 +467,7 @@ class HomeActivity : TabActivity() {
                         val customRef = BitmapFactory.decodeByteArray(it, 0, it.size)
                         cu_acc_Iv.setImageBitmap(customRef)
                     }?.addOnFailureListener {
-                        Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT).show()
+                    //    Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT).show()
                     }
 
 
@@ -479,7 +479,7 @@ class HomeActivity : TabActivity() {
                         val customRef = BitmapFactory.decodeByteArray(it, 0, it.size)
                         cu_eye_Iv.setImageBitmap(customRef)
                     }?.addOnFailureListener {
-                        Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT).show()
+                   //     Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT).show()
                     }
                 }
             }
@@ -1088,11 +1088,11 @@ class HomeActivity : TabActivity() {
                                     val profilebmp = BitmapFactory.decodeByteArray(it, 0, it.size)
                                     notice_profile.setImageBitmap(profilebmp) // 작성한 사람 uid로 profileImage 변경!
                                 }?.addOnFailureListener {
-                                    Toast.makeText(
-                                        this,
-                                        "image downloade failed",
-                                        Toast.LENGTH_SHORT
-                                    ).show()
+//                                    Toast.makeText(
+//                                        this,
+//                                        "image downloade failed",
+//                                        Toast.LENGTH_SHORT
+//                                    ).show()
                                 }
 
 
@@ -1109,11 +1109,11 @@ class HomeActivity : TabActivity() {
                                     val profilebmp2 = BitmapFactory.decodeByteArray(it, 0, it.size)
                                     notice_image.setImageBitmap(profilebmp2) // 작성한 사람 uid로 profileImage 변경!
                                 }?.addOnFailureListener {
-                                    Toast.makeText(
-                                        this,
-                                        "image downloade failed",
-                                        Toast.LENGTH_SHORT
-                                    ).show()
+//                                    Toast.makeText(
+//                                        this,
+//                                        "image downloade failed",
+//                                        Toast.LENGTH_SHORT
+//                                    ).show()
                                     notice_image.isGone =
                                         true                            // 업로드된 이미지가 없다면
                                 }
@@ -1310,11 +1310,11 @@ class HomeActivity : TabActivity() {
                                             BitmapFactory.decodeByteArray(it, 0, it.size)
                                         notice_profile.setImageBitmap(profilebmp) // 작성한 사람 uid로 profileImage 변경!
                                     }?.addOnFailureListener {
-                                        Toast.makeText(
-                                            this,
-                                            "image downloade failed",
-                                            Toast.LENGTH_SHORT
-                                        ).show()
+//                                        Toast.makeText(
+//                                            this,
+//                                            "image downloade failed",
+//                                            Toast.LENGTH_SHORT
+//                                        ).show()
                                     }
 
 
@@ -1332,11 +1332,11 @@ class HomeActivity : TabActivity() {
                                             BitmapFactory.decodeByteArray(it, 0, it.size)
                                         notice_image.setImageBitmap(profilebmp2) // 작성한 사람 uid로 profileImage 변경!
                                     }?.addOnFailureListener {
-                                        Toast.makeText(
-                                            this,
-                                            "image downloade failed",
-                                            Toast.LENGTH_SHORT
-                                        ).show()
+//                                        Toast.makeText(
+//                                            this,
+//                                            "image downloade failed",
+//                                            Toast.LENGTH_SHORT
+//                                        ).show()
                                         notice_image.isGone =
                                             true                            // 업로드된 이미지가 없다면
                                     }
@@ -1669,8 +1669,8 @@ class HomeActivity : TabActivity() {
 
 
                             }?.addOnFailureListener {
-                                Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT)
-                                    .show()
+//                                Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT)
+//                                    .show()
 
                             }
 

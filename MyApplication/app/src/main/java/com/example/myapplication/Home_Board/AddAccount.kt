@@ -42,7 +42,7 @@ class AddAccount : AppCompatActivity() {
             val profilebmp = BitmapFactory.decodeByteArray(it, 0, it.size)
             account_profile.setImageBitmap(profilebmp)
         }?.addOnFailureListener {
-            Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT).show()
+//            Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT).show()
         }
 
 

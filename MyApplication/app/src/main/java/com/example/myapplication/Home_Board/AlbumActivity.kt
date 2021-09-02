@@ -54,11 +54,11 @@ class AlbumActivity : AppCompatActivity() {
             val profilebmp = BitmapFactory.decodeByteArray(it, 0, it.size)
             FamilyProfileView.setImageBitmap(profilebmp)
         }?.addOnFailureListener {
-            Toast.makeText(
-                    this,
-                    "image downloade failed",
-                    Toast.LENGTH_SHORT
-            ).show()
+//            Toast.makeText(
+//                    this,
+//                    "image downloade failed",
+//                    Toast.LENGTH_SHORT
+//            ).show()
         }
 
         albumTV.setText(albumYear.toString())       //년도 표시하기

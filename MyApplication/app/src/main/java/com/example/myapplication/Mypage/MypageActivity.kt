@@ -122,7 +122,7 @@ class MypageActivity : AppCompatActivity() {
             val profilebmp = BitmapFactory.decodeByteArray(it, 0, it.size)
             peopleFace.setImageBitmap(profilebmp)
         }?.addOnFailureListener {
-            Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT).show()
+         //   Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT).show()
         }
 
 
@@ -203,7 +203,7 @@ class MypageActivity : AppCompatActivity() {
                 val profilebmp = BitmapFactory.decodeByteArray(it, 0, it.size)
                 peopleFace.setImageBitmap(profilebmp)
             }?.addOnFailureListener {
-                Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT).show()
+        //        Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT).show()
             }
 
 

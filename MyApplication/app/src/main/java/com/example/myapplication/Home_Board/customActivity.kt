@@ -107,7 +107,7 @@ class customActivity: Activity() {
             val customRef = BitmapFactory.decodeByteArray(it, 0, it.size)
             body_Iv.setImageBitmap(customRef)
         }?.addOnFailureListener {
-            Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT).show()
+//            Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT).show()
         }
 
         custom_acc = acc[0].toString()
@@ -117,7 +117,7 @@ class customActivity: Activity() {
             val customRef = BitmapFactory.decodeByteArray(it, 0, it.size)
             acc_Iv.setImageBitmap(customRef)
         }?.addOnFailureListener {
-            Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT).show()
+//            Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT).show()
         }
 
 
@@ -128,7 +128,7 @@ class customActivity: Activity() {
             val customRef = BitmapFactory.decodeByteArray(it, 0, it.size)
             eye_Iv.setImageBitmap(customRef)
         }?.addOnFailureListener {
-            Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT).show()
+//            Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT).show()
         }
 
 
@@ -145,7 +145,7 @@ class customActivity: Activity() {
                 val customRef = BitmapFactory.decodeByteArray(it, 0, it.size)
                 body_Iv.setImageBitmap(customRef)
             }?.addOnFailureListener {
-                Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT).show()
+//                Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT).show()
             }
 //            bodyframe.foreground = ContextCompat.getDrawable(this, R.drawable.standing_1)
 
@@ -160,7 +160,7 @@ class customActivity: Activity() {
                 val customRef = BitmapFactory.decodeByteArray(it, 0, it.size)
                 body_Iv.setImageBitmap(customRef)
             }?.addOnFailureListener {
-                Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT).show()
+//                Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT).show()
             }
 //            bodyframe.foreground = ContextCompat.getDrawable(this, R.drawable. standing_2)
 
@@ -175,7 +175,7 @@ class customActivity: Activity() {
                 val customRef = BitmapFactory.decodeByteArray(it, 0, it.size)
                 body_Iv.setImageBitmap(customRef)
             }?.addOnFailureListener {
-                Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT).show()
+//                Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT).show()
             }
 
 //            bodyframe.foreground = ContextCompat.getDrawable(this, R.drawable. standing_3)
@@ -191,7 +191,7 @@ class customActivity: Activity() {
                 val customRef = BitmapFactory.decodeByteArray(it, 0, it.size)
                 body_Iv.setImageBitmap(customRef)
             }?.addOnFailureListener {
-                Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT).show()
+//                Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT).show()
             }
 //            bodyframe.foreground = ContextCompat.getDrawable(this, R.drawable. standing_4)
 
@@ -206,7 +206,7 @@ class customActivity: Activity() {
                 val customRef = BitmapFactory.decodeByteArray(it, 0, it.size)
                 body_Iv.setImageBitmap(customRef)
             }?.addOnFailureListener {
-                Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT).show()
+//                Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT).show()
             }
 //            bodyframe.foreground = ContextCompat.getDrawable(this, R.drawable. standing_5)
 
@@ -221,7 +221,7 @@ class customActivity: Activity() {
                 val customRef = BitmapFactory.decodeByteArray(it, 0, it.size)
                 body_Iv.setImageBitmap(customRef)
             }?.addOnFailureListener {
-                Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT).show()
+ //               Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT).show()
             }
 //            bodyframe.foreground = ContextCompat.getDrawable(this, R.drawable. standing_6)
 
@@ -236,7 +236,7 @@ class customActivity: Activity() {
                 val customRef = BitmapFactory.decodeByteArray(it, 0, it.size)
                 body_Iv.setImageBitmap(customRef)
             }?.addOnFailureListener {
-                Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT).show()
+               // Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT).show()
             }
 //            bodyframe.foreground = ContextCompat.getDrawable(this, R.drawable. standing_7)
 
@@ -251,7 +251,7 @@ class customActivity: Activity() {
                 val customRef = BitmapFactory.decodeByteArray(it, 0, it.size)
                 body_Iv.setImageBitmap(customRef)
             }?.addOnFailureListener {
-                Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT).show()
             }
 //            bodyframe.foreground = ContextCompat.getDrawable(this, R.drawable. standing_8)
 
@@ -266,7 +266,7 @@ class customActivity: Activity() {
                 val customRef = BitmapFactory.decodeByteArray(it, 0, it.size)
                 body_Iv.setImageBitmap(customRef)
             }?.addOnFailureListener {
-                Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT).show()
+               // Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT).show()
             }
 //            bodyframe.foreground = ContextCompat.getDrawable(this, R.drawable. standing_9)
 
@@ -281,7 +281,7 @@ class customActivity: Activity() {
                 val customRef = BitmapFactory.decodeByteArray(it, 0, it.size)
                 body_Iv.setImageBitmap(customRef)
             }?.addOnFailureListener {
-                Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT).show()
+              //  Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT).show()
             }
 //            bodyframe.foreground = ContextCompat.getDrawable(this, R.drawable. standing_10)
 
@@ -301,7 +301,7 @@ class customActivity: Activity() {
                 val customRef = BitmapFactory.decodeByteArray(it, 0, it.size)
                 acc_Iv.setImageBitmap(customRef)
             }?.addOnFailureListener {
-                Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT).show()
+              //  Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT).show()
             }
 //            decoframe.foreground = ContextCompat.getDrawable(this, R.drawable. flushing)
 
@@ -315,7 +315,7 @@ class customActivity: Activity() {
                 val customRef = BitmapFactory.decodeByteArray(it, 0, it.size)
                 acc_Iv.setImageBitmap(customRef)
             }?.addOnFailureListener {
-                Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT).show()
+              //  Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT).show()
             }
 //            decoframe.foreground = ContextCompat.getDrawable(this, R.drawable. beret)
 
@@ -329,7 +329,7 @@ class customActivity: Activity() {
                 val customRef = BitmapFactory.decodeByteArray(it, 0, it.size)
                 acc_Iv.setImageBitmap(customRef)
             }?.addOnFailureListener {
-                Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT).show()
+             //   Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT).show()
             }
 //            decoframe.foreground = ContextCompat.getDrawable(this, R.drawable. glass)
 
@@ -343,7 +343,7 @@ class customActivity: Activity() {
                 val customRef = BitmapFactory.decodeByteArray(it, 0, it.size)
                 acc_Iv.setImageBitmap(customRef)
             }?.addOnFailureListener {
-                Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT).show()
+              //  Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT).show()
             }
 //            decoframe.foreground = ContextCompat.getDrawable(this, R.drawable. crown)
 
@@ -357,7 +357,7 @@ class customActivity: Activity() {
                 val customRef = BitmapFactory.decodeByteArray(it, 0, it.size)
                 acc_Iv.setImageBitmap(customRef)
             }?.addOnFailureListener {
-                Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT).show()
+               // Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT).show()
             }
 //            decoframe.foreground = ContextCompat.getDrawable(this, R.drawable. flower)
 
@@ -371,7 +371,7 @@ class customActivity: Activity() {
                 val customRef = BitmapFactory.decodeByteArray(it, 0, it.size)
                 acc_Iv.setImageBitmap(customRef)
             }?.addOnFailureListener {
-                Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT).show()
+               // Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT).show()
             }
 //            decoframe.foreground = ContextCompat.getDrawable(this, R.drawable. baby)
 
@@ -386,7 +386,7 @@ class customActivity: Activity() {
                 val customRef = BitmapFactory.decodeByteArray(it, 0, it.size)
                 acc_Iv.setImageBitmap(customRef)
             }?.addOnFailureListener {
-                Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT).show()
+              //  Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT).show()
             }
 //            decoframe.foreground = ContextCompat.getDrawable(this, R.drawable. sister)
 
@@ -405,7 +405,7 @@ class customActivity: Activity() {
                 val customRef = BitmapFactory.decodeByteArray(it, 0, it.size)
                 eye_Iv.setImageBitmap(customRef)
             }?.addOnFailureListener {
-                Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT).show()
+               // Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT).show()
             }
 //            faceframe.foreground = ContextCompat.getDrawable(this, R.drawable. normaleye)
 
@@ -419,7 +419,7 @@ class customActivity: Activity() {
                 val customRef = BitmapFactory.decodeByteArray(it, 0, it.size)
                 eye_Iv.setImageBitmap(customRef)
             }?.addOnFailureListener {
-                Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT).show()
+              //  Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT).show()
             }
 //            faceframe.foreground = ContextCompat.getDrawable(this, R.drawable. blackeye)
 

@@ -140,6 +140,7 @@ class FamilySettingActivity : AppCompatActivity() {
                 val intent = Intent(this, DynamicLinkActivity::class.java) // 가족 초대하기 페이지
                 intent.putExtra("Random_Code", code)
                 startActivity(intent)
+                finish()
 
             }else {
                 Toast.makeText(this, "가족 이름을 입력하세요!", Toast.LENGTH_SHORT).show()

@@ -112,7 +112,7 @@ class BoardActivity : AppCompatActivity() {
             val profilebmp = BitmapFactory.decodeByteArray(it, 0, it.size)
             board_Profile.setImageBitmap(profilebmp)
         }?.addOnFailureListener {
-            Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT).show()
+//            Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT).show()
         }
 
 

@@ -158,7 +158,7 @@ class SearchMap : AppCompatActivity() {
             db.collection("Chats").document(FamilyName.toString()).collection("BOARD")
                 .document(formatted.toString()).update(board_content as Map<String, Any>) // 게시판 활성화
 
-            Toast.makeText(applicationContext, "${resultNameArray[position].toString()}", Toast.LENGTH_LONG).show()
+    //        Toast.makeText(applicationContext, "${resultNameArray[position].toString()}", Toast.LENGTH_LONG).show()
 
 
 

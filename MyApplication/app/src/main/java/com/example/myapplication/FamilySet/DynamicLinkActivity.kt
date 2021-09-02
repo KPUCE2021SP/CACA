@@ -55,7 +55,7 @@ class DynamicLinkActivity : AppCompatActivity() {
         // 링크 타고 들어왔을 경우
         if (intent.action == Intent.ACTION_VIEW) { // 링크 타고 들어왔을 때 수행하는 코드
             val value1 = intent.data?.getQueryParameter("key") // link의 key 값을 value로 받는다.
-            Toast.makeText(applicationContext, "key = $value1", Toast.LENGTH_LONG).show()
+//            Toast.makeText(applicationContext, "key = $value1", Toast.LENGTH_LONG).show()
             inviteCodeView.setText(value1)
         }
 

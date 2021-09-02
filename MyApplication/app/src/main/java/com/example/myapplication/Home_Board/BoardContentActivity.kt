@@ -57,11 +57,11 @@ class BoardContentActivity : AppCompatActivity() {
             val profilebmp = BitmapFactory.decodeByteArray(it, 0, it.size)
             notice_profileB.setImageBitmap(profilebmp) // 작성한 사람 uid로 profileImage 변경!
         }?.addOnFailureListener {
-            Toast.makeText(
-                this,
-                "image downloade failed",
-                Toast.LENGTH_SHORT
-            ).show()
+//            Toast.makeText(
+//                this,
+//                "image downloade failed",
+//                Toast.LENGTH_SHORT
+//            ).show()
         }
 
         //// Board Image
@@ -72,11 +72,11 @@ class BoardContentActivity : AppCompatActivity() {
             val profilebmp2 = BitmapFactory.decodeByteArray(it, 0, it.size)
             notice_imageB.setImageBitmap(profilebmp2) // 작성한 사람 uid로 profileImage 변경!
         }?.addOnFailureListener {
-            Toast.makeText(
-                this,
-                "image downloade failed",
-                Toast.LENGTH_SHORT
-            ).show()
+//            Toast.makeText(
+//                this,
+//                "image downloade failed",
+//                Toast.LENGTH_SHORT
+//            ).show()
             notice_imageB.isGone =
                 true                            // 업로드된 이미지가 없다면
         }
