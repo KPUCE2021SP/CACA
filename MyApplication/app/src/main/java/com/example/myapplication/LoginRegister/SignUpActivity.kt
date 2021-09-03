@@ -171,7 +171,7 @@ class SignUpActivity : AppCompatActivity() {
         )
 
         db.collection("Member").document(a).set(human) // db에 넣기
-        db.collection("Member").document(a).collection("MYPAGE").document("MYPAGE").set(family)
+        db.collection("Member").document(a).collection("MYPAGE").document("A").set(family)
 
     }
 

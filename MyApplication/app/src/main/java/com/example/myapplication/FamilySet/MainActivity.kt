@@ -150,7 +150,7 @@ class MainActivity : AppCompatActivity() {
 
                 for (layoutIdx in 0..count) {
 
-                    if(mutableList[layoutIdx] == "MYPAGE"){ // Familys
+                    if(mutableList[layoutIdx] == "A"){ // Familys
 
                         val layoutInflater = this.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
                         val containView = layoutInflater.inflate(R.layout.defaultcard_layout, null) // mypage_content를 inflate
