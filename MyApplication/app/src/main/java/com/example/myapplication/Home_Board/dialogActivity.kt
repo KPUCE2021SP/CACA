@@ -30,10 +30,7 @@ class dialogActivity : AppCompatActivity() {
 
         btnCall = findViewById<Button>(R.id.btnCall)
 //        edtCall = findViewById<EditText>(R.id.edtCall)
-        btnCall.setOnClickListener {
-            edtCall.setText(findCallHistory()) /*오류*/
-            setContent(dialog_contain,findCallHistory())
-        }
+//        btnCall.setOnClickListener {
     }
 
     fun findCallHistory() : String {
