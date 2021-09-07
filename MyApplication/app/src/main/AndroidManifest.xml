@@ -28,6 +28,7 @@
         <activity android:name=".Home_Board.AddAccount"></activity>
         <activity android:name=".CalendarKotlin.CalendarActivity"></activity>
         <activity android:name=".CalendarKotlin.ScheduleEditActivity"></activity>
+        <activity android:name=".Home_Board.HomeDialogActivity"></activity>
         <activity android:name=".Home_Board.dialogActivity"/>
 <!--        <receiver-->
 <!--            android:name=".AppWidgetProvider"-->
