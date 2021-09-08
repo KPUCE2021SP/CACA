@@ -128,14 +128,31 @@ class HomeDialogActivity : AppCompatActivity() {
             var mutableListEqual: MutableList<String> = mutableListOf("a")
             mutableListEqual.clear()
 
+            var mutableListSplit: MutableList<String> = mutableListOf("a")
+            mutableListSplit.clear()
+//
+//            var EqualBuff = StringBuffer()
+
             for(i in 0 until mutableListCallNum.size){
                 Log.d("CallNumList",mutableListCallNum[i])
                 for(j in 0 until splitNumber.size){
                     Log.d("CallNumList1",splitNumber[j])
                     if (mutableListCallNum[i].toString().contentEquals(splitNumber[j].toString())){
-                        mutableListEqual.add(mutableListCallNum[i].toString())
-                        Log.d("CallNumList222",mutableListEqual.toString())
+                        mutableListEqual.add(splitDate[j].toString())
+//                        EqualBuff.append(splitDate[j]+",")
                     }
+                }
+                mutableListEqual.add(":")
+//                EqualBuff.append("/\n")
+            }
+
+            Log.d("CallNumList222",mutableListEqual.toString())
+
+            for(i in 0 until mutableListEqual.size){
+                if(mutableListEqual[i]==":"){
+                    mutableListSplit.add(mutableListEqual[i-1])
+
+                    Log.d("CallNumList99999999",mutableListSplit.toString())
                 }
             }
 
@@ -154,14 +171,14 @@ class HomeDialogActivity : AppCompatActivity() {
                     mVContentView[layoutIdx]!!.findViewById(R.id.dialog_number) as TextView
 //                mTvContentSs[layoutIdx] =
 //                    mVContentView[layoutIdx]!!.findViewById(R.id.dialog_ss) as TextView
-//                mTvContentDate[layoutIdx] =
-//                    mVContentView[layoutIdx]!!.findViewById(R.id.dialog_date) as TextView
+                mTvContentDate[layoutIdx] =
+                    mVContentView[layoutIdx]!!.findViewById(R.id.dialog_date) as TextView
 //                mTvContentText[layoutIdx] =
 //                    mVContentView[layoutIdx]!!.findViewById(R.id.dialog_long) as TextView
 
-//                mTvContentDate[layoutIdx]!!.text= splitDate[layoutIdx]
+                mTvContentDate[layoutIdx]!!.text= "마지막 통화날짜: " + mutableListSplit[layoutIdx]
 //                mTvContentSs[layoutIdx]!!.text = splitSs[layoutIdx]
-                mTvContentNumber[layoutIdx]!!.text = splitNumber[layoutIdx]
+                mTvContentNumber[layoutIdx]!!.text = mutableListCallNum[layoutIdx]
 //                mTvContentText[layoutIdx]!!.text = splitText[layoutIdx]
 
 //                mcallImageView[layoutIdx] =

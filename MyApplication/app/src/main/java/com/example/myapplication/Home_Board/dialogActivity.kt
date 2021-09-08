@@ -27,132 +27,132 @@ class dialogActivity : AppCompatActivity() {
         ActivityCompat.requestPermissions(this,
             arrayOf(Manifest.permission.READ_CALL_LOG), MODE_PRIVATE
         )
-
-        btnCall = findViewById<Button>(R.id.btnCall)
-//        edtCall = findViewById<EditText>(R.id.edtCall)
-//        btnCall.setOnClickListener {
-    }
-
-    fun findCallHistory() : String {
-        var callSet = arrayOf(CallLog.Calls.DATE, CallLog.Calls.TYPE,
-            CallLog.Calls.NUMBER, CallLog.Calls.DURATION)
-
-        var c = contentResolver.query(CallLog.Calls.CONTENT_URI, /*오류*/
-            callSet, null, null, null)
-
-        if (c!!.count == 0)
-            return "통화기록 없음"
-
-        var callBuff = StringBuffer()
-//        callBuff.append("\n날짜 : 구분 : 전화번호 : 통화시간\n\n")
-        callBuff.append("날짜:")
-        c.moveToFirst()
-        do {
-            var callDate = c.getLong(0)
-            var datePattern = SimpleDateFormat("yyyy-MM-dd")
-            var date_str = datePattern.format(Date(callDate))
-            callBuff.append("$date_str:")
-            if (c.getInt(1) == CallLog.Calls.INCOMING_TYPE)
-                callBuff.append("착신:")
-            else
-                callBuff.append("발신:")
-            callBuff.append(c.getString(2) + ":")
-            callBuff.append(c.getString(3) + "초\n")
-        } while (c.moveToNext())
-
-        c.close()
-
-        return callBuff.toString()
-
-
-    }
-
-    private fun setContent(layout: LinearLayout, content: String) { // 통화기록 동적생성
-
-        if (!TextUtils.isEmpty(content)) {
-            var c: String = content
-//            c = c.replace("{", "")
-//            c = c.replace("}", "")
-            c = c.replace(" : ", ":")
-            c = c.replace(" :", ":")
-            c = c.replace(": ", ":")
-
-            val splitContent = c.split("\n".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
-
-            val splitDate = ArrayList<String>()
-            val splitSs = ArrayList<String>()
-            val splitNumber = ArrayList<String>()
-            val splitText = ArrayList<String>()
-
-            // Content Text
-            val mVContentView = arrayOfNulls<View>(splitContent.size)
-            val mTvContentDate = arrayOfNulls<TextView>(splitContent.size)
-            val mTvContentSs = arrayOfNulls<TextView>(splitContent.size)
-            val mTvContentNumber = arrayOfNulls<TextView>(splitContent.size)
-            val mTvContentText = arrayOfNulls<TextView>(splitContent.size)
-
-            val mcallImageView = arrayOfNulls<ImageView>(splitContent.size)
-
-            var token = c.split(":","\n")
-            Log.d("Tk11","mmmmmmmmmmmmmmmmmmmmmmmmmmm")
-
-            for(i in 1 until token.size){
-                if (i % 4 == 0){
-                    splitText.add(token[i])
-                    Log.d("Tkqt", splitText.toString())
-//                    Log.d("Tkqt1", splitText.size.toString())
-                }else if(i % 4 == 1){
-                    splitDate.add(token[i])
-                    Log.d("Tkdate", splitDate.toString())
-//                    Log.d("Tkdate1", splitDate.size.toString())
-                }else if(i % 2 == 1){
-                    splitNumber.add(token[i])
-                    Log.d("Tknumber", splitNumber.toString())
-//                    Log.d("Tknumber1", splitNumber.size.toString())
-                }else if(i % 2 == 0){
-                    splitSs.add(token[i])
-                    Log.d("Tklong", splitSs.toString())
-//                    Log.d("Tklong1", splitSs.size.toString())
-                }
-            }
-
-            layout.removeAllViews()
-
-            Log.d("TkCC", splitContent.size.toString())
-
-            for (layoutIdx in splitContent.indices) {
-                val layoutInflater =
-                    this.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-                val containView =
-                    layoutInflater.inflate(R.layout.activity_dialog_card, null) // dialog_card를 inflate
-                layout.addView(containView)
-
-                mVContentView[layoutIdx] = containView as View
-
-                mTvContentNumber[layoutIdx] =
-                    mVContentView[layoutIdx]!!.findViewById(R.id.dialog_number) as TextView
-                mTvContentSs[layoutIdx] =
-                    mVContentView[layoutIdx]!!.findViewById(R.id.dialog_ss) as TextView
-                mTvContentDate[layoutIdx] =
-                    mVContentView[layoutIdx]!!.findViewById(R.id.dialog_date) as TextView
-                mTvContentText[layoutIdx] =
-                    mVContentView[layoutIdx]!!.findViewById(R.id.dialog_long) as TextView
-
-                mTvContentDate[layoutIdx]!!.text= splitDate[layoutIdx]
-                mTvContentSs[layoutIdx]!!.text = splitSs[layoutIdx]
-                mTvContentNumber[layoutIdx]!!.text = splitNumber[layoutIdx]
-                mTvContentText[layoutIdx]!!.text = splitText[layoutIdx]
-
-                mcallImageView[layoutIdx] =
-                    mVContentView[layoutIdx]!!.findViewById(R.id.callImageView) as ImageView  // default image 지정
-                mcallImageView[layoutIdx]!!.setImageResource(R.drawable.heart)
-
-                if (mTvContentSs[layoutIdx]!!.text.contains("착신")) { // text에 따라서 imageView 바꾸기
-                    mcallImageView[layoutIdx]!!.setImageResource(R.drawable.incomingcall)
-                } else if (mTvContentSs[layoutIdx]!!.text.contains("발신")) {
-                    mcallImageView[layoutIdx]!!.setImageResource(R.drawable.outgoingcall)
-                }
-            }
+//
+//        btnCall = findViewById<Button>(R.id.btnCall)
+////        edtCall = findViewById<EditText>(R.id.edtCall)
+////        btnCall.setOnClickListener {
+//    }
+//
+//    fun findCallHistory() : String {
+//        var callSet = arrayOf(CallLog.Calls.DATE, CallLog.Calls.TYPE,
+//            CallLog.Calls.NUMBER, CallLog.Calls.DURATION)
+//
+//        var c = contentResolver.query(CallLog.Calls.CONTENT_URI, /*오류*/
+//            callSet, null, null, null)
+//
+//        if (c!!.count == 0)
+//            return "통화기록 없음"
+//
+//        var callBuff = StringBuffer()
+////        callBuff.append("\n날짜 : 구분 : 전화번호 : 통화시간\n\n")
+//        callBuff.append("날짜:")
+//        c.moveToFirst()
+//        do {
+//            var callDate = c.getLong(0)
+//            var datePattern = SimpleDateFormat("yyyy-MM-dd")
+//            var date_str = datePattern.format(Date(callDate))
+//            callBuff.append("$date_str:")
+//            if (c.getInt(1) == CallLog.Calls.INCOMING_TYPE)
+//                callBuff.append("착신:")
+//            else
+//                callBuff.append("발신:")
+//            callBuff.append(c.getString(2) + ":")
+//            callBuff.append(c.getString(3) + "초\n")
+//        } while (c.moveToNext())
+//
+//        c.close()
+//
+//        return callBuff.toString()
+//
+//
+//    }
+//
+//    private fun setContent(layout: LinearLayout, content: String) { // 통화기록 동적생성
+//
+//        if (!TextUtils.isEmpty(content)) {
+//            var c: String = content
+////            c = c.replace("{", "")
+////            c = c.replace("}", "")
+//            c = c.replace(" : ", ":")
+//            c = c.replace(" :", ":")
+//            c = c.replace(": ", ":")
+//
+//            val splitContent = c.split("\n".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
+//
+//            val splitDate = ArrayList<String>()
+//            val splitSs = ArrayList<String>()
+//            val splitNumber = ArrayList<String>()
+//            val splitText = ArrayList<String>()
+//
+//            // Content Text
+//            val mVContentView = arrayOfNulls<View>(splitContent.size)
+//            val mTvContentDate = arrayOfNulls<TextView>(splitContent.size)
+//            val mTvContentSs = arrayOfNulls<TextView>(splitContent.size)
+//            val mTvContentNumber = arrayOfNulls<TextView>(splitContent.size)
+//            val mTvContentText = arrayOfNulls<TextView>(splitContent.size)
+//
+//            val mcallImageView = arrayOfNulls<ImageView>(splitContent.size)
+//
+//            var token = c.split(":","\n")
+//            Log.d("Tk11","mmmmmmmmmmmmmmmmmmmmmmmmmmm")
+//
+//            for(i in 1 until token.size){
+//                if (i % 4 == 0){
+//                    splitText.add(token[i])
+//                    Log.d("Tkqt", splitText.toString())
+////                    Log.d("Tkqt1", splitText.size.toString())
+//                }else if(i % 4 == 1){
+//                    splitDate.add(token[i])
+//                    Log.d("Tkdate", splitDate.toString())
+////                    Log.d("Tkdate1", splitDate.size.toString())
+//                }else if(i % 2 == 1){
+//                    splitNumber.add(token[i])
+//                    Log.d("Tknumber", splitNumber.toString())
+////                    Log.d("Tknumber1", splitNumber.size.toString())
+//                }else if(i % 2 == 0){
+//                    splitSs.add(token[i])
+//                    Log.d("Tklong", splitSs.toString())
+////                    Log.d("Tklong1", splitSs.size.toString())
+//                }
+//            }
+//
+//            layout.removeAllViews()
+//
+//            Log.d("TkCC", splitContent.size.toString())
+//
+//            for (layoutIdx in splitContent.indices) {
+//                val layoutInflater =
+//                    this.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+//                val containView =
+//                    layoutInflater.inflate(R.layout.activity_dialog_card, null) // dialog_card를 inflate
+//                layout.addView(containView)
+//
+//                mVContentView[layoutIdx] = containView as View
+//
+//                mTvContentNumber[layoutIdx] =
+//                    mVContentView[layoutIdx]!!.findViewById(R.id.dialog_number) as TextView
+//                mTvContentSs[layoutIdx] =
+//                    mVContentView[layoutIdx]!!.findViewById(R.id.dialog_ss) as TextView
+//                mTvContentDate[layoutIdx] =
+//                    mVContentView[layoutIdx]!!.findViewById(R.id.dialog_date) as TextView
+//                mTvContentText[layoutIdx] =
+//                    mVContentView[layoutIdx]!!.findViewById(R.id.dialog_long) as TextView
+//
+//                mTvContentDate[layoutIdx]!!.text= splitDate[layoutIdx]
+//                mTvContentSs[layoutIdx]!!.text = splitSs[layoutIdx]
+//                mTvContentNumber[layoutIdx]!!.text = splitNumber[layoutIdx]
+//                mTvContentText[layoutIdx]!!.text = splitText[layoutIdx]
+//
+//                mcallImageView[layoutIdx] =
+//                    mVContentView[layoutIdx]!!.findViewById(R.id.callImageView) as ImageView  // default image 지정
+//                mcallImageView[layoutIdx]!!.setImageResource(R.drawable.heart)
+//
+//                if (mTvContentSs[layoutIdx]!!.text.contains("착신")) { // text에 따라서 imageView 바꾸기
+//                    mcallImageView[layoutIdx]!!.setImageResource(R.drawable.incomingcall)
+//                } else if (mTvContentSs[layoutIdx]!!.text.contains("발신")) {
+//                    mcallImageView[layoutIdx]!!.setImageResource(R.drawable.outgoingcall)
+//                }
+//            }
 
 
 
@@ -190,10 +190,10 @@ class dialogActivity : AppCompatActivity() {
 //
 //            }
 
-        } else {
-            // TODO: get your code!
-            Log.e("ERROR!", "Content is empty!");
-        }
+//        } else {
+//            // TODO: get your code!
+//            Log.e("ERROR!", "Content is empty!");
+//        }
 
 
     }

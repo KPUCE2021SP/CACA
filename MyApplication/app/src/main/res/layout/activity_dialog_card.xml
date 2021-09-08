@@ -41,33 +41,14 @@
 
         <TextView
             style="@style/nanumTextView"
-            android:text="구분z"
-            android:id="@+id/dialog_ss"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="3dp"
-            android:layout_toRightOf="@+id/tv_number"
-            android:textSize="14dp"></TextView>
-
-        <TextView
-            style="@style/nanumTextView"
             android:id="@+id/dialog_number"
             android:text="전화번호z"
-           android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="3dp"
-            android:layout_toRightOf="@+id/tv_number"
-            android:textSize="14dp"></TextView>
-
-        <TextView
-            android:text="통화시간z"
-            style="@style/nanumTextView"
-            android:id="@+id/dialog_long"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
             android:layout_toRightOf="@+id/tv_number"
             android:textSize="14dp"></TextView>
+
     </LinearLayout>
 
 
