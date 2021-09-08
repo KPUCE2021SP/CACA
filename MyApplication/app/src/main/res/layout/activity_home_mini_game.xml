@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Home_Board.HomeMiniGameActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:background="#fcbf48">
+        <TextView
+            style="@style/nanumTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:layout_weight="1"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:text="미니 게임"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/LinearMain3"
+        android:orientation="vertical">
+        <ScrollView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <HorizontalScrollView
+                    android:fadeScrollbars="false"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:ignore="NestedScrolling,UselessParent">
+
+                    <LinearLayout
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:layout_width="300dp"
+                        android:layout_height="100dp">
+
+                        <TextView
+                            style="@style/nanumTextView"
+                            android:textStyle="bold"
+                            android:layout_marginTop="20dp"
+                            android:layout_margin="5dp"
+                            android:id="@+id/text_result"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:textColor="@color/black"
+                            android:text="미니게임"
+                            android:textSize="30dp" />
+                    </LinearLayout>
+                </HorizontalScrollView>
+
+                <LinearLayout
+                    android:id="@+id/minigameRst_upload"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:visibility="gone"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:text="게시판에 업로드"
+                        android:textSize="15dp"
+                        style="@style/nanumTextView"/>
+
+                    <ImageView
+                        android:id="@+id/minigameRst_btn"
+                        android:layout_margin="10dp"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/upload"
+                        android:scaleType="fitCenter"
+                        android:layout_gravity="center"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_margin="10dp"
+                    android:layout_width="300dp"
+                    android:layout_height="100dp">
+
+                    <LinearLayout
+                        android:layout_width="150dp"
+                        android:layout_height="100dp"
+                        android:orientation="vertical"
+                        android:gravity="center">
+                        <ImageView
+                            android:layout_width="100dp"
+                            android:layout_height="50dp"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/random2_negative"
+                            android:id="@+id/btn_pick"
+                            android:layout_gravity="center" />
+                        <TextView
+                            style="@style/nanumTextView"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="한명만 뽑기"
+                            android:textSize="15dp"
+                            android:textStyle="bold"></TextView>
+                    </LinearLayout>
+
+
+
+                    <LinearLayout
+                        android:layout_width="150dp"
+                        android:layout_height="100dp"
+                        android:orientation="vertical"
+                        android:gravity="center">
+                        <ImageView
+                            android:layout_width="100dp"
+                            android:layout_height="50dp"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/rank_negative"
+                            android:id="@+id/btn_one_pick"
+                            android:layout_gravity="center" />
+                        <TextView
+                            style="@style/nanumTextView"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="순위 정하기"
+                            android:textSize="15dp"
+                            android:textStyle="bold"></TextView>
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <TextView
+                    style="@style/nanumTextView"
+                    android:layout_marginTop="30dp"
+                    android:text="참가자"
+                    android:textColor="@color/black"
+                    android:textSize="25dp"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/testName"/>
+
+                <ListView
+                    style="@style/nanumTextView"
+                    android:clickable="false"
+                    android:layout_gravity="center"
+                    android:layout_margin="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:id="@+id/mutableView">
+
+                </ListView>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</LinearLayout>

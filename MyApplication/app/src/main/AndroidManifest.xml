@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.myapplication">
 
     <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
@@ -25,38 +26,50 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".Home_Board.AddAccount"></activity>
-        <activity android:name=".CalendarKotlin.CalendarActivity"></activity>
-        <activity android:name=".CalendarKotlin.ScheduleEditActivity"></activity>
-        <activity android:name=".Home_Board.HomeDialogActivity"></activity>
-        <activity android:name=".Home_Board.dialogActivity"/>
-<!--        <receiver-->
-<!--            android:name=".AppWidgetProvider"-->
-<!--            android:exported="false">-->
-<!--            <intent-filter>-->
-<!--                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />-->
-<!--            </intent-filter>-->
-
-<!--            <meta-data-->
-<!--                android:name="android.appwidget.provider"-->
-<!--                android:resource="@xml/appwidget_info" />-->
-<!--        </receiver>-->
-
-        <receiver android:name=".Location.AlarmReceiver"
-            android:exported="false">
-        </receiver>
+        <activity android:name=".Home_Board.HomeMessageActivity"></activity>
+        <activity android:name=".Home_Board.HomeTodoActivity" />
+        <activity android:name=".Home_Board.HomeMiniGameActivity" />
+        <activity android:name=".Home_Board.HomeAccountActivity" />
+        <activity android:name=".Home_Board.AddAccount" />
+        <activity android:name=".CalendarKotlin.CalendarActivity" />
+        <activity android:name=".CalendarKotlin.ScheduleEditActivity" />
+        <activity android:name=".Home_Board.HomeDialogActivity" />
+        <activity android:name=".Home_Board.HomeMessageActivity"
+            tools:ignore="DuplicateActivity"></activity>
+        <activity
+            android:name=".Home_Board.HomeTodoActivity"
+            tools:ignore="DuplicateActivity" />
+        <activity
+            android:name=".Home_Board.HomeMiniGameActivity"
+            tools:ignore="DuplicateActivity" />
+        <activity
+            android:name=".Home_Board.HomeAccountActivity"
+            tools:ignore="DuplicateActivity" />
+        <activity android:name=".Home_Board.dialogActivity" /> <!-- <receiver -->
+        <!-- android:name=".AppWidgetProvider" -->
+        <!-- android:exported="false"> -->
+        <!-- <intent-filter> -->
+        <!-- <action android:name="android.appwidget.action.APPWIDGET_UPDATE" /> -->
+        <!-- </intent-filter> -->
+        <!-- <meta-data -->
+        <!-- android:name="android.appwidget.provider" -->
+        <!-- android:resource="@xml/appwidget_info" /> -->
+        <!-- </receiver> -->
+        <receiver
+            android:name=".Location.AlarmReceiver"
+            android:exported="false" />
 
         <activity android:name=".SerachMap.SearchMapContent" />
-        <activity android:name=".todo2Activity"/>
+        <activity android:name=".todo2Activity" />
 
         <meta-data
             android:name="com.kakao.sdk.AppKey"
             android:value="945b139935b4dd7d948524834b84b539" />
-    
-        <activity android:name=".Home_Board.BoardContentActivity"/>
+
+        <activity android:name=".Home_Board.BoardContentActivity" />
         <activity android:name=".Notification.Notification" />
         <activity android:name=".FamilySet.MainActivity" />
-        <activity android:name=".Home_Board.AlbumActivity"></activity>
+        <activity android:name=".Home_Board.AlbumActivity" />
         <activity android:name=".FamilySet.FamilySettingActivity" />
         <activity android:name=".LoginRegister.SignUpActivity" />
         <activity android:name=".LoginRegister.LoginActivity">
@@ -66,7 +79,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Location.LocationActivity"></activity>
+        <activity android:name=".Location.LocationActivity" />
         <activity android:name=".Mypage.MypageEditActivity" />
         <activity android:name=".Mypage.MypageActivity" />
         <activity android:name=".Home_Board.HomeActivity" />
@@ -75,7 +88,7 @@
             android:windowSoftInputMode="adjustResize" />
         <activity android:name=".SerachMap.SearchMap" />
         <activity android:name=".FamilySet.StartActivity" />
-        <activity android:name=".Home_Board.customActivity"></activity>
+        <activity android:name=".Home_Board.customActivity" />
         <activity android:name=".FamilySet.DynamicLinkActivity">
             <intent-filter android:autoVerify="true">
                 <action android:name="android.intent.action.VIEW" />
