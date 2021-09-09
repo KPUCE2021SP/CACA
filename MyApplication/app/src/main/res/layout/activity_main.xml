@@ -29,23 +29,6 @@
             android:text="위젯 추가"/>
     </TableRow>
 
-<!--    <Button-->
-<!--        style="@style/nanumButton"-->
-<!--        android:id="@+id/widButton"-->
-<!--        android:gravity="center"-->
-<!--        android:layout_width="80dp"-->
-<!--        android:layout_height="40dp"-->
-<!--        android:text="위젯추가"-->
-<!--        android:textSize="15dp" />-->
-
-<!--    <ToggleButton-->
-<!--        android:id="@+id/toggleButton2"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="ToggleButton"-->
-<!--        android:textOff="일정 알람 끄기"-->
-<!--        android:textOn="일정 알람 키기" />-->
-
     <TextView
         style="@style/nanumTextView"
         android:id="@+id/textView"
