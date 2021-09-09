@@ -3,6 +3,9 @@ package com.example.myapplication.FamilySet
 import android.Manifest
 import android.app.AlarmManager
 import android.app.PendingIntent
+import android.appwidget.AppWidgetManager
+import android.appwidget.AppWidgetProvider
+import android.content.ComponentName
 import android.content.ContentValues.TAG
 import android.content.Context
 import android.content.Intent
@@ -17,10 +20,8 @@ import android.widget.CompoundButton
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
-import com.example.myapplication.DailyAlarm
 import com.example.myapplication.Location.AlarmReceiver
 //import com.example.myapplication.AppWidgetProvider
 import com.example.myapplication.Home_Board.HomeActivity
@@ -45,8 +46,6 @@ import kotlinx.android.synthetic.main.card_layout.*
 import kotlinx.android.synthetic.main.mypage_activity.*
 import kotlinx.android.synthetic.main.signuppage.*
 import org.jetbrains.anko.alarmManager
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
 import java.util.*
 
 
@@ -66,7 +65,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        
+
         // 위치 접근 허가
         val permissionListener = object : PermissionListener { // 위치 정보 권한 허가
             override fun onPermissionGranted() {
@@ -87,7 +86,6 @@ class MainActivity : AppCompatActivity() {
         // 위치 접근 허가
 
 
-
         // 기기 정보 저장
 
         FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
@@ -106,7 +104,7 @@ class MainActivity : AppCompatActivity() {
 
 
             val deviceInfo = hashMapOf( // device Token DB에 넣기
-                "deviceInfo" to msg.toString()
+                    "deviceInfo" to msg.toString()
             )
 
             db.collection("Member").document(uid).collection("DEVICE").document("TOKEN").set(deviceInfo)
@@ -115,171 +113,123 @@ class MainActivity : AppCompatActivity() {
         })
 
 
-
-
-
-
-
-
-
-
-
-
-
-
         val db: FirebaseFirestore = Firebase.firestore // 여러 document 받아오기
         var a = ""
-        var mutableList : MutableList<String> = mutableListOf("a")
+        var mutableList: MutableList<String> = mutableListOf("a")
         mutableList.clear()
 
         db.collection("Member").document(uid).collection("MYPAGE")
-            //.whereEqualTo("Familys", true)
-            .get()
-            .addOnSuccessListener { documents ->
-                for (document in documents) {
-                    Log.d(TAG, "${document.id} => ${document.data}")
-                    mutableList.add(document.id)
-                }
-
-                val ContentView = arrayOfNulls<View>(mutableList.size)
-                val cardView = arrayOfNulls<CardView>(mutableList.size)
-                val item_title_d = arrayOfNulls<TextView>(mutableList.size)
-                val card_item_image = arrayOfNulls<ImageView>(mutableList.size)
-
-                val count = mutableList.size - 1
-
-                for (layoutIdx in 0..count) {
-
-                    if(mutableList[layoutIdx] == "A"){ // Familys
-
-                        val layoutInflater = this.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-                        val containView = layoutInflater.inflate(R.layout.defaultcard_layout, null) // mypage_content를 inflate
-                        l_contain.addView(containView) // 추가
-
-                        ContentView[layoutIdx] = containView as View
-
-                        item_title_d[layoutIdx] = ContentView[layoutIdx]!!.findViewById(R.id.item_title_d) as TextView
-                        val db: FirebaseFirestore = Firebase.firestore // 여러 field값 가져오기
-                        val docRef1 = db.collection("Member").document(uid)
-                        //item_title_d[layoutIdx]?.text = mutableList[layoutIdx]
-
-                        cardView[layoutIdx] = ContentView[layoutIdx]!!.findViewById(R.id.cardView) as CardView
-                        cardView[layoutIdx]?.setOnClickListener() {
-                            val intent = Intent(application, MypageActivity::class.java)
-                            startActivity(intent)
-                        }
-
-                    }else{ // 나머지
-
-                        val layoutInflater = this.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-                        val containView = layoutInflater.inflate(R.layout.card_layout, null) // mypage_content를 inflate
-                        l_contain.addView(containView) // 추가
-
-                        ContentView[layoutIdx] = containView as View
-
-
-
-                        item_title_d[layoutIdx] = ContentView[layoutIdx]!!.findViewById(R.id.item_title_d) as TextView // field로 가져오기
-                        val docRef2 = db.collection("Member").document(uid).collection("MYPAGE").document(mutableList[layoutIdx]                        )
-                        docRef2.get()
-                            .addOnSuccessListener { document ->
-                                if (document != null) {
-                                    Log.d(TAG, "DocumentSnapshot data: ${document.data}")
-                                    item_title_d[layoutIdx]?.text = document.data?.get("name").toString() // family name 넣기
-
-                                } else {
-                                    Log.d(TAG, "No such document")
-                                }
-                            }
-                            .addOnFailureListener { exception ->
-                                Log.d(TAG, "get failed with ", exception)
-                            }
-
-
-
-
-                        card_item_image[layoutIdx] = ContentView[layoutIdx]!!.findViewById(R.id.item_image) as ImageView // 가족별 Image 가져오기
-                        //card_item_image[layoutIdx]?.setImageURI(ref.downloadUrl.toString().toUri())
-                        var storage: FirebaseStorage = Firebase.storage
-                        val imageRef1 = storage.getReferenceFromUrl(
-                            "gs://cacafirebase-554ac.appspot.com/Family_Image/" + mutableList[layoutIdx]
-                        )
-                        card_item_image[layoutIdx]?.let { displayImageRef(imageRef1, it) }
-
-
-
-
-                        cardView[layoutIdx] = ContentView[layoutIdx]!!.findViewById(R.id.cardView) as CardView
-                        cardView[layoutIdx]?.setOnClickListener() {
-                            val intent = Intent(application, HomeActivity::class.java)
-                            intent.putExtra("FamilyName", mutableList[layoutIdx])
-                            startActivity(intent)
-                        }
+                //.whereEqualTo("Familys", true)
+                .get()
+                .addOnSuccessListener { documents ->
+                    for (document in documents) {
+                        Log.d(TAG, "${document.id} => ${document.data}")
+                        mutableList.add(document.id)
                     }
 
+                    val ContentView = arrayOfNulls<View>(mutableList.size)
+                    val cardView = arrayOfNulls<CardView>(mutableList.size)
+                    val item_title_d = arrayOfNulls<TextView>(mutableList.size)
+                    val card_item_image = arrayOfNulls<ImageView>(mutableList.size)
+
+                    val count = mutableList.size - 1
+
+                    for (layoutIdx in 0..count) {
+
+                        if (mutableList[layoutIdx] == "A") { // Familys
+
+                            val layoutInflater = this.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+                            val containView = layoutInflater.inflate(R.layout.defaultcard_layout, null) // mypage_content를 inflate
+                            l_contain.addView(containView) // 추가
+
+                            ContentView[layoutIdx] = containView as View
+
+                            item_title_d[layoutIdx] = ContentView[layoutIdx]!!.findViewById(R.id.item_title_d) as TextView
+                            val db: FirebaseFirestore = Firebase.firestore // 여러 field값 가져오기
+                            val docRef1 = db.collection("Member").document(uid)
+                            //item_title_d[layoutIdx]?.text = mutableList[layoutIdx]
+
+                            cardView[layoutIdx] = ContentView[layoutIdx]!!.findViewById(R.id.cardView) as CardView
+                            cardView[layoutIdx]?.setOnClickListener() {
+                                val intent = Intent(application, MypageActivity::class.java)
+                                startActivity(intent)
+                            }
+
+                        } else { // 나머지
+
+                            val layoutInflater = this.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+                            val containView = layoutInflater.inflate(R.layout.card_layout, null) // mypage_content를 inflate
+                            l_contain.addView(containView) // 추가
+
+                            ContentView[layoutIdx] = containView as View
+
+
+
+                            item_title_d[layoutIdx] = ContentView[layoutIdx]!!.findViewById(R.id.item_title_d) as TextView // field로 가져오기
+                            val docRef2 = db.collection("Member").document(uid).collection("MYPAGE").document(mutableList[layoutIdx])
+                            docRef2.get()
+                                    .addOnSuccessListener { document ->
+                                        if (document != null) {
+                                            Log.d(TAG, "DocumentSnapshot data: ${document.data}")
+                                            item_title_d[layoutIdx]?.text = document.data?.get("name").toString() // family name 넣기
+
+                                        } else {
+                                            Log.d(TAG, "No such document")
+                                        }
+                                    }
+                                    .addOnFailureListener { exception ->
+                                        Log.d(TAG, "get failed with ", exception)
+                                    }
+
+
+
+
+                            card_item_image[layoutIdx] = ContentView[layoutIdx]!!.findViewById(R.id.item_image) as ImageView // 가족별 Image 가져오기
+                            //card_item_image[layoutIdx]?.setImageURI(ref.downloadUrl.toString().toUri())
+                            var storage: FirebaseStorage = Firebase.storage
+                            val imageRef1 = storage.getReferenceFromUrl(
+                                    "gs://cacafirebase-554ac.appspot.com/Family_Image/" + mutableList[layoutIdx]
+                            )
+                            card_item_image[layoutIdx]?.let { displayImageRef(imageRef1, it) }
+
+
+
+
+                            cardView[layoutIdx] = ContentView[layoutIdx]!!.findViewById(R.id.cardView) as CardView
+                            cardView[layoutIdx]?.setOnClickListener() {
+                                val intent = Intent(application, HomeActivity::class.java)
+                                intent.putExtra("FamilyName", mutableList[layoutIdx])
+                                startActivity(intent)
+                            }
+                        }
+
+
+                    }
+
+                    val layoutInflater =
+                            this.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater // 동적으로 생성
+
+                    val containView = layoutInflater.inflate(
+                            R.layout.defaultcard_layout,
+                            null
+                    ) // mypage_content를 inflate // card_layout을 inflate
+                    val mVContentView = containView as View
+                    val FamilyNameText = mVContentView.findViewById(R.id.item_title_d) as TextView
+                    FamilyNameText.text = "가족 추가"
+
+
+                    val cardView_d = mVContentView.findViewById(R.id.cardView) as CardView
+                    cardView_d.setOnClickListener() { // 가족 추가 클릭하면 가족 추가 activity로 이동
+                        val intent = Intent(this, FamilySettingActivity::class.java)
+                        startActivity(intent)
+                    }
+
+                    l_contain.addView(containView)
 
                 }
-
-                val layoutInflater =
-                    this.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater // 동적으로 생성
-
-                val containView = layoutInflater.inflate(
-                    R.layout.defaultcard_layout,
-                    null
-                ) // mypage_content를 inflate // card_layout을 inflate
-                val mVContentView = containView as View
-                val FamilyNameText = mVContentView.findViewById(R.id.item_title_d) as TextView
-                FamilyNameText.text = "가족 추가"
-                
-
-                val cardView_d = mVContentView.findViewById(R.id.cardView) as CardView
-                cardView_d.setOnClickListener(){ // 가족 추가 클릭하면 가족 추가 activity로 이동
-                    val intent = Intent(this, FamilySettingActivity::class.java)
-                    startActivity(intent)
+                .addOnFailureListener { exception ->
+                    Log.w(TAG, "Error getting documents: ", exception)
                 }
-
-                l_contain.addView(containView)
-
-            }
-            .addOnFailureListener { exception ->
-                Log.w(TAG, "Error getting documents: ", exception)
-            }
-
-    }
-
-    @RequiresApi(Build.VERSION_CODES.M) ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    override fun onResume() {
-        super.onResume()
-
-
-
-        // 위젯
-//        val appWidgetManager: AppWidgetManager? = getSystemService(AppWidgetManager::class.java)
-//        var myProvider = ComponentName(this, AppWidgetProvider::class.java)
-//
-//        val successCallback: PendingIntent? = if (if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-//                appWidgetManager!!.isRequestPinAppWidgetSupported
-//            } else {
-//                TODO("VERSION.SDK_INT < O")
-//            }
-//        ) {
-//            Intent(this, MainActivity::class.java).let { intent ->
-//                PendingIntent.getBroadcast(applicationContext, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
-//            }
-//        } else {
-//            null
-//        }
-//
-//        btn.setOnClickListener { // 위젯 추가
-//
-//            successCallback?.also { pendingIntent ->
-//
-//                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-//                    appWidgetManager.requestPinAppWidget(myProvider, null, pendingIntent)
-//                }
-//            }
-//        }
-
 
 
         // 주기적으로 알람/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -291,51 +241,25 @@ class MainActivity : AppCompatActivity() {
 
         toggleButton.setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener { _, isChecked ->
 
-                val toastMessage: String = if (isChecked) {
+            val toastMessage: String = if (isChecked) {
 
-                    val repeatInterval: Long = 1 * 1000
-                    val triggerTime = (SystemClock.elapsedRealtime() + repeatInterval)
-                    alarmManager.setRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP, triggerTime, repeatInterval, pendingIntent)
-                    "Exact periodic Alarm On"
+                val repeatInterval: Long = 1 * 1000
+                val triggerTime = (SystemClock.elapsedRealtime() + repeatInterval)
+                alarmManager.setRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP, triggerTime, repeatInterval, pendingIntent)
+                "Exact periodic Alarm On"
 
-                } else {
-                    alarmManager.cancel(pendingIntent)
-                    "Exact periodic Alarm Off"
-                }
-                Log.d(TAG, toastMessage)
-                Toast.makeText(this, toastMessage, Toast.LENGTH_SHORT).show()
+            } else {
+                alarmManager.cancel(pendingIntent)
+                "Exact periodic Alarm Off"
+            }
+            Log.d(TAG, toastMessage)
+            Toast.makeText(this, toastMessage, Toast.LENGTH_SHORT).show()
 
         })
         // 주기적으로 알람/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-        // 12시마다 알람 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-//        val intent2 = Intent(this, DailyAlarm::class.java)
-//        val pendingIntent2 = PendingIntent.getBroadcast(
-//            this, DailyAlarm.NOTIFICATION_ID, intent2,
-//            PendingIntent.FLAG_UPDATE_CURRENT)
-//
-//        toggleButton2.setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener { _, isChecked ->
-//
-//            val toastMessage: String = if (isChecked) {
-//
-//                val repeatInterval: Long = 1 * 1000
-//                val triggerTime = (SystemClock.elapsedRealtime() + repeatInterval)
-//                alarmManager.setRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP, triggerTime, repeatInterval, pendingIntent2)
-//                "Exact periodic Alarm On"
-//
-//            } else {
-//                alarmManager.cancel(pendingIntent2)
-//                "Exact periodic Alarm Off"
-//            }
-//            Log.d(TAG, toastMessage)
-//            Toast.makeText(this, toastMessage, Toast.LENGTH_SHORT).show()
-//
-//        })
     }
-
-
 
     private fun displayImageRef(imageRef: StorageReference?, view: ImageView) {
         imageRef?.getBytes(Long.MAX_VALUE)?.addOnSuccessListener {
@@ -345,5 +269,31 @@ class MainActivity : AppCompatActivity() {
             // Failed to download the image
         }
     }
-}
 
+    override fun onResume() {
+        super.onResume()
+        val appWidgetManager: AppWidgetManager? = getSystemService(AppWidgetManager::class.java)
+        val myProvider = ComponentName(this, AppWidgetProvider::class.java)
+        val successCallback: PendingIntent? = if (if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    appWidgetManager!!.isRequestPinAppWidgetSupported
+                } else {
+                    TODO("VERSION.SDK_INT < O")
+                }
+        ) {
+            Intent(this, MainActivity::class.java).let { intent ->
+                PendingIntent.getBroadcast(applicationContext, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+            }
+        } else {
+            null
+        }
+
+
+        w.setOnClickListener {
+            successCallback?.also { pendingIntent ->
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    appWidgetManager.requestPinAppWidget(myProvider, null, pendingIntent)
+                }
+            }
+        }
+    }
+}

@@ -8,19 +8,30 @@
     android:orientation="vertical"
     tools:context=".Mypage.MypageActivity">
 
-    <ToggleButton
-        android:id="@+id/toggleButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#fcbf48"
-        android:shadowColor="#9C27B0"
-        android:text="위치 알람"
-        android:textOff="위치 알람 끄기"
-        android:textOn="위치 알람 키기" />
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ToggleButton
+            android:id="@+id/toggleButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#fcbf48"
+            android:shadowColor="#9C27B0"
+            android:text="위치 알람"
+            android:textOff="위치 알람 끄기"
+            android:textOn="위치 알람 키기" />
+
+        <Button
+            android:id="@+id/w"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="위젯 추가" />
+    </TableRow>
 
 <!--    <Button-->
 <!--        style="@style/nanumButton"-->
-<!--        android:id="@+id/btn"-->
+<!--        android:id="@+id/widButton"-->
 <!--        android:gravity="center"-->
 <!--        android:layout_width="80dp"-->
 <!--        android:layout_height="40dp"-->
