@@ -253,7 +253,7 @@ class MainActivity : AppCompatActivity() {
 
 
 
-        // 위젯 안씀
+        // 위젯
 //        val appWidgetManager: AppWidgetManager? = getSystemService(AppWidgetManager::class.java)
 //        var myProvider = ComponentName(this, AppWidgetProvider::class.java)
 //
