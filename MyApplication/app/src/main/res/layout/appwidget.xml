@@ -1,12 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center">
-    <Button
-        android:id="@+id/asdfasdfasdf"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="위젯"
-        android:textSize="16sp"/>
+    <FrameLayout
+        android:id="@+id/customImage"
+        android:layout_width="412dp"
+        android:layout_height="412dp">
+
+        <FrameLayout
+            android:id="@+id/deco"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <FrameLayout
+                android:id="@+id/body"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/cu_body_Iv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/show_sister" />
+
+            </FrameLayout>
+
+            <ImageView
+                android:id="@+id/cu_acc_Iv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/grandparents" />
+        </FrameLayout>
+
+        <ImageView
+            android:id="@+id/cu_eye_Iv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/heart" />
+    </FrameLayout>
 </FrameLayout>

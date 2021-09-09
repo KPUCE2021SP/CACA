@@ -5,6 +5,8 @@ import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
 import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.drawable.Icon
 import android.widget.RemoteViews
 import com.example.myapplication.FamilySet.MainActivity
 import com.example.myapplication.R
@@ -28,7 +30,7 @@ class AppWidgetProvider : AppWidgetProvider() {
                     context.packageName,
                     R.layout.appwidget
             ).apply {
-                setOnClickPendingIntent(R.id.asdfasdfasdf, pendingIntent)
+//                setOnClickPendingIntent(R.id.cu_acc_Iv, pendingIntent)
             }
             // Tell the AppWidgetManager to perform an update on the current app widget
             appWidgetManager.updateAppWidget(appWidgetId, views)
@@ -104,7 +106,8 @@ class AppWidgetProvider : AppWidgetProvider() {
 //
 //
 //    //모든 브로드캐스트에서 위의 각 콜백 메서드 !!이전!!에 호출됩니다. 기본 AppWidgetProvider 구현은 모든 앱 위젯 브로드캐스트를 필터링하고 위 메서드를 적절하게 호출하므로 일반적으로 이 메서드를 구현할 필요가 없습니다.
-//    override fun onReceive(context: Context?, intent: Intent?) {
+//
+//     fun onReceive(context: Context?, intent: Intent?) {
 //        super.onReceive(context, intent)
 //
 //
