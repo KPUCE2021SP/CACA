@@ -26,18 +26,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-
-
-
-        <activity android:name=".Home_Board.HomeMessageActivity"></activity>
+        <activity android:name=".Login_passwordActivity"></activity>
+        <activity android:name=".Home_Board.HomeMessageActivity" />
         <activity android:name=".Home_Board.HomeTodoActivity" />
         <activity android:name=".Home_Board.HomeMiniGameActivity" />
         <activity android:name=".Home_Board.HomeAccountActivity" />
         <activity android:name=".Home_Board.AddAccount" />
         <activity android:name=".CalendarKotlin.ScheduleEditActivity" />
         <activity android:name=".Home_Board.HomeDialogActivity" />
-        <activity android:name=".Home_Board.HomeMessageActivity"
-            tools:ignore="DuplicateActivity"></activity>
+        <activity android:name=".Login_passwordActivity"
+            tools:ignore="DuplicateActivity" />
+        <activity
+            android:name=".Home_Board.HomeMessageActivity"
+            tools:ignore="DuplicateActivity" />
         <activity
             android:name=".Home_Board.HomeTodoActivity"
             tools:ignore="DuplicateActivity" />
@@ -49,21 +50,15 @@
             tools:ignore="DuplicateActivity" />
         <activity android:name=".Home_Board.dialogActivity" />
 
-
-
-
-        <receiver android:name=".Location.AppWidgetProvider" >
+        <receiver android:name=".Location.AppWidgetProvider">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
-            <meta-data android:name="android.appwidget.provider"
+
+            <meta-data
+                android:name="android.appwidget.provider"
                 android:resource="@xml/appwidget_info" />
         </receiver>
-
-
-
-
-
         <receiver
             android:name=".Location.AlarmReceiver"
             android:exported="false" />
@@ -77,7 +72,7 @@
 
         <activity android:name=".Home_Board.BoardContentActivity" />
         <activity android:name=".Notification.Notification" />
-        <activity android:name=".FamilySet.MainActivity" >
+        <activity android:name=".FamilySet.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
             </intent-filter>
@@ -88,6 +83,7 @@
         <activity android:name=".LoginRegister.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -101,9 +97,6 @@
         <activity android:name=".SerachMap.SearchMap" />
         <activity android:name=".FamilySet.StartActivity" />
         <activity android:name=".Home_Board.customActivity" />
-
-
-
         <activity android:name=".FamilySet.DynamicLinkActivity">
             <intent-filter android:autoVerify="true">
                 <action android:name="android.intent.action.VIEW" />
@@ -117,8 +110,6 @@
                     android:scheme="https" />
             </intent-filter>
         </activity>
-
-
 
         <service
             android:name=".Notification.FirebaseService"

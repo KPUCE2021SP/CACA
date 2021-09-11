@@ -98,7 +98,7 @@
             android:layout_marginTop="6dp"
             android:background="#00FF0000"
             android:textColor="@color/black"
-            android:text="id/비밀번호 찾기" />
+            android:text="비밀번호 찾기" />
 
     </LinearLayout>
 
