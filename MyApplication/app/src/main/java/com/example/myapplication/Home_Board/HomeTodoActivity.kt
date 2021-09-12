@@ -35,7 +35,7 @@ class HomeTodoActivity : AppCompatActivity() {
         var TodoCheckedNumR : Int
         var TodoCheckedNumL : Int
         var EmotionImg : String
-        
+
         ///////////////////////////////////////// 공동할일 페이지 ///////////////////////////////////////////
         /*공동할일 왼손 오른손 토글버튼*/
 
@@ -61,7 +61,6 @@ class HomeTodoActivity : AppCompatActivity() {
             var TodoBoolean = false
             val builder = AlertDialog.Builder(this)
             val dialogView = layoutInflater.inflate(R.layout.activity_todo2, null)
-//            val dialogText_title = dialogView.findViewById<EditText>(R.id.list_which)
             val Todo_title = dialogView.findViewById<EditText>(R.id.todoEdit)
 
 
@@ -76,8 +75,7 @@ class HomeTodoActivity : AppCompatActivity() {
                         )
 
                         db.collection("Chats").document(FamilyName.toString())
-                                .collection("TODO").document(Todo_title.text.toString()).set(TodoContent)//add(TodoContent)
-//                        .document("title").set(TodoContent)
+                                .collection("TODO").document(Todo_title.text.toString()).set(TodoContent)
                                 .addOnCompleteListener {
                                     if (it.isSuccessful) {
                                         Toast.makeText(applicationContext, "할일 추가 완료", Toast.LENGTH_SHORT)
@@ -161,9 +159,6 @@ class HomeTodoActivity : AppCompatActivity() {
                         todo_right_checkbx.setOnCheckedChangeListener { buttonView, isChecked ->
                             var TodoBoolean: Boolean = isChecked
                             var percent: Int = (((TodoCheckedNumR+1)*100)/mutableListTodo.size)
-//                            var percent: Double =
-//                                ((TodoCheckedNumR.toDouble()/mutableListTodo.size.toDouble())*100).toDouble()
-//                        todo_right_checkbx.text = isChecked.toString()
                             val todo_update = hashMapOf(
                                     "title" to todo_right_tv.text.toString(),
                                     "check" to TodoBoolean,
@@ -265,7 +260,6 @@ class HomeTodoActivity : AppCompatActivity() {
 
                                             Log.d("TFTFLLL1",TodoCheckedNumL.toString())
                                         }
-//                                    todo_right_checkbx.text = (document2.data?.get("check").toString())
 
                                         Log.d("Blean1",(document2.data?.get("check") as Boolean).toString())
                                     }
@@ -277,9 +271,6 @@ class HomeTodoActivity : AppCompatActivity() {
                         todo_left_checkbx.setOnCheckedChangeListener { buttonView, isChecked ->
                             var TodoBoolean: Boolean = isChecked
                             var percent: Int = (((TodoCheckedNumL+1)*100)/mutableListTodo.size)
-//                        todo_right_checkbx.text = isChecked.toString()
-//                            var percent: Double =
-//                                ((TodoCheckedNumL.toDouble()/mutableListTodo.size.toDouble())*100).toDouble()
 
                             Log.d("percent2",mutableListTodo.size.toString())
                             val todo_update = hashMapOf(
@@ -374,8 +365,6 @@ class HomeTodoActivity : AppCompatActivity() {
 
 /////////////////////////////////////////// 공동할일 새로고침 /////////////////////////////////////////////////////////////////////////
         srl_Todo_right.setOnRefreshListener {
-            // 게시판 동적 생성
-            // Board_LineaLayout
             righthandList.removeAllViews()
             TodoCheckedNumR=0
             var mutableListTodo: MutableList<String> = mutableListOf("a")
@@ -456,18 +445,9 @@ class HomeTodoActivity : AppCompatActivity() {
                                         }
                                     }
 
-//                                if(TodoBoolean){
-//                                    TodoCheckedNumR+=1
-//                                    TodoCheckedNumR -= (mutableListTodo.size)
-//                                }
-
 
                                 Log.d("cnum",TodoCheckedNumR.toString())
-
                                 var percent: Int = (((TodoCheckedNumR+1)*100)/mutableListTodo.size)
-//                                todo_right_checkbx.text = isChecked.toString()
-//                                var percent: Double =
-//                                    ((TodoCheckedNumR.toDouble()/mutableListTodo.size.toDouble())*100).toDouble()
 
                                 EmotionImg = if(percent>=75){
                                     "smile.png"
@@ -525,8 +505,6 @@ class HomeTodoActivity : AppCompatActivity() {
         }   // 오른손 새로고침
 
         srl_Todo_left.setOnRefreshListener {
-            // 게시판 동적 생성
-            // Board_LineaLayout
             lefthandList.removeAllViews()
             var mutableListTodo: MutableList<String> = mutableListOf("a")
             mutableListTodo.clear()
@@ -539,9 +517,6 @@ class HomeTodoActivity : AppCompatActivity() {
                             Log.d("TodoList", "${document1.id} => ${document1.data}")
                             mutableListTodo.add(document1.id.toString())
                         }
-
-//                mutableListTodo.reverse()
-//                Log.d("mutu",mutableListTodo.toString())
 
                         TodoCheckedNumL =0
 
@@ -590,9 +565,6 @@ class HomeTodoActivity : AppCompatActivity() {
                             todo_left_checkbx.setOnCheckedChangeListener { buttonView, isChecked ->
                                 var TodoBoolean: Boolean = isChecked
                                 var percent: Int = (((TodoCheckedNumL+1)*100)/mutableListTodo.size)
-//                        todo_right_checkbx.text = isChecked.toString()
-//                                var percent: Double =
-//                                    ((TodoCheckedNumR.toDouble()/mutableListTodo.size.toDouble())*100).toDouble()
                                 Log.d("percent",percent.toString())
                                 Log.d("percent1",TodoCheckedNumR.toString())
 
