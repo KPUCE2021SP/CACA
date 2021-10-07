@@ -86,7 +86,6 @@ class BoardContentActivity : AppCompatActivity() {
         if (formatted1 != null) {
             Log.d("Fmt",formatted1)
         }
-        aaaaaaa1.text = FamilyName1
 
         notice_boardB.text = notice_board1
         notice_nameB.text = notice_name1
