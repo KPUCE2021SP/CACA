@@ -25,6 +25,7 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 import kotlinx.android.synthetic.main.activity_board_content.*
+import kotlinx.android.synthetic.main.activity_comment.*
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.notice_card.*
 import java.time.LocalDateTime
@@ -163,15 +164,17 @@ class BoardContentActivity : AppCompatActivity() {
                                 }
                             }
 
+
+
                         }
 
-                    comment_Layout?.setOnClickListener {
+                    comment_content?.setOnClickListener {
                         val dlg: AlertDialog.Builder = AlertDialog.Builder(
                             this,
                             android.R.style.Theme_DeviceDefault_Light_Dialog_NoActionBar_MinWidth
                         )
                         dlg.setTitle("항목 삭제") //제목
-                        dlg.setMessage("댓글을 정말 삭제하시겠습니까?") // 메시지
+                        dlg.setMessage(comment_content.text.toString() + "을(를) 정말 삭제하시겠습니까?") // 메시지
                         dlg.setPositiveButton(
                             "확인",
                             DialogInterface.OnClickListener { dialog, which ->
@@ -196,6 +199,8 @@ class BoardContentActivity : AppCompatActivity() {
                 }
 
             }
+
+
 
 
     }
