@@ -22,6 +22,7 @@ import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.activity_home_todo.*
 import kotlinx.android.synthetic.main.todo_left.*
 import kotlinx.android.synthetic.main.todo_right.*
+import kotlinx.coroutines.delay
 
 class HomeTodoActivity : AppCompatActivity() {
     val db: FirebaseFirestore = Firebase.firestore
@@ -31,8 +32,11 @@ class HomeTodoActivity : AppCompatActivity() {
         var fbAuth = FirebaseAuth.getInstance()
         var uid = fbAuth?.uid.toString()
         val FamilyName = intent.getStringExtra("FamilyName")
-        ///////////////////////////////////////// 공동할일 페이지 ///////////////////////////////////////////
+        var TodoCheckedNumR : Int
+        var TodoCheckedNumL : Int
+        var EmotionImg : String
 
+        ///////////////////////////////////////// 공동할일 페이지 ///////////////////////////////////////////
         /*공동할일 왼손 오른손 토글버튼*/
 
         toggleBtnrightleft?.setOnCheckedChangeListener { buttonView, isChecked ->
@@ -57,7 +61,6 @@ class HomeTodoActivity : AppCompatActivity() {
             var TodoBoolean = false
             val builder = AlertDialog.Builder(this)
             val dialogView = layoutInflater.inflate(R.layout.activity_todo2, null)
-//            val dialogText_title = dialogView.findViewById<EditText>(R.id.list_which)
             val Todo_title = dialogView.findViewById<EditText>(R.id.todoEdit)
 
 
@@ -72,8 +75,7 @@ class HomeTodoActivity : AppCompatActivity() {
                         )
 
                         db.collection("Chats").document(FamilyName.toString())
-                                .collection("TODO").document(Todo_title.text.toString()).set(TodoContent)//add(TodoContent)
-//                        .document("title").set(TodoContent)
+                                .collection("TODO").document(Todo_title.text.toString()).set(TodoContent)
                                 .addOnCompleteListener {
                                     if (it.isSuccessful) {
                                         Toast.makeText(applicationContext, "할일 추가 완료", Toast.LENGTH_SHORT)
@@ -87,9 +89,18 @@ class HomeTodoActivity : AppCompatActivity() {
                     .show()
         }
 
+        // 패밀리code 받아오기
+        db.collection("Chats").document(FamilyName.toString())
+            .get()
+            .addOnSuccessListener { document1 ->
+                    familyIDChbx.text = document1.data?.get("name") as CharSequence?
+                    familyIDChbx.isChecked=true
+                }
+
         ////////////////////// 공동할일 받아오기 왼/오 ////////////////////////////
         var mutableListTodo: MutableList<String> = mutableListOf("a")
         mutableListTodo.clear()
+        TodoCheckedNumR =0
 
         db.collection("Chats").document(FamilyName.toString())
                 .collection("TODO")
@@ -112,7 +123,6 @@ class HomeTodoActivity : AppCompatActivity() {
                         )
                         righthandList.addView(containView)
 
-
                         val ContentView = containView as View
                         var todo_right_tv =
                                 ContentView.findViewById(R.id.todo_right_tv) as TextView // 타이틀
@@ -130,6 +140,13 @@ class HomeTodoActivity : AppCompatActivity() {
                                         todo_right_tv.text = document2.data?.get("title").toString()
                                         todo_right_checkbx.isChecked = (document2.data?.get("check") as Boolean)
 
+                                        if(document2.data?.get("check") as Boolean){
+                                            Log.d("TFTF",document2.data?.get("check").toString())
+                                            TodoCheckedNumR += 1
+
+                                            Log.d("TFTFRRR1",TodoCheckedNumR.toString())
+                                        }
+
 //                                    todo_right_checkbx.text = (document2.data?.get("check").toString())
 
                                         Log.d("Blean1",(document2.data?.get("check") as Boolean).toString())
@@ -141,12 +158,26 @@ class HomeTodoActivity : AppCompatActivity() {
 
                         todo_right_checkbx.setOnCheckedChangeListener { buttonView, isChecked ->
                             var TodoBoolean: Boolean = isChecked
-//                        todo_right_checkbx.text = isChecked.toString()
+                            var percent: Int = (((TodoCheckedNumR+1)*100)/mutableListTodo.size)
                             val todo_update = hashMapOf(
                                     "title" to todo_right_tv.text.toString(),
                                     "check" to TodoBoolean,
                             )
 
+                            EmotionImg = if(percent>=75){
+                                "smile.png"
+                            }else if(percent>=50){
+                                "hungry.png"
+                            }else if(percent>=25){
+                                "angry.png"
+                            }else{
+                                "sadness.png"
+                            }
+
+                            val percent_update = hashMapOf(
+                                    "TodoP" to percent.toString(),
+                                    "TodoEmotion" to EmotionImg,
+                            )
                             Log.d("Blean", TodoBoolean.toString())
                             Log.d("Blean2", todo_right_tv.text.toString())
                             db.collection("Chats").document(FamilyName.toString()).collection("TODO")
@@ -157,6 +188,13 @@ class HomeTodoActivity : AppCompatActivity() {
                                                     .show()
                                         }
                                     }
+                            db.collection("Chats").document(FamilyName.toString()).update(percent_update as  Map<String, Any>)
+                                .addOnCompleteListener {
+                                    if (it.isSuccessful) {
+//                                        Toast.makeText(applicationContext, "업데이트 완료!", Toast.LENGTH_SHORT)
+//                                            .show()
+                                    }
+                                }
                         }
 
                         righthandcard?.setOnClickListener() { // 삭제
@@ -187,7 +225,7 @@ class HomeTodoActivity : AppCompatActivity() {
                     }
 
 
-
+                    TodoCheckedNumL =0
                     ///////////////////////////////////// 왼손 받아오기
                     for (i in 0..(mutableListTodo.size - 1)) { // 거꾸로
                         val layoutInflaterL =
@@ -216,7 +254,12 @@ class HomeTodoActivity : AppCompatActivity() {
                                         todo_left_tv.text = document2.data?.get("title").toString()
                                         todo_left_checkbx.isChecked = (document2.data?.get("check") as Boolean)
 
-//                                    todo_right_checkbx.text = (document2.data?.get("check").toString())
+                                        if(document2.data?.get("check") as Boolean){
+                                            Log.d("TFTF",document2.data?.get("check").toString())
+                                            TodoCheckedNumL += 1
+
+                                            Log.d("TFTFLLL1",TodoCheckedNumL.toString())
+                                        }
 
                                         Log.d("Blean1",(document2.data?.get("check") as Boolean).toString())
                                     }
@@ -227,22 +270,43 @@ class HomeTodoActivity : AppCompatActivity() {
 
                         todo_left_checkbx.setOnCheckedChangeListener { buttonView, isChecked ->
                             var TodoBoolean: Boolean = isChecked
-//                        todo_right_checkbx.text = isChecked.toString()
+                            var percent: Int = (((TodoCheckedNumL+1)*100)/mutableListTodo.size)
+
+                            Log.d("percent2",mutableListTodo.size.toString())
                             val todo_update = hashMapOf(
-                                    "title" to todo_left_tv.text.toString(),
-                                    "check" to TodoBoolean,
+                                "title" to todo_left_tv.text.toString(),
+                                "check" to TodoBoolean,
                             )
 
-                            Log.d("Blean", TodoBoolean.toString())
-                            Log.d("Blean2", todo_left_tv.text.toString())
+                            EmotionImg = if(percent>=75){
+                                "smile.png"
+                            }else if(percent>=50){
+                                "hungry.png"
+                            }else if(percent>=25){
+                                "angry.png"
+                            }else{
+                                "sadness.png"
+                            }
+
+                            val percent_update = hashMapOf(
+                                    "TodoP" to percent.toString(),
+                                    "TodoEmotion" to EmotionImg,
+                            )
                             db.collection("Chats").document(FamilyName.toString()).collection("TODO")
-                                    .document(todo_left_tv.text.toString()).update(todo_update as Map<String, Any>)
-                                    .addOnCompleteListener {
-                                        if (it.isSuccessful) {
-                                            Toast.makeText(applicationContext, "업데이트 완료!", Toast.LENGTH_SHORT)
-                                                    .show()
-                                        }
+                                .document(todo_left_tv.text.toString()).update(todo_update as Map<String, Any>)
+                                .addOnCompleteListener {
+                                    if (it.isSuccessful) {
+                                        Toast.makeText(applicationContext, "업데이트 완료!", Toast.LENGTH_SHORT)
+                                            .show()
                                     }
+                                }
+                            db.collection("Chats").document(FamilyName.toString()).update(percent_update as  Map<String, Any>)
+                                .addOnCompleteListener {
+                                    if (it.isSuccessful) {
+//                                        Toast.makeText(applicationContext, "업데이트 완료!", Toast.LENGTH_SHORT)
+//                                            .show()
+                                    }
+                                }
                         }
 
                         righthandcard?.setOnClickListener() { // 삭제
@@ -301,9 +365,8 @@ class HomeTodoActivity : AppCompatActivity() {
 
 /////////////////////////////////////////// 공동할일 새로고침 /////////////////////////////////////////////////////////////////////////
         srl_Todo_right.setOnRefreshListener {
-            // 게시판 동적 생성
-            // Board_LineaLayout
             righthandList.removeAllViews()
+            TodoCheckedNumR=0
             var mutableListTodo: MutableList<String> = mutableListOf("a")
             mutableListTodo.clear()
 
@@ -348,6 +411,12 @@ class HomeTodoActivity : AppCompatActivity() {
 
 //                                    todo_right_checkbx.text = (document2.data?.get("check").toString())
 
+                                            if(document2.data?.get("check") as Boolean){
+                                                Log.d("TFTF",document2.data?.get("check").toString())
+                                                TodoCheckedNumR += 1
+
+                                                Log.d("TFTFRRR1",TodoCheckedNumR.toString())
+                                            }
                                             Log.d("Blean1",(document2.data?.get("check") as Boolean).toString())
                                         }
                                     }
@@ -357,22 +426,51 @@ class HomeTodoActivity : AppCompatActivity() {
 
                             todo_right_checkbx.setOnCheckedChangeListener { buttonView, isChecked ->
                                 var TodoBoolean: Boolean = isChecked
-//                                todo_right_checkbx.text = isChecked.toString()
+
+                                Log.d("percent2",mutableListTodo.size.toString())
                                 val todo_update = hashMapOf(
-                                        "title" to todo_right_tv.text.toString(),
-                                        "check" to TodoBoolean,
+                                    "title" to todo_right_tv.text.toString(),
+                                    "check" to TodoBoolean,
                                 )
+
 
                                 Log.d("Blean", TodoBoolean.toString())
                                 Log.d("Blean2", todo_right_tv.text.toString())
                                 db.collection("Chats").document(FamilyName.toString()).collection("TODO")
-                                        .document(todo_right_tv.text.toString()).update(todo_update as Map<String, Any>)
-                                        .addOnCompleteListener {
-                                            if (it.isSuccessful) {
-                                                Toast.makeText(applicationContext, "업데이트 완료!", Toast.LENGTH_SHORT)
-                                                        .show()
-                                            }
+                                    .document(todo_right_tv.text.toString()).update(todo_update as Map<String, Any>)
+                                    .addOnCompleteListener {
+                                        if (it.isSuccessful) {
+                                            Toast.makeText(applicationContext, "업데이트 완료!", Toast.LENGTH_SHORT)
+                                                .show()
                                         }
+                                    }
+
+
+                                Log.d("cnum",TodoCheckedNumR.toString())
+                                var percent: Int = (((TodoCheckedNumR+1)*100)/mutableListTodo.size)
+
+                                EmotionImg = if(percent>=75){
+                                    "smile.png"
+                                }else if(percent>=50){
+                                    "hungry.png"
+                                }else if(percent>=25){
+                                    "angry.png"
+                                }else{
+                                    "sadness.png"
+                                }
+
+                                val percent_update = hashMapOf(
+                                        "TodoP" to percent.toString(),
+                                        "TodoEmotion" to EmotionImg,
+                                )
+
+                                db.collection("Chats").document(FamilyName.toString()).update(percent_update as  Map<String, Any>)
+                                    .addOnCompleteListener {
+                                        if (it.isSuccessful) {
+//                                        Toast.makeText(applicationContext, "업데이트 완료!", Toast.LENGTH_SHORT)
+//                                            .show()
+                                        }
+                                    }
                             }
 
                             righthandcard?.setOnClickListener() { // 삭제
@@ -407,8 +505,6 @@ class HomeTodoActivity : AppCompatActivity() {
         }   // 오른손 새로고침
 
         srl_Todo_left.setOnRefreshListener {
-            // 게시판 동적 생성
-            // Board_LineaLayout
             lefthandList.removeAllViews()
             var mutableListTodo: MutableList<String> = mutableListOf("a")
             mutableListTodo.clear()
@@ -422,8 +518,7 @@ class HomeTodoActivity : AppCompatActivity() {
                             mutableListTodo.add(document1.id.toString())
                         }
 
-//                mutableListTodo.reverse()
-//                Log.d("mutu",mutableListTodo.toString())
+                        TodoCheckedNumL =0
 
                         for (i in 0..(mutableListTodo.size - 1)) { // 거꾸로
                             val layoutInflaterL =
@@ -454,6 +549,12 @@ class HomeTodoActivity : AppCompatActivity() {
 
 //                                    todo_right_checkbx.text = (document2.data?.get("check").toString())
 
+                                            if(document2.data?.get("check") as Boolean){
+                                                Log.d("TFTF",document2.data?.get("check").toString())
+                                                TodoCheckedNumL += 1
+
+                                                Log.d("TFTFLLL1",TodoCheckedNumL.toString())
+                                            }
                                             Log.d("Blean1",(document2.data?.get("check") as Boolean).toString())
                                         }
                                     }
@@ -463,11 +564,37 @@ class HomeTodoActivity : AppCompatActivity() {
 
                             todo_left_checkbx.setOnCheckedChangeListener { buttonView, isChecked ->
                                 var TodoBoolean: Boolean = isChecked
-//                        todo_right_checkbx.text = isChecked.toString()
+                                var percent: Int = (((TodoCheckedNumL+1)*100)/mutableListTodo.size)
+                                Log.d("percent",percent.toString())
+                                Log.d("percent1",TodoCheckedNumR.toString())
+
+                                Log.d("percent2",mutableListTodo.size.toString())
                                 val todo_update = hashMapOf(
                                         "title" to todo_left_tv.text.toString(),
                                         "check" to TodoBoolean,
                                 )
+                                EmotionImg = if(percent>=75){
+                                    "smile.png"
+                                }else if(percent>=50){
+                                    "hungry.png"
+                                }else if(percent>=25){
+                                    "angry.png"
+                                }else{
+                                    "sadness.png"
+                                }
+
+                                val percent_update = hashMapOf(
+                                        "TodoP" to percent.toString(),
+                                        "TodoEmotion" to EmotionImg,
+                                )
+
+                                db.collection("Chats").document(FamilyName.toString()).update(percent_update as  Map<String, Any>)
+                                    .addOnCompleteListener {
+                                        if (it.isSuccessful) {
+//                                        Toast.makeText(applicationContext, "업데이트 완료!", Toast.LENGTH_SHORT)
+//                                            .show()
+                                        }
+                                    }
 
                                 Log.d("Blean", TodoBoolean.toString())
                                 Log.d("Blean2", todo_left_tv.text.toString())

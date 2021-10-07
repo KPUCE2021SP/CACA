@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.FamilySet.MainActivity
 import com.example.myapplication.R
 import com.example.myapplication.FamilySet.StartActivity
+import com.example.myapplication.Login_passwordActivity
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.loginactivity.*
@@ -84,6 +85,11 @@ class LoginActivity : AppCompatActivity() {
                 MySharedPreferences.setUserPass(this, editTextPassword!!.text.toString().toString())
                 signIn()
             }
+        }
+
+        find.setOnClickListener {
+            val intent = Intent(this, Login_passwordActivity::class.java)
+            startActivity(intent)
         }
 
 
