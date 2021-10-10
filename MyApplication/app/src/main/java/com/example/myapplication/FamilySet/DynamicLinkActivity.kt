@@ -5,6 +5,7 @@ import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.Home_Board.HomeActivity
@@ -32,21 +33,47 @@ class DynamicLinkActivity : AppCompatActivity() {
                 "null" to "null"
             )
 
+
+
             val db: FirebaseFirestore = Firebase.firestore
             var fbAuth = FirebaseAuth.getInstance() // 로그인
             var uid = fbAuth?.uid.toString() // uid
 
-            if (RandomCode != null) { // db에 넣기
-                db.collection("Chats").document(RandomCode).collection("FamilyMember").document(uid).set(family)
+//            if (RandomCode != null) { // db에 넣기
+
+
+                db.collection("Chats").document(inviteCodeView.text.toString()).collection("FamilyMember").document(uid).set(family)
+//                db.collection("Member").document(uid).collection("MYPAGE").document(inviteCodeView.text.toString()).set(familyName)
+
+            db.collection("Chats")
+                .get()
+                .addOnSuccessListener { documents ->
+                    for (document in documents) {
+                        if (document.id == inviteCodeView.text.toString()) {
+                            db.collection("Chats").document(inviteCodeView.text.toString()).get()
+                                .addOnSuccessListener { document ->
+                                    val familyNameSave = document.data?.get("name").toString()
+                                    val familyName = hashMapOf(
+                                        "name" to familyNameSave
+                                    )
+                                    db.collection("Member").document(uid).collection("MYPAGE").document(inviteCodeView.text.toString()).set(familyName)
+                                    // MypageActivity로 이동
+                                    val intent= Intent(this, HomeActivity::class.java) // 가족 초대하기 페이지
+                                    intent.putExtra("FamilyName", familyNameSave)
+                                    intent.putExtra("FamilyName", inviteCodeView.text.toString())
+                                    startActivity(intent)
+                                    finish()
+                                }
+                        }
+                    }
+                }
+//                db.collection("Chats").document(RandomCode).collection("FamilyMember").document(uid).set(family)
 //                db.collection("Member").document(uid).collection("MYPAGE").document(RandomCode).set(family)
-            }
+                Log.d("inviteCodeView", inviteCodeView.text.toString())
+//            }
 
 
-            // MypageActivity로 이동
-            val intent= Intent(this, HomeActivity::class.java) // 가족 초대하기 페이지
-            intent.putExtra("FamilyName", RandomCode)
-            startActivity(intent)
-            finish()
+
         }
 
 
