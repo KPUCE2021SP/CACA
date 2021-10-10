@@ -72,7 +72,7 @@ class SearchMap : AppCompatActivity() {
         val gpsmarker = MapPOIItem()
 
 
-        btn_gps.setOnClickListener { // 현재위치
+//        btn_gps.setOnClickListener { // 현재위치
 //            getHashKey()
             val permissionCheck = ContextCompat.checkSelfPermission(
                 this,
@@ -137,7 +137,7 @@ class SearchMap : AppCompatActivity() {
 
 
 
-        }
+//        }
         mapListView.setOnItemClickListener { parent, view, position, id -> // 검색한 결과 listView 클릭하면 넘어가기
 //            // 1. x, y 값 return
             var r = resultList[position].replace(", x=", "*")
