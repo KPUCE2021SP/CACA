@@ -39,7 +39,7 @@ class HomeMiniGameActivity : AppCompatActivity() {
         val FamilyName = intent.getStringExtra("FamilyName")
 
         mutableList1.clear()
-        mutableList1.add("Test1")
+//        mutableList1.add("Test1")
         db.collection("Chats").document(FamilyName.toString()).collection("FamilyMember")
             .get()
             .addOnSuccessListener { documents ->

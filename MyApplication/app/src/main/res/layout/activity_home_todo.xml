@@ -11,6 +11,14 @@
         android:layout_height="40dp"
         android:layout_gravity="center"
         android:background="#fcbf48">
+
+        <TextView
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:text="LTaaaaaa"
+            android:textColor="#FCBF48"
+            android:background="#FCBF48"
+            android:textSize="20dp"/>
         <TextView
             style="@style/nanumTextView"
             android:layout_width="wrap_content"
@@ -18,11 +26,33 @@
             android:layout_gravity="center"
             android:gravity="center"
             android:textColor="@color/white"
-            android:layout_weight="1"
+            android:layout_weight="7"
             android:textSize="20dp"
             android:textStyle="bold"
             android:text="공동 할일"/>
+
+        <Button
+            style="@style/nanumButton"
+            android:background="@drawable/solid_button_round_white"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:layout_marginRight="4dp"
+            android:text="추가"
+            android:id="@+id/addBtnTodo"/>
     </LinearLayout>
+    <ToggleButton
+        style="@style/nanumTextView"
+        android:id="@+id/toggleBtnrightleft"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:backgroundTint="#FCBF48"
+        android:checked="false"
+        android:textColor="@color/white"
+        android:textOff="오른손잡이용 화면"
+        android:textOn="왼손잡이용 화면" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -43,25 +73,15 @@
         android:layout_height="match_parent"
         android:id="@+id/LinearMain4"
         android:orientation="vertical">
-        <Button
-            style="@style/nanumTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="공동할일 추가하기"
-            android:id="@+id/addBtnTodo"/>
+<!--        <Button-->
+<!--            style="@style/nanumTextView"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:text="공동할일 추가하기"-->
+<!--            android:id="@+id/addBtnTodo"/>-->
 
-        <ToggleButton
-            style="@style/nanumTextView"
-            android:id="@+id/toggleBtnrightleft"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:backgroundTint="#FCBF48"
-            android:checked="false"
-            android:textColor="@color/white"
-            android:textOff="오른손잡이용 화면"
-            android:textOn="왼손잡이용 화면" />
+
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/srl_Todo_right"
