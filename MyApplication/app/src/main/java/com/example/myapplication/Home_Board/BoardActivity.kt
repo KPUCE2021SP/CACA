@@ -122,7 +122,7 @@ class BoardActivity : AppCompatActivity() {
             intent.putExtra("FamilyName", FamilyName)
             intent.putExtra("formatted", formatted)
             startActivity(intent)
-            finish()
+//            finish()
 //            location = intent.getStringExtra("resultList").toString() // SearchMap Activity 에서 돌아오면 실행하는 코드
 //            board_location_textView.text = location
         }
