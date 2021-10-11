@@ -23,6 +23,9 @@ import com.google.firebase.remoteconfig.ktx.remoteConfigSettings
 import kotlinx.android.synthetic.main.activity_home.*
 import com.google.firebase.storage.ktx.storage
 
+val storage = Firebase.storage
+var FamilyName = ""
+
 class AppWidgetProvider : AppWidgetProvider() {
     override fun onUpdate(
             context: Context,
@@ -37,8 +40,18 @@ class AppWidgetProvider : AppWidgetProvider() {
                         PendingIntent.getActivity(context, 0, intent, 0)
                     }
 
+
             val storage = Firebase.storage
-            var FamilyName = "6kRxCJjo"
+            var FamilyName = "SaUT6H1Q"
+            // MainFamilyCode 가져오기
+            val docRef10 = db.collection("Member").document(uid.toString()) // 여러 field값 가져오기
+            docRef10.get()
+                    .addOnSuccessListener { document7 ->
+                        if (document7 != null) {
+                            FamilyName = ((document7.data?.get("MainFamily")).toString())
+                            Log.d("widgetFamilyName", FamilyName)
+                        }
+                    }
 
             var body: Bitmap
             var acc: Bitmap
@@ -103,7 +116,16 @@ class AppWidgetProvider : AppWidgetProvider() {
             super.onAppWidgetOptionsChanged(context, appWidgetManager, appWidgetId, newOptions)
 
             val storage = Firebase.storage
-            var FamilyName = "6kRxCJjo"
+            var FamilyName = "SaUT6H1Q"
+            // MainFamilyCode 가져오기
+            val docRef10 = db.collection("Member").document(uid.toString()) // 여러 field값 가져오기
+            docRef10.get()
+                    .addOnSuccessListener { document7 ->
+                        if (document7 != null) {
+                            FamilyName = ((document7.data?.get("MainFamily")).toString())
+                            Log.d("widgetFamilyName", FamilyName)
+                        }
+                    }
 
             var body: Bitmap
             var acc: Bitmap
@@ -163,9 +185,20 @@ class AppWidgetProvider : AppWidgetProvider() {
         }
 
 
-    //    //모든 브로드캐스트에서 위의 각 콜백 메서드 !!이전!!에 호출됩니다. 기본 AppWidgetProvider 구현은 모든 앱 위젯 브로드캐스트를 필터링하고 위 메서드를 적절하게 호출하므로 일반적으로 이 메서드를 구현할 필요가 없습니다.
+    //모든 브로드캐스트에서 위의 각 콜백 메서드 !!이전!!에 호출됩니다. 기본 AppWidgetProvider 구현은 모든 앱 위젯 브로드캐스트를 필터링하고 위 메서드를 적절하게 호출하므로 일반적으로 이 메서드를 구현할 필요가 없습니다.
     override fun onReceive(context: Context?, intent: Intent?) {
         super.onReceive(context, intent)
+
+
+        // MainFamilyCode 가져오기
+        val docRef10 = db.collection("Member").document(uid.toString()) // 여러 field값 가져오기
+        docRef10.get()
+                .addOnSuccessListener { document7 ->
+                    if (document7 != null) {
+                        FamilyName = ((document7.data?.get("MainFamily")).toString())
+                        Log.d("widgetFamilyName", FamilyName)
+                    }
+                }
     }
 
 
