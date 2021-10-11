@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:id="@+id/todo_chkbx"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:layout_marginLeft="3dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/familyIDChbx"
+            android:text="예시1"/>
+
+    </LinearLayout>
+
+<!--    <LinearLayout-->
+<!--        android:id="@+id/righthandcard"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="60dp"-->
+<!--        android:background="@drawable/round_corner"-->
+<!--        android:gravity="center_vertical"-->
+<!--        android:visibility="visible"-->
+<!--        android:layout_gravity="center_vertical">-->
+<!--        <TextView-->
+<!--            style="@style/nanumTextView"-->
+<!--            android:id="@+id/todo_right_tv"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:textSize="18dp"-->
+<!--            android:text="할 일"-->
+<!--            android:textStyle="bold"/>-->
+<!--        <View-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="0dp"-->
+<!--            android:layout_weight="1" />-->
+
+<!--        <CheckBox-->
+<!--            android:id="@+id/todo_right_checkbx"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="right|center_vertical"-->
+<!--            android:checkMark="?android:attr/listChoiceIndicatorMultiple"-->
+<!--            android:checked="false"-->
+<!--            android:clickable="true"-->
+<!--            android:text="" />-->
+
+<!--    </LinearLayout>-->
+</LinearLayout>

@@ -80,6 +80,7 @@ class customActivity: Activity() {
         var custom_emotion : String = ""    //감정
         var custom_dancing : String = ""   //춤추기
         val storage = Firebase.storage
+        var todoP : String =""
 
 
 
@@ -90,6 +91,8 @@ class customActivity: Activity() {
                     "customAcc" to custom_acc,
                     "customEye" to custom_eye,
                     "dancing" to custom_dancing,
+                    "emotion" to custom_emotion,
+                    "TodoPercent" to todoP
             )
             db.collection("Chats").document(FamilyName.toString()).collection("CUSTOM")
                     .document(FamilyName.toString())

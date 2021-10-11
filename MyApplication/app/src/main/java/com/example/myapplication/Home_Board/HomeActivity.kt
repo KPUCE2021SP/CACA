@@ -188,6 +188,7 @@ class HomeActivity : TabActivity() {
         btnMain4.setOnClickListener {
             val intent = Intent(application, HomeTodoActivity::class.java)
             intent.putExtra("FamilyName", FamilyName)
+            intent.putExtra("UserUID",uid)
             startActivity(intent)
         }
         btnMain5.setOnClickListener {
@@ -223,6 +224,18 @@ class HomeActivity : TabActivity() {
                      //   Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT).show()
                     }
 
+//                    var emotion = docName.data?.get("emotion").toString()
+//                    val bodyEmotion = "gs://cacafirebase-554ac.appspot.com/custom_image/emotion/" + emotion
+//                    val customRef_Emo = storage.getReferenceFromUrl(bodyEmotion)
+//                    customRef_Emo?.getBytes(Long.MAX_VALUE)?.addOnSuccessListener {
+//                        val customRef = BitmapFactory.decodeByteArray(it, 0, it.size)
+//                        cu_body_Iv.setImageBitmap(customRef)
+//                    }?.addOnFailureListener {
+//                        //     Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT)
+//                        //.show()
+//                    }
+
+
                     customImage.setOnClickListener {    //춤추기
                         var dancing_custom = docName.data?.get("dancing").toString()
                         val dancName =
@@ -235,6 +248,8 @@ class HomeActivity : TabActivity() {
                        //     Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT)
                                 //.show()
                         }
+
+
 
                         Handler(Looper.getMainLooper()).postDelayed({
                             var body_color = docName.data?.get("bodyColor").toString()
@@ -275,6 +290,19 @@ class HomeActivity : TabActivity() {
                     }?.addOnFailureListener {
                    //     Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT).show()
                     }
+
+                    var custom_emotion = docName.data?.get("emotion").toString()
+                    val emotionName =
+                        "gs://cacafirebase-554ac.appspot.com/custom_image/emotion/" + custom_emotion
+                    val customRef_emt = storage.getReferenceFromUrl(emotionName)
+                    customRef_emt?.getBytes(Long.MAX_VALUE)?.addOnSuccessListener {
+                        val customRef = BitmapFactory.decodeByteArray(it, 0, it.size)
+                        cu_eye_Iv.setImageBitmap(customRef)
+                    }?.addOnFailureListener {
+                   //     Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT).show()
+                    }
+
+
                 }
             }
         //////////////////////////////////////////////////////////////////////////////////////
