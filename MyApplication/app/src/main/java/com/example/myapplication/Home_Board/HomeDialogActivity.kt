@@ -1,5 +1,4 @@
 package com.example.myapplication.Home_Board
-
 import android.Manifest
 import android.content.ClipData
 import android.content.ClipboardManager
@@ -25,34 +24,26 @@ import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.activity_home_dialog.*
 import java.text.SimpleDateFormat
 import java.util.*
-
 class HomeDialogActivity : AppCompatActivity() {
     val db: FirebaseFirestore = Firebase.firestore
     var mutableListCallNum: MutableList<String> = mutableListOf("a")
-
     fun onClick_clipboard(texttext: String) { // 클립 보드에 복사
-
         val clipboardManager = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
         val clipData = ClipData.newPlainText("라벨", texttext)
         clipboardManager!!.setPrimaryClip(clipData)
-
         Toast.makeText(applicationContext, "$texttext 복사완료", Toast.LENGTH_LONG).show()
     }
-
     // mmmmmmmmmmmmmmmmmmmmmmmm 안부 동적생성 mmmmmmmmmmmmmmmmmmmmmmmm //
     fun findCallHistory() : String {
         var callSet = arrayOf(
-            CallLog.Calls.DATE, CallLog.Calls.TYPE,
-            CallLog.Calls.NUMBER, CallLog.Calls.DURATION)
-
+                CallLog.Calls.DATE, CallLog.Calls.TYPE,
+                CallLog.Calls.NUMBER, CallLog.Calls.DURATION)
         var c = contentResolver.query(
-            CallLog.Calls.CONTENT_URI, /*오류*/
-            callSet, null, null, null)
-
+                CallLog.Calls.CONTENT_URI, /*오류*/
+                callSet, null, null, null)
         if (c!!.count == 0)
             return "통화기록 없음"
-
-        var callBuff = StringBuffer(100)
+        var callBuff = StringBuffer()
 //        callBuff.append("\n날짜 : 구분 : 전화번호 : 통화시간\n\n")
         callBuff.append("날짜:")
         c.moveToFirst()
@@ -68,16 +59,10 @@ class HomeDialogActivity : AppCompatActivity() {
             callBuff.append(c.getString(2) + ":")
             callBuff.append(c.getString(3) + "초\n")
         } while (c.moveToNext())
-
         c.close()
-
         return callBuff.toString()
-
-
     }
-
     private fun setContent(layout: LinearLayout, content: String) { // 통화기록 동적생성
-
         if (!TextUtils.isEmpty(content)) {
             var c: String = content
 //            c = c.replace("{", "")
@@ -85,26 +70,20 @@ class HomeDialogActivity : AppCompatActivity() {
             c = c.replace(" : ", ":")
             c = c.replace(" :", ":")
             c = c.replace(": ", ":")
-
             val splitContent = c.split("\n".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
-
             val splitDate = ArrayList<String>()
             val splitSs = ArrayList<String>()
             val splitNumber = ArrayList<String>()
             val splitText = ArrayList<String>()
-
             // Content Text
             val mVContentView = arrayOfNulls<View>(splitContent.size)
             val mTvContentDate = arrayOfNulls<TextView>(splitContent.size)
             val mTvContentSs = arrayOfNulls<TextView>(splitContent.size)
             val mTvContentNumber = arrayOfNulls<TextView>(splitContent.size)
             val mTvContentText = arrayOfNulls<TextView>(splitContent.size)
-
             val mcallImageView = arrayOfNulls<ImageView>(splitContent.size)
-
             var token = c.split(":","\n")
             Log.d("Tk11","mmmmmmmmmmmmmmmmmmmmmmmmmmm")
-
             for(i in 1 until token.size){
                 if (i % 4 == 0){
                     splitText.add(token[i])
@@ -124,7 +103,6 @@ class HomeDialogActivity : AppCompatActivity() {
 //                    Log.d("Tklong1", splitSs.size.toString())
                 }
             }
-
             var mutableListEqual: MutableList<String> = mutableListOf("a")
             mutableListEqual.clear()
 
@@ -157,22 +135,19 @@ class HomeDialogActivity : AppCompatActivity() {
             }
 
             layout.removeAllViews()
-
             for (layoutIdx in mutableListCallNum.indices) {
                 val layoutInflater =
-                    this.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+                        this.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
                 val containView =
-                    layoutInflater.inflate(R.layout.activity_dialog_card, null) // dialog_card를 inflate
+                        layoutInflater.inflate(R.layout.activity_dialog_card, null) // dialog_card를 inflate
                 layout.addView(containView)
-
                 mVContentView[layoutIdx] = containView as View
-
                 mTvContentNumber[layoutIdx] =
-                    mVContentView[layoutIdx]!!.findViewById(R.id.dialog_number) as TextView
+                        mVContentView[layoutIdx]!!.findViewById(R.id.dialog_number) as TextView
 //                mTvContentSs[layoutIdx] =
 //                    mVContentView[layoutIdx]!!.findViewById(R.id.dialog_ss) as TextView
                 mTvContentDate[layoutIdx] =
-                    mVContentView[layoutIdx]!!.findViewById(R.id.dialog_date) as TextView
+                        mVContentView[layoutIdx]!!.findViewById(R.id.dialog_date) as TextView
 //                mTvContentText[layoutIdx] =
 //                    mVContentView[layoutIdx]!!.findViewById(R.id.dialog_long) as TextView
 
@@ -184,14 +159,13 @@ class HomeDialogActivity : AppCompatActivity() {
 //                mcallImageView[layoutIdx] =
 //                    mVContentView[layoutIdx]!!.findViewById(R.id.callImageView) as ImageView  // default image 지정
 //                mcallImageView[layoutIdx]!!.setImageResource(R.drawable.heart)
-//
+
 //                if (mTvContentSs[layoutIdx]!!.text.contains("착신")) { // text에 따라서 imageView 바꾸기
 //                    mcallImageView[layoutIdx]!!.setImageResource(R.drawable.incomingcall)
 //                } else if (mTvContentSs[layoutIdx]!!.text.contains("발신")) {
 //                    mcallImageView[layoutIdx]!!.setImageResource(R.drawable.outgoingcall)
 //                }
             }
-
 //            Log.d("TkCC", splitContent.size.toString())
 //
 //            for (layoutIdx in splitContent.indices) {
@@ -227,9 +201,6 @@ class HomeDialogActivity : AppCompatActivity() {
 //                    mcallImageView[layoutIdx]!!.setImageResource(R.drawable.outgoingcall)
 //                }
 //            }
-
-
-
 //            val mlayout = arrayOfNulls<LinearLayout>(splitContent.size) // 클릭하면 삭제할 수 있도록 할 것
 //            for (layoutIdx in splitContent.indices) {
 //                mlayout[layoutIdx] = mVContentView[layoutIdx]!!.findViewById(R.id.allLayout) as LinearLayout  // default image 지정
@@ -263,80 +234,62 @@ class HomeDialogActivity : AppCompatActivity() {
 //
 //
 //            }
-
         } else {
             // TODO: get your code!
             Log.e("ERROR!", "Content is empty!");
         }
-
-
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_dialog)
-
         val FamilyName = intent.getStringExtra("FamilyName")
-
         ActivityCompat.requestPermissions(this,
-            arrayOf(Manifest.permission.READ_CALL_LOG), MODE_PRIVATE
+                arrayOf(Manifest.permission.READ_CALL_LOG), MODE_PRIVATE
         )
-
         btnCall.setOnClickListener {
             setContent(dialog_contain,findCallHistory())
         }
-
         // 0906 안부 가족 전화번호 가져오기 mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
         var mutableListCall: MutableList<String> = mutableListOf("a")
         mutableListCall.clear()
-
         db.collection("Chats").document(FamilyName.toString()).collection("FamilyMember")
-            .get()
-            .addOnSuccessListener { documents ->
-                for (document1 in documents) {
-                    Log.d("memberlist", "${document1.id} => ${document1.data}")
-                    mutableListCall.add(document1.id.toString())
-
-                    Log.d("calltable", mutableListCall.toString())
-                }
-
+                .get()
+                .addOnSuccessListener { documents ->
+                    for (document1 in documents) {
+                        Log.d("memberlist", "${document1.id} => ${document1.data}")
+                        mutableListCall.add(document1.id.toString())
+                        Log.d("calltable", mutableListCall.toString())
+                    }
 //                mutableListTodo.reverse()
 //                Log.d("mutu",mutableListTodo.toString())
-
-
-//                for (i in 0..(mutableListCall.size - 1)) { // 거꾸로
-//                    val layoutInflater =
-//                        this.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-//                    val containView = layoutInflater.inflate(
-//                        R.layout.activity_callnum_card,
-//                        null
-//                    )
-//                    callnum_contain.addView(containView)
-//
-//
-//                    val ContentView = containView as View
-//                    var callNum_name_tv =
-//                        ContentView.findViewById(R.id.callNum_name) as TextView // 타이틀
-//                    var callNum_number_tv =
-//                        ContentView.findViewById(R.id.callNum_number) as TextView // 체크박스
-//                    mutableListCallNum.clear()
-//
-//                    val docRef1 =
-//                        db.collection("Member").document(mutableListCall[(mutableListCall.size - 1) - i])
-//                    docRef1.get()
-//                        .addOnSuccessListener { document2 ->
-//                            Log.d(ContentValues.TAG, "DocumentSnapshot data: ${document2.data}")
-//                            mutableListCallNum.add(document2.data?.get("phone").toString())
-//
-//                            Log.d("callNum", (mutableListCallNum.toString()))
-//
-//                            callNum_name_tv.setText(document2.data?.get("name").toString())
-//                            callNum_number_tv.setText(document2.data?.get("phone").toString())
-//                        }
-//
-//                        .addOnFailureListener { exception ->
-//                            Log.d(ContentValues.TAG, "get failed with ", exception)
-//                        }
-//                }
-            }
+                    for (i in 0..(mutableListCall.size - 1)) { // 거꾸로
+                        val layoutInflater =
+                                this.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+                        val containView = layoutInflater.inflate(
+                                R.layout.activity_callnum_card,
+                                null
+                        )
+                        callnum_contain.addView(containView)
+                        val ContentView = containView as View
+                        var callNum_name_tv =
+                                ContentView.findViewById(R.id.callNum_name) as TextView // 타이틀
+                        var callNum_number_tv =
+                                ContentView.findViewById(R.id.callNum_number) as TextView // 체크박스
+                        mutableListCallNum.clear()
+                        val docRef1 =
+                                db.collection("Member").document(mutableListCall[(mutableListCall.size - 1) - i])
+                        docRef1.get()
+                                .addOnSuccessListener { document2 ->
+                                    Log.d(ContentValues.TAG, "DocumentSnapshot data: ${document2.data}")
+                                    mutableListCallNum.add(document2.data?.get("phone").toString())
+                                    Log.d("callNum", (mutableListCallNum.toString()))
+                                    callNum_name_tv.setText(document2.data?.get("name").toString())
+                                    callNum_number_tv.setText(document2.data?.get("phone").toString())
+                                }
+                                .addOnFailureListener { exception ->
+                                    Log.d(ContentValues.TAG, "get failed with ", exception)
+                                }
+                    }
+                }
     }
 }
