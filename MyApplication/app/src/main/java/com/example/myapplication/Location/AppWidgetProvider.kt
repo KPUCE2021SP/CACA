@@ -42,7 +42,7 @@ class AppWidgetProvider : AppWidgetProvider() {
 
 
             val storage = Firebase.storage
-            var FamilyName = "SaUT6H1Q"
+//            var FamilyName = "SaUT6H1Q"
             // MainFamilyCode 가져오기
             val docRef10 = db.collection("Member").document(uid.toString()) // 여러 field값 가져오기
             docRef10.get()
