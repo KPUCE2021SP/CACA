@@ -89,13 +89,13 @@ class HomeTodoActivity : AppCompatActivity() {
                     .show()
         }
 
-        // 패밀리code 받아오기
-        db.collection("Chats").document(FamilyName.toString())
-            .get()
-            .addOnSuccessListener { document1 ->
-                    familyIDChbx.text = document1.data?.get("name") as CharSequence?
-                    familyIDChbx.isChecked=true
-                }
+//        // 패밀리code 받아오기
+//        db.collection("Chats").document(FamilyName.toString())
+//            .get()
+//            .addOnSuccessListener { document1 ->
+//                    familyIDChbx.text = document1.data?.get("name") as CharSequence?
+//                    familyIDChbx.isChecked=true
+//                }
 
         ////////////////////// 공동할일 받아오기 왼/오 ////////////////////////////
         var mutableListTodo: MutableList<String> = mutableListOf("a")

@@ -53,20 +53,20 @@
         android:textOff="오른손잡이용 화면"
         android:textOn="왼손잡이용 화면" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:orientation="horizontal">
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_margin="5dp"-->
+<!--        android:orientation="horizontal">-->
 
-        <CheckBox
-            android:layout_marginLeft="3dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/familyIDChbx"
-            android:text="예시1"/>
+<!--        <CheckBox-->
+<!--            android:layout_marginLeft="3dp"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:id="@+id/familyIDChbx"-->
+<!--            android:text="예시1"/>-->
 
-    </LinearLayout>
+<!--    </LinearLayout>-->
     <LinearLayout
         android:visibility="visible"
         android:layout_width="match_parent"
