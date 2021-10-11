@@ -27,20 +27,39 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-        <Button
-            style="@style/nanumTextView"
-            android:id="@+id/Account_Plus_Button"
+<!--        <Button-->
+<!--            style="@style/nanumTextView"-->
+<!--            android:id="@+id/Account_Plus_Button"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="용돈 계좌 추가하기" />-->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="용돈 계좌 추가하기" />
-        <TextView
-            style="@style/nanumTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="용돈 관리"
             android:layout_margin="10dp"
-            android:textSize="27dp"
-            android:textStyle="bold"></TextView>
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/nanumTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="8"
+                android:text="용돈 관리"
+                android:textSize="27dp"
+                android:textStyle="bold"></TextView>
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/Account_Plus_Button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+
+                android:layout_margin="15dp"
+                app:backgroundTint="#FCBF48"
+                app:srcCompat="@drawable/ic_add" />
+        </LinearLayout>
+
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/srl_account"
             android:layout_width="match_parent"

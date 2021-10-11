@@ -246,7 +246,7 @@ class MypageActivity : AppCompatActivity() {
 
         // spinner 선택
         var spinnerUID: String = ""
-        spinner_message.setSelection(0, false)
+//        spinner_message.setSelection(0, false)
         spinner_message.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
                     parent: AdapterView<*>?,
