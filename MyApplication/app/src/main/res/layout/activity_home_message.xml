@@ -31,6 +31,9 @@
         <Spinner
             android:id="@+id/spinner_message"
             android:layout_width="match_parent"
+            android:layout_marginLeft= "15dp"
+            android:layout_marginRight= "15dp"
+            android:layout_marginTop="20dp"
             android:layout_height="wrap_content" />
 
         <EditText
@@ -46,8 +49,10 @@
             android:id="@+id/etTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft= "15dp"
+            android:layout_marginRight= "15dp"
             android:ems="10"
-            android:hint="Enter Title"
+            android:hint="제목을 적으세요"
             android:inputType="textPersonName" />
 
         <EditText
@@ -55,14 +60,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Enter message"
+            android:layout_marginLeft= "15dp"
+            android:layout_marginRight= "15dp"
+            android:hint="내용을 적으세요"
             android:inputType="textPersonName" />
 
         <Button
             android:id="@+id/btnSend"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Send" />
+            android:background="#fcbf48"
+            android:layout_margin= "15dp"
+            android:text="보내기" />
 
     </LinearLayout>
 </LinearLayout>
