@@ -231,8 +231,19 @@ class MypageActivity : AppCompatActivity() {
                 .addOnSuccessListener { documents ->
                     for (document in documents) {
                         Log.d(TAG, "${document.id} => ${document.data}")
-                        mutableList.add(document.id)
+//                        mutableList.add(document.id)
 
+                        db.collection("Chats").document(document.id)
+                                //.whereEqualTo("Familys", true)
+                                .get()
+                                .addOnSuccessListener { documents ->
+                                    val familyName = documents.data?.get("name").toString()
+                                    if (familyName != "null"){
+                                        mutableList.add(familyName)
+                                    }
+
+                                    Log.d("Familyname", documents.data?.get("name").toString())
+                                }
 
                         var adapter: ArrayAdapter<String> = ArrayAdapter(
                                 this,

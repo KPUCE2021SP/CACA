@@ -181,15 +181,15 @@ class HomeDialogActivity : AppCompatActivity() {
                 mTvContentNumber[layoutIdx]!!.text = mutableListCallNum[layoutIdx]
 //                mTvContentText[layoutIdx]!!.text = splitText[layoutIdx]
 
-//                mcallImageView[layoutIdx] =
-//                    mVContentView[layoutIdx]!!.findViewById(R.id.callImageView) as ImageView  // default image 지정
-//                mcallImageView[layoutIdx]!!.setImageResource(R.drawable.heart)
-//
-//                if (mTvContentSs[layoutIdx]!!.text.contains("착신")) { // text에 따라서 imageView 바꾸기
-//                    mcallImageView[layoutIdx]!!.setImageResource(R.drawable.incomingcall)
-//                } else if (mTvContentSs[layoutIdx]!!.text.contains("발신")) {
-//                    mcallImageView[layoutIdx]!!.setImageResource(R.drawable.outgoingcall)
-//                }
+                mcallImageView[layoutIdx] =
+                    mVContentView[layoutIdx]!!.findViewById(R.id.callImageView) as ImageView  // default image 지정
+                mcallImageView[layoutIdx]!!.setImageResource(R.drawable.heart)
+
+                if (mTvContentSs[layoutIdx]!!.text.contains("착신")) { // text에 따라서 imageView 바꾸기
+                    mcallImageView[layoutIdx]!!.setImageResource(R.drawable.incomingcall)
+                } else if (mTvContentSs[layoutIdx]!!.text.contains("발신")) {
+                    mcallImageView[layoutIdx]!!.setImageResource(R.drawable.outgoingcall)
+                }
             }
 
 //            Log.d("TkCC", splitContent.size.toString())
@@ -286,57 +286,57 @@ class HomeDialogActivity : AppCompatActivity() {
         }
 
         // 0906 안부 가족 전화번호 가져오기 mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
-        var mutableListCall: MutableList<String> = mutableListOf("a")
-        mutableListCall.clear()
-
-        db.collection("Chats").document(FamilyName.toString()).collection("FamilyMember")
-            .get()
-            .addOnSuccessListener { documents ->
-                for (document1 in documents) {
-                    Log.d("memberlist", "${document1.id} => ${document1.data}")
-                    mutableListCall.add(document1.id.toString())
-
-                    Log.d("calltable", mutableListCall.toString())
-                }
-
-//                mutableListTodo.reverse()
-//                Log.d("mutu",mutableListTodo.toString())
-
-
-                for (i in 0..(mutableListCall.size - 1)) { // 거꾸로
-                    val layoutInflater =
-                        this.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-                    val containView = layoutInflater.inflate(
-                        R.layout.activity_callnum_card,
-                        null
-                    )
-                    callnum_contain.addView(containView)
-
-
-                    val ContentView = containView as View
-                    var callNum_name_tv =
-                        ContentView.findViewById(R.id.callNum_name) as TextView // 타이틀
-                    var callNum_number_tv =
-                        ContentView.findViewById(R.id.callNum_number) as TextView // 체크박스
-                    mutableListCallNum.clear()
-
-                    val docRef1 =
-                        db.collection("Member").document(mutableListCall[(mutableListCall.size - 1) - i])
-                    docRef1.get()
-                        .addOnSuccessListener { document2 ->
-                            Log.d(ContentValues.TAG, "DocumentSnapshot data: ${document2.data}")
-                            mutableListCallNum.add(document2.data?.get("phone").toString())
-
-                            Log.d("callNum", (mutableListCallNum.toString()))
-
-                            callNum_name_tv.setText(document2.data?.get("name").toString())
-                            callNum_number_tv.setText(document2.data?.get("phone").toString())
-                        }
-
-                        .addOnFailureListener { exception ->
-                            Log.d(ContentValues.TAG, "get failed with ", exception)
-                        }
-                }
-            }
+//        var mutableListCall: MutableList<String> = mutableListOf("a")
+//        mutableListCall.clear()
+//
+//        db.collection("Chats").document(FamilyName.toString()).collection("FamilyMember")
+//            .get()
+//            .addOnSuccessListener { documents ->
+//                for (document1 in documents) {
+//                    Log.d("memberlist", "${document1.id} => ${document1.data}")
+//                    mutableListCall.add(document1.id.toString())
+//
+//                    Log.d("calltable", mutableListCall.toString())
+//                }
+//
+////                mutableListTodo.reverse()
+////                Log.d("mutu",mutableListTodo.toString())
+//
+//
+//                for (i in 0..(mutableListCall.size - 1)) { // 거꾸로
+//                    val layoutInflater =
+//                        this.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+//                    val containView = layoutInflater.inflate(
+//                        R.layout.activity_callnum_card,
+//                        null
+//                    )
+//                    callnum_contain.addView(containView)
+//
+//
+//                    val ContentView = containView as View
+//                    var callNum_name_tv =
+//                        ContentView.findViewById(R.id.callNum_name) as TextView // 타이틀
+//                    var callNum_number_tv =
+//                        ContentView.findViewById(R.id.callNum_number) as TextView // 체크박스
+//                    mutableListCallNum.clear()
+//
+//                    val docRef1 =
+//                        db.collection("Member").document(mutableListCall[(mutableListCall.size - 1) - i])
+//                    docRef1.get()
+//                        .addOnSuccessListener { document2 ->
+//                            Log.d(ContentValues.TAG, "DocumentSnapshot data: ${document2.data}")
+//                            mutableListCallNum.add(document2.data?.get("phone").toString())
+//
+//                            Log.d("callNum", (mutableListCallNum.toString()))
+//
+//                            callNum_name_tv.setText(document2.data?.get("name").toString())
+//                            callNum_number_tv.setText(document2.data?.get("phone").toString())
+//                        }
+//
+//                        .addOnFailureListener { exception ->
+//                            Log.d(ContentValues.TAG, "get failed with ", exception)
+//                        }
+//                }
+//            }
     }
 }
