@@ -262,6 +262,9 @@ class MypageActivity : AppCompatActivity() {
                 var uid = fbAuth?.uid.toString()
                 var map = mutableMapOf<String, Any>()
                 map["MainFamily"] = spinnerUID.toString()
+                // test
+                textViewName.text = spinnerUID.toString()
+                // test
                 db.collection("Member").document(uid).update(map)
                         .addOnCompleteListener {
                             if (it.isSuccessful) {
