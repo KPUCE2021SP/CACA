@@ -232,15 +232,16 @@ class MypageActivity : AppCompatActivity() {
                     for (document in documents) {
                         Log.d(TAG, "${document.id} => ${document.data}")
                         mutableList.add(document.id)
+
+
+                        var adapter: ArrayAdapter<String> = ArrayAdapter(
+                                this,
+                                android.R.layout.simple_spinner_dropdown_item,
+                                mutableList
+                        )
+                        mainFamily_spinner.adapter = adapter
                     }
                 }
-
-        var adapter: ArrayAdapter<String> = ArrayAdapter(
-                this,
-                android.R.layout.simple_spinner_dropdown_item,
-                mutableList
-        )
-        mainFamily_spinner.adapter = adapter
 
 
 
@@ -256,15 +257,14 @@ class MypageActivity : AppCompatActivity() {
             ) {
                 spinnerUID = mutableList[position].toString() // 선택한 값
                 ////////////////////////////////////////////////////////////////////////
+                // 저장
                 var fbAuth = FirebaseAuth.getInstance()
                 //firestore에 넣기
                 val db: FirebaseFirestore = Firebase.firestore
                 var uid = fbAuth?.uid.toString()
                 var map = mutableMapOf<String, Any>()
                 map["MainFamily"] = spinnerUID.toString()
-                // test
-                textViewName.text = spinnerUID.toString()
-                // test
+
                 db.collection("Member").document(uid).update(map)
                         .addOnCompleteListener {
                             if (it.isSuccessful) {
