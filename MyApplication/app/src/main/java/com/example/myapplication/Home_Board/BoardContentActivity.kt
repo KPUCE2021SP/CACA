@@ -107,10 +107,21 @@ class BoardContentActivity : AppCompatActivity() {
             srl_main.isRefreshing = false // 인터넷 끊기
         }
 
+
+
         comment_Btn.setOnClickListener {    //댓글 저장하기
-            if (FamilyName1 != null && notice_name1 != null) {
-                saveComment(FamilyName1, formatted1, notice_name1)
-            }
+
+            db.collection("Member").document(uid)
+                    .get()
+                    .addOnSuccessListener { document ->
+                        if (document != null) {
+                            val commentName = document.data?.get("name").toString()
+                            if (FamilyName1 != null && notice_name1 != null) {
+                                saveComment(FamilyName1, formatted1, commentName)
+                            }
+                        }
+                    }
+
         }
 
 
