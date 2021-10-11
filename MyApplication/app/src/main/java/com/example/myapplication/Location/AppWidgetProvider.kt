@@ -42,11 +42,7 @@ class AppWidgetProvider : AppWidgetProvider() {
 
 
             val storage = Firebase.storage
-<<<<<<< HEAD
 //            var FamilyName = "SaUT6H1Q"
-=======
-            var FamilyName = "40b0d0N2"
->>>>>>> refs/remotes/origin/master
             // MainFamilyCode 가져오기
             val docRef10 = db.collection("Member").document(uid.toString()) // 여러 field값 가져오기
             docRef10.get()
@@ -120,7 +116,7 @@ class AppWidgetProvider : AppWidgetProvider() {
             super.onAppWidgetOptionsChanged(context, appWidgetManager, appWidgetId, newOptions)
 
             val storage = Firebase.storage
-            var FamilyName = "40b0d0N2"
+//            var FamilyName = "SaUT6H1Q"
             // MainFamilyCode 가져오기
             val docRef10 = db.collection("Member").document(uid.toString()) // 여러 field값 가져오기
             docRef10.get()
