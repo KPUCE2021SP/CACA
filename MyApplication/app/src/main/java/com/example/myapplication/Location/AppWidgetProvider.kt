@@ -42,7 +42,7 @@ class AppWidgetProvider : AppWidgetProvider() {
 
 
             val storage = Firebase.storage
-            var FamilyName = "40b0d0N2"
+//            var FamilyName = "SaUT6H1Q"
             // MainFamilyCode 가져오기
             val docRef10 = db.collection("Member").document(uid.toString()) // 여러 field값 가져오기
             docRef10.get()
@@ -92,9 +92,9 @@ class AppWidgetProvider : AppWidgetProvider() {
                             }
 
 
-                            var custom_eye = docName.data?.get("customEye").toString()
+                            var custom_eye = docName.data?.get("emotion").toString()
                             val eyeName =
-                                    "gs://cacafirebase-554ac.appspot.com/custom_image/acc/" + custom_eye
+                                    "gs://cacafirebase-554ac.appspot.com/custom_image/emotion/" + custom_eye
                             val customRef_eye = storage.getReferenceFromUrl(eyeName)
                             customRef_eye?.getBytes(Long.MAX_VALUE)?.addOnSuccessListener {
                                 val customRef = BitmapFactory.decodeByteArray(it, 0, it.size)
@@ -116,7 +116,7 @@ class AppWidgetProvider : AppWidgetProvider() {
             super.onAppWidgetOptionsChanged(context, appWidgetManager, appWidgetId, newOptions)
 
             val storage = Firebase.storage
-            var FamilyName = "40b0d0N2"
+//            var FamilyName = "SaUT6H1Q"
             // MainFamilyCode 가져오기
             val docRef10 = db.collection("Member").document(uid.toString()) // 여러 field값 가져오기
             docRef10.get()

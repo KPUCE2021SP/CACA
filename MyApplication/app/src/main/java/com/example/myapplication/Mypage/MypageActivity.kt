@@ -224,6 +224,9 @@ class MypageActivity : AppCompatActivity() {
         // Main Family Spinner
         var mutableList: MutableList<String> = mutableListOf("a")
         mutableList.clear()
+        var mutableList1: MutableList<String> = mutableListOf("a")
+        mutableList1.clear()
+
 
         db.collection("Member").document(uid).collection("MYPAGE")
                 //.whereEqualTo("Familys", true)
@@ -231,7 +234,7 @@ class MypageActivity : AppCompatActivity() {
                 .addOnSuccessListener { documents ->
                     for (document in documents) {
                         Log.d(TAG, "${document.id} => ${document.data}")
-//                        mutableList.add(document.id)
+                        mutableList.add(document.id)
 
                         db.collection("Chats").document(document.id)
                                 //.whereEqualTo("Familys", true)
@@ -239,18 +242,18 @@ class MypageActivity : AppCompatActivity() {
                                 .addOnSuccessListener { documents ->
                                     val familyName = documents.data?.get("name").toString()
                                     if (familyName != "null"){
-                                        mutableList.add(familyName)
+                                        mutableList1.add(familyName)
+
+                                        var adapter: ArrayAdapter<String> = ArrayAdapter(
+                                                this,
+                                                android.R.layout.simple_spinner_dropdown_item,
+                                                mutableList1
+                                        )
+                                        mainFamily_spinner.adapter = adapter
                                     }
 
                                     Log.d("Familyname", documents.data?.get("name").toString())
                                 }
-
-                        var adapter: ArrayAdapter<String> = ArrayAdapter(
-                                this,
-                                android.R.layout.simple_spinner_dropdown_item,
-                                mutableList
-                        )
-                        mainFamily_spinner.adapter = adapter
                     }
                 }
 
@@ -274,7 +277,7 @@ class MypageActivity : AppCompatActivity() {
                 val db: FirebaseFirestore = Firebase.firestore
                 var uid = fbAuth?.uid.toString()
                 var map = mutableMapOf<String, Any>()
-                map["MainFamily"] = spinnerUID.toString()
+                map["MainFamily"] = spinnerUID
 
                 db.collection("Member").document(uid).update(map)
                         .addOnCompleteListener {
@@ -282,6 +285,10 @@ class MypageActivity : AppCompatActivity() {
                                 Toast.makeText(applicationContext, "업데이트 되었습니다", Toast.LENGTH_SHORT)
                                         .show()
                             }
+                        }
+                        .addOnFailureListener {
+                            Toast.makeText(applicationContext, "실패", Toast.LENGTH_SHORT)
+
                         }
             }
 
