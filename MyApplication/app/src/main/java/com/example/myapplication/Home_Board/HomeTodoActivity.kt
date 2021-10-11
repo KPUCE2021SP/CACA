@@ -32,6 +32,7 @@ class HomeTodoActivity : AppCompatActivity() {
         var fbAuth = FirebaseAuth.getInstance()
         var uid = fbAuth?.uid.toString()
         val FamilyName = intent.getStringExtra("FamilyName")
+        val UserUID = intent.getStringExtra("UserUID")
         var TodoCheckedNumR : Int
         var TodoCheckedNumL : Int
         var EmotionImg : String
@@ -96,6 +97,53 @@ class HomeTodoActivity : AppCompatActivity() {
 //                    familyIDChbx.text = document1.data?.get("name") as CharSequence?
 //                    familyIDChbx.isChecked=true
 //                }
+
+//         // 패밀리code 받아오기
+//        var mutableListUID: MutableList<String> = mutableListOf("a")
+//        mutableListUID.clear()
+//        db.collection("Member").document(UserUID.toString())
+//                .collection("MYPAGE")
+//            .get()
+//            .addOnSuccessListener { document1 ->
+//                for (document1 in document1) {
+//                    Log.d("TodoList", "${document1.id} => ${document1.data}")
+//                    mutableListUID.add(document1.id.toString())
+//                }
+//                for (i in 0..(mutableListUID.size - 1)) { // 거꾸로
+//                    val layoutInflater =
+//                            this.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+//                    val containView = layoutInflater.inflate(
+//                            R.layout.activity_todo_chkbx,
+//                            null
+//                    )
+//                    righthandList.addView(containView)
+//
+//                    val ContentView = containView as View
+//                    var todo_family_chbx =
+//                            ContentView.findViewById(R.id.familyIDChbx) as CheckBox // 체크박스
+//
+//
+//                    val docRef1 =
+//                            db.collection("Member").document(UserUID.toString()).collection("MYPAGE")
+//                                    .document(mutableListUID[(mutableListUID.size - 1) - i]) // 여러 field값 가져오기
+//                    docRef1.get()
+//                            .addOnSuccessListener { document2 ->
+//                                if (document2 != null) {
+//                                    Log.d(ContentValues.TAG, "DocumentSnapshot data: ${document2.data}")
+//                                    todo_family_chbx.text = document2.data?.get("name").toString()
+////                                    todo_right_checkbx.isChecked = (document2.data?.get("check") as Boolean)
+//
+//                                    Log.d("Blean1", (document2.data?.get("name")).toString())
+//                                }
+//                            }
+//                            .addOnFailureListener { exception ->
+//                                Log.d(ContentValues.TAG, "get failed with ", exception)
+//                            }
+//                }
+//            }
+
+//                familyIDChbx.text = document1.data?.get("name") as CharSequence?
+//                familyIDChbx.isChecked=true
 
         ////////////////////// 공동할일 받아오기 왼/오 ////////////////////////////
         var mutableListTodo: MutableList<String> = mutableListOf("a")
@@ -175,8 +223,8 @@ class HomeTodoActivity : AppCompatActivity() {
                             }
 
                             val percent_update = hashMapOf(
-                                    "TodoP" to percent.toString(),
-                                    "TodoEmotion" to EmotionImg,
+                                    "TodoPercent" to percent.toString(),
+                                    "emotion" to EmotionImg,
                             )
                             Log.d("Blean", TodoBoolean.toString())
                             Log.d("Blean2", todo_right_tv.text.toString())
@@ -188,12 +236,20 @@ class HomeTodoActivity : AppCompatActivity() {
                                                     .show()
                                         }
                                     }
-                            db.collection("Chats").document(FamilyName.toString()).update(percent_update as  Map<String, Any>)
-                                .addOnCompleteListener {
-                                    if (it.isSuccessful) {
-//                                        Toast.makeText(applicationContext, "업데이트 완료!", Toast.LENGTH_SHORT)
-//                                            .show()
-                                    }
+//                            db.collection("Chats").document(FamilyName.toString()).update(percent_update as  Map<String, Any>)
+//                                .addOnCompleteListener {
+//                                    if (it.isSuccessful) {
+////                                        Toast.makeText(applicationContext, "업데이트 완료!", Toast.LENGTH_SHORT)
+////                                            .show()
+//                                    }
+//                                }
+                            db.collection("Chats").document(FamilyName.toString()).collection("CUSTOM")
+                                    .document(FamilyName.toString()).update(percent_update as  Map<String, Any>)
+                                    .addOnCompleteListener {
+                                        if (it.isSuccessful) {
+                                            Toast.makeText(applicationContext, "업데이트 완료!", Toast.LENGTH_SHORT)
+                                                .show()
+                                        }
                                 }
                         }
 
@@ -300,13 +356,21 @@ class HomeTodoActivity : AppCompatActivity() {
                                             .show()
                                     }
                                 }
-                            db.collection("Chats").document(FamilyName.toString()).update(percent_update as  Map<String, Any>)
-                                .addOnCompleteListener {
-                                    if (it.isSuccessful) {
-//                                        Toast.makeText(applicationContext, "업데이트 완료!", Toast.LENGTH_SHORT)
-//                                            .show()
+//                            db.collection("Chats").document(FamilyName.toString()).update(percent_update as  Map<String, Any>)
+//                                .addOnCompleteListener {
+//                                    if (it.isSuccessful) {
+////                                        Toast.makeText(applicationContext, "업데이트 완료!", Toast.LENGTH_SHORT)
+////                                            .show()
+//                                    }
+//                                }
+                            db.collection("Chats").document(FamilyName.toString()).collection("CUSTOM")
+                                    .document(FamilyName.toString()).update(percent_update as  Map<String, Any>)
+                                    .addOnCompleteListener {
+                                        if (it.isSuccessful) {
+                                            Toast.makeText(applicationContext, "업데이트 완료!", Toast.LENGTH_SHORT)
+                                                    .show()
+                                        }
                                     }
-                                }
                         }
 
                         righthandcard?.setOnClickListener() { // 삭제
@@ -464,13 +528,14 @@ class HomeTodoActivity : AppCompatActivity() {
                                         "TodoEmotion" to EmotionImg,
                                 )
 
-                                db.collection("Chats").document(FamilyName.toString()).update(percent_update as  Map<String, Any>)
-                                    .addOnCompleteListener {
-                                        if (it.isSuccessful) {
-//                                        Toast.makeText(applicationContext, "업데이트 완료!", Toast.LENGTH_SHORT)
-//                                            .show()
+                                db.collection("Chats").document(FamilyName.toString()).collection("CUSTOM")
+                                        .document(FamilyName.toString()).update(percent_update as  Map<String, Any>)
+                                        .addOnCompleteListener {
+                                            if (it.isSuccessful) {
+                                                Toast.makeText(applicationContext, "업데이트 완료!", Toast.LENGTH_SHORT)
+                                                        .show()
+                                            }
                                         }
-                                    }
                             }
 
                             righthandcard?.setOnClickListener() { // 삭제
@@ -588,13 +653,14 @@ class HomeTodoActivity : AppCompatActivity() {
                                         "TodoEmotion" to EmotionImg,
                                 )
 
-                                db.collection("Chats").document(FamilyName.toString()).update(percent_update as  Map<String, Any>)
-                                    .addOnCompleteListener {
-                                        if (it.isSuccessful) {
-//                                        Toast.makeText(applicationContext, "업데이트 완료!", Toast.LENGTH_SHORT)
-//                                            .show()
+                                db.collection("Chats").document(FamilyName.toString()).collection("CUSTOM")
+                                        .document(FamilyName.toString()).update(percent_update as  Map<String, Any>)
+                                        .addOnCompleteListener {
+                                            if (it.isSuccessful) {
+                                                Toast.makeText(applicationContext, "업데이트 완료!", Toast.LENGTH_SHORT)
+                                                        .show()
+                                            }
                                         }
-                                    }
 
                                 Log.d("Blean", TodoBoolean.toString())
                                 Log.d("Blean2", todo_left_tv.text.toString())
