@@ -41,6 +41,7 @@ import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.UploadTask
 import com.google.firebase.storage.ktx.storage
 import kotlinx.android.synthetic.main.activity_account.*
+import kotlinx.android.synthetic.main.activity_home_message.*
 import java.io.IOException
 
 class MypageActivity : AppCompatActivity() {
@@ -67,7 +68,7 @@ class MypageActivity : AppCompatActivity() {
         btnLogout.visibility = View.VISIBLE
 
         val personuid = intent.getStringExtra("uid") // 가족 uid 가져오기
-        if (personuid != null){
+        if (personuid != null) {
             uid = personuid.toString()
             Log.d("personuid", uid)
             btnLogout.visibility = View.GONE
@@ -78,38 +79,37 @@ class MypageActivity : AppCompatActivity() {
         val db: FirebaseFirestore = Firebase.firestore
         val docRef = db.collection("Member").document(uid)
         docRef.get()
-            .addOnSuccessListener { document ->
-                if (document != null) { // DATA 받아왔을 때
-                    Log.d(TAG, "DocumentSnapshot data: ${document.data}")
-                    DummyData.sDummyData = document.data.toString()
-                } else {
-                    Log.d(TAG, "No such document")
+                .addOnSuccessListener { document ->
+                    if (document != null) { // DATA 받아왔을 때
+                        Log.d(TAG, "DocumentSnapshot data: ${document.data}")
+                        DummyData.sDummyData = document.data.toString()
+                    } else {
+                        Log.d(TAG, "No such document")
+                    }
                 }
-            }
-            .addOnFailureListener { exception ->
-                Log.d(TAG, "get failed with ", exception)
-            }
+                .addOnFailureListener { exception ->
+                    Log.d(TAG, "get failed with ", exception)
+                }
 
 
         // DummyData로 inflate하기
         setContent(ll_contain, DummyData.sDummyData) // inflate
 
 
-
         val docRef1 = db.collection("Member").document(uid) // 여러 field값 가져오기
         docRef1.get()
-            .addOnSuccessListener { document ->
-                if (document != null) {
-                    Log.d(TAG, "DocumentSnapshot data: ${document.data}")
-                    textViewName.setText(document.data?.get("name").toString()) // name 확인용
+                .addOnSuccessListener { document ->
+                    if (document != null) {
+                        Log.d(TAG, "DocumentSnapshot data: ${document.data}")
+                        textViewName.setText(document.data?.get("name").toString()) // name 확인용
 
-                } else {
-                    Log.d(TAG, "No such document")
+                    } else {
+                        Log.d(TAG, "No such document")
+                    }
                 }
-            }
-            .addOnFailureListener { exception ->
-                Log.d(TAG, "get failed with ", exception)
-            }
+                .addOnFailureListener { exception ->
+                    Log.d(TAG, "get failed with ", exception)
+                }
 
 
         //프로필 가져오기
@@ -122,7 +122,7 @@ class MypageActivity : AppCompatActivity() {
             val profilebmp = BitmapFactory.decodeByteArray(it, 0, it.size)
             peopleFace.setImageBitmap(profilebmp)
         }?.addOnFailureListener {
-         //   Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT).show()
+            //   Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT).show()
         }
 
 
@@ -146,27 +146,27 @@ class MypageActivity : AppCompatActivity() {
             val dialogText_context = dialogView.findViewById<EditText>(R.id.mypage_edittext)
 
             builder.setView(dialogView)
-                .setPositiveButton("확인") { dialogInterface, i ->
-                    var fbAuth = FirebaseAuth.getInstance()
-                    //firestore에 넣기
-                    val db: FirebaseFirestore = Firebase.firestore
-                    var uid = fbAuth?.uid.toString()
-                    var map = mutableMapOf<String, Any>()
-                    map[dialogText_title.text.toString()] = dialogText_context.text.toString()
-                    db.collection("Member").document(uid).update(map)
-                        .addOnCompleteListener {
-                            if (it.isSuccessful) {
-                                Toast.makeText(applicationContext, "업데이트 되었습니다", Toast.LENGTH_SHORT)
-                                    .show()
+                    .setPositiveButton("확인") { dialogInterface, i ->
+                        var fbAuth = FirebaseAuth.getInstance()
+                        //firestore에 넣기
+                        val db: FirebaseFirestore = Firebase.firestore
+                        var uid = fbAuth?.uid.toString()
+                        var map = mutableMapOf<String, Any>()
+                        map[dialogText_title.text.toString()] = dialogText_context.text.toString()
+                        db.collection("Member").document(uid).update(map)
+                                .addOnCompleteListener {
+                                    if (it.isSuccessful) {
+                                        Toast.makeText(applicationContext, "업데이트 되었습니다", Toast.LENGTH_SHORT)
+                                                .show()
 //                                val intent = Intent(this, MypageActivity::class.java)
 //                                startActivity(intent)
-                            }
-                        }
-                }
-                .setNegativeButton("취소") { dialogInterface, i ->
-                    /* 취소일 때 아무 액션이 없으므로 빈칸 */
-                }
-                .show()
+                                    }
+                                }
+                    }
+                    .setNegativeButton("취소") { dialogInterface, i ->
+                        /* 취소일 때 아무 액션이 없으므로 빈칸 */
+                    }
+                    .show()
         }
 
 
@@ -177,20 +177,20 @@ class MypageActivity : AppCompatActivity() {
             // 이때 새로고침 화살표가 계속 돌아갑니다.
             val docRef = db.collection("Member").document(uid)
             docRef.get()
-                .addOnSuccessListener { document ->
-                    if (document != null) { // DATA 받아왔을 때
-                        Log.d(TAG, "DocumentSnapshot data: ${document.data}")
-                        //updateDateView.setText(document.data.toString()) // 받아오기 확인용
-                        DummyData.sDummyData = document.data.toString()
-                        //textViewName.setText(DummyData.sDummyData) // Dummydata 덮어쓰기 확인용
+                    .addOnSuccessListener { document ->
+                        if (document != null) { // DATA 받아왔을 때
+                            Log.d(TAG, "DocumentSnapshot data: ${document.data}")
+                            //updateDateView.setText(document.data.toString()) // 받아오기 확인용
+                            DummyData.sDummyData = document.data.toString()
+                            //textViewName.setText(DummyData.sDummyData) // Dummydata 덮어쓰기 확인용
 
-                    } else {
-                        Log.d(TAG, "No such document")
+                        } else {
+                            Log.d(TAG, "No such document")
+                        }
                     }
-                }
-                .addOnFailureListener { exception ->
-                    Log.d(TAG, "get failed with ", exception)
-                }
+                    .addOnFailureListener { exception ->
+                        Log.d(TAG, "get failed with ", exception)
+                    }
             setContent(ll_contain, DummyData.sDummyData) // inflate
 
             //프로필 가져오기
@@ -203,7 +203,7 @@ class MypageActivity : AppCompatActivity() {
                 val profilebmp = BitmapFactory.decodeByteArray(it, 0, it.size)
                 peopleFace.setImageBitmap(profilebmp)
             }?.addOnFailureListener {
-        //        Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT).show()
+                //        Toast.makeText(this, "image downloade failed", Toast.LENGTH_SHORT).show()
             }
 
 
@@ -219,6 +219,63 @@ class MypageActivity : AppCompatActivity() {
         saveProfile.setOnClickListener {
             uploadProfile()
         }
+
+
+        // Main Family Spinner
+        var mutableList: MutableList<String> = mutableListOf("a")
+        mutableList.clear()
+
+        db.collection("Member").document(uid).collection("MYPAGE")
+                //.whereEqualTo("Familys", true)
+                .get()
+                .addOnSuccessListener { documents ->
+                    for (document in documents) {
+                        Log.d(TAG, "${document.id} => ${document.data}")
+                        mutableList.add(document.id)
+                    }
+                }
+
+        var adapter: ArrayAdapter<String> = ArrayAdapter(
+                this,
+                android.R.layout.simple_spinner_dropdown_item,
+                mutableList
+        )
+        mainFamily_spinner.adapter = adapter
+
+
+
+        // spinner 선택
+        var spinnerUID: String = ""
+        spinner_message.setSelection(0, false)
+        spinner_message.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                    parent: AdapterView<*>?,
+                    view: View?,
+                    position: Int,
+                    id: Long
+            ) {
+                spinnerUID = mutableList[position].toString() // 선택한 값
+                ////////////////////////////////////////////////////////////////////////
+                var fbAuth = FirebaseAuth.getInstance()
+                //firestore에 넣기
+                val db: FirebaseFirestore = Firebase.firestore
+                var uid = fbAuth?.uid.toString()
+                var map = mutableMapOf<String, Any>()
+                map["MainFamily"] = spinnerUID.toString()
+                db.collection("Member").document(uid).update(map)
+                        .addOnCompleteListener {
+                            if (it.isSuccessful) {
+                                Toast.makeText(applicationContext, "업데이트 되었습니다", Toast.LENGTH_SHORT)
+                                        .show()
+                            }
+                        }
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                TODO("Not yet implemented")
+            }
+        }
+
 
     }
 
