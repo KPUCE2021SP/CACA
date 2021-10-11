@@ -283,8 +283,8 @@ class HomeDialogActivity : AppCompatActivity() {
                                     Log.d(ContentValues.TAG, "DocumentSnapshot data: ${document2.data}")
                                     mutableListCallNum.add(document2.data?.get("phone").toString())
                                     Log.d("callNum", (mutableListCallNum.toString()))
-                                    callNum_name_tv.setText(document2.data?.get("name").toString())
-                                    callNum_number_tv.setText(document2.data?.get("phone").toString())
+//                                    callNum_name_tv.setText(document2.data?.get("name").toString())
+//                                    callNum_number_tv.setText(document2.data?.get("phone").toString())
                                 }
                                 .addOnFailureListener { exception ->
                                     Log.d(ContentValues.TAG, "get failed with ", exception)
