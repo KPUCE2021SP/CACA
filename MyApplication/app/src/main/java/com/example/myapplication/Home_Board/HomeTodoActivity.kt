@@ -214,9 +214,9 @@ class HomeTodoActivity : AppCompatActivity() {
 
                             EmotionImg = if(percent>=75){
                                 "smile.png"
-                            }else if(percent>=50){
+                            }else if(percent>50){
                                 "hungry.png"
-                            }else if(percent>=25){
+                            }else if(percent>25){
                                 "angry.png"
                             }else{
                                 "sadness.png"
@@ -336,17 +336,17 @@ class HomeTodoActivity : AppCompatActivity() {
 
                             EmotionImg = if(percent>=75){
                                 "smile.png"
-                            }else if(percent>=50){
+                            }else if(percent>50){
                                 "hungry.png"
-                            }else if(percent>=25){
+                            }else if(percent>25){
                                 "angry.png"
                             }else{
                                 "sadness.png"
                             }
 
                             val percent_update = hashMapOf(
-                                    "TodoP" to percent.toString(),
-                                    "TodoEmotion" to EmotionImg,
+                                    "TodoPercent" to percent.toString(),
+                                    "emotion" to EmotionImg,
                             )
                             db.collection("Chats").document(FamilyName.toString()).collection("TODO")
                                 .document(todo_left_tv.text.toString()).update(todo_update as Map<String, Any>)
@@ -513,19 +513,19 @@ class HomeTodoActivity : AppCompatActivity() {
                                 Log.d("cnum",TodoCheckedNumR.toString())
                                 var percent: Int = (((TodoCheckedNumR+1)*100)/mutableListTodo.size)
 
-                                EmotionImg = if(percent>=75){
+                                EmotionImg = if(percent>75){
                                     "smile.png"
-                                }else if(percent>=50){
+                                }else if(percent>50){
                                     "hungry.png"
-                                }else if(percent>=25){
+                                }else if(percent>25){
                                     "angry.png"
                                 }else{
                                     "sadness.png"
                                 }
 
                                 val percent_update = hashMapOf(
-                                        "TodoP" to percent.toString(),
-                                        "TodoEmotion" to EmotionImg,
+                                        "TodoPercent" to percent.toString(),
+                                        "emotion" to EmotionImg,
                                 )
 
                                 db.collection("Chats").document(FamilyName.toString()).collection("CUSTOM")
@@ -640,17 +640,17 @@ class HomeTodoActivity : AppCompatActivity() {
                                 )
                                 EmotionImg = if(percent>=75){
                                     "smile.png"
-                                }else if(percent>=50){
+                                }else if(percent>50){
                                     "hungry.png"
-                                }else if(percent>=25){
+                                }else if(percent>25){
                                     "angry.png"
                                 }else{
                                     "sadness.png"
                                 }
 
                                 val percent_update = hashMapOf(
-                                        "TodoP" to percent.toString(),
-                                        "TodoEmotion" to EmotionImg,
+                                        "TodoPercent" to percent.toString(),
+                                        "emotion" to EmotionImg,
                                 )
 
                                 db.collection("Chats").document(FamilyName.toString()).collection("CUSTOM")
