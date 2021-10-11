@@ -270,30 +270,30 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    override fun onResume() {
-        super.onResume()
-        val appWidgetManager: AppWidgetManager? = getSystemService(AppWidgetManager::class.java)
-        val myProvider = ComponentName(this, AppWidgetProvider::class.java)
-        val successCallback: PendingIntent? = if (if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                    appWidgetManager!!.isRequestPinAppWidgetSupported
-                } else {
-                    TODO("VERSION.SDK_INT < O")
-                }
-        ) {
-            Intent(this, MainActivity::class.java).let { intent ->
-                PendingIntent.getBroadcast(applicationContext, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
-            }
-        } else {
-            null
-        }
-
-
-        w.setOnClickListener {
-            successCallback?.also { pendingIntent ->
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                    appWidgetManager.requestPinAppWidget(myProvider, null, pendingIntent)
-                }
-            }
-        }
-    }
+//    override fun onResume() {
+//        super.onResume()
+//        val appWidgetManager: AppWidgetManager? = getSystemService(AppWidgetManager::class.java)
+//        val myProvider = ComponentName(this, AppWidgetProvider::class.java)
+//        val successCallback: PendingIntent? = if (if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+//                    appWidgetManager!!.isRequestPinAppWidgetSupported
+//                } else {
+//                    TODO("VERSION.SDK_INT < O")
+//                }
+//        ) {
+//            Intent(this, MainActivity::class.java).let { intent ->
+//                PendingIntent.getBroadcast(applicationContext, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+//            }
+//        } else {
+//            null
+//        }
+//
+//
+//        w.setOnClickListener {
+//            successCallback?.also { pendingIntent ->
+//                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+//                    appWidgetManager.requestPinAppWidget(myProvider, null, pendingIntent)
+//                }
+//            }
+//        }
+//    }
 }

@@ -2,11 +2,15 @@ package com.example.myapplication.SerachMap
 
 import android.Manifest
 import android.content.Context
+import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
+import android.content.pm.Signature
 import android.location.Location
 import android.location.LocationManager
 import android.os.Build
 import android.os.Bundle
+import android.util.Base64.encodeToString
+
 import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.SearchView
@@ -31,6 +35,8 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.security.MessageDigest
+import java.security.NoSuchAlgorithmException
 import java.util.*
 
 val PERMISSIONS_REQUEST_CODE = 100
@@ -54,7 +60,7 @@ class SearchMap : AppCompatActivity() {
         const val API_KEY = "KakaoAK 6f72cd8b31110c1031e1f004fb80c3c8"  // REST API 키
     }
 
-//    var nLatitude : String = ""
+    //    var nLatitude : String = ""
 //    var nLongitude : String = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -72,18 +78,18 @@ class SearchMap : AppCompatActivity() {
         val gpsmarker = MapPOIItem()
 
 
-//        btn_gps.setOnClickListener { // 현재위치
+        btn_gps.setOnClickListener { // 현재위치
 //            getHashKey()
             val permissionCheck = ContextCompat.checkSelfPermission(
-                this,
-                Manifest.permission.ACCESS_FINE_LOCATION
+                    this,
+                    Manifest.permission.ACCESS_FINE_LOCATION
             )
             if (permissionCheck == PackageManager.PERMISSION_GRANTED) {
                 val lm: LocationManager =
-                    getSystemService(Context.LOCATION_SERVICE) as LocationManager
+                        getSystemService(Context.LOCATION_SERVICE) as LocationManager
                 try {
                     val userNowLocation: Location =
-                        lm.getLastKnownLocation(LocationManager.NETWORK_PROVIDER)!!
+                            lm.getLastKnownLocation(LocationManager.NETWORK_PROVIDER)!!
                     val uLatitude = userNowLocation.latitude
                     val uLongitude = userNowLocation.longitude
                     val uNowPosition = MapPoint.mapPointWithGeoCoord(uLatitude, uLongitude)
@@ -129,15 +135,15 @@ class SearchMap : AppCompatActivity() {
             } else {
                 Toast.makeText(this, "위치 권한이 없습니다.", Toast.LENGTH_SHORT).show()
                 ActivityCompat.requestPermissions(
-                    this,
-                    REQUIRED_PERMISSIONS,
-                    PERMISSIONS_REQUEST_CODE
+                        this,
+                        REQUIRED_PERMISSIONS,
+                        PERMISSIONS_REQUEST_CODE
                 )
             }
 
 
 
-//        }
+        }
         mapListView.setOnItemClickListener { parent, view, position, id -> // 검색한 결과 listView 클릭하면 넘어가기
 //            // 1. x, y 값 return
             var r = resultList[position].replace(", x=", "*")
@@ -149,16 +155,16 @@ class SearchMap : AppCompatActivity() {
             var y = rList[2].toFloat()
 
             val board_content = hashMapOf(
-                // Family name
-                "x" to x,
-                "y" to y,
-                "location" to resultNameArray[position].toString()
+                    // Family name
+                    "x" to x,
+                    "y" to y,
+                    "location" to resultNameArray[position].toString()
             )
 
             db.collection("Chats").document(FamilyName.toString()).collection("BOARD")
-                .document(formatted.toString()).update(board_content as Map<String, Any>) // 게시판 활성화
+                    .document(formatted.toString()).update(board_content as Map<String, Any>) // 게시판 활성화
 
-    //        Toast.makeText(applicationContext, "${resultNameArray[position].toString()}", Toast.LENGTH_LONG).show()
+            //        Toast.makeText(applicationContext, "${resultNameArray[position].toString()}", Toast.LENGTH_LONG).show()
 
 
 
@@ -177,9 +183,9 @@ class SearchMap : AppCompatActivity() {
     // 키워드 검색 함수
     private fun searchKeyword(keyword: String, x:String, y:String) {
         val retrofit = Retrofit.Builder()   // Retrofit 구성
-            .baseUrl(BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
         val api = retrofit.create(KakaoAPI::class.java)   // 통신 인터페이스를 객체로 생성
 //        val call = api.getSearchKeyword(API_KEY, keyword)   // 검색 조건 입력
         Log.d("Latitude", x.toString())
@@ -235,15 +241,15 @@ class SearchMap : AppCompatActivity() {
     // list
     fun makeList() {
         resultList =
-            DummySearch.sDummySearch.trim().splitToSequence("*").toList() // String to List
+                DummySearch.sDummySearch.trim().splitToSequence("*").toList() // String to List
         resultArray= resultList.toTypedArray() // List to Array
         resultNameArray = resultList.toTypedArray()
 
 
         for (i in  0 .. (resultArray.size -1)){
             resultNameArray[i] = resultNameArray[i].replace("place_name=", "")
-                .substring(0, resultNameArray[i].indexOf(","))
-                .replace(", address_n", "")
+                    .substring(0, resultNameArray[i].indexOf(","))
+                    .replace(", address_n", "")
         }
 //        var myAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, resultArray)
         var myAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, resultNameArray)
