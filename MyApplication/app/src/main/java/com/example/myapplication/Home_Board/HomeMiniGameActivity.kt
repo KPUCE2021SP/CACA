@@ -31,6 +31,7 @@ class HomeMiniGameActivity : AppCompatActivity() {
         }
         return candidate
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_mini_game)
@@ -87,6 +88,8 @@ class HomeMiniGameActivity : AppCompatActivity() {
             val random = Random()
             var candidateNumber = 0
 
+            Log.d("candidate",candidates.toString())
+
             if (candidates[0] == "" || candidates[1] == "") {
                 Toast.makeText(this, "후보를 입력해주세요!", Toast.LENGTH_SHORT).show()
 //                text_result.text = info
@@ -110,15 +113,19 @@ class HomeMiniGameActivity : AppCompatActivity() {
             val candidates: ArrayList<String> = editCandidate()
             var candidateNumber = 0
 
+            Log.d("candidate",candidates.toString())
+
             if (candidates[0] == "" || candidates[1] == "") {
                 Toast.makeText(this, "후보를 입력해주세요!", Toast.LENGTH_SHORT).show()
 //                text_result.text = info
             } else {
-                for (i in 0..layoutNumber + 1) {
-                    if (candidates[i] != "") {
-                        candidateNumber += 1
-                    }
-                }
+//                for (i in 0..layoutNumber + 1) {
+//                    if (candidates[i] != "") {
+//                        candidateNumber += 1
+//                    }
+//                }
+                candidateNumber = candidates.size
+                Log.d("candidateNN",candidateNumber.toString())
 
                 var temp: String
                 var temp2: String
@@ -134,11 +141,18 @@ class HomeMiniGameActivity : AppCompatActivity() {
                     candidates[randomNum2] = temp
                 }
 
-                text_result.text = "[1등] ${candidates[0]}" + "\t\t\t\t[2등] ${candidates[1]}"
-                for (i in 2..layoutNumber + 1) {
-                    text_result.text =
-                        text_result.text.toString() + "\t\t\t\t[${i + 1}등] ${candidates[i]}"
+                if(candidateNumber == 2){
+                    text_result.text = "[1등] ${candidates[0]}" + "\t\t\t\t[2등] ${candidates[1]}"
+                }else{
+                    text_result.text = "[1등] ${candidates[0]}" + "\t\t\t\t[2등] ${candidates[1]}"+ "\t\t\t\t[3등] ${candidates[2]}"
                 }
+
+//                text_result.text = "[1등] ${candidates[0]}" + "\t\t\t\t[2등] ${candidates[1]}"+ "\t\t\t\t[3등] ${candidates[2]}"
+//                for (i in 2..layoutNumber + 1) {
+//                    text_result.text =
+//                        text_result.text.toString() + "\t\t\t\t[${i + 1}등] ${candidates[i]}"
+//                        Log.d("candidatext",text_result.text.toString())
+//                }
             }
 
             val animationFadeIn = AnimationUtils.loadAnimation(this, R.anim.fade_in)
