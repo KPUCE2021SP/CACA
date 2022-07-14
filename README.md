@@ -77,7 +77,6 @@
 <br>
 
 ## 구성원
-#### 한국산업기술대 🏫
 #### 소프트웨어전공 2019156013 박지영 🤨
 #### 소프트웨어전공 2019156024 윤지민 😵‍💫
 #### 소프트웨어전공 2019156037 최혜민 <img src="https://user-images.githubusercontent.com/67986703/127766849-45ec88bd-90ee-40ac-ab8d-bf41a1cdc0ef.png" width="30" height="30">
