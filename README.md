@@ -1,6 +1,4 @@
-# CACA
-### 앱 이름 : FAMILYSHIP
-### 더 간결하고 편리하게  가족과 소통하고  소중한 추억을 저장할 수 있는 가족 어플
+<img width="1502" alt="image" src="https://user-images.githubusercontent.com/67986703/183573574-9ef4e48d-e63b-4ce2-a210-37647d56122d.png">
 [Trello](https://trello.com/b/erXhAWw7/familyship)
 
 <br>
